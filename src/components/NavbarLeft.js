@@ -171,9 +171,10 @@ export const NavbarLeft = () => {
 
         {/* <!-- Sidebar Toggler (Sidebar) --> */}
         <div className="text-center d-none d-md-inline">
-          <button className="rounded-circle border-0" id="sidebarToggle">
-            {'<'}
-          </button>
+          <button
+            className="rounded-circle border-0"
+            id="sidebarToggle"
+          ></button>
         </div>
       </ul>
       {/* <!-- End of Sidebar --> */}

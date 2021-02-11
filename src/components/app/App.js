@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import '../../assets/css/sb-admin-2.min.css';
+import '../../assets/vendor/fontawesome-free/css/all.min.css';
 
 import { LoginPage } from '../pages/LoginPage';
 import { RegisterePage } from '../pages/RegisterePage';
