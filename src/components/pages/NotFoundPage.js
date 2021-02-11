@@ -1,8 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const NotFoundPage = () => {
-  console.log('Cambiar enlaces <a.../> NotFoundPage');
-
   return (
     <>
       <div id="content-wrapper" className="mt-xl-5 d-flex flex-column">
@@ -16,13 +15,12 @@ export const NotFoundPage = () => {
               </div>
               <p className="lead text-gray-800 mb-5">Página no encontrada</p>
               <p className="text-gray-500 mb-0">
-                Parece que has encontrado un fallo en matrix...
+                Ouch! Parece que has encontrado un fallo en matrix...
               </p>
 
-              {/* cambiar enlace a */}
-              <a href="index.html">
+              <Link to="/">
                 &larr; Vuelve al inicio de la web, para el ¡rescate!
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -30,7 +28,7 @@ export const NotFoundPage = () => {
           <footer className="sticky-footer bg-white">
             <div className="container my-auto">
               <div className="copyright text-center my-auto">
-                <span>Made with ❤️‍🔥 by Talent-Mu.</span>
+                <span>Aplicacion web hecha con ❤️‍🔥 por Talent-Mu.</span>
               </div>
             </div>
           </footer>
