@@ -7,7 +7,7 @@ export const RegisterePage = () => {
     <div className="container">
       <Helmet
         bodyAttributes={{
-          class: 'bg-gradient-primary',
+          class: 'bg-gradient-success',
         }}
       />
       <div className="container">
@@ -97,7 +97,7 @@ export const RegisterePage = () => {
                     </Link>
                   </div>
                   <div className="text-center">
-                    <Link to="/" className="small">
+                    <Link to="/recuperar-pass" className="small">
                       ¿Olvidaste la contraseña?
                     </Link>
                   </div>

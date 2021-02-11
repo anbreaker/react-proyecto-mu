@@ -7,7 +7,7 @@ export const ForgotPasswordPage = () => {
     <div>
       <Helmet
         bodyAttributes={{
-          class: 'bg-gradient-primary',
+          class: 'bg-gradient-info',
         }}
       />
       <div className="container">
