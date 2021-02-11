@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-const LoginPage = () => {
+export const LoginPage = () => {
   return (
     <div className="container">
       <Helmet
@@ -20,7 +20,7 @@ const LoginPage = () => {
                 <div className="col-lg-6">
                   <div className="p-5">
                     <div className="text-center">
-                      <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                      <h1 className="h4 text-gray-900 mb-4">Bienvenido!</h1>
                     </div>
                     <form className="user">
                       <div className="form-group">
@@ -29,7 +29,7 @@ const LoginPage = () => {
                           className="form-control form-control-user"
                           id="exampleInputEmail"
                           aria-describedby="emailHelp"
-                          placeholder="Enter Email Address..."
+                          placeholder="Introduce tu email"
                         />
                       </div>
                       <div className="form-group">
@@ -37,7 +37,7 @@ const LoginPage = () => {
                           type="password"
                           className="form-control form-control-user"
                           id="exampleInputPassword"
-                          placeholder="Password"
+                          placeholder="Contraseña"
                         />
                       </div>
                       <div className="form-group">
@@ -51,7 +51,7 @@ const LoginPage = () => {
                             className="custom-control-label"
                             htmlFor="customCheck"
                           >
-                            Remember Me
+                            Recuérdame
                           </label>
                         </div>
                       </div>
@@ -59,33 +59,33 @@ const LoginPage = () => {
                         href="index.html"
                         className="btn btn-primary btn-user btn-block"
                       >
-                        Login
+                        Iniciar sesión
                       </a>
                       <hr />
                       <a
                         href="index.html"
                         className="btn btn-google btn-user btn-block"
                       >
-                        <i className="fab fa-google fa-fw"></i> Login with
-                        Google
+                        <i className="fab fa-google fa-fw"></i> Inicia sesión
+                        con Google
                       </a>
                       <a
                         href="index.html"
                         className="btn btn-facebook btn-user btn-block"
                       >
-                        <i className="fab fa-facebook-f fa-fw"></i> Login with
-                        Facebook
+                        <i className="fab fa-facebook-f fa-fw"></i> Inicia
+                        sesión con Facebook
                       </a>
                     </form>
                     <hr />
                     <div className="text-center">
                       <a className="small" href="forgot-password.html">
-                        Forgot Password?
+                        ¿Olvidaste la contraseña?
                       </a>
                     </div>
                     <div className="text-center">
                       <a className="small" href="register.html">
-                        Create an Account!
+                        ¡Crea una cuenta!
                       </a>
                     </div>
                   </div>
@@ -98,5 +98,3 @@ const LoginPage = () => {
     </div>
   );
 };
-
-export default LoginPage;
