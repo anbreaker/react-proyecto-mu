@@ -89,7 +89,7 @@ export const LoginPage = () => {
                       </Link>
                     </div>
                     <div className="text-center">
-                      <Link to="/" className="small">
+                      <Link to="/recuperar-pass" className="small">
                         ¿Olvidaste la contraseña?
                       </Link>
                     </div>
