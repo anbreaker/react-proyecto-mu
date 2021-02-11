@@ -11,11 +11,7 @@ import { NavbarLeft } from '../NavbarLeft';
 export const App = () => {
   return (
     <Switch>
-      <Route path="/" exact>
-        <div className="App">
-          <h1>Proyecto Mu</h1>
-        </div>
-      </Route>
+      <Route path="/" exact component={NavbarLeft} />
 
       <Route path="/login" exact component={LoginPage} />
       <Route path="/registro" exact component={RegisterePage} />
