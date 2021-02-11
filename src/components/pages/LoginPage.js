@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 
 export const LoginPage = () => {
@@ -79,13 +80,13 @@ export const LoginPage = () => {
                     </form>
                     <hr />
                     <div className="text-center">
-                      <a className="small" href="forgot-password.html">
-                        ¿Olvidaste la contraseña?
-                      </a>
+                      <Link to="/registro" className="small">
+                        ¿No tienes cuenta? ¡Hazte una!
+                      </Link>
                     </div>
                     <div className="text-center">
                       <a className="small" href="register.html">
-                        ¡Crea una cuenta!
+                        ¿Olvidaste la contraseña?
                       </a>
                     </div>
                   </div>
