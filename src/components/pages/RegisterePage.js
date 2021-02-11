@@ -97,9 +97,9 @@ export const RegisterePage = () => {
                     </Link>
                   </div>
                   <div className="text-center">
-                    <a className="small" href="login.html">
+                    <Link to="/" className="small">
                       ¿Olvidaste la contraseña?
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

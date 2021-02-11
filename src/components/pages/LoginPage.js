@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 
 export const LoginPage = () => {
+  console.log('Crear componente linea 85?');
+
   return (
     <div className="container">
       <Helmet
@@ -78,6 +80,8 @@ export const LoginPage = () => {
                         sesión con Facebook
                       </a>
                     </form>
+
+                    {/* Componetizar esta parte? */}
                     <hr />
                     <div className="text-center">
                       <Link to="/registro" className="small">
@@ -85,9 +89,9 @@ export const LoginPage = () => {
                       </Link>
                     </div>
                     <div className="text-center">
-                      <a className="small" href="register.html">
+                      <Link to="/" className="small">
                         ¿Olvidaste la contraseña?
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
