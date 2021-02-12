@@ -1,8 +1,14 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+import { FooterForms } from '../basicComponents/FooterForms';
+import { InputMail } from '../basicComponents/InputMail';
+import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 
 export const ForgotPasswordPage = () => {
+  const { t } = useTranslation('global');
+
   return (
     <div>
       <Helmet
@@ -26,20 +32,12 @@ export const ForgotPasswordPage = () => {
                           ¿Olvidaste la contraseña?
                         </h1>
                         <p className="mb-4">
-                          Lo entendemos, estas cosas pasan. Sólo tienes que
-                          introducir tu correo electrónico y te enviaremos un
-                          enlace para restablecer tu contraseña 😊.
+                          {t('ForgotPasswordPage.Consuelo-Sentence')}
                         </p>
                       </div>
                       <form className="user">
                         <div className="form-group">
-                          <input
-                            type="email"
-                            className="form-control form-control-user"
-                            id="exampleInputEmail"
-                            aria-describedby="emailHelp"
-                            placeholder="Introduce la dirección de email..."
-                          />
+                          <InputMail text={t('LoginPage.Enter-mail')} />
                         </div>
                         <a
                           href="login.html"
@@ -48,18 +46,18 @@ export const ForgotPasswordPage = () => {
                           Reiniciar contraseña
                         </a>
                       </form>
+
                       <hr />
-                      <div className="text-center">
-                        <Link to="/login" className="small">
-                          ¿Ya tienes una cuenta? ¡Inicia sesión!.
-                        </Link>
-                      </div>
-                      <div className="text-center">
-                        <Link to="/registro" className="small">
-                          ¿No tienes cuenta? ¡Hazte una!
-                        </Link>
-                      </div>
+                      <FooterForms
+                        path={'/login'}
+                        text={t('ForgotPasswordPage.Have-Acount')}
+                      />
+                      <FooterForms
+                        path={'/registro'}
+                        text={t('LoginPage.Create-Account')}
+                      />
                     </div>
+                    <ChangeLanguaje />
                   </div>
                 </div>
               </div>

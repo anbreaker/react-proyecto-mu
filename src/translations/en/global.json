@@ -9,5 +9,10 @@
     "Login-with": "Login with",
     "Create-Account": "Create Account",
     "Forgot-Password": "Forgot Password"
+  },
+  "ForgotPasswordPage": {
+    "Have-Acount": "Already have an account? Login!",
+    "Forgot-Password": "Forgot Your Password?",
+    "Consuelo-Sentence": "We get it, stuff happens, dont worry. Just enter your email address below and we'll send you a link to reset your password!"
   }
 }

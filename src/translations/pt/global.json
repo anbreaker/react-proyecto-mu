@@ -9,5 +9,10 @@
     "Login-with": "Iniciar sessão com",
     "Create-Account": "Não tem uma conta? Crie uma!",
     "Forgot-Password": "Esqueceu-se da sua senha?"
+  },
+  "ForgotPasswordPage": {
+    "Have-Acount": "Já tem uma conta? Entre!",
+    "Forgot-Password": "¿Olvidaste la contraseña?",
+    "Consuelo-Sentence": "Compreendemos que estas coisas acontecem. Basta introduzir o seu e-mail e enviar-lhe-emos um link para redefinir a sua palavra-passe 😊"
   }
 }

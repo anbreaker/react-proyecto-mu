@@ -1,16 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { ChangeLanguaje } from '../ChangeLanguaje';
+import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
+import { FooterForms } from '../basicComponents/FooterForms';
 
 export const LoginPage = () => {
-  const { t, i18n } = useTranslation('global');
-
-  console.log('Crear componente linea 85?');
+  const { t } = useTranslation('global');
 
   return (
     <div className="container">
@@ -79,18 +77,15 @@ export const LoginPage = () => {
                       </a>
                     </form>
 
-                    {/* Componetizar esta parte? */}
                     <hr />
-                    <div className="text-center">
-                      <Link to="/registro" className="small">
-                        {t('LoginPage.Create-Account')}
-                      </Link>
-                    </div>
-                    <div className="text-center">
-                      <Link to="/recuperar-pass" className="small">
-                        {t('LoginPage.Forgot-Password')}
-                      </Link>
-                    </div>
+                    <FooterForms
+                      path={'/registro'}
+                      text={t('LoginPage.Create-Account')}
+                    />
+                    <FooterForms
+                      path={'/recuperar-pass'}
+                      text={t('LoginPage.Forgot-Password')}
+                    />
                   </div>
                   <ChangeLanguaje />
                 </div>
