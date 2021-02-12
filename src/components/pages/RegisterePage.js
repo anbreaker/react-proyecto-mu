@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 
+import { ChangeLanguaje } from '../utils/ChangeLanguaje';
+
 export const RegisterePage = () => {
   return (
     <div className="container">
@@ -103,6 +105,7 @@ export const RegisterePage = () => {
                     </Link>
                   </div>
                 </div>
+                <ChangeLanguaje />
               </div>
             </div>
           </div>
