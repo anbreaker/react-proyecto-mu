@@ -1,0 +1,13 @@
+{
+  "LoginPage": {
+    "Welcome": "Bienvenido",
+    "Change-Languaje": "Cambiar idioma:",
+    "Enter": "Introduce tu email",
+    "Password": "Contraseña",
+    "Remember": "Recuérdame",
+    "Login": "Iniciar sesión",
+    "Login-with": "Iniciar sesión",
+    "Create-Account": "¿No tienes cuenta? ¡Hazte una!",
+    "Forgot-Password": "¿Olvidaste la contraseña?"
+  }
+}

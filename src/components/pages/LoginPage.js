@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
+import { useTranslation } from 'react-i18next';
+import { ChangeLanguaje } from '../ChangeLanguaje';
 
 export const LoginPage = () => {
+  const { t, i18n } = useTranslation('global');
+
   console.log('Crear componente linea 85?');
 
   return (
@@ -23,7 +27,9 @@ export const LoginPage = () => {
                 <div className="col-lg-6">
                   <div className="p-5">
                     <div className="text-center">
-                      <h1 className="h4 text-gray-900 mb-4">Bienvenido!</h1>
+                      <h1 className="h4 text-gray-900 mb-4">
+                        {t('LoginPage.Welcome')}!
+                      </h1>
                     </div>
                     <form className="user">
                       <div className="form-group">
@@ -32,7 +38,7 @@ export const LoginPage = () => {
                           className="form-control form-control-user"
                           id="exampleInputEmail"
                           aria-describedby="emailHelp"
-                          placeholder="Introduce tu email"
+                          placeholder={t('LoginPage.Enter')}
                         />
                       </div>
                       <div className="form-group">
@@ -40,7 +46,7 @@ export const LoginPage = () => {
                           type="password"
                           className="form-control form-control-user"
                           id="exampleInputPassword"
-                          placeholder="Contraseña"
+                          placeholder={t('LoginPage.Password')}
                         />
                       </div>
                       <div className="form-group">
@@ -54,7 +60,7 @@ export const LoginPage = () => {
                             className="custom-control-label"
                             htmlFor="customCheck"
                           >
-                            Recuérdame
+                            {t('LoginPage.Remember')}
                           </label>
                         </div>
                       </div>
@@ -62,22 +68,22 @@ export const LoginPage = () => {
                         href="index.html"
                         className="btn btn-primary btn-user btn-block"
                       >
-                        Iniciar sesión
+                        {t('LoginPage.Login')}
                       </a>
                       <hr />
                       <a
                         href="index.html"
                         className="btn btn-google btn-user btn-block"
                       >
-                        <i className="fab fa-google fa-fw"></i> Inicia sesión
-                        con Google
+                        <i className="fab fa-google fa-fw"></i>{' '}
+                        {t('LoginPage.Login-with')} Google
                       </a>
                       <a
                         href="index.html"
                         className="btn btn-facebook btn-user btn-block"
                       >
-                        <i className="fab fa-facebook-f fa-fw"></i> Inicia
-                        sesión con Facebook
+                        <i className="fab fa-facebook-f fa-fw"></i>{' '}
+                        {t('LoginPage.Login-with')} Facebook
                       </a>
                     </form>
 
@@ -85,15 +91,16 @@ export const LoginPage = () => {
                     <hr />
                     <div className="text-center">
                       <Link to="/registro" className="small">
-                        ¿No tienes cuenta? ¡Hazte una!
+                        {t('LoginPage.Create-Account')}
                       </Link>
                     </div>
                     <div className="text-center">
                       <Link to="/recuperar-pass" className="small">
-                        ¿Olvidaste la contraseña?
+                        {t('LoginPage.Forgot-Password')}
                       </Link>
                     </div>
                   </div>
+                  <ChangeLanguaje />
                 </div>
               </div>
             </div>
