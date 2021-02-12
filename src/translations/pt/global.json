@@ -2,17 +2,18 @@
   "LoginPage": {
     "Welcome": "Bem-vindo",
     "Change-Languaje": "Mudar idioma",
-    "Enter-mail": "Introduce tu email",
+    "Enter-mail": "Introduz o teu e-mail",
     "Password": "Senha",
     "Remember": "Lembra-me",
     "Login": "Iniciar Sessão",
     "Login-with": "Iniciar sessão com",
     "Create-Account": "Não tem uma conta? Crie uma!",
-    "Forgot-Password": "Esqueceu-se da sua senha?"
+    "Forgot-Password": "Esqueceu-se sua senha?"
   },
   "ForgotPasswordPage": {
     "Have-Acount": "Já tem uma conta? Entre!",
     "Forgot-Password": "¿Olvidaste la contraseña?",
-    "Consuelo-Sentence": "Compreendemos que estas coisas acontecem. Basta introduzir o seu e-mail e enviar-lhe-emos um link para redefinir a sua palavra-passe 😊"
+    "Consuelo-Sentence": "Compreendemos que estas coisas acontecem. Basta introduzir o seu e-mail e enviar-lhe-emos um link para redefinir a sua palavra-passe 😊",
+    "Reset-Password": "Redefinir senha"
   }
 }
