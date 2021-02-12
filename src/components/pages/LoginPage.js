@@ -1,11 +1,13 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
+import { Button as button } from '@material-ui/core';
 
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { FooterForms } from '../basicComponents/FooterForms';
+import Button from '../basicComponents/Button';
 
 export const LoginPage = () => {
   const { t } = useTranslation('global');
@@ -54,20 +56,29 @@ export const LoginPage = () => {
                           </label>
                         </div>
                       </div>
-                      <a
-                        href="index.html"
-                        className="btn btn-primary btn-user btn-block"
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        onClick={event => {
+                          event.preventDefault();
+                          return console.log('click');
+                        }}
                       >
                         {t('LoginPage.Login')}
-                      </a>
+                      </Button>
                       <hr />
-                      <a
-                        href="index.html"
-                        className="btn btn-google btn-user btn-block"
+                      <Button
+                        type="submit"
+                        variant="google"
+                        startIcon="fab fa-google fa-fw"
+                        onClick={event => {
+                          event.preventDefault();
+                          return console.log('click google');
+                        }}
                       >
-                        <i className="fab fa-google fa-fw"></i>{' '}
                         {t('LoginPage.Login-with')} Google
-                      </a>
+                      </Button>
+
                       <a
                         href="index.html"
                         className="btn btn-facebook btn-user btn-block"
