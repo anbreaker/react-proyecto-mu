@@ -2,7 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
+
 import { ChangeLanguaje } from '../ChangeLanguaje';
+import { InputMail } from '../basicComponents/InputMail';
+import { InputPassword } from '../basicComponents/InputPassword';
 
 export const LoginPage = () => {
   const { t, i18n } = useTranslation('global');
@@ -33,21 +36,10 @@ export const LoginPage = () => {
                     </div>
                     <form className="user">
                       <div className="form-group">
-                        <input
-                          type="email"
-                          className="form-control form-control-user"
-                          id="exampleInputEmail"
-                          aria-describedby="emailHelp"
-                          placeholder={t('LoginPage.Enter')}
-                        />
+                        <InputMail text={t('LoginPage.Enter-mail')} />
                       </div>
                       <div className="form-group">
-                        <input
-                          type="password"
-                          className="form-control form-control-user"
-                          id="exampleInputPassword"
-                          placeholder={t('LoginPage.Password')}
-                        />
+                        <InputPassword text={t('LoginPage.Password')} />
                       </div>
                       <div className="form-group">
                         <div className="custom-control custom-checkbox small">
