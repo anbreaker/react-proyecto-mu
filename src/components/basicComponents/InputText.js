@@ -1,11 +1,12 @@
 import React from 'react';
 
-export const InputPassword = props => {
+export const InputText = props => {
   const { text } = props;
+
   return (
     <input
-      type="password"
-      name="password"
+      type="text"
+      name="text"
       className="form-control form-control-user"
       placeholder={text}
     />

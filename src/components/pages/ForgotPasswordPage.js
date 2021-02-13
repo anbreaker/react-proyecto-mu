@@ -5,12 +5,19 @@ import { useTranslation } from 'react-i18next';
 import { FooterForms } from '../basicComponents/FooterForms';
 import { InputMail } from '../basicComponents/InputMail';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
+import { Button } from '../basicComponents/Button';
+
+//Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
+import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
 
 export const ForgotPasswordPage = () => {
   const { t } = useTranslation('global');
 
   return (
-    <div>
+    <>
+      {/* Borrar al No ser Necesaria... (facilidad a la hora de trabajar...) */}
+      <NavbarForDevOnly />
+
       <Helmet
         bodyAttributes={{
           class: 'bg-gradient-info',
@@ -29,22 +36,28 @@ export const ForgotPasswordPage = () => {
                     <div className="p-5">
                       <div className="text-center">
                         <h1 className="h4 text-gray-900 mb-2">
-                          ¿Olvidaste la contraseña?
+                          {t('LoginPage.Forgot-Password')}
                         </h1>
                         <p className="mb-4">
                           {t('ForgotPasswordPage.Consuelo-Sentence')}
                         </p>
                       </div>
+
                       <form className="user">
                         <div className="form-group">
                           <InputMail text={t('LoginPage.Enter-mail')} />
                         </div>
-                        <a
-                          href="login.html"
-                          className="btn btn-primary btn-user btn-block"
+
+                        <Button
+                          type="submit"
+                          variant="primary"
+                          onClick={event => {
+                            event.preventDefault();
+                            return console.log('click Reiniciar Contraseña');
+                          }}
                         >
-                          Reiniciar contraseña
-                        </a>
+                          {t('ForgotPasswordPage.Reset-Password')}
+                        </Button>
                       </form>
 
                       <hr />
@@ -65,6 +78,6 @@ export const ForgotPasswordPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

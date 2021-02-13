@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { NavbarForDevOnly } from './utils/NavbarForDevOnly';
 
 export const NavbarLeft = () => {
   return (
     <div>
+      <NavbarForDevOnly />
       {/* <!-- Sidebar --> */}
       <ul
         className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"

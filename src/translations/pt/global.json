@@ -15,5 +15,11 @@
     "Forgot-Password": "¿Olvidaste la contraseña?",
     "Consuelo-Sentence": "Compreendemos que estas coisas acontecem. Basta introduzir o seu e-mail e enviar-lhe-emos um link para redefinir a sua palavra-passe 😊",
     "Reset-Password": "Redefinir senha"
+  },
+  "RegisterPage": {
+    "Create-Account": "Registe uma conta!",
+    "Repeat-Password": "Repita a senha",
+    "Name": "Nome",
+    "Surname": "Apelidos"
   }
 }

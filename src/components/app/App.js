@@ -4,7 +4,7 @@ import '../../assets/css/sb-admin-2.min.css';
 import '../../assets/vendor/fontawesome-free/css/all.min.css';
 
 import { LoginPage } from '../pages/LoginPage';
-import { RegisterePage } from '../pages/RegisterePage';
+import { RegisterPage } from '../pages/RegisterPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { ForgotPasswordPage } from '../pages/ForgotPasswordPage';
 import { NavbarLeft } from '../NavbarLeft';
@@ -15,7 +15,7 @@ export const App = () => {
       <Route path="/" exact component={NavbarLeft} />
 
       <Route path="/login" exact component={LoginPage} />
-      <Route path="/registro" exact component={RegisterePage} />
+      <Route path="/registro" exact component={RegisterPage} />
       <Route path="/404" exact component={NotFoundPage} />
       <Route path="/recuperar-pass" exact component={ForgotPasswordPage} />
       <Route path="/navbar" exact component={NavbarLeft} />
