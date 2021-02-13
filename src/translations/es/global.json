@@ -21,5 +21,11 @@
     "Repeat-Password": "Repite la contraseña",
     "Name": "Nombre",
     "Surname": "Apellidos"
+  },
+  "NotFoundPage": {
+    "Not-Found": "Página no econtrada",
+    "Matrix": "Ouch! Parece que has encontrado un fallo en matrix...",
+    "Go-Back": "Vuelve al inicio de la web, para el ¡rescate!",
+    "Made-With": "Aplicacion web hecha con ❤️‍🔥 por Talent-Mu."
   }
 }

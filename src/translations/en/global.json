@@ -21,5 +21,11 @@
     "Repeat-Password": "Repeat Password",
     "Name": "Name",
     "Surname": "Surname"
+  },
+  "NotFoundPage": {
+    "Not-Found": "Page Not Found",
+    "Matrix": "It looks like you found a glitch in the matrix...",
+    "Go-Back": "Back to Dashboard",
+    "Made-With": "Web application made with ❤️‍🔥 by Talent-Mu."
   }
 }
