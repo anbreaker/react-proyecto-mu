@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '../basicComponents/Button';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { FooterForms } from '../basicComponents/FooterForms';
-
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { InputText } from '../basicComponents/InputText';
