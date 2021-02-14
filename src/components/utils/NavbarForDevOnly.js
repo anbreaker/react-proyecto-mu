@@ -5,7 +5,7 @@ export const NavbarForDevOnly = () => {
   return (
     <nav className="pl-5 navbar navbar-expand-lg navbar-dark bg-dark">
       <Link className="navbar-brand" to="/">
-        Navbar
+        Inicio
       </Link>
 
       <div className="collapse navbar-collapse" id="navbarNav">

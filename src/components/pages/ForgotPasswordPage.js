@@ -23,7 +23,7 @@ export const ForgotPasswordPage = () => {
           class: 'bg-gradient-info',
         }}
       />
-      <div className="container">
+      <div className="container pt-5">
         {/* <!-- Outer Row --> */}
         <div className="row justify-content-center">
           <div className="col-xl-10 col-lg-12 col-md-9">
