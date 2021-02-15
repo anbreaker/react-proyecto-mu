@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import { FooterForms } from '../basicComponents/FooterForms';
+import { LinkForms } from '../basicComponents/LinkForms';
 import { InputMail } from '../basicComponents/InputMail';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { Button } from '../basicComponents/Button';
@@ -61,11 +61,11 @@ export const ForgotPasswordPage = () => {
                       </form>
 
                       <hr />
-                      <FooterForms
+                      <LinkForms
                         path={'/login'}
                         text={t('ForgotPasswordPage.Have-Acount')}
                       />
-                      <FooterForms
+                      <LinkForms
                         path={'/registro'}
                         text={t('LoginPage.Create-Account')}
                       />

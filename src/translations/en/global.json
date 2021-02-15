@@ -18,6 +18,8 @@
   },
   "RegisterPage": {
     "Create-Account": "Create an Account!",
+    "Register-Account": "Register Account",
+    "Register-With": "Register with",
     "Repeat-Password": "Repeat Password",
     "Name": "Name",
     "Surname": "Surname"
@@ -27,5 +29,19 @@
     "Matrix": "It looks like you found a glitch in the matrix...",
     "Go-Back": "Back to Dashboard",
     "Made-With": "Web application made with ❤️‍🔥 by Talent-Mu."
+  },
+  "NavBars": {
+    "Dashboard": "Dashboard",
+    "Interface": "Interface",
+    "Components": "Components",
+    "Utilities": "Utilities",
+    "Tables": "Tables",
+    "Page": "Page",
+    "Charts": "Charts",
+    "Profile": "Profile",
+    "Settings": "Settings",
+    "Activity-Log": "Activity-Log",
+    "Logout": "Logout",
+    "Cancel": "Cancel"
   }
 }

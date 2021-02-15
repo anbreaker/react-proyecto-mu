@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
-import { FooterForms } from '../basicComponents/FooterForms';
+import { LinkForms } from '../basicComponents/LinkForms';
 import { Button } from '../basicComponents/Button';
 import { UniqueCheckbox } from '../basicComponents/UniqueCheckbox';
 
@@ -72,6 +72,7 @@ export const LoginPage = () => {
                             return console.log('click google');
                           }}
                         >
+                          {' '}
                           {t('LoginPage.Login-with')} Google
                         </Button>
 
@@ -89,11 +90,11 @@ export const LoginPage = () => {
                       </form>
 
                       <hr />
-                      <FooterForms
+                      <LinkForms
                         path={'/registro'}
                         text={t('LoginPage.Create-Account')}
                       />
-                      <FooterForms
+                      <LinkForms
                         path={'/recuperar-pass'}
                         text={t('LoginPage.Forgot-Password')}
                       />

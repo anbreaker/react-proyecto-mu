@@ -18,6 +18,8 @@
   },
   "RegisterPage": {
     "Create-Account": "Registe uma conta!",
+    "Register-Account": "Registar a conta",
+    "Register-With": "Registe-se com",
     "Repeat-Password": "Repita a senha",
     "Name": "Nome",
     "Surname": "Apelidos"
@@ -27,5 +29,19 @@
     "Matrix": "Ai! Parece que encontrou um insecto na matriz...",
     "Go-Back": "Volte para o topo da web, para o salvamento!",
     "Made-With": "Aplicação Web feita com  ❤️‍🔥 por Talent-Mu."
+  },
+  "NavBars": {
+    "Dashboard": "Painel de controlo",
+    "Interface": "Interface",
+    "Components": "Componentes",
+    "Utilities": "Utilidades",
+    "Tables": "Tabelas",
+    "Page": "Página",
+    "Charts": "Gráficos",
+    "Profile": "Perfil",
+    "Settings": "Definições",
+    "Activity-Log": "Diário de actividades",
+    "Logout": "Sair",
+    "Cancel": "Cancenlar"
   }
 }

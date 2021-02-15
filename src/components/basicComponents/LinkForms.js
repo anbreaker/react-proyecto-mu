@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const FooterForms = props => {
+export const LinkForms = props => {
   const { text, path } = props;
 
   return (

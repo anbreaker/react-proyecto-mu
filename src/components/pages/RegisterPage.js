@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Button } from '../basicComponents/Button';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
-import { FooterForms } from '../basicComponents/FooterForms';
+import { LinkForms } from '../basicComponents/LinkForms';
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { InputText } from '../basicComponents/InputText';
@@ -70,7 +70,7 @@ export const RegisterPage = () => {
                           return console.log('click');
                         }}
                       >
-                        {t('LoginPage.Login')}
+                        {t('RegisterPage.Register-Account')}
                       </Button>
 
                       <hr />
@@ -83,7 +83,8 @@ export const RegisterPage = () => {
                           return console.log('click google');
                         }}
                       >
-                        {t('LoginPage.Login-with')} Google
+                        {' '}
+                        {t('RegisterPage.Register-With')} Google
                       </Button>
 
                       <Button
@@ -95,16 +96,16 @@ export const RegisterPage = () => {
                           return console.log('click facebook');
                         }}
                       >
-                        {t('LoginPage.Login-with')} Facebook
+                        {t('RegisterPage.Register-With')} Facebook
                       </Button>
                     </form>
                     <hr />
 
-                    <FooterForms
+                    <LinkForms
                       path={'/login'}
                       text={t('ForgotPasswordPage.Have-Acount')}
                     />
-                    <FooterForms
+                    <LinkForms
                       path={'/recuperar-pass'}
                       text={t('LoginPage.Forgot-Password')}
                     />
