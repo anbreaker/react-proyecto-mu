@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import img from '../../assets/img/undraw_profile_1.svg';
 import { TalentMuFooter } from './TalentMuFooter';
 
 export const Navbars = () => {
@@ -273,10 +274,7 @@ export const Navbars = () => {
                     <span className="mr-2 d-none d-lg-inline text-gray-600 small">
                       User User
                     </span>
-                    <img
-                      className="img-profile rounded-circle"
-                      src="../assets/img/undraw_profile.svg"
-                    />
+                    <img className="img-profile rounded-circle" src={img} />
                   </a>
 
                   {/* <!-- Dropdown - User Information --> */}

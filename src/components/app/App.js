@@ -7,7 +7,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { ForgotPasswordPage } from '../pages/ForgotPasswordPage';
-import { Navbars } from '../Parts/Navbars';
+import { Navbars } from '../parts/Navbars';
 
 export const App = () => {
   return (
