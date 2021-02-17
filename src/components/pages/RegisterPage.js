@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
+import {
+  googleAuthProvider,
+  facebookAuth,
+  authFirebase,
+  firebaseInit,
+  facebookAuthprovider,
+} from '../firebase';
 
 import { Button } from '../basicComponents/Button';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
@@ -14,6 +21,31 @@ import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
 
 export const RegisterPage = () => {
   const { t } = useTranslation('global');
+
+  const [inputValues, setinputValues] = useState({
+    username: '',
+    email: '',
+    surname: '',
+    password: '',
+    password2: '',
+    idFiscal: '',
+    organization: '',
+  });
+
+  const handlerOnChange = ev => {
+    ev.preventDefault();
+    setinputValues({ ...inputValues, [ev.target.name]: ev.target.value });
+  };
+
+  const {
+    username,
+    email,
+    surname,
+    password,
+    password2,
+    idFiscal,
+    organization,
+  } = inputValues;
 
   return (
     <>
@@ -42,29 +74,65 @@ export const RegisterPage = () => {
                     <form className="user">
                       <div className="form-group row">
                         <div className="col-sm-6 mb-3 mb-sm-0">
-                          <InputText text={t('RegisterPage.Name')} />
+                          <InputText
+                            name="username"
+                            value={username}
+                            onChange={handlerOnChange}
+                            text={t('RegisterPage.Name')}
+                            required
+                          />
                         </div>
                         <div className="col-sm-6">
-                          <InputText text={t('RegisterPage.Surname')} />
+                          <InputText
+                            name="surname"
+                            value={surname}
+                            onChange={handlerOnChange}
+                            text={t('RegisterPage.Surname')}
+                            required
+                          />
                         </div>
                       </div>
                       <div className="form-group row">
-                        <div className="col-sm-6">
-                          <InputText text={t('RegisterPage.Organization')} />
-                        </div>
                         <div className="col-sm-6 mb-3 mb-sm-0">
-                          <InputText text={t('RegisterPage.Fiscal')} />
+                          <InputText
+                            name="organization"
+                            value={organization}
+                            onChange={handlerOnChange}
+                            text={t('RegisterPage.Organization')}
+                          />
+                        </div>
+                        <div className="col-sm-6">
+                          <InputText
+                            name="idFiscal"
+                            value={idFiscal}
+                            onChange={handlerOnChange}
+                            text={t('RegisterPage.Fiscal')}
+                          />
                         </div>
                       </div>
                       <div className="form-group">
-                        <InputMail text={t('LoginPage.Enter-mail')} />
+                        <InputMail
+                          name="email"
+                          value={email}
+                          onChange={handlerOnChange}
+                          text={t('LoginPage.Enter-mail')}
+                          required
+                        />
                       </div>
                       <div className="form-group row">
                         <div className="col-sm-6 mb-3 mb-sm-0">
-                          <InputPassword text={t('LoginPage.Password')} />
+                          <InputPassword
+                            name="password"
+                            value={password}
+                            onChange={handlerOnChange}
+                            text={t('LoginPage.Password')}
+                          />
                         </div>
                         <div className="col-sm-6">
                           <InputPassword
+                            name="password2"
+                            value={password2}
+                            onChange={handlerOnChange}
                             text={t('RegisterPage.Repeat-Password')}
                           />
                         </div>
@@ -88,7 +156,11 @@ export const RegisterPage = () => {
                         startIcon="fab fa-google fa-fw"
                         onClick={event => {
                           event.preventDefault();
-                          return console.log('click google');
+                          firebaseInit
+                            .auth()
+                            .signInWithPopup(googleAuthProvider)
+                            .then(data => console.log(data))
+                            .catch(err => console.log(err));
                         }}
                       >
                         {' '}
@@ -101,7 +173,11 @@ export const RegisterPage = () => {
                         startIcon="fab fa-facebook-f fa-fw"
                         onClick={event => {
                           event.preventDefault();
-                          return console.log('click facebook');
+                          firebaseInit
+                            .auth()
+                            .signInWithPopup(facebookAuthprovider)
+                            .then(data => console.log(data))
+                            .catch(errv => console.log(errv));
                         }}
                       >
                         {t('RegisterPage.Register-With')} Facebook
@@ -109,10 +185,7 @@ export const RegisterPage = () => {
                     </form>
                     <hr />
 
-                    <LinkForms
-                      path={'/login'}
-                      text={t('Volver')}
-                    />
+                    <LinkForms path={'/login'} text={t('Volver')} />
                     <LinkForms
                       path={'/recuperar-pass'}
                       text={t('LoginPage.Forgot-Password')}
