@@ -111,7 +111,7 @@ export const RegisterPage = () => {
 
                     <LinkForms
                       path={'/login'}
-                      text={t('ForgotPasswordPage.Have-Acount')}
+                      text={t('Volver')}
                     />
                     <LinkForms
                       path={'/recuperar-pass'}
