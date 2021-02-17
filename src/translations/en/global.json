@@ -22,7 +22,9 @@
     "Register-With": "Register with",
     "Repeat-Password": "Repeat Password",
     "Name": "Name",
-    "Surname": "Surname"
+    "Surname": "Surname",
+    "Fiscal": "Fiscal Number",
+    "Organization": "Organization"
   },
   "NotFoundPage": {
     "Not-Found": "Page Not Found",

@@ -22,7 +22,9 @@
     "Register-With": "Registe-se com",
     "Repeat-Password": "Repita a senha",
     "Name": "Nome",
-    "Surname": "Apelidos"
+    "Surname": "Apelidos",
+    "Fiscal": "Número de contribuinte",
+    "Organization": "Organização"
   },
   "NotFoundPage": {
     "Not-Found": "Página não encontrada",

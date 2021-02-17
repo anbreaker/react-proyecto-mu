@@ -26,7 +26,7 @@ export const RegisterPage = () => {
             class: 'bg-gradient-success',
           }}
         />
-        <div className="container pt-4">
+        <div className="container">
           <div className="card o-hidden border-0 shadow-lg my-5">
             <div className="card-body p-0">
               {/* <!-- Nested Row within Card Body --> */}
@@ -46,6 +46,14 @@ export const RegisterPage = () => {
                         </div>
                         <div className="col-sm-6">
                           <InputText text={t('RegisterPage.Surname')} />
+                        </div>
+                      </div>
+                      <div className="form-group row">
+                        <div className="col-sm-6">
+                          <InputText text={t('RegisterPage.Organization')} />
+                        </div>
+                        <div className="col-sm-6 mb-3 mb-sm-0">
+                          <InputText text={t('RegisterPage.Fiscal')} />
                         </div>
                       </div>
                       <div className="form-group">
