@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Helmet from 'react-helmet';
+import validator from 'validator'
 import { useTranslation } from 'react-i18next';
+import Swal from 'sweetalert2';
 import {
   googleAuthProvider,
-  facebookAuth,
-  authFirebase,
   firebaseInit,
   facebookAuthprovider,
 } from '../../firebase';
@@ -19,6 +19,8 @@ import { InputText } from '../basicComponents/InputText';
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
 
+import '../../assets/css/style.css';
+
 export const RegisterPage = () => {
   const { t } = useTranslation('global');
 
@@ -32,21 +34,61 @@ export const RegisterPage = () => {
     organization: '',
   });
 
+  const [error, setError] = useState({ message: '', view: false });
+
+  const authWithFacebook = ev => {
+    ev.preventDefault();
+    firebaseInit
+      .auth()
+      .signInWithPopup(facebookAuthprovider)
+      .then(data => console.log(data))
+      .catch(error => console.log(error));
+  };
+
+  const authWithGoogle = ev => {
+    ev.preventDefault();
+
+    firebaseInit
+      .auth()
+      .signInWithPopup(googleAuthProvider)
+      .then(data => Swal.fire('Save', data, 'success'))
+      .catch(error => {
+        console.log(error);
+        Swal.fire('Error', error.message, 'error');
+      });
+  };
+  const authWithFirebase = ev => {
+    ev.preventDefault();
+    firebaseInit
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(data => {
+      Swal.fire('MU-TALENT', 'Usuario Creado', 'success');
+      console.log(data);
+    })
+    .catch(error => {
+      Swal.fire('Error', error.message, 'error');
+      console.log(error);
+    });
+  };
+  
   const handlerOnChange = ev => {
     ev.preventDefault();
     setinputValues({ ...inputValues, [ev.target.name]: ev.target.value });
   };
-
+  
   const {
-    username,
+    //username,
     email,
-    surname,
+    //surname,
     password,
     password2,
-    idFiscal,
-    organization,
+    //idFiscal,
+    //organization,
   } = inputValues;
-
+  console.log(error.view && email && password);
+  
+  
   return (
     <>
       {/* Borrar al No ser Necesaria... (facilidad a la hora de trabajar...) */}
@@ -72,7 +114,7 @@ export const RegisterPage = () => {
                       </h1>
                     </div>
                     <form className="user">
-                      <div className="form-group row">
+                      {/*                       <div className="form-group row">
                         <div className="col-sm-6 mb-3 mb-sm-0">
                           <InputText
                             name="username"
@@ -91,8 +133,8 @@ export const RegisterPage = () => {
                             required
                           />
                         </div>
-                      </div>
-                      <div className="form-group row">
+                      </div> */}
+                      {/*                       <div className="form-group row">
                         <div className="col-sm-6 mb-3 mb-sm-0">
                           <InputText
                             name="organization"
@@ -109,7 +151,7 @@ export const RegisterPage = () => {
                             text={t('RegisterPage.Fiscal')}
                           />
                         </div>
-                      </div>
+                      </div> */}
                       <div className="form-group">
                         <InputMail
                           name="email"
@@ -126,7 +168,16 @@ export const RegisterPage = () => {
                             value={password}
                             onChange={handlerOnChange}
                             text={t('LoginPage.Password')}
+                            minLength="5"
+                            required
                           />
+                          <p
+                            className={`error ${
+                              error.view ? 'view' : 'noView'
+                            }`}
+                          >
+                            {error.message}
+                          </p>
                         </div>
                         <div className="col-sm-6">
                           <InputPassword
@@ -134,17 +185,29 @@ export const RegisterPage = () => {
                             value={password2}
                             onChange={handlerOnChange}
                             text={t('RegisterPage.Repeat-Password')}
+                            required
+                            minLength="5"
+                            onInput={ev => {
+                              ev.preventDefault();
+                              if (password !== ev.target.value) {
+                                setError({
+                                  message: 'Las contraseñas no coinciden',
+                                  view: true,
+                                });
+                              } else {
+                                setError({ message: '', view: false });
+                              }
+                            }}
                           />
                         </div>
                       </div>
 
                       <Button
+                        //disabled={!error.view || email !== '' || password !== '' || password.length < 4}
+                        // TODO Validar formulario
                         type="submit"
                         variant="primary"
-                        onClick={event => {
-                          event.preventDefault();
-                          return console.log('click');
-                        }}
+                        onClick={authWithFirebase}
                       >
                         {t('RegisterPage.Register-Account')}
                       </Button>
@@ -154,14 +217,7 @@ export const RegisterPage = () => {
                         type="submit"
                         variant="google"
                         startIcon="fab fa-google fa-fw"
-                        onClick={event => {
-                          event.preventDefault();
-                          firebaseInit
-                            .auth()
-                            .signInWithPopup(googleAuthProvider)
-                            .then(data => console.log(data))
-                            .catch(err => console.log(err));
-                        }}
+                        onClick={authWithGoogle}
                       >
                         {' '}
                         {t('RegisterPage.Register-With')} Google
@@ -171,14 +227,7 @@ export const RegisterPage = () => {
                         type="submit"
                         variant="facebook"
                         startIcon="fab fa-facebook-f fa-fw"
-                        onClick={event => {
-                          event.preventDefault();
-                          firebaseInit
-                            .auth()
-                            .signInWithPopup(facebookAuthprovider)
-                            .then(data => console.log(data))
-                            .catch(errv => console.log(errv));
-                        }}
+                        onClick={authWithFacebook}
                       >
                         {t('RegisterPage.Register-With')} Facebook
                       </Button>

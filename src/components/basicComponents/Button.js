@@ -9,6 +9,7 @@ export const Button = ({ children, startIcon, variant, ...props }) => {
   };
   return (
     <button
+      {...props}
       className={clsx(
         'btn',
         variant === 'primary' && classes.primary,

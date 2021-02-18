@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import '../../assets/css/sb-admin-2.min.css';
 import '../../assets/vendor/fontawesome-free/css/all.min.css';
+import '../../assets/css/style.css'
 
 import { LoginPage } from '../pages/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage';
