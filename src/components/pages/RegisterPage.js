@@ -7,7 +7,7 @@ import {
   authFirebase,
   firebaseInit,
   facebookAuthprovider,
-} from '../firebase';
+} from '../../firebase';
 
 import { Button } from '../basicComponents/Button';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
