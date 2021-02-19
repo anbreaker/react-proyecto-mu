@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Helmet from 'react-helmet';
-import validator from 'validator'
+import validator from 'validator';
 import { useTranslation } from 'react-i18next';
 import Swal from 'sweetalert2';
 import {
   googleAuthProvider,
   firebaseInit,
   facebookAuthprovider,
-} from '../../firebase';
+} from '../../firebase/firebaseConfig';
 
 import { Button } from '../basicComponents/Button';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
@@ -36,6 +36,7 @@ export const RegisterPage = () => {
 
   const [error, setError] = useState({ message: '', view: false });
 
+  /*
   const authWithFacebook = ev => {
     ev.preventDefault();
     firebaseInit
@@ -44,6 +45,7 @@ export const RegisterPage = () => {
       .then(data => console.log(data))
       .catch(error => console.log(error));
   };
+  */
 
   const authWithGoogle = ev => {
     ev.preventDefault();
@@ -57,26 +59,27 @@ export const RegisterPage = () => {
         Swal.fire('Error', error.message, 'error');
       });
   };
+
   const authWithFirebase = ev => {
     ev.preventDefault();
     firebaseInit
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(data => {
-      Swal.fire('MU-TALENT', 'Usuario Creado', 'success');
-      console.log(data);
-    })
-    .catch(error => {
-      Swal.fire('Error', error.message, 'error');
-      console.log(error);
-    });
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(data => {
+        Swal.fire('MU-TALENT', 'Usuario Creado', 'success');
+        console.log(data);
+      })
+      .catch(error => {
+        Swal.fire('Error', error.message, 'error');
+        console.log(error);
+      });
   };
-  
+
   const handlerOnChange = ev => {
     ev.preventDefault();
     setinputValues({ ...inputValues, [ev.target.name]: ev.target.value });
   };
-  
+
   const {
     //username,
     email,
@@ -87,8 +90,7 @@ export const RegisterPage = () => {
     //organization,
   } = inputValues;
   console.log(error.view && email && password);
-  
-  
+
   return (
     <>
       {/* Borrar al No ser Necesaria... (facilidad a la hora de trabajar...) */}
@@ -223,14 +225,14 @@ export const RegisterPage = () => {
                         {t('RegisterPage.Register-With')} Google
                       </Button>
 
-                      <Button
+                      {/* <Button
                         type="submit"
                         variant="facebook"
                         startIcon="fab fa-facebook-f fa-fw"
                         onClick={authWithFacebook}
                       >
                         {t('RegisterPage.Register-With')} Facebook
-                      </Button>
+                      </Button> */}
                     </form>
                     <hr />
 

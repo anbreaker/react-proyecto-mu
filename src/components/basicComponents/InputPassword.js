@@ -5,6 +5,7 @@ export const InputPassword = props => {
   return (
     <input
       {...props}
+      aria-describedby="password"
       type="password"
       name={name}
       className="form-control form-control-user"

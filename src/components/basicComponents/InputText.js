@@ -5,6 +5,7 @@ export const InputText = props => {
 
   return (
     <input
+      aria-describedby="enterText"
       type="text"
       name={name}
       className="form-control form-control-user"

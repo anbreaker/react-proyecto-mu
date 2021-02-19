@@ -1,19 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 
+import { useForm } from '../../hooks/UseForm';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { LinkForms } from '../basicComponents/LinkForms';
 import { Button } from '../basicComponents/Button';
 import { UniqueCheckbox } from '../basicComponents/UniqueCheckbox';
+import { login, startGoogleLogin } from '../../actions/auth';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
 
 export const LoginPage = () => {
   const { t } = useTranslation('global');
+
+  const dispatch = useDispatch();
+
+  const [formValues, handleInputChange] = useForm({
+    email: '',
+    password: '',
+  });
+
+  const { email, password } = formValues;
+
+  const handleLogin = event => {
+    event.preventDefault();
+    dispatch(login(email, password));
+  };
+
+  const handleGoogleLogin = () => {
+    dispatch(startGoogleLogin());
+  };
 
   return (
     <>
@@ -41,24 +62,27 @@ export const LoginPage = () => {
                           {t('LoginPage.Welcome')}!
                         </h1>
                       </div>
-                      <form className="user">
+                      <form className="user" onSubmit={handleLogin}>
                         <div className="form-group">
-                          <InputMail text={t('LoginPage.Enter-mail')} />
+                          <InputMail
+                            text={t('LoginPage.Enter-mail')}
+                            name="email"
+                            value={email}
+                            onChange={handleInputChange}
+                          />
                         </div>
                         <div className="form-group">
-                          <InputPassword text={t('LoginPage.Password')} />
+                          <InputPassword
+                            text={t('LoginPage.Password')}
+                            name="password"
+                            value={password}
+                            onChange={handleInputChange}
+                          />
                         </div>
 
                         <UniqueCheckbox text={t('LoginPage.Remember')} />
 
-                        <Button
-                          type="submit"
-                          variant="primary"
-                          onClick={event => {
-                            event.preventDefault();
-                            return console.log('click');
-                          }}
-                        >
+                        <Button type="submit" variant="primary">
                           {t('LoginPage.Login')}
                         </Button>
 
@@ -67,16 +91,13 @@ export const LoginPage = () => {
                           type="submit"
                           variant="google"
                           startIcon="fab fa-google fa-fw"
-                          onClick={event => {
-                            event.preventDefault();
-                            return console.log('click google');
-                          }}
+                          onClick={handleGoogleLogin}
                         >
                           {' '}
                           {t('LoginPage.Login-with')} Google
                         </Button>
 
-                        <Button
+                        {/* <Button
                           type="submit"
                           variant="facebook"
                           startIcon="fab fa-facebook-f fa-fw"
@@ -86,7 +107,7 @@ export const LoginPage = () => {
                           }}
                         >
                           {t('LoginPage.Login-with')} Facebook
-                        </Button>
+                        </Button> */}
                       </form>
 
                       <hr />

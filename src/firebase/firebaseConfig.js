@@ -19,10 +19,9 @@ const firebaseConfig = {
   messagingSenderId: REACT_APP_MESSAGINGSENDERID,
   appId: REACT_APP_APPID,
 };
+
 export const firebaseInit = firebase.initializeApp(firebaseConfig);
 
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 export const facebookAuthprovider = new firebase.auth.FacebookAuthProvider();
-console.log(facebookAuthprovider)
 export const authFirebase = firebaseInit.auth().createUserWithEmailAndPassword;
-
