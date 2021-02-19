@@ -5,8 +5,8 @@ import Helmet from 'react-helmet';
 import validator from 'validator';
 import Swal from 'sweetalert2';
 import {
-  googleAuthProvider,
   firebaseInit,
+  googleAuthProvider,
 } from '../../firebase/firebaseConfig';
 
 import { useForm } from '../../hooks/UseForm';
@@ -16,8 +16,8 @@ import { LinkForms } from '../basicComponents/LinkForms';
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { InputText } from '../basicComponents/InputText';
-
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
+import { getMsgError } from '../../store/selectors';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
@@ -29,7 +29,7 @@ export const RegisterPage = () => {
 
   const dispatch = useDispatch();
 
-  const { msgError } = useSelector(state => state.ui);
+  const { msgError } = useSelector(getMsgError);
 
   const [formValues, handleInputChange] = useForm({
     username: '',
@@ -154,7 +154,6 @@ export const RegisterPage = () => {
                             name="password"
                             value={password}
                             onChange={handleInputChange}
-                            minLength="5"
                           />
                         </div>
                         <div className="col-sm-6">
@@ -163,11 +162,11 @@ export const RegisterPage = () => {
                             name="password2"
                             value={password2}
                             onChange={handleInputChange}
-                            minLength="5"
                           />
                         </div>
                       </div>
 
+                      {/* Preguntar por el onBlur */}
                       {msgError && (
                         <div>
                           <Button

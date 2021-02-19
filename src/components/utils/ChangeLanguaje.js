@@ -6,12 +6,13 @@ import {
   setEnglishAction,
   setPortugueseAction,
 } from '../../store/actions/languaje';
+import { getLanguaje } from '../../store/selectors';
 
 export const ChangeLanguaje = () => {
   const { t, i18n } = useTranslation('global');
   const dispatch = useDispatch();
 
-  const { languaje } = useSelector(state => state.languaje);
+  const { languaje } = useSelector(getLanguaje);
 
   const handleLanguajeChange = ({ target }) => {
     const { name } = target;

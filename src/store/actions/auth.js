@@ -2,6 +2,7 @@ import {
   firebaseInit,
   googleAuthProvider,
 } from '../../firebase/firebaseConfig';
+
 import { types } from '../types/types';
 
 export const startGoogleLogin = () => {
