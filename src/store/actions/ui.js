@@ -1,8 +1,8 @@
 import { types } from '../types/types';
 
-export const setErrorAction = key => ({
+export const setErrorAction = keyValue => ({
   type: types.uiSetError,
-  payload: key,
+  payload: keyValue,
 });
 
 export const removeErrorAction = () => ({

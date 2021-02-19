@@ -14,8 +14,6 @@ export const Button = ({ children, startIcon, variant, ...props }) => {
       className={clsx(
         'btn',
         variant === 'primary' && classes.primary,
-        variant === 'google' && classes.google,
-        variant === 'facebook' && classes.facebook,
         variant === 'alert' && classes.alert
       )}
       {...props}

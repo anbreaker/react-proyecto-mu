@@ -74,6 +74,11 @@ export const RegisterPage = () => {
     return true;
   };
 
+  const handlerOnFocus = event => {
+    event.preventDefault();
+    dispatch(removeErrorAction());
+  };
+
   return (
     <>
       {/* Borrar al No ser Necesaria... (facilidad a la hora de trabajar...) */}
@@ -105,11 +110,12 @@ export const RegisterPage = () => {
                             text={t('RegisterPage.Name')}
                             name="username"
                             value={username}
+                            onFocus={handlerOnFocus}
                             onChange={handleInputChange}
                           />
                         </div>
-                        {/* 
-                       <div className="col-sm-6">
+
+                        <div className="col-sm-6">
                           <InputText
                             text={t('RegisterPage.Surname')}
                             name="surname"
@@ -136,7 +142,6 @@ export const RegisterPage = () => {
                             onChange={handleInputChange}
                           />
                         </div>
-                      */}
                       </div>
                       <div className="form-group">
                         <InputMail
@@ -183,17 +188,6 @@ export const RegisterPage = () => {
 
                       <Button type="submit" variant="primary">
                         {t('RegisterPage.Register-Account')}
-                      </Button>
-
-                      <hr />
-
-                      <Button
-                        type="submit"
-                        variant="google"
-                        startIcon="fab fa-google fa-fw"
-                      >
-                        {' '}
-                        {t('RegisterPage.Register-With')} Google
                       </Button>
                     </form>
                     <hr />
