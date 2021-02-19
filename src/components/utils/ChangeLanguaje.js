@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setSpanishAction,
+  setEnglishAction,
+  setPortugueseAction,
+} from '../../store/actions/languaje';
 
 export const ChangeLanguaje = () => {
   const { t, i18n } = useTranslation('global');
+  const dispatch = useDispatch();
 
-  const [languaje, setLanguaje] = useState('');
+  const { languaje } = useSelector(state => state.languaje);
 
   const handleLanguajeChange = ({ target }) => {
     const { name } = target;
 
-    if (name === 'es') setLanguaje('es');
-    if (name === 'en') setLanguaje('en');
-    if (name === 'pt') setLanguaje('pt');
+    if (name === 'es') dispatch(setSpanishAction('es'));
+    if (name === 'en') dispatch(setEnglishAction('en'));
+    if (name === 'pt') dispatch(setPortugueseAction('pt'));
   };
 
   useEffect(() => {
@@ -45,3 +52,5 @@ export const ChangeLanguaje = () => {
     </div>
   );
 };
+
+// strore /action

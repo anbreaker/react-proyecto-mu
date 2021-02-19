@@ -10,7 +10,7 @@ import { InputPassword } from '../basicComponents/InputPassword';
 import { LinkForms } from '../basicComponents/LinkForms';
 import { Button } from '../basicComponents/Button';
 import { UniqueCheckbox } from '../basicComponents/UniqueCheckbox';
-import { login, startGoogleLogin } from '../../actions/auth';
+import { login, startGoogleLogin } from '../../store/actions/auth';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';

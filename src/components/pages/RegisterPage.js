@@ -7,7 +7,6 @@ import Swal from 'sweetalert2';
 import {
   googleAuthProvider,
   firebaseInit,
-  facebookAuthprovider,
 } from '../../firebase/firebaseConfig';
 
 import { useForm } from '../../hooks/UseForm';
@@ -17,7 +16,8 @@ import { LinkForms } from '../basicComponents/LinkForms';
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { InputText } from '../basicComponents/InputText';
-import { setErrorAction, removeErrorAction } from '../../actions/ui';
+
+import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
@@ -30,7 +30,6 @@ export const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const { msgError } = useSelector(state => state.ui);
-  console.log(msgError);
 
   const [formValues, handleInputChange] = useForm({
     username: '',
@@ -197,15 +196,6 @@ export const RegisterPage = () => {
                         {' '}
                         {t('RegisterPage.Register-With')} Google
                       </Button>
-
-                      {/* <Button
-                        type="submit"
-                        variant="facebook"
-                        startIcon="fab fa-facebook-f fa-fw"
-                        onClick={authWithFacebook}
-                      >
-                        {t('RegisterPage.Register-With')} Facebook
-                      </Button> */}
                     </form>
                     <hr />
 
