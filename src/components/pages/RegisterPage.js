@@ -60,13 +60,13 @@ export const RegisterPage = () => {
 
   const isFormValid = () => {
     if (username.trim().length === 0) {
-      dispatch(setErrorAction(t('RegisterPage.Name-Required')));
+      dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
     } else if (!validator.isEmail(email)) {
-      dispatch(setErrorAction(t('RegisterPage.Email-NotValid')));
+      dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
     } else if (password !== password2 || password.length < 5) {
-      dispatch(setErrorAction(t('RegisterPage.Password-Error')));
+      dispatch(setErrorAction('RegisterPage.Password-Error'));
       return false;
     }
 
@@ -175,7 +175,7 @@ export const RegisterPage = () => {
                             startIcon="fas fa-exclamation-triangle"
                           >
                             {' '}
-                            {msgError}
+                            {t(msgError)}
                           </Button>
                           <hr />
                         </div>
