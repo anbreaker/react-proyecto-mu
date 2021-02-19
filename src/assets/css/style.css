@@ -1,13 +1,5 @@
-.error {
-  color: crimson;
-}
-
-.view {
-  font-size: 11px;
-  padding-top: 1rem;
-
-}
-
-.noView {
-  display: none !important;
+.alert-error {
+  background-color: crimson;
+  color: azure;
+  justify-content: center;
 }

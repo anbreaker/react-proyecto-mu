@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import Helmet from 'react-helmet';
 import validator from 'validator';
-import { useTranslation } from 'react-i18next';
 import Swal from 'sweetalert2';
 import {
   googleAuthProvider,
@@ -9,12 +10,14 @@ import {
   facebookAuthprovider,
 } from '../../firebase/firebaseConfig';
 
+import { useForm } from '../../hooks/UseForm';
 import { Button } from '../basicComponents/Button';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { LinkForms } from '../basicComponents/LinkForms';
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { InputText } from '../basicComponents/InputText';
+import { setErrorAction, removeErrorAction } from '../../actions/ui';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
@@ -24,72 +27,53 @@ import '../../assets/css/style.css';
 export const RegisterPage = () => {
   const { t } = useTranslation('global');
 
-  const [inputValues, setinputValues] = useState({
+  const dispatch = useDispatch();
+
+  const { msgError } = useSelector(state => state.ui);
+  console.log(msgError);
+
+  const [formValues, handleInputChange] = useForm({
     username: '',
-    email: '',
     surname: '',
+    organization: '',
+    idFiscal: '',
+    email: '',
     password: '',
     password2: '',
-    idFiscal: '',
-    organization: '',
   });
 
-  const [error, setError] = useState({ message: '', view: false });
-
-  /*
-  const authWithFacebook = ev => {
-    ev.preventDefault();
-    firebaseInit
-      .auth()
-      .signInWithPopup(facebookAuthprovider)
-      .then(data => console.log(data))
-      .catch(error => console.log(error));
-  };
-  */
-
-  const authWithGoogle = ev => {
-    ev.preventDefault();
-
-    firebaseInit
-      .auth()
-      .signInWithPopup(googleAuthProvider)
-      .then(data => Swal.fire('Save', data, 'success'))
-      .catch(error => {
-        console.log(error);
-        Swal.fire('Error', error.message, 'error');
-      });
-  };
-
-  const authWithFirebase = ev => {
-    ev.preventDefault();
-    firebaseInit
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(data => {
-        Swal.fire('MU-TALENT', 'Usuario Creado', 'success');
-        console.log(data);
-      })
-      .catch(error => {
-        Swal.fire('Error', error.message, 'error');
-        console.log(error);
-      });
-  };
-
-  const handlerOnChange = ev => {
-    ev.preventDefault();
-    setinputValues({ ...inputValues, [ev.target.name]: ev.target.value });
-  };
-
   const {
-    //username,
+    username,
+    surname,
+    organization,
+    idFiscal,
     email,
-    //surname,
     password,
     password2,
-    //idFiscal,
-    //organization,
-  } = inputValues;
-  console.log(error.view && email && password);
+  } = formValues;
+
+  const handleRegister = event => {
+    event.preventDefault();
+    if (isFormValid()) {
+      console.log(isFormValid(), 'Formulario Valido');
+    }
+  };
+
+  const isFormValid = () => {
+    if (username.trim().length === 0) {
+      dispatch(setErrorAction(t('RegisterPage.Name-Required')));
+      return false;
+    } else if (!validator.isEmail(email)) {
+      dispatch(setErrorAction(t('RegisterPage.Email-NotValid')));
+      return false;
+    } else if (password !== password2 || password.length < 5) {
+      dispatch(setErrorAction(t('RegisterPage.Password-Error')));
+      return false;
+    }
+
+    dispatch(removeErrorAction());
+    return true;
+  };
 
   return (
     <>
@@ -115,111 +99,100 @@ export const RegisterPage = () => {
                         {t('RegisterPage.Create-Account')}
                       </h1>
                     </div>
-                    <form className="user">
-                      {/*                       <div className="form-group row">
-                        <div className="col-sm-6 mb-3 mb-sm-0">
-                          <InputText
-                            name="username"
-                            value={username}
-                            onChange={handlerOnChange}
-                            text={t('RegisterPage.Name')}
-                            required
-                          />
-                        </div>
-                        <div className="col-sm-6">
-                          <InputText
-                            name="surname"
-                            value={surname}
-                            onChange={handlerOnChange}
-                            text={t('RegisterPage.Surname')}
-                            required
-                          />
-                        </div>
-                      </div> */}
-                      {/*                       <div className="form-group row">
-                        <div className="col-sm-6 mb-3 mb-sm-0">
-                          <InputText
-                            name="organization"
-                            value={organization}
-                            onChange={handlerOnChange}
-                            text={t('RegisterPage.Organization')}
-                          />
-                        </div>
-                        <div className="col-sm-6">
-                          <InputText
-                            name="idFiscal"
-                            value={idFiscal}
-                            onChange={handlerOnChange}
-                            text={t('RegisterPage.Fiscal')}
-                          />
-                        </div>
-                      </div> */}
-                      <div className="form-group">
-                        <InputMail
-                          name="email"
-                          value={email}
-                          onChange={handlerOnChange}
-                          text={t('LoginPage.Enter-mail')}
-                          required
-                        />
-                      </div>
+                    <form className="user" onSubmit={handleRegister}>
                       <div className="form-group row">
                         <div className="col-sm-6 mb-3 mb-sm-0">
-                          <InputPassword
-                            name="password"
-                            value={password}
-                            onChange={handlerOnChange}
-                            text={t('LoginPage.Password')}
-                            minLength="5"
-                            required
+                          <InputText
+                            text={t('RegisterPage.Name')}
+                            name="username"
+                            value={username}
+                            onChange={handleInputChange}
                           />
-                          <p
-                            className={`error ${
-                              error.view ? 'view' : 'noView'
-                            }`}
-                          >
-                            {error.message}
-                          </p>
                         </div>
-                        <div className="col-sm-6">
-                          <InputPassword
-                            name="password2"
-                            value={password2}
-                            onChange={handlerOnChange}
-                            text={t('RegisterPage.Repeat-Password')}
-                            required
-                            minLength="5"
-                            onInput={ev => {
-                              ev.preventDefault();
-                              if (password !== ev.target.value) {
-                                setError({
-                                  message: 'Las contraseñas no coinciden',
-                                  view: true,
-                                });
-                              } else {
-                                setError({ message: '', view: false });
-                              }
-                            }}
+                        {/* 
+                       <div className="col-sm-6">
+                          <InputText
+                            text={t('RegisterPage.Surname')}
+                            name="surname"
+                            value={surname}
+                            onChange={handleInputChange}
                           />
                         </div>
                       </div>
 
-                      <Button
-                        //disabled={!error.view || email !== '' || password !== '' || password.length < 4}
-                        // TODO Validar formulario
-                        type="submit"
-                        variant="primary"
-                        onClick={authWithFirebase}
-                      >
+                      <div className="form-group row">
+                        <div className="col-sm-6 mb-3 mb-sm-0">
+                          <InputText
+                            text={t('RegisterPage.Organization')}
+                            name="organization"
+                            value={organization}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                        <div className="col-sm-6">
+                          <InputText
+                            text={t('RegisterPage.Fiscal')}
+                            name="idFiscal"
+                            value={idFiscal}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                      */}
+                      </div>
+                      <div className="form-group">
+                        <InputMail
+                          text={t('LoginPage.Enter-mail')}
+                          name="email"
+                          value={email}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <div className="form-group row">
+                        <div className="col-sm-6 mb-3 mb-sm-0">
+                          <InputPassword
+                            text={t('LoginPage.Password')}
+                            name="password"
+                            value={password}
+                            onChange={handleInputChange}
+                            minLength="5"
+                          />
+                        </div>
+                        <div className="col-sm-6">
+                          <InputPassword
+                            text={t('RegisterPage.Repeat-Password')}
+                            name="password2"
+                            value={password2}
+                            onChange={handleInputChange}
+                            minLength="5"
+                          />
+                        </div>
+                      </div>
+
+                      {msgError && (
+                        <div>
+                          <Button
+                            disabled={true}
+                            variant="alert"
+                            startIcon="fas fa-exclamation-triangle"
+                          >
+                            {' '}
+                            {msgError}
+                          </Button>
+                          <hr />
+                        </div>
+                      )}
+
+                      <Button type="submit" variant="primary">
                         {t('RegisterPage.Register-Account')}
                       </Button>
 
                       <hr />
+
                       <Button
                         type="submit"
                         variant="google"
                         startIcon="fab fa-google fa-fw"
-                        onClick={authWithGoogle}
                       >
                         {' '}
                         {t('RegisterPage.Register-With')} Google

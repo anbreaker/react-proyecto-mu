@@ -24,7 +24,10 @@
     "Name": "Nome",
     "Surname": "Apelidos",
     "Fiscal": "Número de contribuinte",
-    "Organization": "Organização"
+    "Organization": "Organização",
+    "Name-Required": "O nome é obrigatório",
+    "Email-NotValid": "O email é inválido",
+    "Password-Error": "A senha deve ter pelo menos 6 caracteres e os campos devem corresponder"
   },
   "NotFoundPage": {
     "Not-Found": "Página não encontrada",

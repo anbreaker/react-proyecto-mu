@@ -6,6 +6,7 @@ export const Button = ({ children, startIcon, variant, ...props }) => {
     primary: 'btn-primary btn-user btn-block',
     google: 'btn-google btn-user btn-block',
     facebook: 'btn-facebook btn-user btn-block',
+    alert: 'btn-google btn-user btn-block alert-error mb-3',
   };
   return (
     <button
@@ -14,7 +15,8 @@ export const Button = ({ children, startIcon, variant, ...props }) => {
         'btn',
         variant === 'primary' && classes.primary,
         variant === 'google' && classes.google,
-        variant === 'facebook' && classes.facebook
+        variant === 'facebook' && classes.facebook,
+        variant === 'alert' && classes.alert
       )}
       {...props}
     >

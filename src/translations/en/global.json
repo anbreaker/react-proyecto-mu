@@ -24,7 +24,10 @@
     "Name": "Name",
     "Surname": "Surname",
     "Fiscal": "Fiscal Number",
-    "Organization": "Organization"
+    "Organization": "Organization",
+    "Name-Required": "Name is required",
+    "Email-NotValid": "Email is not valid",
+    "Password-Error": "Password should be at least 6 characters and match each other"
   },
   "NotFoundPage": {
     "Not-Found": "Page Not Found",
