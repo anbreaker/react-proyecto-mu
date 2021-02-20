@@ -28,6 +28,7 @@
     "Name-Required": "Name is required, to contain at least 3 characters.",
     "Surname-Required": "Surname is required, to contain at least 3 characters.",
     "Email-NotValid": "Email is not valid",
+    "Fiscal-NotValid": "Fiscal id, is not valid",
     "Password-Error": "Password should be at least 6 characters and match each other"
   },
   "NotFoundPage": {

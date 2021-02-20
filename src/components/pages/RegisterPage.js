@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import Helmet from 'react-helmet';
 import validator from 'validator';
-import Swal from 'sweetalert2';
 import { firebaseInit } from '../../firebase/firebaseConfig';
+import Swal from 'sweetalert2';
 
 import { useForm } from '../../hooks/UseForm';
 import { Button } from '../basicComponents/Button';
@@ -14,12 +14,11 @@ import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { InputText } from '../basicComponents/InputText';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
-import { getMsgError } from '../../store/selectors';
+import { getMsgError, getLocale } from '../../store/selectors';
+import '../../assets/css/style.css';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
-
-import '../../assets/css/style.css';
 
 export const RegisterPage = () => {
   const { t } = useTranslation('global');
@@ -27,6 +26,7 @@ export const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const { msgError } = useSelector(getMsgError);
+  const { locale } = useSelector(getLocale);
 
   const [formValues, handleInputChange] = useForm({
     username: '',
@@ -51,6 +51,7 @@ export const RegisterPage = () => {
   const handleRegister = event => {
     event.preventDefault();
     if (isFormValid()) {
+      //Enviar al Back...
       console.log(isFormValid(), 'Formulario Valido');
     }
   };
@@ -63,7 +64,10 @@ export const RegisterPage = () => {
       dispatch(setErrorAction('RegisterPage.Surname-Required'));
       return false;
     }
-    // else if(validator.isTaxID(idFiscal, ))
+    // else if (!validator.isTaxID(idFiscal, locale)) {
+    //   dispatch(setErrorAction('RegisterPage.Fiscal-NotValid'));
+    //   return false;
+    // }
     else if (!validator.isEmail(email)) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
@@ -78,8 +82,6 @@ export const RegisterPage = () => {
 
   const handlerOnFocus = event => {
     event.preventDefault();
-    console.log('ver');
-
     dispatch(removeErrorAction());
   };
 

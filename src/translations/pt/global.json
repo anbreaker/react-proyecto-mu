@@ -28,6 +28,7 @@
     "Name-Required": "O nome é obrigatório, deve conter pelo menos 3 caracteres.",
     "Surname-Required": "O apelido é obrigatório, deve conter pelo menos 3 caracteres.",
     "Email-NotValid": "O email é inválido",
+    "Fiscal-NotValid": "O Número de Contribuinte é inválido",
     "Password-Error": "A senha deve ter pelo menos 6 caracteres e os campos devem corresponder"
   },
   "NotFoundPage": {

@@ -27,7 +27,8 @@
     "Organization": "Organización",
     "Name-Required": "El nombre es requerido, debe contener al menos 3 caracteres",
     "Surname-Required": "El apellido es requerido, debe contener al menos 3 caracteres",
-    "Email-NotValid": "El email no es Valido",
+    "Email-NotValid": "El email no es válido",
+    "Fiscal-NotValid": "El Número fiscal no es válido",
     "Password-Error": "La contraseña debe tener al menos 6 caracteres y coincidir ambas"
   },
   "NotFoundPage": {

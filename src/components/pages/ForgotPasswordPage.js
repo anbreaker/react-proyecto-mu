@@ -1,17 +1,44 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
+import validator from 'validator';
 
 import { LinkForms } from '../basicComponents/LinkForms';
 import { InputMail } from '../basicComponents/InputMail';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { Button } from '../basicComponents/Button';
+import { useForm } from '../../hooks/UseForm';
+import { getMsgError } from '../../store/selectors';
+import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
 
 export const ForgotPasswordPage = () => {
   const { t } = useTranslation('global');
+
+  const dispatch = useDispatch();
+
+  const { msgError } = useSelector(getMsgError);
+
+  const [formValues, handleInputChange] = useForm({ email: '' });
+
+  const { email } = formValues;
+
+  const handleResetPassword = event => {
+    event.preventDefault();
+    if (!validator.isEmail(email)) {
+      dispatch(setErrorAction('RegisterPage.Email-NotValid'));
+      return false;
+    }
+  };
+
+  // Compartir esta funcion. <-----------------------------------------------------------------
+  const handlerOnFocus = event => {
+    event.preventDefault();
+    dispatch(removeErrorAction());
+  };
 
   return (
     <>
@@ -43,19 +70,37 @@ export const ForgotPasswordPage = () => {
                         </p>
                       </div>
 
-                      <form className="user">
+                      <form className="user" onSubmit={handleResetPassword}>
                         <div className="form-group">
-                          <InputMail text={t('LoginPage.Enter-mail')} />
+                          <InputMail
+                            text={t('LoginPage.Enter-mail')}
+                            name="email"
+                            value={email}
+                            onFocus={handlerOnFocus}
+                            onChange={handleInputChange}
+                          />
                         </div>
+
+                        {msgError && (
+                          <div>
+                            <Button
+                              disabled={true}
+                              variant="alert"
+                              startIcon="fas fa-exclamation-triangle"
+                            >
+                              {' '}
+                              {t(msgError)}
+                            </Button>
+                            <hr />
+                          </div>
+                        )}
 
                         <Button
                           type="submit"
                           variant="primary"
-                          onClick={event => {
-                            event.preventDefault();
-                            return console.log('click Reiniciar Contraseña');
-                          }}
+                          startIcon="fas fa-redo"
                         >
+                          {' '}
                           {t('ForgotPasswordPage.Reset-Password')}
                         </Button>
                       </form>
