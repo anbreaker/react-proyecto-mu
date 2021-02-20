@@ -5,9 +5,6 @@ export const setSpanishAction = () => ({
   payload: 'es',
 });
 
-//TODO
-//window.navigator.language
-
 export const setEnglishAction = () => ({
   type: types.lngEnglish,
   payload: 'en',

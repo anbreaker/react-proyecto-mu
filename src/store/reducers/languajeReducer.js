@@ -1,7 +1,7 @@
 import { types } from '../types/types';
 
 const initialLanguaje = {
-  languaje: 'es',
+  languaje: window.navigator.language.split('-')[0],
 };
 
 export const languajeReducer = (state = initialLanguaje, action) => {

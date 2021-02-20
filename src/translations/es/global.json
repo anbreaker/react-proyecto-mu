@@ -18,15 +18,16 @@
   },
   "RegisterPage": {
     "Create-Account": "¡Registra una cuenta!",
-    "Register-Account": "Registra la cuenta",
+    "Register-Account": "Registrar cuenta",
     "Register-With": "Registrar con",
     "Repeat-Password": "Repite la contraseña",
     "Name": "Nombre",
     "Surname": "Apellidos",
     "Fiscal": "Número Fiscal",
     "Organization": "Organización",
-    "Name-Required": "El nombre es requerido",
-    "Email-NotValid": "El email no Valido",
+    "Name-Required": "El nombre es requerido, debe contener al menos 3 caracteres",
+    "Surname-Required": "El apellido es requerido, debe contener al menos 3 caracteres",
+    "Email-NotValid": "El email no es Valido",
     "Password-Error": "La contraseña debe tener al menos 6 caracteres y coincidir ambas"
   },
   "NotFoundPage": {

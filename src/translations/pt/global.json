@@ -25,7 +25,8 @@
     "Surname": "Apelidos",
     "Fiscal": "Número de contribuinte",
     "Organization": "Organização",
-    "Name-Required": "O nome é obrigatório",
+    "Name-Required": "O nome é obrigatório, deve conter pelo menos 3 caracteres.",
+    "Surname-Required": "O apelido é obrigatório, deve conter pelo menos 3 caracteres.",
     "Email-NotValid": "O email é inválido",
     "Password-Error": "A senha deve ter pelo menos 6 caracteres e os campos devem corresponder"
   },

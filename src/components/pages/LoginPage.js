@@ -10,7 +10,7 @@ import { InputPassword } from '../basicComponents/InputPassword';
 import { LinkForms } from '../basicComponents/LinkForms';
 import { Button } from '../basicComponents/Button';
 import { UniqueCheckbox } from '../basicComponents/UniqueCheckbox';
-import { login, startGoogleLogin } from '../../store/actions/auth';
+import { login } from '../../store/actions/auth';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
@@ -30,10 +30,6 @@ export const LoginPage = () => {
   const handleLogin = event => {
     event.preventDefault();
     dispatch(login(email, password));
-  };
-
-  const handleGoogleLogin = () => {
-    dispatch(startGoogleLogin());
   };
 
   return (
@@ -82,32 +78,14 @@ export const LoginPage = () => {
 
                         <UniqueCheckbox text={t('LoginPage.Remember')} />
 
-                        <Button type="submit" variant="primary">
-                          {t('LoginPage.Login')}
-                        </Button>
-
-                        <hr />
                         <Button
                           type="submit"
-                          variant="google"
-                          startIcon="fab fa-google fa-fw"
-                          onClick={handleGoogleLogin}
+                          variant="primary"
+                          startIcon="fas fa-sign-in-alt"
                         >
                           {' '}
-                          {t('LoginPage.Login-with')} Google
+                          {t('LoginPage.Login')}
                         </Button>
-
-                        {/* <Button
-                          type="submit"
-                          variant="facebook"
-                          startIcon="fab fa-facebook-f fa-fw"
-                          onClick={event => {
-                            event.preventDefault();
-                            return console.log('click facebook');
-                          }}
-                        >
-                          {t('LoginPage.Login-with')} Facebook
-                        </Button> */}
                       </form>
 
                       <hr />

@@ -4,10 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Helmet from 'react-helmet';
 import validator from 'validator';
 import Swal from 'sweetalert2';
-import {
-  firebaseInit,
-  googleAuthProvider,
-} from '../../firebase/firebaseConfig';
+import { firebaseInit } from '../../firebase/firebaseConfig';
 
 import { useForm } from '../../hooks/UseForm';
 import { Button } from '../basicComponents/Button';
@@ -59,10 +56,15 @@ export const RegisterPage = () => {
   };
 
   const isFormValid = () => {
-    if (username.trim().length === 0) {
+    if (username.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
-    } else if (!validator.isEmail(email)) {
+    } else if (surname.length <= 2) {
+      dispatch(setErrorAction('RegisterPage.Surname-Required'));
+      return false;
+    }
+    // else if(validator.isTaxID(idFiscal, ))
+    else if (!validator.isEmail(email)) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
     } else if (password !== password2 || password.length < 5) {
@@ -76,6 +78,8 @@ export const RegisterPage = () => {
 
   const handlerOnFocus = event => {
     event.preventDefault();
+    console.log('ver');
+
     dispatch(removeErrorAction());
   };
 
@@ -120,6 +124,7 @@ export const RegisterPage = () => {
                             text={t('RegisterPage.Surname')}
                             name="surname"
                             value={surname}
+                            onFocus={handlerOnFocus}
                             onChange={handleInputChange}
                           />
                         </div>
@@ -131,6 +136,7 @@ export const RegisterPage = () => {
                             text={t('RegisterPage.Organization')}
                             name="organization"
                             value={organization}
+                            onFocus={handlerOnFocus}
                             onChange={handleInputChange}
                           />
                         </div>
@@ -139,6 +145,7 @@ export const RegisterPage = () => {
                             text={t('RegisterPage.Fiscal')}
                             name="idFiscal"
                             value={idFiscal}
+                            onFocus={handlerOnFocus}
                             onChange={handleInputChange}
                           />
                         </div>
@@ -148,6 +155,7 @@ export const RegisterPage = () => {
                           text={t('LoginPage.Enter-mail')}
                           name="email"
                           value={email}
+                          onFocus={handlerOnFocus}
                           onChange={handleInputChange}
                         />
                       </div>
@@ -158,6 +166,7 @@ export const RegisterPage = () => {
                             text={t('LoginPage.Password')}
                             name="password"
                             value={password}
+                            onFocus={handlerOnFocus}
                             onChange={handleInputChange}
                           />
                         </div>
@@ -166,12 +175,12 @@ export const RegisterPage = () => {
                             text={t('RegisterPage.Repeat-Password')}
                             name="password2"
                             value={password2}
+                            onFocus={handlerOnFocus}
                             onChange={handleInputChange}
                           />
                         </div>
                       </div>
 
-                      {/* Preguntar por el onBlur */}
                       {msgError && (
                         <div>
                           <Button
@@ -186,7 +195,12 @@ export const RegisterPage = () => {
                         </div>
                       )}
 
-                      <Button type="submit" variant="primary">
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        startIcon="fas fa-id-card"
+                      >
+                        {' '}
                         {t('RegisterPage.Register-Account')}
                       </Button>
                     </form>

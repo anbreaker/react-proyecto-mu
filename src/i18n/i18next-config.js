@@ -4,8 +4,14 @@ import global_en from '../translations/en/global.json';
 import global_es from '../translations/es/global.json';
 import global_pt from '../translations/pt/global.json';
 
-// window.navigator.language
-const browserLanguage = window.navigator.language;
+let browserLanguage = window.navigator.language.split('-')[0];
+
+if (
+  browserLanguage !== 'es' &&
+  browserLanguage !== 'en' &&
+  browserLanguage !== 'pt'
+)
+  browserLanguage = 'es';
 
 i18next.init({
   interpolation: { escapeValue: false },

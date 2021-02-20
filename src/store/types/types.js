@@ -5,6 +5,9 @@ export const types = {
   uiSetError: '[UI] Set Error',
   uiRemoveError: '[UI] Remove Error',
 
+  locale: '[LOCAL] Set Local default',
+
+  lngBrowser: '[LNG] Languaje default browser',
   lngSpanish: '[LNG] Set Castellano',
   lngEnglish: '[LNG] Set Ingles',
   lngPortugues: '[LNG] Set Portugues',
