@@ -6,6 +6,7 @@ export const Button = ({ children, startIcon, variant, ...props }) => {
     primary: 'btn-primary btn-user btn-block',
     alert: 'btn-google btn-user btn-block alert-error mb-3',
   };
+
   return (
     <button
       {...props}

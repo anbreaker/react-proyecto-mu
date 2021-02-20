@@ -10,12 +10,13 @@ import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { Button } from '../basicComponents/Button';
 import { useForm } from '../../hooks/UseForm';
 import { getMsgError } from '../../store/selectors';
-import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
+import { setErrorAction } from '../../store/actions/ui';
+import { MessageError } from '../parts/MessageError';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
 
-export const ForgotPasswordPage = () => {
+export const ForgotPasswordPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
   const dispatch = useDispatch();
@@ -32,12 +33,9 @@ export const ForgotPasswordPage = () => {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
     }
-  };
 
-  // Compartir esta funcion. <-----------------------------------------------------------------
-  const handlerOnFocus = event => {
-    event.preventDefault();
-    dispatch(removeErrorAction());
+    // Llamada al back...
+    return true;
   };
 
   return (
@@ -81,19 +79,7 @@ export const ForgotPasswordPage = () => {
                           />
                         </div>
 
-                        {msgError && (
-                          <div>
-                            <Button
-                              disabled={true}
-                              variant="alert"
-                              startIcon="fas fa-exclamation-triangle"
-                            >
-                              {' '}
-                              {t(msgError)}
-                            </Button>
-                            <hr />
-                          </div>
-                        )}
+                        <MessageError msgError={msgError} />
 
                         <Button
                           type="submit"

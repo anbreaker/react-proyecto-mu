@@ -8,7 +8,8 @@
     "Login": "Iniciar sesión",
     "Login-with": "Iniciar sesión",
     "Create-Account": "¿No tienes cuenta? ¡Hazte una!",
-    "Forgot-Password": "¿Olvidaste la contraseña?"
+    "Forgot-Password": "¿Olvidaste la contraseña?",
+    "Password-Error": "La contraseña debe tener al menos 6 caracteres"
   },
   "ForgotPasswordPage": {
     "Have-Acount": "¿Ya tienes una cuenta? ¡Inicia sesión!",

@@ -8,7 +8,8 @@
     "Login": "Iniciar Sessão",
     "Login-with": "Iniciar sessão com",
     "Create-Account": "Não tem uma conta? Crie uma!",
-    "Forgot-Password": "Esqueceu-se sua senha?"
+    "Forgot-Password": "Esqueceu-se sua senha?",
+    "Password-Error": "A senha deve ter pelo menos 6 caracteres"
   },
   "ForgotPasswordPage": {
     "Have-Acount": "Já tem uma conta? Entre!",

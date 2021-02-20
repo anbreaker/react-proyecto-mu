@@ -5,9 +5,9 @@ export const InputMail = props => {
   return (
     <input
       {...props}
-      aria-describedby="emailHelp"
       className="form-control form-control-user"
       type="email"
+      autoComplete="off"
       placeholder={text}
       name={name}
       value={value}

@@ -19,8 +19,9 @@ import '../../assets/css/style.css';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
+import { MessageError } from '../parts/MessageError';
 
-export const RegisterPage = () => {
+export const RegisterPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
   const dispatch = useDispatch();
@@ -78,11 +79,6 @@ export const RegisterPage = () => {
 
     dispatch(removeErrorAction());
     return true;
-  };
-
-  const handlerOnFocus = event => {
-    event.preventDefault();
-    dispatch(removeErrorAction());
   };
 
   return (
@@ -183,19 +179,7 @@ export const RegisterPage = () => {
                         </div>
                       </div>
 
-                      {msgError && (
-                        <div>
-                          <Button
-                            disabled={true}
-                            variant="alert"
-                            startIcon="fas fa-exclamation-triangle"
-                          >
-                            {' '}
-                            {t(msgError)}
-                          </Button>
-                          <hr />
-                        </div>
-                      )}
+                      <MessageError msgError={msgError} />
 
                       <Button
                         type="submit"

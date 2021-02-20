@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Helmet from 'react-helmet';
+import validator from 'validator';
 
 import { useForm } from '../../hooks/UseForm';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
@@ -10,15 +11,20 @@ import { InputPassword } from '../basicComponents/InputPassword';
 import { LinkForms } from '../basicComponents/LinkForms';
 import { Button } from '../basicComponents/Button';
 import { UniqueCheckbox } from '../basicComponents/UniqueCheckbox';
+import { MessageError } from '../parts/MessageError';
+import { getMsgError } from '../../store/selectors';
+import { setErrorAction } from '../../store/actions/ui';
 import { login } from '../../store/actions/auth';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
 
-export const LoginPage = () => {
+export const LoginPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
   const dispatch = useDispatch();
+
+  const { msgError } = useSelector(getMsgError);
 
   const [formValues, handleInputChange] = useForm({
     email: '',
@@ -29,6 +35,16 @@ export const LoginPage = () => {
 
   const handleLogin = event => {
     event.preventDefault();
+    console.log(password <= 5);
+
+    if (!validator.isEmail(email)) {
+      dispatch(setErrorAction('RegisterPage.Email-NotValid'));
+      return false;
+    } else if (password <= 5) {
+      dispatch(setErrorAction('LoginPage.Password-Error'));
+      return false;
+    }
+    // Llamada al back...
     dispatch(login(email, password));
   };
 
@@ -64,6 +80,7 @@ export const LoginPage = () => {
                             text={t('LoginPage.Enter-mail')}
                             name="email"
                             value={email}
+                            onFocus={handlerOnFocus}
                             onChange={handleInputChange}
                           />
                         </div>
@@ -72,11 +89,14 @@ export const LoginPage = () => {
                             text={t('LoginPage.Password')}
                             name="password"
                             value={password}
+                            onFocus={handlerOnFocus}
                             onChange={handleInputChange}
                           />
                         </div>
 
                         <UniqueCheckbox text={t('LoginPage.Remember')} />
+
+                        <MessageError msgError={msgError} />
 
                         <Button
                           type="submit"

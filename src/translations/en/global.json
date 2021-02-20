@@ -8,7 +8,8 @@
     "Login": "Login",
     "Login-with": "Login with",
     "Create-Account": "Create Account",
-    "Forgot-Password": "Forgot Password"
+    "Forgot-Password": "Forgot Password",
+    "Password-Error": "Password should be at least 6 characters"
   },
   "ForgotPasswordPage": {
     "Have-Acount": "Already have an account? Login!",
