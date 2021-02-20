@@ -11,4 +11,7 @@ export const types = {
   lngSpanish: '[LNG] Set Castellano',
   lngEnglish: '[LNG] Set Ingles',
   lngPortugues: '[LNG] Set Portugues',
+
+  rmbCheck: '[rmb] Set Remember Check',
+  notCheck: '[rmb] Remove Remember Check',
 };
