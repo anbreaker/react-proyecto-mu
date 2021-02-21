@@ -15,11 +15,11 @@ import { InputPassword } from '../basicComponents/InputPassword';
 import { InputText } from '../basicComponents/InputText';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { getMsgError, getLocale } from '../../store/selectors';
+import { MessageError } from '../parts/MessageError';
 import '../../assets/css/style.css';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
-import { MessageError } from '../parts/MessageError';
 
 export const RegisterPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -51,9 +51,10 @@ export const RegisterPage = ({ handlerOnFocus }) => {
 
   const handleRegister = event => {
     event.preventDefault();
+
     if (isFormValid()) {
       //Enviar al Back...
-      console.log(isFormValid(), 'Formulario Valido');
+      console.log('entro aqui');
     }
   };
 

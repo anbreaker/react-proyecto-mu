@@ -1,4 +1,5 @@
 import { firebaseInit } from '../../firebase/firebaseConfig';
+import Swal from 'sweetalert2';
 
 import { types } from '../types/types';
 
@@ -23,3 +24,20 @@ export const startLogout = () => {
 export const logout = () => ({
   type: types.logout,
 });
+
+export const startRegisterWithEmailPasswordName = (email, password, name) => {
+  return dispatch => {
+    firebaseInit
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(async ({ user }) => {
+        await user.updateProfile({ displayName: name });
+
+        dispatch(login(user.uid, user.displayName));
+      })
+      .catch(error => {
+        console.error('Error ->', error);
+        Swal.fire('Error', error.message, 'error');
+      });
+  };
+};
