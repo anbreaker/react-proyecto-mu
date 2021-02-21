@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import Helmet from 'react-helmet';
 import validator from 'validator';
-import { firebaseInit } from '../../firebase/firebaseConfig';
 import Swal from 'sweetalert2';
+import { startRegisterWithEmailPasswordName } from '../../api/dispatchs';
 
 import { useForm } from '../../hooks/UseForm';
 import { Button } from '../basicComponents/Button';
@@ -52,8 +52,22 @@ export const RegisterPage = ({ handlerOnFocus }) => {
   const handleRegister = event => {
     event.preventDefault();
     if (isFormValid()) {
-      //Enviar al Back...
-      console.log(isFormValid(), 'Formulario Valido');
+      console.log('entra')
+      startRegisterWithEmailPasswordName({
+        username,
+        surname,
+        organization,
+        idFiscal,
+        email,
+        password,
+      })
+      console.log(        username,
+        surname,
+        organization,
+        idFiscal,
+        email,
+        password)
+      
     }
   };
 

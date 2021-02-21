@@ -14,7 +14,7 @@ import { UniqueCheckbox } from '../basicComponents/UniqueCheckbox';
 import { MessageError } from '../parts/MessageError';
 import { getMsgError } from '../../store/selectors';
 import { setErrorAction } from '../../store/actions/ui';
-import { login } from '../../store/actions/auth';
+// import {dispatchLogin } from '../../api/dispatchs';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
@@ -33,9 +33,8 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   const { email, password } = formValues;
 
-  const handleLogin = event => {
+/*   const handleLogin = async(event) => {
     event.preventDefault();
-    console.log(password <= 5);
 
     if (!validator.isEmail(email)) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
@@ -44,10 +43,9 @@ export const LoginPage = ({ handlerOnFocus }) => {
       dispatch(setErrorAction('LoginPage.Password-Error'));
       return false;
     }
-    // Llamada al back...
-    dispatch(login(email, password));
+    dispatchLogin({email, password})
   };
-
+ */
   return (
     <>
       {/* Borrar al No ser Necesaria... (facilidad a la hora de trabajar...) */}
@@ -74,7 +72,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
                           {t('LoginPage.Welcome')}!
                         </h1>
                       </div>
-                      <form className="user" onSubmit={handleLogin}>
+                      <form className="user" onSubmit={ ()=>{} /* handleLogin */}>
                         <div className="form-group">
                           <InputMail
                             text={t('LoginPage.Enter-mail')}
