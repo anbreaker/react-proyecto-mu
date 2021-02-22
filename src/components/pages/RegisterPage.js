@@ -53,14 +53,14 @@ export const RegisterPage = ({ handlerOnFocus }) => {
     event.preventDefault();
     if (isFormValid()) {
       console.log('entra');
-      /*startRegisterWithEmailPasswordName({
+      startRegisterWithEmailPasswordName({
         username,
         surname,
         organization,
         idFiscal,
         email,
         password,
-      });*/
+      });
       console.log(username, surname, organization, idFiscal, email, password);
     }
   };

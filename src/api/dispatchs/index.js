@@ -1,7 +1,7 @@
 import client from '../index';
 import { types } from '../../store/types/types';
 import { login } from '../../store/actions/auth';
-import {authFirebase } from '../../firebase/firebaseConfig';
+import { authFirebase } from '../../firebase/firebaseConfig';
 import Swal from 'sweetalert2';
 /* export const dispatchLogin = data => {
   console.log(data);
@@ -37,13 +37,11 @@ export const startRegisterWithEmailPasswordName = (
   fiscalNumber
 ) => {
   return dispatch => {
-    console.log(dispatch)
-    console.log('JJJ')
-    authFirebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-  }
- /*      .then(data => console.log(data))
+    console.log(dispatch);
+    console.log('JJJ');
+    authFirebase.auth().createUserWithEmailAndPassword(email, password);
+  };
+  /*      .then(data => console.log(data))
         async ({ user }) => {
         await user.updateProfile({
           displayName: `${username} ${surname}`,
