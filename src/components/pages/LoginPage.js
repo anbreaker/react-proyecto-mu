@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 import validator from 'validator';
 
-import { useForm } from '../../hooks/UseForm';
+import { useForm } from '../../hooks/useForm';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
@@ -13,7 +13,7 @@ import { Button } from '../basicComponents/Button';
 import { UniqueCheckbox } from '../basicComponents/UniqueCheckbox';
 import { MessageError } from '../parts/MessageError';
 import { getMsgError } from '../../store/selectors';
-import { setErrorAction } from '../../store/actions/ui';
+import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { startLoginEmailPassword } from '../../store/actions/auth';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
@@ -46,10 +46,14 @@ export const LoginPage = ({ handlerOnFocus }) => {
     if (!validator.isEmail(email)) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
+
+      //TODO Refrescar input password... Preguntar
     } else if (password <= 5) {
       dispatch(setErrorAction('LoginPage.Password-Error'));
       return false;
     }
+
+    dispatch(removeErrorAction());
     return true;
   };
 

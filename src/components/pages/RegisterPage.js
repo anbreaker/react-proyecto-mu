@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import validator from 'validator';
 import Swal from 'sweetalert2';
 
-import { useForm } from '../../hooks/UseForm';
+import { useForm } from '../../hooks/useForm';
 import { Button } from '../basicComponents/Button';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { LinkForms } from '../basicComponents/LinkForms';

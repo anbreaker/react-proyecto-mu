@@ -10,7 +10,7 @@ import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { Button } from '../basicComponents/Button';
 import { useForm } from '../../hooks/useForm';
 import { getMsgError } from '../../store/selectors';
-import { setErrorAction } from '../../store/actions/ui';
+import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { MessageError } from '../parts/MessageError';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
@@ -35,6 +35,7 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
     }
 
     // Llamada al back...
+    dispatch(removeErrorAction());
     return true;
   };
 
