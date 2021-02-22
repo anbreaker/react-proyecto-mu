@@ -10,7 +10,6 @@ import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { LinkForms } from '../basicComponents/LinkForms';
 import { Button } from '../basicComponents/Button';
-import { UniqueCheckbox } from '../basicComponents/UniqueCheckbox';
 import { MessageError } from '../parts/MessageError';
 import { getMsgError } from '../../store/selectors';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
@@ -21,7 +20,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   const dispatch = useDispatch();
 
-  const { msgError } = useSelector(getMsgError);
+  const { msgError, loading } = useSelector(getMsgError);
 
   const [formValues, handleInputChange] = useForm({
     email: '',
@@ -103,6 +102,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
                           type="submit"
                           variant="primary"
                           startIcon="fas fa-sign-in-alt"
+                          disabled={loading}
                         >
                           {' '}
                           {t('LoginPage.Login')}
