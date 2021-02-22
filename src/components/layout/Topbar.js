@@ -5,17 +5,23 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import img from '../../assets/img/undraw_profile_1.svg';
-import { getUserName } from '../../store/selectors';
+import { getUserName, getMenuUserStatus } from '../../store/selectors';
 import { startLogout } from '../../store/actions/auth';
+import { menuUserToggle } from '../../store/actions/ui';
 
 const Topbar = () => {
   const { t } = useTranslation('global');
   const userName = useSelector(getUserName);
-  const [showMenu, setShowMenu] = useState(false);
+  const showMenu = useSelector(getMenuUserStatus);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(startLogout());
+  };
+
+  const handleMenuUserClick = e => {
+    e.stopPropagation();
+    dispatch(menuUserToggle(!showMenu));
   };
 
   return (
@@ -96,7 +102,7 @@ const Topbar = () => {
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded={showMenu}
-            onClick={() => setShowMenu(!showMenu)}
+            onClick={handleMenuUserClick}
           >
             <span className="mr-2 d-none d-lg-inline text-gray-600 small">
               {userName}

@@ -6,6 +6,7 @@ export const types = {
   uiRemoveError: '[UI] Remove Error',
   uiStartLoading: '[UI] Start Loading',
   uiFinishLoading: '[UI] Finish Loading',
+  uiMenuUserToggle: '[UI] Menu User Toggle',
 
   locale: '[LOCAL] Local default',
 

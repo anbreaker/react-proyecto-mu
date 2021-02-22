@@ -18,3 +18,8 @@ export const finishLoadingAction = () => ({
   type: types.uiFinishLoading,
   payload: false,
 });
+
+export const menuUserToggle = value => ({
+  type: types.uiMenuUserToggle,
+  payload: value,
+});
