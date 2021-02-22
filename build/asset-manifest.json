@@ -1,23 +1,17 @@
 {
-  "files": {
-    "main.css": "/static/css/main.480a6ac7.chunk.css",
-    "main.js": "/static/js/main.a6a54180.chunk.js",
-    "main.js.map": "/static/js/main.a6a54180.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.4d25ba2e.js",
-    "runtime-main.js.map": "/static/js/runtime-main.4d25ba2e.js.map",
-    "static/js/2.83e1c88a.chunk.js": "/static/js/2.83e1c88a.chunk.js",
-    "static/js/2.83e1c88a.chunk.js.map": "/static/js/2.83e1c88a.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.480a6ac7.chunk.css.map": "/static/css/main.480a6ac7.chunk.css.map",
-    "static/js/2.83e1c88a.chunk.js.LICENSE.txt": "/static/js/2.83e1c88a.chunk.js.LICENSE.txt",
-    "static/media/all.min.css": "/static/media/fa-solid-900.46fdbd2d.woff",
-    "static/media/sb-admin-2.min.css": "/static/media/pexels-3.52823c0c.jpg",
-    "static/media/undraw_profile_1.c2807abf.svg": "/static/media/undraw_profile_1.c2807abf.svg"
-  },
-  "entrypoints": [
-    "static/js/runtime-main.4d25ba2e.js",
-    "static/js/2.83e1c88a.chunk.js",
-    "static/css/main.480a6ac7.chunk.css",
-    "static/js/main.a6a54180.chunk.js"
-  ]
+  "main.css": "/static/css/main.ce0cab78.chunk.css",
+  "main.js": "/static/js/main.c7f1bf52.chunk.js",
+  "main.js.map": "/static/js/main.c7f1bf52.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+  "static/js/2.69e1823e.chunk.js": "/static/js/2.69e1823e.chunk.js",
+  "static/js/2.69e1823e.chunk.js.map": "/static/js/2.69e1823e.chunk.js.map",
+  "index.html": "/index.html",
+  "precache-manifest.4d8411f6f88fa046e7d3c2210051fcd4.js": "/precache-manifest.4d8411f6f88fa046e7d3c2210051fcd4.js",
+  "service-worker.js": "/service-worker.js",
+  "static/css/main.ce0cab78.chunk.css.map": "/static/css/main.ce0cab78.chunk.css.map",
+  "static/media/401-error.svg": "/static/media/401-error.feaf6de1.svg",
+  "static/media/all.min.css": "/static/media/fa-solid-900.8e1ed89b.woff2",
+  "static/media/sb-admin-2.min.css": "/static/media/pexels-3.2b9a17e4.jpg",
+  "static/media/undraw_profile_1.svg": "/static/media/undraw_profile_1.5bb10981.svg"
 }
