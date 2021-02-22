@@ -24,7 +24,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   const dispatch = useDispatch();
 
-  const { msgError } = useSelector(getMsgError);
+  const { msgError, loading } = useSelector(getMsgError);
 
   const [formValues, handleInputChange] = useForm({
     email: '',
@@ -111,6 +111,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
                           type="submit"
                           variant="primary"
                           startIcon="fas fa-sign-in-alt"
+                          disabled={loading}
                         >
                           {' '}
                           {t('LoginPage.Login')}

@@ -25,7 +25,7 @@ export const RegisterPage = ({ handlerOnFocus }) => {
 
   const dispatch = useDispatch();
 
-  const { msgError } = useSelector(getMsgError);
+  const { msgError, loading } = useSelector(getMsgError);
 
   const [formValues, handleInputChange] = useForm({
     username: '',
@@ -134,6 +134,7 @@ export const RegisterPage = ({ handlerOnFocus }) => {
                         type="submit"
                         variant="primary"
                         startIcon="fas fa-id-card"
+                        disabled={loading}
                       >
                         {' '}
                         {t('RegisterPage.Register-Account')}

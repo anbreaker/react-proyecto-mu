@@ -2,9 +2,12 @@ import { firebaseInit } from '../../firebase/firebaseConfig';
 import Swal from 'sweetalert2';
 
 import { types } from '../types/types';
+import { finishLoadingAction, startLoadingAction } from './ui';
 
 export const startLoginEmailPassword = (email, password) => {
   return dispatch => {
+    dispatch(startLoadingAction());
+
     firebaseInit
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -12,11 +15,14 @@ export const startLoginEmailPassword = (email, password) => {
         dispatch(login(user.uid, user.displayName));
         console.log(user.uid, user.displayName);
 
+        dispatch(finishLoadingAction());
+
         // TODO COMO TRADUCIR ESTOS MENSAJES...
         Swal.fire('Success', 'Bienvenido', 'success');
       })
       .catch(error => {
         console.error('Error ->', error);
+        dispatch(finishLoadingAction());
 
         // TODO COMO TRADUCIR ESTOS MENSAJES...
         Swal.fire('Error', error.message, 'error');
