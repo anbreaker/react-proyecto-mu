@@ -9,7 +9,7 @@ export const startLoginEmailPassword = (email, password) => {
   return async (dispatch, getState, { history }) => {
     dispatch(startLoadingAction());
 
-    console.log('user: ', firebaseInit.auth().currentUser);
+    // console.log('user: ', firebaseInit.auth().currentUser);
     try {
       const { user } = await firebaseInit
         .auth()
