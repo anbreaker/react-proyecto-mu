@@ -1,6 +1,6 @@
 {
   "LoginPage": {
-    "Welcome": "Bienvenido",
+    "Welcome": "¡Bienvenido!",
     "Change-Languaje": "Cambiar idioma:",
     "Enter-mail": "Introduce tu email",
     "Password": "Contraseña",
@@ -54,5 +54,10 @@
   },
   "ErrorSwal": {
     "Email-InUse": "Este email ya está siendo utilizado por otro usuario."
+  },
+  "ChangeLanguaje": {
+    "Spanish": "🇪🇸",
+    "English": "🇬🇧",
+    "Portuguese": "🇵🇹"
   }
 }

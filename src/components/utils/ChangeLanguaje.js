@@ -34,21 +34,21 @@ export const ChangeLanguaje = () => {
         name="es"
         onClick={handleLanguajeChange}
       >
-        🇪🇸
+        {t('ChangeLanguaje.Spanish')}
       </button>
       <button
         className="btn bg-transparent"
         name="en"
         onClick={handleLanguajeChange}
       >
-        🇬🇧
+        {t('ChangeLanguaje.English')}
       </button>
       <button
         className="btn bg-transparent"
         name="pt"
         onClick={handleLanguajeChange}
       >
-        🇵🇹
+        {t('ChangeLanguaje.Portuguese')}
       </button>
     </div>
   );

@@ -1,3 +1,4 @@
+// eslint-disable
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -45,6 +46,7 @@ export const Navbars = () => {
           <div className="sidebar-heading">{t('NavBars.Interface')}</div>
 
           {/* <!-- Nav Item - Pages Collapse Menu --> */}
+
           <li className="nav-item">
             <a
               className="nav-link collapsed"

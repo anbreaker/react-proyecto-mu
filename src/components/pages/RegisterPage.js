@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import Helmet from 'react-helmet';
 import validator from 'validator';
-import Swal from 'sweetalert2';
 
 import { useForm } from '../../hooks/useForm';
 import { Button } from '../basicComponents/Button';
@@ -13,7 +12,7 @@ import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { InputText } from '../basicComponents/InputText';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
-import { getMsgError, getLocale } from '../../store/selectors';
+import { getMsgError } from '../../store/selectors';
 import { MessageError } from '../parts/MessageError';
 import '../../assets/css/style.css';
 import { startRegisterWithEmailPasswordName } from '../../store/actions/auth';
@@ -27,27 +26,15 @@ export const RegisterPage = ({ handlerOnFocus }) => {
   const dispatch = useDispatch();
 
   const { msgError } = useSelector(getMsgError);
-  const { locale } = useSelector(getLocale);
 
   const [formValues, handleInputChange] = useForm({
     username: '',
-    surname: '',
-    organization: '',
-    idFiscal: '',
     email: '',
     password: '',
     password2: '',
   });
 
-  const {
-    username,
-    surname,
-    organization,
-    idFiscal,
-    email,
-    password,
-    password2,
-  } = formValues;
+  const { username, email, password, password2 } = formValues;
 
   const handleRegister = event => {
     event.preventDefault();
@@ -62,15 +49,7 @@ export const RegisterPage = ({ handlerOnFocus }) => {
     if (username.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
-    } else if (surname.length <= 2) {
-      dispatch(setErrorAction('RegisterPage.Surname-Required'));
-      return false;
-    }
-    // else if (!validator.isTaxID(idFiscal, locale)) {
-    //   dispatch(setErrorAction('RegisterPage.Fiscal-NotValid'));
-    //   return false;
-    // }
-    else if (!validator.isEmail(email)) {
+    } else if (!validator.isEmail(email)) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
     } else if (password !== password2 || password.length < 5) {
@@ -107,48 +86,17 @@ export const RegisterPage = ({ handlerOnFocus }) => {
                       </h1>
                     </div>
                     <form className="user" onSubmit={handleRegister}>
-                      <div className="form-group row">
-                        <div className="col-sm-6 mb-3 mb-sm-0">
-                          <InputText
-                            text={t('RegisterPage.Name')}
-                            name="username"
-                            value={username}
-                            onFocus={handlerOnFocus}
-                            onChange={handleInputChange}
-                          />
-                        </div>
-
-                        <div className="col-sm-6">
-                          <InputText
-                            text={t('RegisterPage.Surname')}
-                            name="surname"
-                            value={surname}
-                            onFocus={handlerOnFocus}
-                            onChange={handleInputChange}
-                          />
-                        </div>
+                      <div className="form-group">
+                        <div className="col-sm-6 mb-3 mb-sm-0"></div>
+                        <InputText
+                          text={t('RegisterPage.Name')}
+                          name="username"
+                          value={username}
+                          onFocus={handlerOnFocus}
+                          onChange={handleInputChange}
+                        />
                       </div>
 
-                      <div className="form-group row">
-                        <div className="col-sm-6 mb-3 mb-sm-0">
-                          <InputText
-                            text={t('RegisterPage.Organization')}
-                            name="organization"
-                            value={organization}
-                            onFocus={handlerOnFocus}
-                            onChange={handleInputChange}
-                          />
-                        </div>
-                        <div className="col-sm-6">
-                          <InputText
-                            text={t('RegisterPage.Fiscal')}
-                            name="idFiscal"
-                            value={idFiscal}
-                            onFocus={handlerOnFocus}
-                            onChange={handleInputChange}
-                          />
-                        </div>
-                      </div>
                       <div className="form-group">
                         <InputMail
                           text={t('LoginPage.Enter-mail')}

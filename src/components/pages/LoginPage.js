@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
@@ -37,7 +37,6 @@ export const LoginPage = ({ handlerOnFocus }) => {
     event.preventDefault();
 
     if (isLoginValid()) {
-      console.log('dentro loginValid');
       dispatch(startLoginEmailPassword(email, password));
     }
   };
@@ -80,7 +79,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
                     <div className="p-5">
                       <div className="text-center">
                         <h1 className="h4 text-gray-900 mb-4">
-                          {t('LoginPage.Welcome')}!
+                          {t('LoginPage.Welcome')}
                         </h1>
                       </div>
                       <form className="user" onSubmit={handleLogin}>
