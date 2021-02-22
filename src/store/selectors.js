@@ -1,5 +1,3 @@
-import { StaticRouter } from 'react-router-dom';
-
 export const getLanguaje = state => state.languaje;
 
 export const getMsgError = state => state.ui;
