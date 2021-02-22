@@ -3,9 +3,12 @@ import Swal from 'sweetalert2';
 import { configureClient } from '../../api/client';
 
 import { types } from '../types/types';
+import { finishLoadingAction, startLoadingAction } from './ui';
 
 export const startLoginEmailPassword = (email, password) => {
   return async (dispatch, getState, { history }) => {
+    dispatch(startLoadingAction());
+
     console.log('user: ', firebaseInit.auth().currentUser);
     try {
       const { user } = await firebaseInit
@@ -13,11 +16,15 @@ export const startLoginEmailPassword = (email, password) => {
         .signInWithEmailAndPassword(email, password);
       const token = await user.getIdToken();
       dispatch(login(user.uid, user.displayName, token));
+
       configureClient(token);
+      dispatch(finishLoadingAction());
+
       // TODO COMO TRADUCIR ESTOS MENSAJES...
       Swal.fire('Success', 'Bienvenido', 'success');
     } catch (error) {
       console.error('Error ->', error);
+      dispatch(finishLoadingAction());
 
       // TODO COMO TRADUCIR ESTOS MENSAJES...
       Swal.fire('Error', error.message, 'error');
@@ -49,6 +56,7 @@ export const logout = () => ({
 
 export const startRegisterWithEmailPasswordName = (email, password, name) => {
   return dispatch => {
+    dispatch(startLoadingAction());
     firebaseInit
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -56,13 +64,13 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
         await user.updateProfile({ displayName: name });
 
         dispatch(login(user.uid, user.displayName));
-
+        dispatch(finishLoadingAction());
         // TODO COMO TRADUCIR ESTOS MENSAJES...
         Swal.fire('Success', 'Bienvenido', 'success');
       })
       .catch(error => {
         console.error('Error ->', error);
-
+        dispatch(finishLoadingAction());
         // TODO COMO TRADUCIR ESTOS MENSAJES...
         Swal.fire('Error', error.message, 'error');
       });
