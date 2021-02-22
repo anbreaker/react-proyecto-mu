@@ -51,5 +51,8 @@
     "Activity-Log": "Activity-Log",
     "Logout": "Logout",
     "Cancel": "Cancel"
+  },
+  "ErrorSwal": {
+    "Email-InUse": "The email address is already in use by another account."
   }
 }

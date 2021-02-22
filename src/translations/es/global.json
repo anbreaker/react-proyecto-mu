@@ -51,5 +51,8 @@
     "Activity-Log": "Actividad",
     "Logout": "Cerrar sesión",
     "Cancel": "Cancenlar"
+  },
+  "ErrorSwal": {
+    "Email-InUse": "Este email ya está siendo utilizado por otro usuario."
   }
 }

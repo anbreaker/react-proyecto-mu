@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 import validator from 'validator';
 
-import { useForm } from '../../hooks/useForm';
+import { useForm } from '../../hooks/UseForm';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
@@ -14,7 +14,7 @@ import { UniqueCheckbox } from '../basicComponents/UniqueCheckbox';
 import { MessageError } from '../parts/MessageError';
 import { getMsgError } from '../../store/selectors';
 import { setErrorAction } from '../../store/actions/ui';
-// import {dispatchLogin } from '../../api/dispatchs';
+import { startLoginEmailPassword } from '../../store/actions/auth';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
@@ -33,9 +33,16 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   const { email, password } = formValues;
 
-  /*   const handleLogin = async(event) => {
+  const handleLogin = event => {
     event.preventDefault();
 
+    if (isLoginValid()) {
+      console.log('dentro loginValid');
+      dispatch(startLoginEmailPassword(email, password));
+    }
+  };
+
+  const isLoginValid = () => {
     if (!validator.isEmail(email)) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
@@ -43,9 +50,9 @@ export const LoginPage = ({ handlerOnFocus }) => {
       dispatch(setErrorAction('LoginPage.Password-Error'));
       return false;
     }
-    dispatchLogin({email, password})
+    return true;
   };
- */
+
   return (
     <>
       {/* Borrar al No ser Necesaria... (facilidad a la hora de trabajar...) */}
@@ -72,10 +79,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
                           {t('LoginPage.Welcome')}!
                         </h1>
                       </div>
-                      <form
-                        className="user"
-                        onSubmit={() => {} /* handleLogin */}
-                      >
+                      <form className="user" onSubmit={handleLogin}>
                         <div className="form-group">
                           <InputMail
                             text={t('LoginPage.Enter-mail')}

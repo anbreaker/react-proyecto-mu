@@ -4,9 +4,8 @@ import { useTranslation } from 'react-i18next';
 import Helmet from 'react-helmet';
 import validator from 'validator';
 import Swal from 'sweetalert2';
-import { startRegisterWithEmailPasswordName } from '../../api/dispatchs';
 
-import { useForm } from '../../hooks/useForm';
+import { useForm } from '../../hooks/UseForm';
 import { Button } from '../basicComponents/Button';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { LinkForms } from '../basicComponents/LinkForms';
@@ -15,11 +14,12 @@ import { InputPassword } from '../basicComponents/InputPassword';
 import { InputText } from '../basicComponents/InputText';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { getMsgError, getLocale } from '../../store/selectors';
+import { MessageError } from '../parts/MessageError';
 import '../../assets/css/style.css';
+import { startRegisterWithEmailPasswordName } from '../../store/actions/auth';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
-import { MessageError } from '../parts/MessageError';
 
 export const RegisterPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -51,17 +51,10 @@ export const RegisterPage = ({ handlerOnFocus }) => {
 
   const handleRegister = event => {
     event.preventDefault();
+
     if (isFormValid()) {
-      console.log('entra');
-      startRegisterWithEmailPasswordName({
-        username,
-        surname,
-        organization,
-        idFiscal,
-        email,
-        password,
-      });
-      console.log(username, surname, organization, idFiscal, email, password);
+      //Enviar al Back de Firebase...
+      dispatch(startRegisterWithEmailPasswordName(email, password, username));
     }
   };
 
