@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { TalentMuFooter } from '../parts/TalentMuFooter';
+import { TalentMuFooter } from './TalentMuFooter';
 import Topbar from '../layout/Topbar';
 import Sidebar from '../layout/Sidebar';
 
