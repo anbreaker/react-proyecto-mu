@@ -8,7 +8,7 @@ import { LinkForms } from '../basicComponents/LinkForms';
 import { InputMail } from '../basicComponents/InputMail';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { Button } from '../basicComponents/Button';
-import { useForm } from '../../hooks/UseForm';
+import { useForm } from '../../hooks/useForm';
 import { getMsgError } from '../../store/selectors';
 import { setErrorAction } from '../../store/actions/ui';
 import { MessageError } from '../parts/MessageError';

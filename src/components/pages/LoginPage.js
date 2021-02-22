@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 import validator from 'validator';
 
-import { useForm } from '../../hooks/UseForm';
+import { useForm } from '../../hooks/useForm';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
@@ -33,7 +33,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   const { email, password } = formValues;
 
-/*   const handleLogin = async(event) => {
+  /*   const handleLogin = async(event) => {
     event.preventDefault();
 
     if (!validator.isEmail(email)) {
@@ -72,7 +72,10 @@ export const LoginPage = ({ handlerOnFocus }) => {
                           {t('LoginPage.Welcome')}!
                         </h1>
                       </div>
-                      <form className="user" onSubmit={ ()=>{} /* handleLogin */}>
+                      <form
+                        className="user"
+                        onSubmit={() => {} /* handleLogin */}
+                      >
                         <div className="form-group">
                           <InputMail
                             text={t('LoginPage.Enter-mail')}

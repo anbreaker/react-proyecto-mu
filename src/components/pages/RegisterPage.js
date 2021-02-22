@@ -6,7 +6,7 @@ import validator from 'validator';
 import Swal from 'sweetalert2';
 import { startRegisterWithEmailPasswordName } from '../../api/dispatchs';
 
-import { useForm } from '../../hooks/UseForm';
+import { useForm } from '../../hooks/useForm';
 import { Button } from '../basicComponents/Button';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { LinkForms } from '../basicComponents/LinkForms';
@@ -52,22 +52,16 @@ export const RegisterPage = ({ handlerOnFocus }) => {
   const handleRegister = event => {
     event.preventDefault();
     if (isFormValid()) {
-      console.log('entra')
-      startRegisterWithEmailPasswordName({
+      console.log('entra');
+      /*startRegisterWithEmailPasswordName({
         username,
         surname,
         organization,
         idFiscal,
         email,
         password,
-      })
-      console.log(        username,
-        surname,
-        organization,
-        idFiscal,
-        email,
-        password)
-      
+      });*/
+      console.log(username, surname, organization, idFiscal, email, password);
     }
   };
 
