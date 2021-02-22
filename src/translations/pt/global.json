@@ -51,5 +51,8 @@
     "Activity-Log": "Diário de actividades",
     "Logout": "Sair",
     "Cancel": "Cancenlar"
+  },
+  "ErrorSwal": {
+    "Email-InUse": "Este e-mail já está a ser utilizado por outra pessoa."
   }
 }

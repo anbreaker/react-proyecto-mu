@@ -17,6 +17,7 @@ import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { getMsgError, getLocale } from '../../store/selectors';
 import { MessageError } from '../parts/MessageError';
 import '../../assets/css/style.css';
+import { startRegisterWithEmailPasswordName } from '../../store/actions/auth';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
@@ -53,8 +54,8 @@ export const RegisterPage = ({ handlerOnFocus }) => {
     event.preventDefault();
 
     if (isFormValid()) {
-      //Enviar al Back...
-      console.log('entro aqui');
+      //Enviar al Back de Firebase...
+      dispatch(startRegisterWithEmailPasswordName(email, password, username));
     }
   };
 

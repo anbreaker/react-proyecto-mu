@@ -14,7 +14,7 @@ import { UniqueCheckbox } from '../basicComponents/UniqueCheckbox';
 import { MessageError } from '../parts/MessageError';
 import { getMsgError } from '../../store/selectors';
 import { setErrorAction } from '../../store/actions/ui';
-import { login } from '../../store/actions/auth';
+import { startLoginEmailPassword } from '../../store/actions/auth';
 
 //Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
 import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
@@ -35,8 +35,14 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   const handleLogin = event => {
     event.preventDefault();
-    console.log(password <= 5);
 
+    if (isLoginValid()) {
+      console.log('dentro loginValid');
+      dispatch(startLoginEmailPassword(email, password));
+    }
+  };
+
+  const isLoginValid = () => {
     if (!validator.isEmail(email)) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
@@ -44,8 +50,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
       dispatch(setErrorAction('LoginPage.Password-Error'));
       return false;
     }
-    // Llamada al back...
-    dispatch(login(email, password));
+    return true;
   };
 
   return (
