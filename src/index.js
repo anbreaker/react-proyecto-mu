@@ -12,6 +12,7 @@ import i18next from 'i18next';
 import { App } from './components/app/App';
 import './i18n/i18nextConfig';
 import { login } from './store/actions/auth';
+import { configureClient } from './api/client';
 
 const history = createBrowserHistory();
 
@@ -21,6 +22,7 @@ firebaseInit.auth().onAuthStateChanged(user => {
   if (user) {
     user.getIdToken().then(token => {
       store.dispatch(login(user.uid, user.displayName, token));
+      configureClient(token);
     });
   }
 });

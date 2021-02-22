@@ -12,7 +12,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { ForgotPasswordPage } from '../pages/ForgotPasswordPage';
-import { Navbars } from '../parts/Navbars';
+import { Dashboard } from '../pages/Dashboard';
 import { removeErrorAction } from '../../store/actions/ui';
 
 export const App = () => {
@@ -33,7 +33,7 @@ export const App = () => {
         )}
       </Route>
 
-      <PrivateRoute path="/dashboard" exact component={Navbars} />
+      <PrivateRoute path="/dashboard" exact component={Dashboard} />
 
       <Route path="/login" exact>
         <LoginPage handlerOnFocus={handlerOnFocus} />

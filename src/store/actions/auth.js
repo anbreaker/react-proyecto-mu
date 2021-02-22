@@ -1,5 +1,6 @@
 import { firebaseInit } from '../../firebase/firebaseConfig';
 import Swal from 'sweetalert2';
+import { configureClient } from '../../api/client';
 
 import { types } from '../types/types';
 
@@ -12,7 +13,7 @@ export const startLoginEmailPassword = (email, password) => {
         .signInWithEmailAndPassword(email, password);
       const token = await user.getIdToken();
       dispatch(login(user.uid, user.displayName, token));
-
+      configureClient(token);
       // TODO COMO TRADUCIR ESTOS MENSAJES...
       Swal.fire('Success', 'Bienvenido', 'success');
     } catch (error) {
