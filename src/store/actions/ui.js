@@ -8,3 +8,13 @@ export const setErrorAction = keyValue => ({
 export const removeErrorAction = () => ({
   type: types.uiRemoveError,
 });
+
+export const startLoadingAction = () => ({
+  type: types.uiStartLoading,
+  payload: true,
+});
+
+export const finishLoadingAction = () => ({
+  type: types.uiFinishLoading,
+  payload: false,
+});

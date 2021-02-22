@@ -42,6 +42,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
   };
 
   const isLoginValid = () => {
+    console.log(password);
     if (!validator.isEmail(email)) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
