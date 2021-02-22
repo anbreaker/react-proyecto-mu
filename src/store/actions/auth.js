@@ -4,38 +4,39 @@ import Swal from 'sweetalert2';
 import { types } from '../types/types';
 
 export const startLoginEmailPassword = (email, password) => {
-  return dispatch => {
-    firebaseInit
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(({ user }) => {
-        dispatch(login(user.uid, user.displayName));
-        console.log(user.uid, user.displayName);
+  return async (dispatch, getState, { history }) => {
+    console.log('user: ', firebaseInit.auth().currentUser);
+    try {
+      const { user } = await firebaseInit
+        .auth()
+        .signInWithEmailAndPassword(email, password);
+      const token = await user.getIdToken();
+      dispatch(login(user.uid, user.displayName, token));
 
-        // TODO COMO TRADUCIR ESTOS MENSAJES...
-        Swal.fire('Success', 'Bienvenido', 'success');
-      })
-      .catch(error => {
-        console.error('Error ->', error);
+      // TODO COMO TRADUCIR ESTOS MENSAJES...
+      Swal.fire('Success', 'Bienvenido', 'success');
+    } catch (error) {
+      console.error('Error ->', error);
 
-        // TODO COMO TRADUCIR ESTOS MENSAJES...
-        Swal.fire('Error', error.message, 'error');
-      });
+      // TODO COMO TRADUCIR ESTOS MENSAJES...
+      Swal.fire('Error', error.message, 'error');
+    }
   };
 };
 
-export const login = (uid, displayName) => {
+export const login = (uid, displayName, token) => {
   return {
     type: types.login,
     payload: {
       uid,
       displayName,
+      token,
     },
   };
 };
 
 export const startLogout = () => {
-  return async dispatch => {
+  return async (dispatch, getState, { history }) => {
     await firebaseInit.auth().signOut();
     dispatch(logout());
   };

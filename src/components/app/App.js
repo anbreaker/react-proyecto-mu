@@ -1,11 +1,13 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import '../../assets/css/sb-admin-2.min.css';
 import '../../assets/vendor/fontawesome-free/css/all.min.css';
 import '../../assets/css/style.css';
 
+import PrivateRoute from '../basicComponents/PrivateRoute';
+import { isLogged } from '../../store/selectors';
 import { LoginPage } from '../pages/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
@@ -23,7 +25,15 @@ export const App = () => {
 
   return (
     <Switch>
-      <Route path="/" exact component={Navbars} />
+      <Route path="/" exact>
+        {useSelector(isLogged) ? (
+          <Redirect to="/dashboard"></Redirect>
+        ) : (
+          <LoginPage handlerOnFocus={handlerOnFocus} />
+        )}
+      </Route>
+
+      <PrivateRoute path="/dashboard" exact component={Navbars} />
 
       <Route path="/login" exact>
         <LoginPage handlerOnFocus={handlerOnFocus} />

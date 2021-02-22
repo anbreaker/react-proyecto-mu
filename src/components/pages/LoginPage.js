@@ -59,9 +59,6 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   return (
     <>
-      {/* Borrar al No ser Necesaria... (facilidad a la hora de trabajar...) */}
-      <NavbarForDevOnly />
-
       <div className="container">
         <Helmet
           bodyAttributes={{
@@ -102,8 +99,6 @@ export const LoginPage = ({ handlerOnFocus }) => {
                             onChange={handleInputChange}
                           />
                         </div>
-
-                        <UniqueCheckbox text={t('LoginPage.Remember')} />
 
                         <MessageError msgError={msgError} />
 
