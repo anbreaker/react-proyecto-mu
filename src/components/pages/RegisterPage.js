@@ -17,9 +17,6 @@ import { MessageError } from '../parts/MessageError';
 import '../../assets/css/style.css';
 import { startRegisterWithEmailPasswordName } from '../../store/actions/auth';
 
-//Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
-import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
-
 export const RegisterPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
@@ -63,9 +60,6 @@ export const RegisterPage = ({ handlerOnFocus }) => {
 
   return (
     <>
-      {/* Borrar al No ser Necesaria... (facilidad a la hora de trabajar...) */}
-      <NavbarForDevOnly />
-
       <div className="container">
         <Helmet
           bodyAttributes={{

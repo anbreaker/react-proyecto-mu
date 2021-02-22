@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import img from '../../assets/img/undraw_profile_1.svg';
 import { getUserName } from '../../store/selectors';
+import { startLogout } from '../../store/actions/auth';
 
 const Topbar = () => {
   const { t } = useTranslation('global');
   const userName = useSelector(getUserName);
   const [showMenu, setShowMenu] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(startLogout());
+  };
+
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
       {/* <!-- Sidebar Toggle (Topbar) --> */}
@@ -114,15 +121,16 @@ const Topbar = () => {
               {t('NavBars.Settings')}
             </Link>
             <div className="dropdown-divider"></div>
-            <Link
+            <div
               className="dropdown-item"
               data-toggle="modal"
               data-target="#logoutModal"
-              to="/logout"
+              role="button"
+              onClick={handleLogout}
             >
               <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
               {t('NavBars.Logout')}
-            </Link>
+            </div>
           </div>
         </li>
       </ul>
