@@ -19,11 +19,6 @@ export const finishLoadingAction = () => ({
   payload: false,
 });
 
-export const menuUserToggle = value => ({
-  type: types.uiMenuUserToggle,
-  payload: value,
-});
-
 export const setShowSidebar = value => ({
   type: types.uiSetShowSidebar,
   payload: value,

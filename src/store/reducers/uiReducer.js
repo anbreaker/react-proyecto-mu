@@ -3,7 +3,6 @@ import { types } from '../types/types';
 const initialState = {
   loading: false,
   msgError: null,
-  menuUser: false,
   showSidebar: false,
 };
 
@@ -31,12 +30,6 @@ export const uiReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-      };
-
-    case types.uiMenuUserToggle:
-      return {
-        ...state,
-        menuUser: action.payload,
       };
 
     case types.uiSetShowSidebar:

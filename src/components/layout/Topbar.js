@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { useDetectClickOutside } from 'react-detect-click-outside';
 
 import img from '../../assets/img/undraw_profile_1.svg';
 import { getUserName, getMenuUserStatus } from '../../store/selectors';
@@ -10,20 +11,16 @@ import { startLogout } from '../../store/actions/auth';
 import { menuUserToggle, setShowSidebar } from '../../store/actions/ui';
 import { getSidebarStatus } from '../../store/selectors';
 
-const Topbar = () => {
+const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
   const { t } = useTranslation('global');
   const userName = useSelector(getUserName);
-  const showMenu = useSelector(getMenuUserStatus);
+
   const showSidebar = useSelector(getSidebarStatus);
   const dispatch = useDispatch();
+  const ref = useDetectClickOutside({ onTriggered: handleOutsideClick });
 
   const handleLogout = () => {
     dispatch(startLogout());
-  };
-
-  const handleMenuUserClick = e => {
-    e.stopPropagation();
-    dispatch(menuUserToggle(!showMenu));
   };
 
   const handleSideBarShow = () => {
@@ -101,7 +98,10 @@ const Topbar = () => {
         <div className="topbar-divider d-none d-sm-block"></div>
 
         {/* <!-- Nav Item - User Information --> */}
-        <li className={clsx('nav-item dropdown no-arrow', showMenu && 'show')}>
+        <li
+          className={clsx('nav-item dropdown no-arrow', showMenu && 'show')}
+          ref={ref}
+        >
           <div
             className="nav-link dropdown-toggle"
             id="userDropdown"
@@ -109,7 +109,7 @@ const Topbar = () => {
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded={showMenu}
-            onClick={handleMenuUserClick}
+            onClick={handleInsideClick}
           >
             <span className="mr-2 d-none d-lg-inline text-gray-600 small">
               {userName}

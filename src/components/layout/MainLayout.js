@@ -1,33 +1,34 @@
-import React from 'react';
-import { ClickAwayListener } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { TalentMuFooter } from './TalentMuFooter';
 import Topbar from '../layout/Topbar';
 import Sidebar from '../layout/Sidebar';
-import { menuUserToggle } from '../../store/actions/ui';
-import { getMenuUserStatus } from '../../store/selectors';
 
 const MainLayout = ({ children }) => {
-  const dispatch = useDispatch();
-  const menuOpen = useSelector(getMenuUserStatus);
+  const [showMenu, setShowMenu] = useState(false);
 
-  const handleMenuUserClick = () => {
-    if (menuOpen) {
-      dispatch(menuUserToggle(false));
-    }
+  const handleOutsideClick = () => {
+    setShowMenu(false);
   };
+
+  const handleInsideClick = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
     <div id="wrapper">
       <Sidebar />
 
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
-          <Topbar />
+          <Topbar
+            handleOutsideClick={handleOutsideClick}
+            handleInsideClick={handleInsideClick}
+            showMenu={showMenu}
+          />
 
-          <ClickAwayListener onClickAway={handleMenuUserClick}>
-            {children}
-          </ClickAwayListener>
+          {children}
         </div>
 
         <TalentMuFooter />
