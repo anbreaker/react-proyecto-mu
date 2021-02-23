@@ -38,6 +38,10 @@
     "Go-Back": "Volte para o topo da web, para o salvamento!",
     "Made-With": "Aplicação Web feita com  ❤️‍🔥 por Talent-Mu."
   },
+  "UnauthorizedPage": {
+    "Unauthorized": "Unauthorized access",
+    "Message": "Seems you got here by accident, please login"
+  },
   "NavBars": {
     "Dashboard": "Painel de controlo",
     "Interface": "Interface",

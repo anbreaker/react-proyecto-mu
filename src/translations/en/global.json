@@ -38,6 +38,10 @@
     "Go-Back": "Back to Dashboard",
     "Made-With": "Web application made with ❤️‍🔥 by Talent-Mu."
   },
+  "UnauthorizedPage": {
+    "Unauthorized": "Unauthorized access",
+    "Message": "Seems you got here by accident, please login"
+  },
   "NavBars": {
     "Dashboard": "Dashboard",
     "Interface": "Interface",

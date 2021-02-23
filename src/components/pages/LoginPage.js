@@ -10,14 +10,10 @@ import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { LinkForms } from '../basicComponents/LinkForms';
 import { Button } from '../basicComponents/Button';
-import { UniqueCheckbox } from '../basicComponents/UniqueCheckbox';
 import { MessageError } from '../parts/MessageError';
 import { getMsgError } from '../../store/selectors';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { startLoginEmailPassword } from '../../store/actions/auth';
-
-//Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
-import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
 
 export const LoginPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -59,9 +55,6 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   return (
     <>
-      {/* Borrar al No ser Necesaria... (facilidad a la hora de trabajar...) */}
-      <NavbarForDevOnly />
-
       <div className="container">
         <Helmet
           bodyAttributes={{
@@ -103,8 +96,6 @@ export const LoginPage = ({ handlerOnFocus }) => {
                           />
                         </div>
 
-                        <UniqueCheckbox text={t('LoginPage.Remember')} />
-
                         <MessageError msgError={msgError} />
 
                         <Button
@@ -115,6 +106,17 @@ export const LoginPage = ({ handlerOnFocus }) => {
                         >
                           {' '}
                           {t('LoginPage.Login')}
+                        </Button>
+
+                        <hr />
+
+                        <Button
+                          variant="google"
+                          startIcon="fab fa-google fa-fw"
+                          disabled={loading}
+                        >
+                          {' '}
+                          {t('LoginPage.Login-with')}
                         </Button>
                       </form>
 

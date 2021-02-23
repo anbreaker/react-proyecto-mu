@@ -7,18 +7,23 @@ import { languajeReducer } from './reducers/languajeReducer';
 import { uiReducer } from './reducers/uiReducer';
 import { localeReducer } from './reducers/localeReducer';
 import { rememberCheck } from './reducers/rememberCheck';
+import * as api from '../api';
 
-const reducers = combineReducers({
-  auth: authReducer,
-  ui: uiReducer,
-  languaje: languajeReducer,
-  locale: localeReducer,
-  remember: rememberCheck,
-});
+export function configureStore(preloadedState, history) {
+  const reducers = combineReducers({
+    auth: authReducer,
+    ui: uiReducer,
+    languaje: languajeReducer,
+    locale: localeReducer,
+    remember: rememberCheck,
+  });
 
-const middlewares = [thunk];
+  const middlewares = [thunk.withExtraArgument({ history, api })];
 
-export const store = createStore(
-  reducers,
-  composeWithDevTools(applyMiddleware(...middlewares))
-);
+  const store = createStore(
+    reducers,
+    preloadedState,
+    composeWithDevTools(applyMiddleware(...middlewares))
+  );
+  return store;
+}

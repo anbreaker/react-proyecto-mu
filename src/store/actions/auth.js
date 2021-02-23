@@ -1,47 +1,46 @@
 import { firebaseInit } from '../../firebase/firebaseConfig';
 import Swal from 'sweetalert2';
+import { configureClient } from '../../api/client';
 
 import { types } from '../types/types';
 import { finishLoadingAction, startLoadingAction } from './ui';
 
 export const startLoginEmailPassword = (email, password) => {
-  return dispatch => {
-    dispatch(startLoadingAction());
+  return async (dispatch, getState, { history }) => {
+    console.log('user: ', firebaseInit.auth().currentUser);
 
-    firebaseInit
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(({ user }) => {
-        dispatch(login(user.uid, user.displayName));
-        console.log(user.uid, user.displayName);
+    try {
+      const { user } = await firebaseInit
+        .auth()
+        .signInWithEmailAndPassword(email, password);
+      const token = await user.getIdToken();
+      dispatch(login(user.uid, user.displayName, token));
+      configureClient(token);
 
-        dispatch(finishLoadingAction());
+      // TODO COMO TRADUCIR ESTOS MENSAJES...
+      Swal.fire('Success', 'Bienvenido', 'success');
+    } catch (error) {
+      console.error('Error ->', error);
 
-        // TODO COMO TRADUCIR ESTOS MENSAJES...
-        Swal.fire('Success', 'Bienvenido', 'success');
-      })
-      .catch(error => {
-        console.error('Error ->', error);
-        dispatch(finishLoadingAction());
-
-        // TODO COMO TRADUCIR ESTOS MENSAJES...
-        Swal.fire('Error', error.message, 'error');
-      });
+      // TODO COMO TRADUCIR ESTOS MENSAJES...
+      Swal.fire('Error', error.message, 'error');
+    }
   };
 };
 
-export const login = (uid, displayName) => {
+export const login = (uid, displayName, token) => {
   return {
     type: types.login,
     payload: {
       uid,
       displayName,
+      token,
     },
   };
 };
 
 export const startLogout = () => {
-  return async dispatch => {
+  return async (dispatch, getState, { history }) => {
     await firebaseInit.auth().signOut();
     dispatch(logout());
   };
@@ -53,6 +52,8 @@ export const logout = () => ({
 
 export const startRegisterWithEmailPasswordName = (email, password, name) => {
   return dispatch => {
+    dispatch(startLoadingAction());
+
     firebaseInit
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -61,11 +62,14 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
 
         dispatch(login(user.uid, user.displayName));
 
+        dispatch(finishLoadingAction());
         // TODO COMO TRADUCIR ESTOS MENSAJES...
         Swal.fire('Success', 'Bienvenido', 'success');
       })
       .catch(error => {
         console.error('Error ->', error);
+
+        dispatch(finishLoadingAction());
 
         // TODO COMO TRADUCIR ESTOS MENSAJES...
         Swal.fire('Error', error.message, 'error');
