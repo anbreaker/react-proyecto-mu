@@ -13,9 +13,6 @@ import { getMsgError } from '../../store/selectors';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { MessageError } from '../parts/MessageError';
 
-//Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
-import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
-
 export const ForgotPasswordPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
@@ -41,9 +38,6 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
 
   return (
     <>
-      {/* Borrar al No ser Necesaria... (facilidad a la hora de trabajar...) */}
-      <NavbarForDevOnly />
-
       <Helmet
         bodyAttributes={{
           class: 'bg-gradient-info',

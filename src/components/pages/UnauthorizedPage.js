@@ -5,17 +5,11 @@ import { useTranslation } from 'react-i18next';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import lost from '../../assets/img/401-error.svg';
 
-//Borrar al No ser Necesaria... (facilidad a la hora de trabajar...)
-import { NavbarForDevOnly } from '../utils/NavbarForDevOnly';
-
 export const UnauthorizedPage = () => {
   const { t } = useTranslation('global');
 
   return (
     <>
-      {/* Borrar al No ser Necesaria... (facilidad a la hora de trabajar...) */}
-      <NavbarForDevOnly />
-
       <div className="container pt-5">
         <div id="content-wrapper" className="mt-xl-5 d-flex flex-column">
           {/* <!-- Main Content --> */}

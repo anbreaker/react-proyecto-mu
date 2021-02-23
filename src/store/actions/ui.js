@@ -11,8 +11,20 @@ export const removeErrorAction = () => ({
 
 export const startLoadingAction = () => ({
   type: types.uiStartLoading,
+  payload: true,
 });
 
 export const finishLoadingAction = () => ({
   type: types.uiFinishLoading,
+  payload: false,
+});
+
+export const menuUserToggle = value => ({
+  type: types.uiMenuUserToggle,
+  payload: value,
+});
+
+export const setShowSidebar = value => ({
+  type: types.uiSetShowSidebar,
+  payload: value,
 });

@@ -1,14 +1,42 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import img from '../../assets/img/undraw_profile_1.svg';
+import { getUserName, getMenuUserStatus } from '../../store/selectors';
+import { startLogout } from '../../store/actions/auth';
+import { menuUserToggle, setShowSidebar } from '../../store/actions/ui';
+import { getSidebarStatus } from '../../store/selectors';
 
 const Topbar = () => {
+  const { t } = useTranslation('global');
+  const userName = useSelector(getUserName);
+  const showMenu = useSelector(getMenuUserStatus);
+  const showSidebar = useSelector(getSidebarStatus);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(startLogout());
+  };
+
+  const handleMenuUserClick = e => {
+    e.stopPropagation();
+    dispatch(menuUserToggle(!showMenu));
+  };
+
+  const handleSideBarShow = () => {
+    dispatch(setShowSidebar(!showSidebar));
+  };
+
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
       {/* <!-- Sidebar Toggle (Topbar) --> */}
       <button
         id="sidebarToggleTop"
         className="btn btn-link d-md-none rounded-circle mr-3"
+        onClick={handleSideBarShow}
       >
         <i className="fa fa-bars"></i>
       </button>
@@ -37,7 +65,7 @@ const Topbar = () => {
         <li className="nav-item dropdown no-arrow d-sm-none">
           <a
             className="nav-link dropdown-toggle"
-            href="#"
+            href="/s"
             id="searchDropdown"
             role="button"
             data-toggle="dropdown"
@@ -73,49 +101,49 @@ const Topbar = () => {
         <div className="topbar-divider d-none d-sm-block"></div>
 
         {/* <!-- Nav Item - User Information --> */}
-        <li className="nav-item dropdown no-arrow">
-          <a
+        <li className={clsx('nav-item dropdown no-arrow', showMenu && 'show')}>
+          <div
             className="nav-link dropdown-toggle"
-            href="#"
             id="userDropdown"
             role="button"
             data-toggle="dropdown"
             aria-haspopup="true"
-            aria-expanded="false"
+            aria-expanded={showMenu}
+            onClick={handleMenuUserClick}
           >
             <span className="mr-2 d-none d-lg-inline text-gray-600 small">
-              User User
+              {userName}
             </span>
-            <img className="img-profile rounded-circle" src={img} />
-          </a>
+            <img className="img-profile rounded-circle" alt="" src={img} />
+          </div>
 
           {/* <!-- Dropdown - User Information --> */}
           <div
-            className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            className={clsx(
+              'dropdown-menu dropdown-menu-right shadow animated--grow-in',
+              showMenu && 'show'
+            )}
             aria-labelledby="userDropdown"
           >
-            <a className="dropdown-item" href="#">
+            <Link className="dropdown-item" to="/profile">
               <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-              Profile
-            </a>
-            <a className="dropdown-item" href="#">
+              {t('NavBars.Profile')}
+            </Link>
+            <Link className="dropdown-item" to="/settings">
               <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-              Settings
-            </a>
-            <a className="dropdown-item" href="#">
-              <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-              Activity Log
-            </a>
+              {t('NavBars.Settings')}
+            </Link>
             <div className="dropdown-divider"></div>
-            <a
+            <div
               className="dropdown-item"
-              href="#"
               data-toggle="modal"
               data-target="#logoutModal"
+              role="button"
+              onClick={handleLogout}
             >
               <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-              Logout
-            </a>
+              {t('NavBars.Logout')}
+            </div>
           </div>
         </li>
       </ul>
