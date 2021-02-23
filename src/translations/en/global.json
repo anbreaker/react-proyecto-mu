@@ -6,7 +6,7 @@
     "Password": "Password",
     "Remember": "Remember",
     "Login": "Login",
-    "Login-with": "Login with",
+    "Login-with": "Login with Google",
     "Create-Account": "Create Account",
     "Forgot-Password": "Forgot Password",
     "Password-Error": "Password should be at least 6 characters"
@@ -20,6 +20,7 @@
   "RegisterPage": {
     "Create-Account": "Create an Account!",
     "Register-Account": "Register Account",
+    "Register-AccountWith": "Register Account with Google",
     "Register-With": "Register with",
     "Repeat-Password": "Repeat Password",
     "Name": "Name",

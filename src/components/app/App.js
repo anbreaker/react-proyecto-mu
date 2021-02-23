@@ -44,7 +44,11 @@ export const App = () => {
       </Route>
 
       <Route path="/registro" exact>
-        <RegisterPage handlerOnFocus={handlerOnFocus} />
+        {useSelector(isLogged) ? (
+          <Redirect to="/dashboard"></Redirect>
+        ) : (
+          <RegisterPage handlerOnFocus={handlerOnFocus} />
+        )}
       </Route>
 
       <Route path="/recuperar-pass" exact>

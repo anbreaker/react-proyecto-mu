@@ -13,7 +13,10 @@ import { Button } from '../basicComponents/Button';
 import { MessageError } from '../parts/MessageError';
 import { getMsgError } from '../../store/selectors';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
-import { startLoginEmailPassword } from '../../store/actions/auth';
+import {
+  startGoogleLogin,
+  startLoginEmailPassword,
+} from '../../store/actions/auth';
 
 export const LoginPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -50,6 +53,10 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
     dispatch(removeErrorAction());
     return true;
+  };
+
+  const handleGoogleLogin = () => {
+    dispatch(startGoogleLogin());
   };
 
   return (
@@ -105,6 +112,18 @@ export const LoginPage = ({ handlerOnFocus }) => {
                         >
                           {' '}
                           {t('LoginPage.Login')}
+                        </Button>
+
+                        <hr />
+
+                        <Button
+                          variant="google"
+                          startIcon="fab fa-google fa-fw"
+                          disabled={loading}
+                          onClick={handleGoogleLogin}
+                        >
+                          {' '}
+                          {t('LoginPage.Login-with')}
                         </Button>
                       </form>
 
