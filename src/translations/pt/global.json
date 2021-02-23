@@ -6,7 +6,7 @@
     "Password": "Senha",
     "Remember": "Lembra-me",
     "Login": "Iniciar Sessão",
-    "Login-with": "Iniciar sessão com",
+    "Login-with": "Iniciar sessão com Google",
     "Create-Account": "Não tem uma conta? Crie uma!",
     "Forgot-Password": "Esqueceu-se sua senha?",
     "Password-Error": "A senha deve ter pelo menos 6 caracteres"
@@ -19,7 +19,8 @@
   },
   "RegisterPage": {
     "Create-Account": "Registe uma conta!",
-    "Register-Account": "Registar a conta",
+    "Register-Account": "Registar uma conta",
+    "Register-AccountWith": "Registar com conta Google",
     "Register-With": "Registe-se com",
     "Repeat-Password": "Repita a senha",
     "Name": "Nome",

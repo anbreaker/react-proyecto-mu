@@ -15,7 +15,10 @@ import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { getMsgError } from '../../store/selectors';
 import { MessageError } from '../parts/MessageError';
 import '../../assets/css/style.css';
-import { startRegisterWithEmailPasswordName } from '../../store/actions/auth';
+import {
+  startGoogleLogin,
+  startRegisterWithEmailPasswordName,
+} from '../../store/actions/auth';
 
 export const RegisterPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -56,6 +59,10 @@ export const RegisterPage = ({ handlerOnFocus }) => {
 
     dispatch(removeErrorAction());
     return true;
+  };
+
+  const handleGoogleLogin = () => {
+    dispatch(startGoogleLogin());
   };
 
   return (
@@ -132,6 +139,17 @@ export const RegisterPage = ({ handlerOnFocus }) => {
                       >
                         {' '}
                         {t('RegisterPage.Register-Account')}
+                      </Button>
+                      <hr />
+
+                      <Button
+                        variant="google"
+                        startIcon="fab fa-google fa-fw"
+                        disabled={loading}
+                        onClick={handleGoogleLogin}
+                      >
+                        {' '}
+                        {t('RegisterPage.Register-AccountWith')}
                       </Button>
                     </form>
                     <hr />

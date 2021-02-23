@@ -1,4 +1,7 @@
-import { firebaseInit } from '../../firebase/firebaseConfig';
+import {
+  firebaseInit,
+  googleAuthProvider,
+} from '../../firebase/firebaseConfig';
 import Swal from 'sweetalert2';
 import { configureClient } from '../../api/client';
 
@@ -9,6 +12,8 @@ export const startLoginEmailPassword = (email, password) => {
   return async (dispatch, getState, { history }) => {
     console.log('user: ', firebaseInit.auth().currentUser);
 
+    dispatch(startLoadingAction());
+
     try {
       const { user } = await firebaseInit
         .auth()
@@ -17,10 +22,36 @@ export const startLoginEmailPassword = (email, password) => {
       dispatch(login(user.uid, user.displayName, token));
       configureClient(token);
 
+      dispatch(finishLoadingAction());
       // TODO COMO TRADUCIR ESTOS MENSAJES...
       Swal.fire('Success', 'Bienvenido', 'success');
     } catch (error) {
       console.error('Error ->', error);
+
+      dispatch(finishLoadingAction());
+      // TODO COMO TRADUCIR ESTOS MENSAJES...
+      Swal.fire('Error', error.message, 'error');
+    }
+  };
+};
+
+export const startGoogleLogin = () => {
+  return async dispatch => {
+    dispatch(startLoadingAction());
+
+    try {
+      const { user } = await firebaseInit
+        .auth()
+        .signInWithPopup(googleAuthProvider);
+      const token = await user.getIdToken();
+      dispatch(login(user.uid, user.displayName, token));
+      configureClient(token);
+
+      dispatch(finishLoadingAction());
+      console.log('user: ', firebaseInit.auth().currentUser);
+    } catch (error) {
+      console.log(error);
+      dispatch(finishLoadingAction());
 
       // TODO COMO TRADUCIR ESTOS MENSAJES...
       Swal.fire('Error', error.message, 'error');
