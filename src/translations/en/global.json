@@ -45,6 +45,13 @@
   },
   "NavBars": {
     "Dashboard": "Dashboard",
+    "User": "User",
+    "Treasurer": "Treasurer",
+    "Secretary": "Secretary",
+    "Set fee": "Set fee",
+    "Expenses": "Expenses",
+    "Meetings": "Meetings",
+    "Members": "Members",
     "Interface": "Interface",
     "Components": "Components",
     "Utilities": "Utilities",
@@ -55,7 +62,8 @@
     "Settings": "Settings",
     "Activity-Log": "Activity-Log",
     "Logout": "Logout",
-    "Cancel": "Cancel"
+    "Cancel": "Cancel",
+    "Administration": "Admin."
   },
   "ErrorSwal": {
     "Email-InUse": "The email address is already in use by another account."

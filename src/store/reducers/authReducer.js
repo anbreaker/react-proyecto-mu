@@ -4,6 +4,8 @@ const initialState = {
   uid: '',
   displayName: '',
   token: '',
+  role: '',
+  permisos: [],
 };
 
 export const authReducer = (state = initialState, action) => {

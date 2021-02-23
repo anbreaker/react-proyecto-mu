@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { TalentMuFooter } from './TalentMuFooter';
 import Topbar from '../layout/Topbar';
-import Sidebar from '../layout/Sidebar';
+import Sidebar from './Sidebar/Sidebar';
 
 const MainLayout = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false);

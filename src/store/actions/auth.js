@@ -4,6 +4,7 @@ import {
 } from '../../firebase/firebaseConfig';
 import Swal from 'sweetalert2';
 import { configureClient } from '../../api/client';
+import { getMenuByRole } from '../../auth/permisos';
 
 import { types } from '../types/types';
 import { finishLoadingAction, startLoadingAction } from './ui';
@@ -21,7 +22,6 @@ export const startLoginEmailPassword = (email, password) => {
       const token = await user.getIdToken();
       dispatch(login(user.uid, user.displayName, token));
       configureClient(token);
-
       dispatch(finishLoadingAction());
       // TODO COMO TRADUCIR ESTOS MENSAJES...
       Swal.fire('Success', 'Bienvenido', 'success');
@@ -60,12 +60,15 @@ export const startGoogleLogin = () => {
 };
 
 export const login = (uid, displayName, token) => {
+  //! HARDCODED POR EL MOMENTO
+  const permisos = getMenuByRole('SuperAdmin');
   return {
     type: types.login,
     payload: {
       uid,
       displayName,
       token,
+      permisos,
     },
   };
 };

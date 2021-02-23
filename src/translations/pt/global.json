@@ -45,6 +45,13 @@
   },
   "NavBars": {
     "Dashboard": "Painel de controlo",
+    "User": "Usuário",
+    "Treasurer": "Tesorero",
+    "Secretary": "Secretario",
+    "Set fee": "Establecer cuota",
+    "Expenses": "Gastos",
+    "Meetings": "Reuniones",
+    "Members": "Miembros",
     "Interface": "Interface",
     "Components": "Componentes",
     "Utilities": "Utilidades",
@@ -55,7 +62,8 @@
     "Settings": "Definições",
     "Activity-Log": "Diário de actividades",
     "Logout": "Sair",
-    "Cancel": "Cancenlar"
+    "Cancel": "Cancenlar",
+    "Administration": "Gestão"
   },
   "ErrorSwal": {
     "Email-InUse": "Este e-mail já está a ser utilizado por outra pessoa."
