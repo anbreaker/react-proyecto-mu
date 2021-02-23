@@ -28,3 +28,4 @@ yarn-error.log*
 certificado
 apuntes
 .env.talentmu
+package-lock.json
