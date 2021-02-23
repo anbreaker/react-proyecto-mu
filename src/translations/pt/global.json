@@ -40,8 +40,8 @@
     "Made-With": "Aplicação Web feita com  ❤️‍🔥 por Talent-Mu."
   },
   "UnauthorizedPage": {
-    "Unauthorized": "Unauthorized access",
-    "Message": "Seems you got here by accident, please login"
+    "Unauthorized": "Acesso não autorizado",
+    "Message": "Parece que chegou aqui por acidente, por favor inicia sessão."
   },
   "NavBars": {
     "Dashboard": "Painel de controlo",

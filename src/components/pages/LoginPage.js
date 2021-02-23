@@ -32,11 +32,12 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   const { email, password } = formValues;
 
-  const handleLogin = event => {
+  const handleLogin = async event => {
     event.preventDefault();
 
     if (isLoginValid()) {
-      dispatch(startLoginEmailPassword(email, password));
+      const ver = dispatch(startLoginEmailPassword(email, password));
+      await console.log(ver, '<<-Ver');
     }
   };
 

@@ -15,3 +15,5 @@ export const getMenuUserStatus = state => state.ui.menuUser;
 export const getSidebarStatus = state => state.ui.showSidebar;
 
 export const getPermisos = state => state.auth.permisos;
+
+export const getSwalSms = state => state.swal;

@@ -15,6 +15,6 @@ export const types = {
   lngEnglish: '[LNG] Set Ingles',
   lngPortugues: '[LNG] Set Portugues',
 
-  rmbCheck: '[rmb] Set Remember Check',
-  notCheck: '[rmb] Remove Remember Check',
+  swalSetAction: '[swl] SweetAlert SetAction',
+  swalRemoveAction: '[swl] SweetAlert RemoveAction',
 };

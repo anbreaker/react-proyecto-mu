@@ -73,7 +73,8 @@ export const RegisterPage = ({ handlerOnFocus }) => {
             class: 'bg-gradient-success',
           }}
         />
-        <div className="container">
+
+        <div className="container pt-4">
           <div className="card o-hidden border-0 shadow-lg my-5">
             <div className="card-body p-0">
               {/* <!-- Nested Row within Card Body --> */}

@@ -6,7 +6,7 @@ import { authReducer } from './reducers/authReducer';
 import { languajeReducer } from './reducers/languajeReducer';
 import { uiReducer } from './reducers/uiReducer';
 import { localeReducer } from './reducers/localeReducer';
-import { rememberCheck } from './reducers/rememberCheck';
+import { swalReducer } from './reducers/swalReducer';
 import * as api from '../api';
 
 export function configureStore(preloadedState, history) {
@@ -15,7 +15,7 @@ export function configureStore(preloadedState, history) {
     ui: uiReducer,
     languaje: languajeReducer,
     locale: localeReducer,
-    remember: rememberCheck,
+    swal: swalReducer,
   });
 
   const middlewares = [thunk.withExtraArgument({ history, api })];
