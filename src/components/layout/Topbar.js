@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
@@ -7,12 +7,14 @@ import { Link } from 'react-router-dom';
 import img from '../../assets/img/undraw_profile_1.svg';
 import { getUserName, getMenuUserStatus } from '../../store/selectors';
 import { startLogout } from '../../store/actions/auth';
-import { menuUserToggle } from '../../store/actions/ui';
+import { menuUserToggle, setShowSidebar } from '../../store/actions/ui';
+import { getSidebarStatus } from '../../store/selectors';
 
 const Topbar = () => {
   const { t } = useTranslation('global');
   const userName = useSelector(getUserName);
   const showMenu = useSelector(getMenuUserStatus);
+  const showSidebar = useSelector(getSidebarStatus);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -24,12 +26,17 @@ const Topbar = () => {
     dispatch(menuUserToggle(!showMenu));
   };
 
+  const handleSideBarShow = () => {
+    dispatch(setShowSidebar(!showSidebar));
+  };
+
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
       {/* <!-- Sidebar Toggle (Topbar) --> */}
       <button
         id="sidebarToggleTop"
         className="btn btn-link d-md-none rounded-circle mr-3"
+        onClick={handleSideBarShow}
       >
         <i className="fa fa-bars"></i>
       </button>
@@ -58,7 +65,7 @@ const Topbar = () => {
         <li className="nav-item dropdown no-arrow d-sm-none">
           <a
             className="nav-link dropdown-toggle"
-            href="#"
+            href="/s"
             id="searchDropdown"
             role="button"
             data-toggle="dropdown"
@@ -107,7 +114,7 @@ const Topbar = () => {
             <span className="mr-2 d-none d-lg-inline text-gray-600 small">
               {userName}
             </span>
-            <img className="img-profile rounded-circle" src={img} />
+            <img className="img-profile rounded-circle" alt="" src={img} />
           </div>
 
           {/* <!-- Dropdown - User Information --> */}

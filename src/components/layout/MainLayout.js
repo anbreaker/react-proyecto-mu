@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { ClickAwayListener } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -10,7 +9,6 @@ import { menuUserToggle } from '../../store/actions/ui';
 import { getMenuUserStatus } from '../../store/selectors';
 
 const MainLayout = ({ children }) => {
-  const { t } = useTranslation('global');
   const dispatch = useDispatch();
   const menuOpen = useSelector(getMenuUserStatus);
 

@@ -1,10 +1,10 @@
-import { act } from 'react-dom/test-utils';
 import { types } from '../types/types';
 
 const initialState = {
   loading: false,
   msgError: null,
   menuUser: false,
+  showSidebar: false,
 };
 
 export const uiReducer = (state = initialState, action) => {
@@ -37,6 +37,12 @@ export const uiReducer = (state = initialState, action) => {
       return {
         ...state,
         menuUser: action.payload,
+      };
+
+    case types.uiSetShowSidebar:
+      return {
+        ...state,
+        showSidebar: action.payload,
       };
 
     default:
