@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
 import img from '../../assets/img/undraw_profile_1.svg';
-import { getUserName, getMenuUserStatus } from '../../store/selectors';
+import { getUserName } from '../../store/selectors';
 import { startLogout } from '../../store/actions/auth';
-import { menuUserToggle, setShowSidebar } from '../../store/actions/ui';
+import { setShowSidebar } from '../../store/actions/ui';
 import { getSidebarStatus } from '../../store/selectors';
 
 const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
