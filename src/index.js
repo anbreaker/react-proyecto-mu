@@ -19,7 +19,7 @@ const history = createBrowserHistory();
 const store = configureStore({}, history);
 
 firebaseInit.auth().onAuthStateChanged(user => {
-  console.log(user);
+  console.log(user.uid, 'antes del if');
 
   if (user) {
     user.getIdToken().then(token => {
@@ -33,6 +33,7 @@ firebaseInit.auth().onAuthStateChanged(user => {
           user.phoneNumber
         )
       );
+
       configureClient(token);
     });
   }

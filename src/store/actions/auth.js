@@ -18,8 +18,18 @@ export const startLoginEmailPassword = (email, password) => {
       const { user } = await firebaseInit
         .auth()
         .signInWithEmailAndPassword(email, password);
+
       const token = await user.getIdToken();
-      dispatch(login(user.uid, user.displayName, token, email));
+      dispatch(
+        login(
+          user.uid,
+          user.displayName,
+          token,
+          user.photoURL,
+          user.email,
+          user.phoneNumber
+        )
+      );
 
       configureClient(token);
       dispatch(finishLoadingAction());
@@ -44,6 +54,7 @@ export const startGoogleLogin = () => {
       const { user } = await firebaseInit
         .auth()
         .signInWithPopup(googleAuthProvider);
+
       const token = await user.getIdToken();
 
       dispatch(
@@ -52,8 +63,8 @@ export const startGoogleLogin = () => {
           user.displayName,
           token,
           user.photoURL,
-          user.phoneNumber,
-          user.email
+          user.email,
+          user.phoneNumber
         )
       );
 
@@ -75,11 +86,12 @@ export const login = (
   displayName,
   token,
   photoURL,
-  phoneNumber,
-  email
+  email,
+  phoneNumber
 ) => {
   //! HARDCODED POR EL MOMENTO
   const permisos = getMenuByRole('SuperAdmin');
+
   return {
     type: types.login,
     payload: {
@@ -87,9 +99,9 @@ export const login = (
       displayName,
       token,
       photoURL,
+      email,
       phoneNumber,
       permisos,
-      email,
     },
   };
 };

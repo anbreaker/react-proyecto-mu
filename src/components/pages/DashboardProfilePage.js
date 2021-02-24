@@ -16,7 +16,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const { msgError, loading } = useSelector(getMsgError);
 
-  const { displayName, phoneNumber } = useSelector(getUserAuth);
+  const { displayName, phoneNumber, photoURL } = useSelector(getUserAuth);
 
   const user = useSelector(getUserAuth);
   console.log(user);
@@ -60,7 +60,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                 width="152"
                 height="141"
                 alt=""
-                src={profile}
+                src={photoURL ? photoURL : profile}
               />
             </div>
           </div>
