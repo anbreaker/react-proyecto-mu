@@ -37,8 +37,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
     event.preventDefault();
 
     if (isLoginValid()) {
-      const ver = dispatch(startLoginEmailPassword(email, password));
-      console.log(ver, '<<-Ver');
+      dispatch(startLoginEmailPassword(email, password));
     }
   };
 

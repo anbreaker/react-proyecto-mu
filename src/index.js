@@ -19,9 +19,20 @@ const history = createBrowserHistory();
 const store = configureStore({}, history);
 
 firebaseInit.auth().onAuthStateChanged(user => {
+  console.log(user);
+
   if (user) {
     user.getIdToken().then(token => {
-      store.dispatch(login(user.uid, user.displayName, token));
+      store.dispatch(
+        login(
+          user.uid,
+          user.displayName,
+          token,
+          user.photoURL,
+          user.email,
+          user.phoneNumber
+        )
+      );
       configureClient(token);
     });
   }
