@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 
 import { getSwalSms } from '../../store/selectors';
 
+// TODO...
+
 export const SweetAlert = (...props) => {
   const { alert, onClose } = props;
 

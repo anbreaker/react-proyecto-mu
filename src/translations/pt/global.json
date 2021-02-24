@@ -24,11 +24,9 @@
     "Register-With": "Registe-se com",
     "Repeat-Password": "Repita a senha",
     "Name": "Nome",
-    "Surname": "Apelidos",
     "Fiscal": "Número de contribuinte",
     "Organization": "Organização",
     "Name-Required": "O nome é obrigatório, deve conter pelo menos 3 caracteres.",
-    "Surname-Required": "O apelido é obrigatório, deve conter pelo menos 3 caracteres.",
     "Email-NotValid": "O email é inválido",
     "Fiscal-NotValid": "O Número de Contribuinte é inválido",
     "Password-Error": "A senha deve ter pelo menos 6 caracteres e os campos devem corresponder"
@@ -46,12 +44,12 @@
   "NavBars": {
     "Dashboard": "Painel de controlo",
     "User": "Usuário",
-    "Treasurer": "Tesorero",
-    "Secretary": "Secretario",
-    "Set fee": "Establecer cuota",
-    "Expenses": "Gastos",
-    "Meetings": "Reuniones",
-    "Members": "Miembros",
+    "Treasurer": "Tesoureiro",
+    "Secretary": "Secretário",
+    "Set fee": "Definir quota",
+    "Expenses": "Despesas",
+    "Meetings": "Reuniões",
+    "Members": "Membros",
     "Interface": "Interface",
     "Components": "Componentes",
     "Utilities": "Utilidades",
@@ -72,5 +70,12 @@
     "Spanish": "🇪🇸",
     "English": "🇬🇧",
     "Portuguese": "🇵🇹"
+  },
+  "DashboardProfilePage": {
+    "Incoming": "Bem-vindo, esta é a sua primeira entrada em egestion! Precisamos de algumas informações para que possa desfrutar ao máximo do website.",
+    "Profile-Data": "Dados do Perfil:",
+    "FirtSurname": "Primeiro Apelido:",
+    "SecondSurname": "Segundo Apelido:",
+    "FirstSurname-Required": "O apelido é obrigatório, deve conter pelo menos 3 caracteres."
   }
 }

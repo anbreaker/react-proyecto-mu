@@ -23,6 +23,7 @@ export const startLoginEmailPassword = (email, password) => {
       dispatch(login(user.uid, user.displayName, token));
       configureClient(token);
       dispatch(finishLoadingAction());
+
       // TODO COMO TRADUCIR ESTOS MENSAJES...
       Swal.fire('Success', 'Bienvenido', 'success');
     } catch (error) {
