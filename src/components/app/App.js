@@ -7,7 +7,7 @@ import '../../assets/vendor/fontawesome-free/css/all.min.css';
 import '../../assets/css/style.css';
 
 import PrivateRoute from '../basicComponents/PrivateRoute';
-import { isLogged } from '../../store/selectors';
+import { uidOnIndexDB } from '../../store/selectors';
 import { LoginPage } from '../pages/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
@@ -18,6 +18,7 @@ import { DashboardProfilePage } from '../pages/DashboardProfilePage';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const isLogged = useSelector(uidOnIndexDB);
 
   const handlerOnFocus = event => {
     event.preventDefault();
@@ -27,7 +28,7 @@ export const App = () => {
   return (
     <Switch>
       <Route path="/" exact>
-        {useSelector(isLogged) ? (
+        {isLogged ? (
           <Redirect to="/dashboard"></Redirect>
         ) : (
           <LoginPage handlerOnFocus={handlerOnFocus} />
@@ -37,7 +38,7 @@ export const App = () => {
       <PrivateRoute path="/dashboard" exact component={Dashboard} />
 
       <Route path="/login" exact>
-        {useSelector(isLogged) ? (
+        {isLogged ? (
           <Redirect to="/dashboard"></Redirect>
         ) : (
           <LoginPage handlerOnFocus={handlerOnFocus} />
@@ -45,7 +46,7 @@ export const App = () => {
       </Route>
 
       <Route path="/registro" exact>
-        {useSelector(isLogged) ? (
+        {isLogged ? (
           <Redirect to="/dashboard"></Redirect>
         ) : (
           <RegisterPage handlerOnFocus={handlerOnFocus} />

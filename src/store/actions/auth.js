@@ -3,16 +3,15 @@ import {
   googleAuthProvider,
 } from '../../firebase/firebaseConfig';
 import Swal from 'sweetalert2';
+
 import { configureClient } from '../../api/client';
 import { getMenuByRole } from '../../auth/permisos';
-
-import { types } from '../types/types';
 import { finishLoadingAction, startLoadingAction } from './ui';
+import { types } from '../types/types';
 
 export const startLoginEmailPassword = (email, password) => {
   return async (dispatch, getState, { history }) => {
-    console.log('user: ', firebaseInit.auth().currentUser);
-
+    // console.log('user: ', firebaseInit.auth().currentUser);
     dispatch(startLoadingAction());
 
     try {

@@ -2,7 +2,7 @@ export const getLanguaje = state => state.languaje;
 
 export const getLocale = state => state.locale;
 
-export const isLogged = state => !!state.auth.uid;
+export const uidOnIndexDB = state => !!state.auth.uid;
 export const getUserAuth = state => state.auth;
 export const getUserName = state => state.auth.displayName;
 export const getPermisos = state => state.auth.permisos;
