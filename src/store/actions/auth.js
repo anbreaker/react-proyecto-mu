@@ -21,6 +21,7 @@ export const startLoginEmailPassword = (email, password) => {
         .signInWithEmailAndPassword(email, password);
       const token = await user.getIdToken();
       dispatch(login(user.uid, user.displayName, token));
+
       configureClient(token);
       dispatch(finishLoadingAction());
 
@@ -45,11 +46,20 @@ export const startGoogleLogin = () => {
         .auth()
         .signInWithPopup(googleAuthProvider);
       const token = await user.getIdToken();
-      dispatch(login(user.uid, user.displayName, token));
+
+      dispatch(
+        login(
+          user.uid,
+          user.displayName,
+          token,
+          user.photoURL,
+          user.phoneNumber
+        )
+      );
+
       configureClient(token);
 
       dispatch(finishLoadingAction());
-      console.log('user: ', firebaseInit.auth().currentUser);
     } catch (error) {
       console.log(error);
       dispatch(finishLoadingAction());
@@ -60,7 +70,7 @@ export const startGoogleLogin = () => {
   };
 };
 
-export const login = (uid, displayName, token) => {
+export const login = (uid, displayName, token, photoURL, phoneNumber) => {
   //! HARDCODED POR EL MOMENTO
   const permisos = getMenuByRole('SuperAdmin');
   return {
@@ -69,6 +79,8 @@ export const login = (uid, displayName, token) => {
       uid,
       displayName,
       token,
+      photoURL,
+      phoneNumber,
       permisos,
     },
   };
@@ -96,12 +108,12 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
 
         dispatch(login(user.uid, user.displayName));
         firebaseInit
-        .auth()
-        .currentUser.sendEmailVerification({
-          url: `https://www.egestion.xyz/?email=${user.email}`,
-        })
-        .then(data => console.log(data))
-        .catch( err => console.log(err))
+          .auth()
+          .currentUser.sendEmailVerification({
+            url: `https://www.egestion.xyz/?email=${user.email}`,
+          })
+          .then(data => console.log(data, '<--Data'))
+          .catch(err => console.log(err));
 
         dispatch(finishLoadingAction());
         // TODO COMO TRADUCIR ESTOS MENSAJES...

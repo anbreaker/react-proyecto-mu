@@ -24,11 +24,9 @@
     "Register-With": "Registrar con",
     "Repeat-Password": "Repite la contraseña",
     "Name": "Nombre",
-    "Fiscal": "Número Fiscal",
     "Organization": "Organización",
     "Name-Required": "El nombre es requerido, debe contener al menos 3 caracteres",
     "Email-NotValid": "El email no es válido",
-    "Fiscal-NotValid": "El Número fiscal no es válido",
     "Password-Error": "La contraseña debe tener al menos 6 caracteres y coincidir ambas"
   },
   "NotFoundPage": {
@@ -73,9 +71,16 @@
   },
   "DashboardProfilePage": {
     "Incoming": "¡Bienvenido, esta es tu primera entrada en egestion! Necesitamos algunos datos para que puedas disfrutar al máximo del sitio web.",
-    "Profile-Data": "Datos del Perfil:",
-    "FirtSurname": "Primer Apellido:",
-    "SecondSurname": "Segundo Apellido:",
-    "FirstSurname-Required": "El apellido es requerido, debe contener al menos 3 caracteres"
+    "Profile-Data": "Datos del Perfil",
+    "FirtSurname": "Primer Apellido",
+    "SecondSurname": "Segundo Apellido",
+    "FirstSurname-Required": "El apellido es requerido, debe contener al menos 3 caracteres",
+    "Fiscal": "Número Fiscal",
+    "Fiscal-NotValid": "El Número fiscal no es válido",
+    "Contact-Information": "Información de contacto",
+    "Address": "Dirección",
+    "Telephone": "Teléfono",
+    "Mobile": "Movil",
+    "Update-Profile": "Actualiza tu perfil"
   }
 }

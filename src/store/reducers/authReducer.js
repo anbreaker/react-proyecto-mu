@@ -4,6 +4,8 @@ const initialState = {
   uid: '',
   displayName: '',
   token: '',
+  photoURL: '',
+  phoneNumber: '',
   role: '',
   permisos: [],
 };

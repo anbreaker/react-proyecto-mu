@@ -1,13 +1,43 @@
 // eslint-disable
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { InputText } from '../basicComponents/InputText';
 import profile from '../../assets/img/undraw_profile.svg';
 
 import MainLayout from '../layout/MainLayout';
+import { InputText } from '../basicComponents/InputText';
+import { useForm } from '../../hooks/useForm';
+import { MessageError } from '../parts/MessageError';
+import { Button } from '../basicComponents/Button';
+import { useSelector } from 'react-redux';
+import { getMsgError, getUserAuth } from '../../store/selectors';
 
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
+
+  const { msgError, loading } = useSelector(getMsgError);
+
+  const { displayName, phoneNumber } = useSelector(getUserAuth);
+
+  const [formValues, handleInputChange] = useForm({
+    username: displayName,
+    firstsurname: '',
+    secondsurname: '',
+    fiscalNumber: '',
+    address: '',
+    mobile: phoneNumber,
+    phone: '',
+    photo: null,
+  });
+
+  const {
+    username,
+    firstsurname,
+    secondsurname,
+    fiscalNumber,
+    address,
+    phone,
+    mobile,
+  } = formValues;
 
   return (
     <MainLayout>
@@ -19,11 +49,11 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
         <div className="row mt-3">
           <div className="col-lg-2">
-            <div class="text-left mb-3 mr-3">
+            <div className="text-left mb-3 mr-3">
               <img
                 className="img-profile rounded-circle"
-                width="304"
-                height="236"
+                width="152"
+                height="141"
                 alt=""
                 src={profile}
               />
@@ -41,50 +71,73 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
               </div>
               <div className="card-body">
                 <h6 className="font-weight-bold">{t('RegisterPage.Name')}:</h6>
-                <InputText
-                  text={t('RegisterPage.Name')}
-                  name="username"
-                  // value={username}
-                  onFocus={handlerOnFocus}
-                  // onChange={handleInputChange}
-                />
-                <div className="row">
-                  <div className="col-lg-6">
-                    <h6 className="font-weight-bold mt-3">
-                      {t('DashboardProfilePage.FirtSurname')}
-                    </h6>
-                    <InputText />
+                <form>
+                  <InputText
+                    text={t(displayName ? displayName : 'RegisterPage.Name')}
+                    name="username"
+                    // value={username}
+                    onFocus={handlerOnFocus}
+                    // onChange={handleInputChange}
+                  />
+                  <div className="row">
+                    <div className="col-lg-6">
+                      <h6 className="font-weight-bold mt-3">
+                        {t('DashboardProfilePage.FirtSurname')}:
+                      </h6>
+                      <InputText />
+                    </div>
+                    <div className="col-lg-6">
+                      <h6 className="font-weight-bold mt-3">
+                        {t('DashboardProfilePage.SecondSurname')}:
+                      </h6>
+                      <InputText />
+                    </div>
                   </div>
-                  <div className="col-lg-6">
-                    <h6 className="font-weight-bold mt-3">
-                      {t('DashboardProfilePage.SecondSurname')}
-                    </h6>
-                    <InputText />
-                  </div>
-                </div>
 
-                <h6 className="font-weight-bold mt-3">Numero Fiscal:</h6>
-                <InputText />
-
-                <div className="mt-3">
-                  <h6 className="m-0 font-weight-bold text-primary">
-                    Información de Contacto:
+                  <h6 className="font-weight-bold mt-3">
+                    {t('DashboardProfilePage.Fiscal')}:
                   </h6>
-                </div>
-                <div className="row">
-                  <div className="col-lg-4">
-                    <h6 className="font-weight-bold mt-3">Direccion:</h6>
-                    <InputText />
+                  <InputText />
+
+                  <div className="mt-3">
+                    <h6 className="m-0 font-weight-bold text-primary">
+                      {t('DashboardProfilePage.Contact-Information')}:
+                    </h6>
                   </div>
-                  <div className="col-lg-4">
-                    <h6 className="font-weight-bold mt-3">Telefono:</h6>
-                    <InputText />
+                  <div className="row">
+                    <div className="col-lg-4">
+                      <h6 className="font-weight-bold mt-3">
+                        {t('DashboardProfilePage.Address')}:
+                      </h6>
+                      <InputText />
+                    </div>
+                    <div className="col-lg-4">
+                      <h6 className="font-weight-bold mt-3">
+                        {t('DashboardProfilePage.Mobile')}:
+                      </h6>
+                      <InputText />
+                    </div>
+                    <div className="col-lg-4">
+                      <h6 className="font-weight-bold mt-3">
+                        {t('DashboardProfilePage.Telephone')}:
+                      </h6>
+                      <InputText />
+                    </div>
                   </div>
-                  <div className="col-lg-4">
-                    <h6 className="font-weight-bold mt-3">Movil:</h6>
-                    <InputText />
-                  </div>
-                </div>
+                  <hr />
+
+                  <MessageError msgError={msgError} />
+
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    startIcon="fas fa-id-card"
+                    disabled={loading}
+                  >
+                    {' '}
+                    {t('DashboardProfilePage.Update-Profile')}
+                  </Button>
+                </form>
               </div>
             </div>
           </div>

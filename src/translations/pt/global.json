@@ -24,11 +24,9 @@
     "Register-With": "Registe-se com",
     "Repeat-Password": "Repita a senha",
     "Name": "Nome",
-    "Fiscal": "Número de contribuinte",
     "Organization": "Organização",
     "Name-Required": "O nome é obrigatório, deve conter pelo menos 3 caracteres.",
     "Email-NotValid": "O email é inválido",
-    "Fiscal-NotValid": "O Número de Contribuinte é inválido",
     "Password-Error": "A senha deve ter pelo menos 6 caracteres e os campos devem corresponder"
   },
   "NotFoundPage": {
@@ -73,9 +71,16 @@
   },
   "DashboardProfilePage": {
     "Incoming": "Bem-vindo, esta é a sua primeira entrada em egestion! Precisamos de algumas informações para que possa desfrutar ao máximo do website.",
-    "Profile-Data": "Dados do Perfil:",
-    "FirtSurname": "Primeiro Apelido:",
-    "SecondSurname": "Segundo Apelido:",
-    "FirstSurname-Required": "O apelido é obrigatório, deve conter pelo menos 3 caracteres."
+    "Profile-Data": "Dados do Perfil",
+    "FirtSurname": "Primeiro Apelido",
+    "SecondSurname": "Segundo Apelido",
+    "FirstSurname-Required": "O apelido é obrigatório, deve conter pelo menos 3 caracteres.",
+    "Fiscal": "Número de contribuinte",
+    "Fiscal-NotValid": "O Número de Contribuinte é inválido",
+    "Contact-Information": "Informação do contacto",
+    "Address": "Endereço",
+    "Telephone": "Telefone",
+    "Mobile": "Móvel",
+    "Update-Profile": "Actualize o seu perfil"
   }
 }

@@ -24,11 +24,9 @@
     "Register-With": "Register with",
     "Repeat-Password": "Repeat Password",
     "Name": "Name",
-    "Fiscal": "Fiscal Number",
     "Organization": "Organization",
     "Name-Required": "Name is required, to contain at least 3 characters.",
     "Email-NotValid": "Email is not valid",
-    "Fiscal-NotValid": "Fiscal id, is not valid",
     "Password-Error": "Password should be at least 6 characters and match each other"
   },
   "NotFoundPage": {
@@ -76,6 +74,13 @@
     "Profile-Data": "Profile Data:",
     "FirtSurname": "First Surname",
     "SecondSurname": "Second Surname",
-    "FirstSurname-Required": "Surname is required, to contain at least 3 characters."
+    "FirstSurname-Required": "Surname is required, to contain at least 3 characters.",
+    "Fiscal": "Fiscal Number",
+    "Fiscal-NotValid": "Fiscal id, is not valid",
+    "Contact-Information": "Contact information",
+    "Address": "Address",
+    "Telephone": "Telephone",
+    "Mobile": "Mobile",
+    "Update-Profile": "Update your profile"
   }
 }
