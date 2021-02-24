@@ -101,7 +101,7 @@ export const RegisterPage = ({ handlerOnFocus }) => {
 
                       <div className="form-group">
                         <InputMail
-                          text={t('LoginPage.Enter-mail')}
+                          text={t('LoginPage.Enter-Mail')}
                           name="email"
                           value={email}
                           onFocus={handlerOnFocus}

@@ -18,8 +18,12 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const { displayName, phoneNumber } = useSelector(getUserAuth);
 
+  const user = useSelector(getUserAuth);
+  console.log(user);
+
   const [formValues, handleInputChange] = useForm({
     username: displayName,
+    email: '',
     firstsurname: '',
     secondsurname: '',
     fiscalNumber: '',
@@ -31,8 +35,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const {
     username,
-    firstsurname,
-    secondsurname,
+    firstSurname,
+    secondSurname,
+    email,
     fiscalNumber,
     address,
     phone,
@@ -75,29 +80,61 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                   <InputText
                     text={t(displayName ? displayName : 'RegisterPage.Name')}
                     name="username"
-                    // value={username}
+                    value={username}
                     onFocus={handlerOnFocus}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                   />
+
+                  <h6 className="font-weight-bold mt-3">
+                    {t('LoginPage.Enter-Mail')}:
+                  </h6>
+                  <InputText
+                    text={t(email ? email : 'LoginPage.Enter-Mail')}
+                    name="email"
+                    value={email}
+                    onFocus={handlerOnFocus}
+                    onChange={handleInputChange}
+                  />
+
                   <div className="row">
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardProfilePage.FirtSurname')}:
                       </h6>
-                      <InputText />
+                      <InputText
+                        text={`${t('DashboardProfilePage.FirtSurname')}...`}
+                        name="firstSurname"
+                        value={firstSurname}
+                        onFocus={handlerOnFocus}
+                        onChange={handleInputChange}
+                        required
+                      />
                     </div>
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardProfilePage.SecondSurname')}:
                       </h6>
-                      <InputText />
+                      <InputText
+                        text={`${t('DashboardProfilePage.SecondSurname')}...`}
+                        name="secondSurname"
+                        value={secondSurname}
+                        onFocus={handlerOnFocus}
+                        onChange={handleInputChange}
+                      />
                     </div>
                   </div>
 
                   <h6 className="font-weight-bold mt-3">
                     {t('DashboardProfilePage.Fiscal')}:
                   </h6>
-                  <InputText />
+                  <InputText
+                    text={`${t('DashboardProfilePage.Fiscal')}...`}
+                    name="fiscalNumber"
+                    value={fiscalNumber}
+                    onFocus={handlerOnFocus}
+                    onChange={handleInputChange}
+                    required
+                  />
 
                   <div className="mt-3">
                     <h6 className="m-0 font-weight-bold text-primary">
@@ -109,19 +146,37 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardProfilePage.Address')}:
                       </h6>
-                      <InputText />
+                      <InputText
+                        text={`${t('DashboardProfilePage.Address')}...`}
+                        name="address"
+                        value={address}
+                        onFocus={handlerOnFocus}
+                        onChange={handleInputChange}
+                      />
                     </div>
                     <div className="col-lg-4">
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardProfilePage.Mobile')}:
                       </h6>
-                      <InputText />
+                      <InputText
+                        text={`${t('DashboardProfilePage.Mobile')}...`}
+                        name="mobile"
+                        value={mobile}
+                        onFocus={handlerOnFocus}
+                        onChange={handleInputChange}
+                      />
                     </div>
                     <div className="col-lg-4">
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardProfilePage.Telephone')}:
                       </h6>
-                      <InputText />
+                      <InputText
+                        text={`${t('DashboardProfilePage.Telephone')}...`}
+                        name="phone"
+                        value={phone}
+                        onFocus={handlerOnFocus}
+                        onChange={handleInputChange}
+                      />
                     </div>
                   </div>
                   <hr />

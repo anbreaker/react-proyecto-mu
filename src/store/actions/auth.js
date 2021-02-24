@@ -19,7 +19,7 @@ export const startLoginEmailPassword = (email, password) => {
         .auth()
         .signInWithEmailAndPassword(email, password);
       const token = await user.getIdToken();
-      dispatch(login(user.uid, user.displayName, token));
+      dispatch(login(user.uid, user.displayName, token, email));
 
       configureClient(token);
       dispatch(finishLoadingAction());
@@ -52,7 +52,8 @@ export const startGoogleLogin = () => {
           user.displayName,
           token,
           user.photoURL,
-          user.phoneNumber
+          user.phoneNumber,
+          user.email
         )
       );
 
@@ -69,7 +70,14 @@ export const startGoogleLogin = () => {
   };
 };
 
-export const login = (uid, displayName, token, photoURL, phoneNumber) => {
+export const login = (
+  uid,
+  displayName,
+  token,
+  photoURL,
+  phoneNumber,
+  email
+) => {
   //! HARDCODED POR EL MOMENTO
   const permisos = getMenuByRole('SuperAdmin');
   return {
@@ -81,6 +89,7 @@ export const login = (uid, displayName, token, photoURL, phoneNumber) => {
       photoURL,
       phoneNumber,
       permisos,
+      email,
     },
   };
 };

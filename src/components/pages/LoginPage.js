@@ -18,7 +18,6 @@ import {
   startLoginEmailPassword,
 } from '../../store/actions/auth';
 
-
 //TODO cuando verificas la cuenta via email , el uri viene como params el email, podiamos autocompletar el campo email https://www.egestion.xyz/?email=luissanchez_1992@hotmail.com
 export const LoginPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -88,7 +87,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
                       <form className="user" onSubmit={handleLogin}>
                         <div className="form-group">
                           <InputMail
-                            text={t('LoginPage.Enter-mail')}
+                            text={t('LoginPage.Enter-Mail')}
                             name="email"
                             value={email}
                             onFocus={handlerOnFocus}

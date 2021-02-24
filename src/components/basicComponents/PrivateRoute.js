@@ -6,10 +6,8 @@ import { uidOnIndexDB } from '../../store/selectors';
 
 const PrivateRoute = props => {
   // redux selector isLogged
-  return useSelector(uidOnIndexDB) ? (
-    <Route {...props} />
-  ) : (
-    <Redirect to="/login" />
-  );
+  const isLogged = useSelector(uidOnIndexDB);
+
+  return isLogged ? <Route {...props} /> : <Redirect to="/login" />;
 };
 export default PrivateRoute;
