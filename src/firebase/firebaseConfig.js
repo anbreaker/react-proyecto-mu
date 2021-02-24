@@ -20,8 +20,9 @@ const firebaseConfig = {
   appId: REACT_APP_APPID,
 };
 
-export const firebaseInit = firebase.initializeApp(firebaseConfig);
 
+
+export const firebaseInit = firebase.initializeApp(firebaseConfig);
 export const getFirebaseUser = () => firebaseInit.auth().currentUser;
 
 export const authFirebase = firebaseInit.auth().createUserWithEmailAndPassword;

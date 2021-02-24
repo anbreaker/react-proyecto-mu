@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
+import { firebaseInit } from '../../firebase/firebaseConfig';
 
 import { LinkForms } from '../basicComponents/LinkForms';
 import { InputMail } from '../basicComponents/InputMail';
@@ -31,7 +32,10 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
       return false;
     }
 
-    // Llamada al back...
+    firebaseInit.auth().sendPasswordResetEmail(email)
+      .then(data => console.log(data))
+      // dispatch error y success
+      .catch(err => console.log(err))
     dispatch(removeErrorAction());
     return true;
   };

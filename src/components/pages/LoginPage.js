@@ -18,6 +18,8 @@ import {
   startLoginEmailPassword,
 } from '../../store/actions/auth';
 
+
+//TODO cuando verificas la cuenta via email , el uri viene como params el email, podiamos autocompletar el campo email https://www.egestion.xyz/?email=luissanchez_1992@hotmail.com
 export const LoginPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
@@ -32,12 +34,12 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   const { email, password } = formValues;
 
-  const handleLogin = async event => {
+  const handleLogin = event => {
     event.preventDefault();
 
     if (isLoginValid()) {
       const ver = dispatch(startLoginEmailPassword(email, password));
-      await console.log(ver, '<<-Ver');
+      console.log(ver, '<<-Ver');
     }
   };
 

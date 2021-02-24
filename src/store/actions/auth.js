@@ -87,7 +87,6 @@ export const logout = () => ({
 export const startRegisterWithEmailPasswordName = (email, password, name) => {
   return dispatch => {
     dispatch(startLoadingAction());
-
     firebaseInit
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -95,6 +94,13 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
         await user.updateProfile({ displayName: name });
 
         dispatch(login(user.uid, user.displayName));
+        firebaseInit
+        .auth()
+        .currentUser.sendEmailVerification({
+          url: `https://www.egestion.xyz/?email=${user.email}`,
+        })
+        .then(data => console.log(data))
+        .catch( err => console.log(err))
 
         dispatch(finishLoadingAction());
         // TODO COMO TRADUCIR ESTOS MENSAJES...
