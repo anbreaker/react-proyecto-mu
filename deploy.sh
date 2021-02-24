@@ -8,6 +8,13 @@ checkCode(){
   fi
 }
 
+checkEnv(){
+  entorno=$(find . -name .env)
+  echo $entorno 
+  echo "es el entorno"
+}
+
+checkEnv
 echo "Build React APP"
 npm run build
 checkCode
