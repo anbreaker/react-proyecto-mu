@@ -24,11 +24,9 @@
     "Register-With": "Register with",
     "Repeat-Password": "Repeat Password",
     "Name": "Name",
-    "Surname": "Surname",
     "Fiscal": "Fiscal Number",
     "Organization": "Organization",
     "Name-Required": "Name is required, to contain at least 3 characters.",
-    "Surname-Required": "Surname is required, to contain at least 3 characters.",
     "Email-NotValid": "Email is not valid",
     "Fiscal-NotValid": "Fiscal id, is not valid",
     "Password-Error": "Password should be at least 6 characters and match each other"
@@ -72,5 +70,12 @@
     "Spanish": "🇪🇸",
     "English": "🇬🇧",
     "Portuguese": "🇵🇹"
+  },
+  "DashboardProfilePage": {
+    "Incoming": "Welcome, this is your first entry to egestion! We need some information for you to enjoy the website to the fullest.",
+    "Profile-Data": "Profile Data:",
+    "FirtSurname": "First Surname",
+    "SecondSurname": "Second Surname",
+    "FirstSurname-Required": "Surname is required, to contain at least 3 characters."
   }
 }

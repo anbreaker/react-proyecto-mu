@@ -14,6 +14,7 @@ import { NotFoundPage } from '../pages/NotFoundPage';
 import { ForgotPasswordPage } from '../pages/ForgotPasswordPage';
 import { Dashboard } from '../pages/Dashboard';
 import { removeErrorAction } from '../../store/actions/ui';
+import { DashboardProfilePage } from '../pages/DashboardProfilePage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -56,6 +57,11 @@ export const App = () => {
       </Route>
 
       <Route path="/404" exact component={NotFoundPage} />
+
+      <Route path="/profile" exact>
+        <DashboardProfilePage handlerOnFocus={handlerOnFocus} />
+      </Route>
+
       <Redirect to="/404" />
     </Switch>
   );
