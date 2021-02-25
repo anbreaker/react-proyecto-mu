@@ -72,6 +72,7 @@
   "DashboardProfilePage": {
     "Incoming": "Welcome, this is your first entry to egestion! We need some information for you to enjoy the website to the fullest.",
     "Profile-Data": "Profile Data:",
+    "Profile-Picture": "Change your Picture:",
     "FirtSurname": "First Surname",
     "SecondSurname": "Second Surname",
     "FirstSurname-Required": "Surname is required, to contain at least 3 characters.",
@@ -79,8 +80,10 @@
     "Fiscal-NotValid": "Fiscal id, is not valid",
     "Contact-Information": "Contact information",
     "Address": "Address",
+    "Address-Need": "We need your address, thank you!",
     "Telephone": "Telephone",
     "Mobile": "Mobile",
+    "Mobile-Need": "We need your mobile number so we can keep in touch, thank you!",
     "Update-Profile": "Update your profile"
   }
 }
