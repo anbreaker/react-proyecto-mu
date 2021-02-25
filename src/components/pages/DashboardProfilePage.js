@@ -34,7 +34,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     phone: '',
     photoURL: '',
   });
-  console.log(formValues, '<---antes del useEffect');
 
   const {
     displayName,
@@ -62,8 +61,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   };
 
   const isFormChangeProfileValid = () => {
-    console.log(displayName);
-
     if (displayName.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
