@@ -1,5 +1,5 @@
 // eslint-disable
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
 import profile from '../../assets/img/undraw_profile.svg';
@@ -21,27 +21,24 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
 
-  const { displayName, phoneNumber, photoURL, email } = useSelector(
-    getUserAuth
-  );
-
   const user = useSelector(getUserAuth);
-  console.log(user);
+  console.log(user.uid);
 
-  const [formValues, handleInputChange] = useForm({
-    username: displayName,
-    email: email,
-    firstsurname: '',
-    secondsurname: '',
+  const [formValues, handleInputChange, setFormValues] = useForm({
+    displayName: '',
+    firstSurname: '',
+    secondSurname: '',
+    emailUser: '',
     fiscalNumber: '',
     address: '',
-    mobile: phoneNumber,
+    mobile: '',
     phone: '',
-    photo: photoURL,
+    photoURL: '',
   });
+  console.log(formValues, '<---antes del useEffect');
 
   const {
-    username,
+    displayName,
     firstSurname,
     secondSurname,
     emailUser,
@@ -49,7 +46,13 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     address,
     mobile,
     phone,
+    photoURL,
   } = formValues;
+
+  useEffect(() => {
+    setFormValues(user.displayName);
+    console.log(formValues, '<--- useEffect terminado');
+  }, [user]);
 
   const handleChangeProfile = event => {
     event.preventDefault();
@@ -62,10 +65,10 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const isFormChangeProfileValid = () => {
     console.log(displayName);
 
-    if (username.length <= 2) {
+    if (displayName.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
-    } else if (!validator.isEmail(email)) {
+    } else if (!validator.isEmail(emailUser)) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
     } else if (firstSurname.length <= 2) {
@@ -132,8 +135,8 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                 <form onSubmit={handleChangeProfile}>
                   <InputText
                     text={t(displayName ? displayName : 'RegisterPage.Name')}
-                    name="username"
-                    value={username}
+                    name="displayName"
+                    value={displayName}
                     onFocus={handlerOnFocus}
                     onChange={handleInputChange}
                   />
@@ -142,7 +145,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                     {t('LoginPage.Enter-Mail')}:
                   </h6>
                   <InputText
-                    text={t(email ? email : 'LoginPage.Enter-Mail')}
+                    text={t(emailUser ? emailUser : 'LoginPage.Enter-Mail')}
                     name="emailUser"
                     value={emailUser}
                     onFocus={handlerOnFocus}
