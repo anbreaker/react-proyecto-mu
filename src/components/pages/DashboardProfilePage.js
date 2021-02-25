@@ -16,28 +16,30 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const { msgError, loading } = useSelector(getMsgError);
 
-  const { displayName, phoneNumber, photoURL } = useSelector(getUserAuth);
+  const { displayName, phoneNumber, photoURL, email } = useSelector(
+    getUserAuth
+  );
 
   const user = useSelector(getUserAuth);
   console.log(user);
 
   const [formValues, handleInputChange] = useForm({
     username: displayName,
-    email: '',
+    email: email,
     firstsurname: '',
     secondsurname: '',
     fiscalNumber: '',
     address: '',
     mobile: phoneNumber,
     phone: '',
-    photo: null,
+    photo: photoURL,
   });
 
   const {
     username,
     firstSurname,
     secondSurname,
-    email,
+    emailUser,
     fiscalNumber,
     address,
     phone,
@@ -52,16 +54,23 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
           {t('DashboardProfilePage.Incoming')}
         </h2>
 
-        <div className="row mt-3">
+        <div className="row mt-3 align-items-start minh-100">
           <div className="col-lg-2">
             <div className="text-left mb-3 mr-3">
               <img
-                className="img-profile rounded-circle"
+                className="rounded-circle img-fluid rounded mx-auto d-block"
                 width="152"
                 height="141"
                 alt=""
                 src={photoURL ? photoURL : profile}
               />
+
+              {/* TODO Colocar input y preparar subida de imagenes */}
+              <div class="card mt-3 border-bottom-success text-center">
+                <Button class="card-body">
+                  {t('DashboardProfilePage.Profile-Picture')}
+                </Button>
+              </div>
             </div>
           </div>
 

@@ -72,6 +72,7 @@
   "DashboardProfilePage": {
     "Incoming": "Bem-vindo, esta é a sua primeira entrada em egestion! Precisamos de algumas informações para que possa desfrutar ao máximo do website.",
     "Profile-Data": "Dados do Perfil",
+    "Profile-Picture": "Mude a sua foto:",
     "FirtSurname": "Primeiro Apelido",
     "SecondSurname": "Segundo Apelido",
     "FirstSurname-Required": "O apelido é obrigatório, deve conter pelo menos 3 caracteres.",
