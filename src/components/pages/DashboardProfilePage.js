@@ -23,9 +23,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const user = useSelector(getUserAuth);
 
-  console.log(user)
-
-
   const [formValues, handleInputChange, setFormValues] = useForm({
     displayName: '',
     firstSurname: '',
@@ -52,14 +49,15 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   } = formValues;
 
   useEffect(() => {
-    setFormValues({...formValues, ...user})
+    setFormValues({ ...formValues, ...user });
   }, [user]);
 
   const handleChangeProfile = event => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
-      //Enviar al Back de Firebase...
+      // Enviar al Back en un Objeto..
+      // user: { uid, displayName, email, phonNumber, photURL, role }
     }
   };
 

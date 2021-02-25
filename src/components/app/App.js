@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,10 +15,33 @@ import { ForgotPasswordPage } from '../pages/ForgotPasswordPage';
 import { Dashboard } from '../pages/Dashboard';
 import { removeErrorAction } from '../../store/actions/ui';
 import { DashboardProfilePage } from '../pages/DashboardProfilePage';
+import { firebaseInit } from '../../firebase/firebaseConfig';
+import { login } from '../../store/actions/auth';
+import { configureClient } from '../../api/client';
 
 export const App = () => {
   const dispatch = useDispatch();
   const isLogged = useSelector(uidOnIndexDB);
+
+  useEffect(() => {
+    firebaseInit.auth().onAuthStateChanged(user => {
+      if (user) {
+        user.getIdToken().then(token => {
+          dispatch(
+            login(
+              user.uid,
+              user.displayName,
+              token,
+              user.photoURL,
+              user.email,
+              user.phoneNumber
+            )
+          );
+          configureClient(token);
+        });
+      }
+    });
+  }, [dispatch]);
 
   const handlerOnFocus = event => {
     event.preventDefault();
