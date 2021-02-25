@@ -12,7 +12,7 @@ import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocale, getMsgError, getUserAuth } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
-
+import client from '../../api/client';
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
@@ -23,8 +23,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const user = useSelector(getUserAuth);
 
-  console.log(user)
-
+  console.log(user);
 
   const [formValues, handleInputChange, setFormValues] = useForm({
     displayName: '',
@@ -52,14 +51,16 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   } = formValues;
 
   useEffect(() => {
-    setFormValues({...formValues, ...user})
+    setFormValues({ ...formValues, ...user });
   }, [user]);
 
   const handleChangeProfile = event => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
-      //Enviar al Back de Firebase...
+      client.post('/user', formValues)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
   };
 
