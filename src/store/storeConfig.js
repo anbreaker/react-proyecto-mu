@@ -7,6 +7,7 @@ import { languajeReducer } from './reducers/languajeReducer';
 import { uiReducer } from './reducers/uiReducer';
 import { localeReducer } from './reducers/localeReducer';
 import { swalReducer } from './reducers/swalReducer';
+import { upCloudinaryReducer } from './reducers/upCloudinaryReducer';
 import * as api from '../api';
 
 export function configureStore(preloadedState, history) {
@@ -15,6 +16,7 @@ export function configureStore(preloadedState, history) {
     ui: uiReducer,
     languaje: languajeReducer,
     locale: localeReducer,
+    upFile: upCloudinaryReducer,
     swal: swalReducer,
   });
 

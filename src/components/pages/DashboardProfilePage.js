@@ -12,6 +12,7 @@ import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocale, getMsgError, getUserAuth } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
+import { uploadFileCloudinaryAction } from '../../store/actions/upCloudinary';
 
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -94,8 +95,12 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const handleFileChange = event => {
     const file = event.target.files;
+
+    console.log(file, 'en dashboard');
+
     if (file) {
       //  Crear dispatch
+      dispatch(uploadFileCloudinaryAction(file));
     }
   };
 
