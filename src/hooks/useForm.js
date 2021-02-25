@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-export const useForm = (initialStateForm = {}) => {
+/**
+ * @description Custon hook change state for input in to form
+ * @param {*} initialStateForm
+ * @returns [formValues, handleInputChange, setFormValues, reset] !! Array 
+ */
+export const useForm = (initialStateForm = {} ) => {
   const [formValues, setFormValues] = useState(initialStateForm);
 
   const reset = () => {
@@ -16,5 +21,5 @@ export const useForm = (initialStateForm = {}) => {
     });
   };
 
-  return [formValues, handleInputChange, reset, setFormValues];
+  return [formValues, handleInputChange, setFormValues, reset];
 };

@@ -22,16 +22,18 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { locale } = useSelector(getLocale);
 
   const user = useSelector(getUserAuth);
-  console.log(user.uid);
+
+  console.log(user)
+
 
   const [formValues, handleInputChange, setFormValues] = useForm({
     displayName: '',
     firstSurname: '',
     secondSurname: '',
-    emailUser: '',
+    email: '',
     fiscalNumber: '',
     address: '',
-    mobile: '',
+    phoneNumber: '',
     phone: '',
     photoURL: '',
   });
@@ -41,17 +43,16 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     displayName,
     firstSurname,
     secondSurname,
-    emailUser,
+    email,
     fiscalNumber,
     address,
-    mobile,
+    phoneNumber,
     phone,
     photoURL,
   } = formValues;
 
   useEffect(() => {
-    setFormValues(user.displayName);
-    console.log(formValues, '<--- useEffect terminado');
+    setFormValues({...formValues, ...user})
   }, [user]);
 
   const handleChangeProfile = event => {
@@ -68,13 +69,13 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     if (displayName.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
-    } else if (!validator.isEmail(emailUser)) {
+    } else if (!validator.isEmail(email)) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
     } else if (firstSurname.length <= 2) {
       dispatch(setErrorAction('DashboardProfilePage.FirstSurname-Required'));
       return false;
-    } else if (!validator.isMobilePhone(mobile)) {
+    } else if (!validator.isMobilePhone(phoneNumber)) {
       dispatch(setErrorAction('DashboardProfilePage.Mobile-Need'));
       return false;
     } else if (address.length <= 2) {
@@ -145,9 +146,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                     {t('LoginPage.Enter-Mail')}:
                   </h6>
                   <InputText
-                    text={t(emailUser ? emailUser : 'LoginPage.Enter-Mail')}
-                    name="emailUser"
-                    value={emailUser}
+                    text={t(email ? email : 'LoginPage.Enter-Mail')}
+                    name="email"
+                    value={email}
                     onFocus={handlerOnFocus}
                     onChange={handleInputChange}
                   />
@@ -216,8 +217,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                       </h6>
                       <InputText
                         text={`${t('DashboardProfilePage.Mobile')}...`}
-                        name="mobile"
-                        value={mobile}
+                        name="phoneNumber"
+                        value={phoneNumber || ''}
+                        required
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}
                       />
