@@ -19,8 +19,6 @@ const history = createBrowserHistory();
 const store = configureStore({}, history);
 
 firebaseInit.auth().onAuthStateChanged(user => {
-  console.log(user.uid, 'antes del if');
-
   if (user) {
     user.getIdToken().then(token => {
       store.dispatch(

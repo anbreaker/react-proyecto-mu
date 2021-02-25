@@ -80,8 +80,10 @@
     "Fiscal-NotValid": "Fiscal id, is not valid",
     "Contact-Information": "Contact information",
     "Address": "Address",
+    "Address-Need": "We need your address, thank you!",
     "Telephone": "Telephone",
     "Mobile": "Mobile",
+    "Mobile-Need": "We need your mobile number so we can keep in touch, thank you!",
     "Update-Profile": "Update your profile"
   }
 }

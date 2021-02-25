@@ -1,6 +1,7 @@
 // eslint-disable
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import validator from 'validator';
 import profile from '../../assets/img/undraw_profile.svg';
 
 import MainLayout from '../layout/MainLayout';
@@ -8,13 +9,17 @@ import { InputText } from '../basicComponents/InputText';
 import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
-import { useSelector } from 'react-redux';
-import { getMsgError, getUserAuth } from '../../store/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLocale, getMsgError, getUserAuth } from '../../store/selectors';
+import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
+  const dispatch = useDispatch();
 
   const { msgError, loading } = useSelector(getMsgError);
+  // eslint-disable-next-line
+  const { locale } = useSelector(getLocale);
 
   const { displayName, phoneNumber, photoURL, email } = useSelector(
     getUserAuth
@@ -42,9 +47,47 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     emailUser,
     fiscalNumber,
     address,
-    phone,
     mobile,
+    phone,
   } = formValues;
+
+  const handleChangeProfile = event => {
+    event.preventDefault();
+
+    if (isFormChangeProfileValid()) {
+      //Enviar al Back de Firebase...
+    }
+  };
+
+  const isFormChangeProfileValid = () => {
+    console.log(displayName);
+
+    if (username.length <= 2) {
+      dispatch(setErrorAction('RegisterPage.Name-Required'));
+      return false;
+    } else if (!validator.isEmail(email)) {
+      dispatch(setErrorAction('RegisterPage.Email-NotValid'));
+      return false;
+    } else if (firstSurname.length <= 2) {
+      dispatch(setErrorAction('DashboardProfilePage.FirstSurname-Required'));
+      return false;
+    } else if (!validator.isMobilePhone(mobile)) {
+      dispatch(setErrorAction('DashboardProfilePage.Mobile-Need'));
+      return false;
+    } else if (address.length <= 2) {
+      dispatch(setErrorAction('DashboardProfilePage.Mobile-Need'));
+      return false;
+    }
+    /*
+    else if (!validator.isTaxID(fiscalNumber, locale)) {
+      dispatch(setErrorAction('RegisterPage.Fiscal-NotValid'));
+      return false;
+    }
+    */
+
+    dispatch(removeErrorAction());
+    return true;
+  };
 
   return (
     <MainLayout>
@@ -66,8 +109,8 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
               />
 
               {/* TODO Colocar input y preparar subida de imagenes */}
-              <div class="card mt-3 border-bottom-success text-center">
-                <Button class="card-body">
+              <div className="card mt-3 border-bottom-success text-center">
+                <Button disabled={loading}>
                   {t('DashboardProfilePage.Profile-Picture')}
                 </Button>
               </div>
@@ -85,7 +128,8 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
               </div>
               <div className="card-body">
                 <h6 className="font-weight-bold">{t('RegisterPage.Name')}:</h6>
-                <form>
+
+                <form onSubmit={handleChangeProfile}>
                   <InputText
                     text={t(displayName ? displayName : 'RegisterPage.Name')}
                     name="username"
@@ -99,8 +143,8 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                   </h6>
                   <InputText
                     text={t(email ? email : 'LoginPage.Enter-Mail')}
-                    name="email"
-                    value={email}
+                    name="emailUser"
+                    value={emailUser}
                     onFocus={handlerOnFocus}
                     onChange={handleInputChange}
                   />
