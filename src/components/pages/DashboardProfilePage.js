@@ -88,6 +88,17 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     return true;
   };
 
+  const handlePictureUpload = () => {
+    document.querySelector('#fileSelector').click();
+  };
+
+  const handleFileChange = event => {
+    const file = event.target.files;
+    if (file) {
+      //  Crear dispatch
+    }
+  };
+
   return (
     <MainLayout>
       <div className="container-fluid">
@@ -109,7 +120,14 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
               {/* TODO Colocar input y preparar subida de imagenes */}
               <div className="card mt-3 border-bottom-success text-center">
-                <Button disabled={loading}>
+                <input
+                  id="fileSelector"
+                  name="file"
+                  style={{ display: 'none' }}
+                  type="file"
+                  onChange={handleFileChange}
+                />
+                <Button disabled={loading} onClick={handlePictureUpload}>
                   {t('DashboardProfilePage.Profile-Picture')}
                 </Button>
               </div>
