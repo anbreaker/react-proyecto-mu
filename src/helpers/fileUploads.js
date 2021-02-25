@@ -1,19 +1,26 @@
-const { REACT_APP_CLOUDINARY } = process.env;
-
 export const fileUpload = async file => {
-  console.log(REACT_APP_CLOUDINARY, '<--URL');
+  // url cloudinary API KEY...
+  const cloudUrl = process.env.REACT_APP_API_KEY;
+  const preset = process.env.REACT_APP_PRESET;
+
+  console.log(cloudUrl, '<--URL');
+  console.log(preset, '<--Preset');
 
   const formData = new FormData();
   formData.append('upload_preset', 'egestion');
   formData.append('file', file);
 
   try {
-    const response = await fetch(REACT_APP_CLOUDINARY, {
-      method: 'POST',
-      body: formData,
-    });
+    const response = await fetch(
+      // NO ENTIENDO XQ NO LEE LA VARIABLE DE ENTORNO!!!!
+      cloudUrl,
+      {
+        method: 'POST',
+        body: formData,
+      }
+    );
 
-    console.log(response, '<---ver response!!');
+    console.log(response.ok, '<---ver response!!');
 
     if (response.ok) {
       console.log('en el if');

@@ -94,14 +94,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   };
 
   const handleFileChange = event => {
-    const file = event.target.files;
+    const file = event.target.files[0];
 
-    console.log(file, 'en dashboard');
-
-    if (file) {
-      //  Crear dispatch
-      dispatch(uploadFileCloudinaryAction(file));
-    }
+    if (file) dispatch(uploadFileCloudinaryAction(file));
   };
 
   return (
