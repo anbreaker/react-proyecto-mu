@@ -51,8 +51,9 @@ export const App = () => {
   return (
     <Switch>
       <Route path="/" exact>
+        {/* <Redirect to="/dashboard"></Redirect> */}
         {isLogged ? (
-          <Redirect to="/dashboard"></Redirect>
+          <Redirect to="/profile"></Redirect>
         ) : (
           <LoginPage handlerOnFocus={handlerOnFocus} />
         )}
