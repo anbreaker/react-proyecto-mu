@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
-import Swal from 'sweetalert2';
 
-import { firebaseInit } from '../../firebase/firebaseConfig';
 import { LinkForms } from '../basicComponents/LinkForms';
 import { InputMail } from '../basicComponents/InputMail';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
@@ -15,6 +13,7 @@ import { useForm } from '../../hooks/useForm';
 import { getMsgError } from '../../store/selectors';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { MessageError } from '../parts/MessageError';
+import { recoveryPassAction } from '../../store/actions/auth';
 
 export const ForgotPasswordPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -36,24 +35,9 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
       return false;
     }
 
-    firebaseInit
-      .auth()
-      .sendPasswordResetEmail(email)
-      .then(data => {
-        console.log(data);
-        Swal.fire(
-          'Success',
-          t('ForgotPasswordPage.Password-Recovery'),
-          'success'
-        );
-        history.push('/login');
-      })
-      // dispatch error y success
-      .catch(error => {
-        Swal.fire('Error', error.message, 'error');
+    dispatch(recoveryPassAction(email));
 
-        console.log(error);
-      });
+    history.push('/login');
 
     dispatch(removeErrorAction());
     return true;

@@ -150,3 +150,24 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
       });
   };
 };
+
+export const recoveryPassAction = email => {
+  return dispatch => {
+    dispatch(startLoadingAction());
+    firebaseInit
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        // TODO como traducir estos mensajes...
+        dispatch(finishLoadingAction());
+        Swal.fire('Success', 'Enviado email', 'success');
+      })
+      // dispatch error y success
+      .catch(error => {
+        dispatch(finishLoadingAction());
+        // TODO como traducir estos mensajes...
+        Swal.fire('Error', error.message, 'error');
+        console.log(error);
+      });
+  };
+};
