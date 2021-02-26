@@ -34,13 +34,14 @@ export const startLoginEmailPassword = (email, password) => {
       configureClient(token);
       dispatch(finishLoadingAction());
 
-      // TODO COMO TRADUCIR ESTOS MENSAJES...
+      // TODO como traducir estos mensajes...
+
       Swal.fire('Success', 'Bienvenido', 'success');
     } catch (error) {
       console.error('Error ->', error);
 
       dispatch(finishLoadingAction());
-      // TODO COMO TRADUCIR ESTOS MENSAJES...
+      // TODO como traducir estos mensajes...
       Swal.fire('Error', error.message, 'error');
     }
   };
@@ -75,7 +76,7 @@ export const startGoogleLogin = () => {
       console.log(error);
       dispatch(finishLoadingAction());
 
-      // TODO COMO TRADUCIR ESTOS MENSAJES...
+      // TODO como traducir estos mensajes...
       Swal.fire('Error', error.message, 'error');
     }
   };
@@ -136,7 +137,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
           .catch(err => console.log(err));
 
         dispatch(finishLoadingAction());
-        // TODO COMO TRADUCIR ESTOS MENSAJES...
+        // TODO como traducir estos mensajes...
         Swal.fire('Success', 'Bienvenido', 'success');
       })
       .catch(error => {
@@ -144,8 +145,29 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
 
         dispatch(finishLoadingAction());
 
-        // TODO COMO TRADUCIR ESTOS MENSAJES...
+        // TODO como traducir estos mensajes...
         Swal.fire('Error', error.message, 'error');
+      });
+  };
+};
+
+export const recoveryPassAction = email => {
+  return dispatch => {
+    dispatch(startLoadingAction());
+    firebaseInit
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        // TODO como traducir estos mensajes...
+        dispatch(finishLoadingAction());
+        Swal.fire('Success', 'Enviado email', 'success');
+      })
+      // dispatch error y success
+      .catch(error => {
+        dispatch(finishLoadingAction());
+        // TODO como traducir estos mensajes...
+        Swal.fire('Error', error.message, 'error');
+        console.log(error);
       });
   };
 };

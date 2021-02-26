@@ -12,7 +12,12 @@ import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocale, getMsgError, getUserAuth } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
+<<<<<<< HEAD
 import client from '../../api/client';
+=======
+import { uploadFileCloudinaryAction } from '../../store/actions/upCloudinary';
+
+>>>>>>> 708255ddc2c697714c89b05dc2ab037ffdbe263e
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
@@ -23,8 +28,11 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const user = useSelector(getUserAuth);
 
+<<<<<<< HEAD
   console.log(user);
 
+=======
+>>>>>>> 708255ddc2c697714c89b05dc2ab037ffdbe263e
   const [formValues, handleInputChange, setFormValues] = useForm({
     displayName: '',
     firstSurname: '',
@@ -36,7 +44,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     phone: '',
     photoURL: '',
   });
-  console.log(formValues, '<---antes del useEffect');
 
   const {
     displayName,
@@ -58,16 +65,19 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
+<<<<<<< HEAD
       console.log('ouihbikjhbnpiujbjpiujbnpiubnpñijbnpiujb')
       client.post('/user', formValues)
         .then(res => console.log(res))
         .catch(err => console.log(err))
+=======
+      // Enviar al Back en un Objeto..
+      // user: { uid, displayName, email, phonNumber, photURL, role }
+>>>>>>> 708255ddc2c697714c89b05dc2ab037ffdbe263e
     }
   };
 
   const isFormChangeProfileValid = () => {
-    console.log(displayName);
-
     if (displayName.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
@@ -92,7 +102,20 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     */
 
     dispatch(removeErrorAction());
+    // TODO eliminar cuando este verificado
+    console.log(formValues, '<-- Viedon formValues');
+
     return true;
+  };
+
+  const handleUploadFile = () => {
+    document.querySelector('#fileSelector').click();
+  };
+
+  const handleFileChange = event => {
+    const file = event.target.files[0];
+
+    if (file) dispatch(uploadFileCloudinaryAction(file));
   };
 
   return (
@@ -114,9 +137,15 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                 src={photoURL ? photoURL : profile}
               />
 
-              {/* TODO Colocar input y preparar subida de imagenes */}
               <div className="card mt-3 border-bottom-success text-center">
-                <Button disabled={loading}>
+                <input
+                  id="fileSelector"
+                  name="file"
+                  style={{ display: 'none' }}
+                  type="file"
+                  onChange={handleFileChange}
+                />
+                <Button disabled={loading} onClick={handleUploadFile}>
                   {t('DashboardProfilePage.Profile-Picture')}
                 </Button>
               </div>

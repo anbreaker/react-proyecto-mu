@@ -1,11 +1,16 @@
 import { types } from '../types/types';
 
-export const setAction = sms => ({
+/**
+ * @param {Example: 'success','error'} type string
+ * @param {Mesagge to translate i18n} sms
+ * @param {Title to translate i18n Modal} title
+ */
+export const setModelAction = (type, sms, title) => ({
   type: types.swalSetAction,
   payload: (alert = {
-    icon: 'error',
-    title: 'Ups...',
-    text: 'Something went wrong',
+    icon: type,
+    title: title,
+    text: sms,
   }),
 });
 

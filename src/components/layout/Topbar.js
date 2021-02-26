@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
 import img from '../../assets/img/undraw_profile_1.svg';
-import { getUserName } from '../../store/selectors';
+import { getPhotoURL, getUserName } from '../../store/selectors';
 import { startLogout } from '../../store/actions/auth';
 import { setShowSidebar } from '../../store/actions/ui';
 import { getSidebarStatus } from '../../store/selectors';
@@ -15,8 +15,11 @@ const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
   const { t } = useTranslation('global');
   const userName = useSelector(getUserName);
 
-  const showSidebar = useSelector(getSidebarStatus);
   const dispatch = useDispatch();
+
+  const showSidebar = useSelector(getSidebarStatus);
+  const photoURL = useSelector(getPhotoURL);
+
   const ref = useDetectClickOutside({ onTriggered: handleOutsideClick });
 
   const handleLogout = () => {
@@ -114,7 +117,11 @@ const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
             <span className="mr-2 d-none d-lg-inline text-gray-600 small">
               {userName}
             </span>
-            <img className="img-profile rounded-circle" alt="" src={img} />
+            <img
+              className="img-profile rounded-circle"
+              alt=""
+              src={photoURL ? photoURL : img}
+            />
           </div>
 
           {/* <!-- Dropdown - User Information --> */}

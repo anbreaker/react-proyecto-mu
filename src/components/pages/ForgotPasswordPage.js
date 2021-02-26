@@ -1,9 +1,9 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
-import { firebaseInit } from '../../firebase/firebaseConfig';
 
 import { LinkForms } from '../basicComponents/LinkForms';
 import { InputMail } from '../basicComponents/InputMail';
@@ -13,9 +13,12 @@ import { useForm } from '../../hooks/useForm';
 import { getMsgError } from '../../store/selectors';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { MessageError } from '../parts/MessageError';
+import { recoveryPassAction } from '../../store/actions/auth';
 
 export const ForgotPasswordPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
+
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
@@ -32,10 +35,10 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
       return false;
     }
 
-    firebaseInit.auth().sendPasswordResetEmail(email)
-      .then(data => console.log(data))
-      // dispatch error y success
-      .catch(err => console.log(err))
+    dispatch(recoveryPassAction(email));
+
+    history.push('/login');
+
     dispatch(removeErrorAction());
     return true;
   };
@@ -70,7 +73,7 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
                       <form className="user" onSubmit={handleResetPassword}>
                         <div className="form-group">
                           <InputMail
-                            text={t('LoginPage.Enter-mail')}
+                            text={t('LoginPage.Enter-Mail')}
                             name="email"
                             value={email}
                             onFocus={handlerOnFocus}

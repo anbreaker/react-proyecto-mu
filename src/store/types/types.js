@@ -15,6 +15,8 @@ export const types = {
   lngEnglish: '[LNG] Set Ingles',
   lngPortugues: '[LNG] Set Portugues',
 
+  upFileUrl: '[img] Updated image url',
+
   swalSetAction: '[swl] SweetAlert SetAction',
   swalRemoveAction: '[swl] SweetAlert RemoveAction',
 };
