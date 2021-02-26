@@ -12,12 +12,8 @@ import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocale, getMsgError, getUserAuth } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
-<<<<<<< HEAD
-import client from '../../api/client';
-=======
 import { uploadFileCloudinaryAction } from '../../store/actions/upCloudinary';
 
->>>>>>> 708255ddc2c697714c89b05dc2ab037ffdbe263e
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
@@ -28,11 +24,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const user = useSelector(getUserAuth);
 
-<<<<<<< HEAD
-  console.log(user);
-
-=======
->>>>>>> 708255ddc2c697714c89b05dc2ab037ffdbe263e
   const [formValues, handleInputChange, setFormValues] = useForm({
     displayName: '',
     firstSurname: '',
@@ -65,16 +56,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
-<<<<<<< HEAD
-      console.log('ouihbikjhbnpiujbjpiujbnpiubnpñijbnpiujb')
-      client.post('/user', formValues)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-=======
       // Enviar al Back en un Objeto..
       // TODO enviar este objeto al back
       // user: { uid, displayName, email, phonNumber, photURL, role }
->>>>>>> 708255ddc2c697714c89b05dc2ab037ffdbe263e
     }
   };
 
