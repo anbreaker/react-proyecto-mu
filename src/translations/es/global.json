@@ -15,7 +15,8 @@
     "Have-Acount": "¿Ya tienes una cuenta? ¡Inicia sesión!",
     "Forgot-Passwor": "¿Olvidaste la contraseña?",
     "Consuelo-Sentence": "Lo entendemos, estas cosas pasan. Sólo tienes que introducir tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña 😊.",
-    "Reset-Password": "Reiniciar contrseña"
+    "Reset-Password": "Reiniciar contrseña",
+    "Password-Recovery": "Enviado email para la recuperación de contraseña"
   },
   "RegisterPage": {
     "Create-Account": "¡Registra una cuenta!",

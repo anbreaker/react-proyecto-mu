@@ -1,10 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
-import { firebaseInit } from '../../firebase/firebaseConfig';
+import Swal from 'sweetalert2';
 
+import { firebaseInit } from '../../firebase/firebaseConfig';
 import { LinkForms } from '../basicComponents/LinkForms';
 import { InputMail } from '../basicComponents/InputMail';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
@@ -16,6 +18,8 @@ import { MessageError } from '../parts/MessageError';
 
 export const ForgotPasswordPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
+
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
@@ -32,10 +36,25 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
       return false;
     }
 
-    firebaseInit.auth().sendPasswordResetEmail(email)
-      .then(data => console.log(data))
+    firebaseInit
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(data => {
+        console.log(data);
+        Swal.fire(
+          'Success',
+          t('ForgotPasswordPage.Password-Recovery'),
+          'success'
+        );
+        history.push('/login');
+      })
       // dispatch error y success
-      .catch(err => console.log(err))
+      .catch(error => {
+        Swal.fire('Error', error.message, 'error');
+
+        console.log(error);
+      });
+
     dispatch(removeErrorAction());
     return true;
   };
@@ -70,7 +89,7 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
                       <form className="user" onSubmit={handleResetPassword}>
                         <div className="form-group">
                           <InputMail
-                            text={t('LoginPage.Enter-mail')}
+                            text={t('LoginPage.Enter-Mail')}
                             name="email"
                             value={email}
                             onFocus={handlerOnFocus}

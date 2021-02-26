@@ -1,5 +1,4 @@
 export const fileUpload = async file => {
-  // url cloudinary API KEY...
   const cloudinaryUrl = process.env.REACT_APP_CLOUDINARY;
   const preset = process.env.REACT_APP_PRESET;
 
@@ -23,6 +22,4 @@ export const fileUpload = async file => {
     console.error(error);
     throw error;
   }
-
-  //return url de img
 };

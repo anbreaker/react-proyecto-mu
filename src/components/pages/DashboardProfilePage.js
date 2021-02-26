@@ -86,10 +86,13 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     */
 
     dispatch(removeErrorAction());
+    // TODO eliminar cuando este verificado
+    console.log(formValues, '<-- Viedon formValues');
+
     return true;
   };
 
-  const handlePictureUpload = () => {
+  const handleUploadFile = () => {
     document.querySelector('#fileSelector').click();
   };
 
@@ -118,7 +121,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                 src={photoURL ? photoURL : profile}
               />
 
-              {/* TODO Colocar input y preparar subida de imagenes */}
               <div className="card mt-3 border-bottom-success text-center">
                 <input
                   id="fileSelector"
@@ -127,7 +129,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                   type="file"
                   onChange={handleFileChange}
                 />
-                <Button disabled={loading} onClick={handlePictureUpload}>
+                <Button disabled={loading} onClick={handleUploadFile}>
                   {t('DashboardProfilePage.Profile-Picture')}
                 </Button>
               </div>
