@@ -58,6 +58,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
+      console.log('ouihbikjhbnpiujbjpiujbnpiubnpñijbnpiujb')
       client.post('/user', formValues)
         .then(res => console.log(res))
         .catch(err => console.log(err))
