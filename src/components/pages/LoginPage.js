@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import validator from 'validator';
 
@@ -23,6 +24,10 @@ export const LoginPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
   const dispatch = useDispatch();
+
+  // TODO Leer con el hook el parametro.
+  const { user } = useParams();
+  console.log(user, '<--ver');
 
   const { msgError, loading } = useSelector(getMsgError);
 

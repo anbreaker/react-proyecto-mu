@@ -131,9 +131,10 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
         firebaseInit
           .auth()
           .currentUser.sendEmailVerification({
-            url: `https://www.egestion.xyz/?email=${user.email}`,
+            // TODO preguntar por esto a Luis (user.email???)
+            url: `https://www.egestion.xyz/:user=${user.email}`,
           })
-          .then(data => console.log(data, '<--Data'))
+          .then(data => () => {}) // TODO ver despues...
           .catch(err => console.log(err));
 
         dispatch(finishLoadingAction());
@@ -156,7 +157,9 @@ export const recoveryPassAction = email => {
     dispatch(startLoadingAction());
     firebaseInit
       .auth()
-      .sendPasswordResetEmail(email)
+      .sendPasswordResetEmail(email, {
+        url: `https://www.egestion.xyz/:user=${email}`,
+      })
       .then(() => {
         // TODO como traducir estos mensajes...
         dispatch(finishLoadingAction());
