@@ -27,7 +27,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   // TODO Leer con el hook el parametro.
   const { user } = useParams();
-  console.log(user, '<--ver');
+  console.log(user, '<--UserDestructuring');
 
   const { msgError, loading } = useSelector(getMsgError);
 
