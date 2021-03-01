@@ -59,7 +59,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
       // Enviar al Back en un Objeto..
       // TODO enviar este objeto al back
       // user: { uid, displayName, email, phonNumber, photURL, role }
-      
+
       client.post('/user', formValues)
       .then(res => console.log(res))
       .catch(err => console.log(err))

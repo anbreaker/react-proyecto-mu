@@ -14,7 +14,7 @@ const setEmailHeader = email => {
 };
 
 const removeEmailHeader = () => {
-  client.defaults.headers.common.email;
+  delete client.defaults.headers.common.email;
 };
 
 const setAuthorizationHeader = token => {
@@ -58,9 +58,13 @@ client.interceptors.response.use(
 );
 
 // Configure client
-export const configureClient = token => {
+export const configureClient = (token, email) => {
   if (token) {
     setAuthorizationHeader(token);
+  }
+
+  if (email) {
+    setEmailHeader(email)
   }
 };
 

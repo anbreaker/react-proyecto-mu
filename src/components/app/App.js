@@ -37,7 +37,7 @@ export const App = () => {
               user.phoneNumber
             )
           );
-          configureClient(token);
+          configureClient(token, user.email);
         });
       }
     });
