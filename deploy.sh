@@ -1,5 +1,5 @@
 #!/bin/bash
-
+source name.sh
 checkCode(){
   if [[ $? -gt 0 ]]
   then
@@ -13,6 +13,9 @@ checkEnv(){
   echo $entorno 
   echo "es el entorno"
 }
+
+nameApp
+
 
 checkEnv
 echo "Build React APP"
