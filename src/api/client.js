@@ -9,6 +9,14 @@ const client = axios.create({
   baseURL,
 });
 
+const setEmailHeader = email => {
+  client.defaults.headers.common.email = email;
+};
+
+const removeEmailHeader = () => {
+  client.defaults.headers.common.email;
+};
+
 const setAuthorizationHeader = token => {
   client.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
@@ -20,6 +28,7 @@ const removeAuthorizationHeader = () => {
 // Login method
 client.login = credentials =>
   client.post('/auth/login', credentials).then(auth => {
+    console.log(auth)
     setAuthorizationHeader(auth.token);
     return auth;
   });

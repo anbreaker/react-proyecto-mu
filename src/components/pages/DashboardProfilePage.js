@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLocale, getMsgError, getUserAuth } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { uploadFileCloudinaryAction } from '../../store/actions/upCloudinary';
-
+import client from '../../api/client';
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
@@ -56,6 +56,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
+      client.post('/user', formValues)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
       // Enviar al Back en un Objeto..
       // TODO enviar este objeto al back
       // user: { uid, displayName, email, phonNumber, photURL, role }
