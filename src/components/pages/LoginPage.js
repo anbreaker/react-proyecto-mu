@@ -26,8 +26,8 @@ export const LoginPage = ({ handlerOnFocus }) => {
   const dispatch = useDispatch();
 
   // TODO Leer con el hook el parametro.
+  // eslint-disable-next-line
   const { user } = useParams();
-  console.log(user, '<--UserDestructuring');
 
   const { msgError, loading } = useSelector(getMsgError);
 
