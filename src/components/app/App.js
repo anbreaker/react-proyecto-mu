@@ -15,6 +15,7 @@ import { ForgotPasswordPage } from '../pages/ForgotPasswordPage';
 import { Dashboard } from '../pages/Dashboard';
 import { removeErrorAction } from '../../store/actions/ui';
 import { DashboardProfilePage } from '../pages/DashboardProfilePage';
+import { DashboardSuperAdminPage } from '../pages/DashboardSuperAdminPage';
 import { firebaseInit } from '../../firebase/firebaseConfig';
 import { login } from '../../store/actions/auth';
 import { configureClient } from '../../api/client';
@@ -54,9 +55,8 @@ export const App = () => {
     <SweetAlert alert={alert}>
       <Switch>
         <Route path="/" exact>
-          {/* <Redirect to="/dashboard"></Redirect> */}
           {isLogged ? (
-            <Redirect to="/profile"></Redirect>
+            <Redirect to="/dashboard"></Redirect>
           ) : (
             <LoginPage handlerOnFocus={handlerOnFocus} />
           )}
@@ -64,16 +64,15 @@ export const App = () => {
 
         <PrivateRoute path="/dashboard" exact component={Dashboard} />
 
-        {/* <Redirect to="/dashboard"></Redirect> */}
         <Route path="/login" exact>
           {isLogged ? (
-            <Redirect to="/profile"></Redirect>
+            <Redirect to="/dashboard"></Redirect>
           ) : (
             <LoginPage handlerOnFocus={handlerOnFocus} />
           )}
         </Route>
 
-        <Route path="/registro" exact>
+        <Route path="/register" exact>
           {isLogged ? (
             <Redirect to="/dashboard"></Redirect>
           ) : (
@@ -81,7 +80,12 @@ export const App = () => {
           )}
         </Route>
 
-        <Route path="/recuperar-pass" exact>
+        {/* //TODO proteger ruta admin... */}
+        <Route path="/admin" exact>
+          <DashboardSuperAdminPage />
+        </Route>
+
+        <Route path="/recovery-pass" exact>
           <ForgotPasswordPage handlerOnFocus={handlerOnFocus} />
         </Route>
 

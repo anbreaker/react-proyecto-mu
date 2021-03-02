@@ -92,5 +92,17 @@
     "Mobile": "Mobile",
     "Mobile-Need": "We need your mobile number so we can keep in touch, thank you!",
     "Update-Profile": "Update your profile"
+  },
+  "DashboardSuperAdminPage": {
+    "Organizations": "Organizations:",
+    "Info-Page": "SuperAdmin administration window, here you can add new organisations and list existing organisations in the system.",
+    "Add-Org": "Add Organizations",
+    "Id": "Number Id",
+    "Name": "Name",
+    "Address": "Address",
+    "President": "President",
+    "Mobile": "Mobile",
+    "Foundation": "Foundation",
+    "Search": "Search..."
   }
 }

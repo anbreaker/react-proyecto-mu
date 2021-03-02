@@ -14,6 +14,7 @@ import { getLocale, getMsgError, getUserAuth } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { uploadFileCloudinaryAction } from '../../store/actions/upCloudinary';
 import client from '../../api/client';
+
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
