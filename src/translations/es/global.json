@@ -66,6 +66,7 @@
     "Success": "Éxito",
     "Welcome": "Login exitoso, ¡Bienvenido!",
     "Email-InUse": "Este email ya está siendo utilizado por otro usuario.",
+    "Password-Send": "Contraseña enviada con éxito a su e-mail",
     "Error": "Error",
     "auth/wrong-password": "La constraseña es inválida o el usuario no tiene ninguna.",
     "auth/user-not-found": "No existe ningún usuario con este email. El usuario puede haber sido eliminado."

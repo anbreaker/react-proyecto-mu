@@ -66,6 +66,7 @@
     "Success": "Success",
     "Welcome": "Login successful, Welcome!",
     "Email-InUse": "The email address is already in use by another account.",
+    "Password-Send": "Password successfully sent to your e-mail",
     "Error": "Error",
     "auth/wrong-password": "The password is invalid or the user does not have a password.",
     "auth/user-not-found": "There is no user record corresponding to this identifier. The user may have been deleted."

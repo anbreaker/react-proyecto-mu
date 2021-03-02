@@ -66,6 +66,7 @@
     "Success": "Êxito",
     "Welcome": "Login bem sucedido, Bem-vindo!",
     "Email-InUse": "Este e-mail já está a ser utilizado por outra pessoa.",
+    "Password-Send": "Senha enviada com sucesso para o seu e-mail",
     "Error": "Erro",
     "auth/wrong-password": "A senha é inválida ou o utilizador não tem uma senha.",
     "auth/user-not-found": "Não há nenhum usuário com este endereço de e-mail. O usuário pode ter sido excluído."

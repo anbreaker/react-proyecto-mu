@@ -5,10 +5,12 @@ import { types } from '../types/types';
  * @param {Mesagge to translate i18n} sms
  * @param {Title to translate i18n Modal} title
  */
-export const setAlertAction = alert => ({
+export const setAlertAction = (title, text, icon) => ({
   type: types.swalSetAction,
   payload: {
-    ...alert,
+    title,
+    text,
+    icon,
   },
 });
 

@@ -22,11 +22,11 @@ export const Dashboard = () => {
 
   const handleClickError = () => {
     dispatch(
-      setAlertAction({
-        title: 'ErrorSwal.Error',
-        text: 'ErrorSwal.auth/user-not-found',
-        icon: 'error',
-      })
+      setAlertAction(
+        'ErrorSwal.Error',
+        'ErrorSwal.auth/user-not-found',
+        'error'
+      )
     );
   };
 

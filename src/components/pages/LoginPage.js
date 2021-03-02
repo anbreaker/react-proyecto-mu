@@ -53,7 +53,10 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
       //TODO Refrescar input password... Preguntar
     } else if (password <= 5) {
+      console.log('dentro del if');
+
       dispatch(setErrorAction('LoginPage.Password-Error'));
+
       return false;
     }
 
@@ -139,7 +142,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
                         text={t('LoginPage.Create-Account')}
                       />
                       <LinkForms
-                        path={'/recuperar-pass'}
+                        path={'/recovery-pass'}
                         text={t('LoginPage.Forgot-Password')}
                       />
                     </div>

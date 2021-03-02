@@ -21,7 +21,7 @@ export const NavbarForDevOnly = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/recuperar-pass">
+            <Link className="nav-link" to="/recovery-pass">
               Recuperar Contraseña
             </Link>
           </li>

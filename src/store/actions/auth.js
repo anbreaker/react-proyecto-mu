@@ -2,7 +2,6 @@ import {
   firebaseInit,
   googleAuthProvider,
 } from '../../firebase/firebaseConfig';
-import Swal from 'sweetalert2';
 
 import { configureClient } from '../../api/client';
 import { getMenuByRole } from '../../auth/permisos';
@@ -34,23 +33,11 @@ export const startLoginEmailPassword = (email, password) => {
 
       configureClient(token);
       dispatch(finishLoadingAction());
-
-      dispatch(
-        setAlertAction({
-          title: 'Success',
-          text: 'Bienvenido',
-          icon: 'success',
-        })
-      );
     } catch (error) {
       //console.error('Error ->', error);
       dispatch(finishLoadingAction());
       dispatch(
-        setAlertAction({
-          title: 'ErrorSwal.Error',
-          text: `ErrorSwal.${error.code}`,
-          icon: 'error',
-        })
+        setAlertAction('ErrorSwal.Error', `ErrorSwal.${error.code}`, 'error')
       );
     }
   };
@@ -85,8 +72,9 @@ export const startGoogleLogin = () => {
       console.log(error);
       dispatch(finishLoadingAction());
 
-      // TODO como traducir estos mensajes...
-      Swal.fire('Error', error.message, 'error');
+      dispatch(
+        setAlertAction('ErrorSwal.Error', `ErrorSwal.${error.code}`, 'error')
+      );
     }
   };
 };
@@ -147,16 +135,15 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
           .catch(err => console.log(err));
 
         dispatch(finishLoadingAction());
-        // TODO como traducir estos mensajes...
-        Swal.fire('Success', 'Bienvenido', 'success');
       })
       .catch(error => {
         console.error('Error ->', error);
 
         dispatch(finishLoadingAction());
 
-        // TODO como traducir estos mensajes...
-        Swal.fire('Error', error.message, 'error');
+        dispatch(
+          setAlertAction('ErrorSwal.Error', `ErrorSwal.${error.code}`, 'error')
+        );
       });
   };
 };
@@ -170,15 +157,23 @@ export const recoveryPassAction = email => {
         url: `https://www.egestion.xyz/login?user=${email}`,
       })
       .then(() => {
-        // TODO como traducir estos mensajes...
         dispatch(finishLoadingAction());
-        Swal.fire('Success', 'Enviado email', 'success');
+
+        dispatch(
+          setAlertAction(
+            'ErrorSwal.Success',
+            'ErrorSwal.Password-Send',
+            'success'
+          )
+        );
       })
-      // dispatch error y success
+
       .catch(error => {
         dispatch(finishLoadingAction());
-        // TODO como traducir estos mensajes...
-        Swal.fire('Error', error.message, 'error');
+
+        dispatch(
+          setAlertAction('ErrorSwal.Error', `ErrorSwal.${error.code}`, 'error')
+        );
         console.log(error);
       });
   };
