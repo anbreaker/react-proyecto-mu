@@ -42,14 +42,14 @@ const Sidebar = () => {
           class: sidebarToggled && 'sidebar-toggled',
         }}
       />
-      <Collapse isOpen={showSidebar}>
-        <ul
-          className={clsx(
-            'navbar-nav bg-gradient-primary sidebar sidebar-dark accordion',
-            sidebarToggled && 'toggled'
-          )}
-          id="accordionSidebar"
-        >
+      <ul
+        className={clsx(
+          'navbar-nav bg-gradient-primary sidebar sidebar-dark accordion',
+          sidebarToggled && 'toggled'
+        )}
+        id="accordionSidebar"
+      >
+        <Collapse isOpen={showSidebar} className="navbar-nav">
           {/* <!-- Sidebar - Brand --> */}
           <Link
             className="sidebar-brand d-flex align-items-center justify-content-center"
@@ -77,10 +77,9 @@ const Sidebar = () => {
               onClick={() => setSidebarToggled(!sidebarToggled)}
             ></button>
           </div>
-        </ul>
-        {/* <!-- End of Sidebar --> */}
-        <hr />
-      </Collapse>
+        </Collapse>
+      </ul>
+      {/* <!-- End of Sidebar --> */}
     </>
   );
 };
