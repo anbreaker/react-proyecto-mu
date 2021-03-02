@@ -9,16 +9,8 @@ const client = axios.create({
   baseURL,
 });
 
-const setEmailHeader = email => {
-  client.defaults.headers.common.email = email;
-};
-
-const removeEmailHeader = () => {
-  delete client.defaults.headers.common.email;
-};
-
 const setAuthorizationHeader = token => {
-  client.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  client.defaults.headers.common['Authorization'] = token;
 };
 
 const removeAuthorizationHeader = () => {
@@ -28,7 +20,7 @@ const removeAuthorizationHeader = () => {
 // Login method
 client.login = credentials =>
   client.post('/auth/login', credentials).then(auth => {
-    console.log(auth)
+    console.log(auth);
     setAuthorizationHeader(auth.token);
     return auth;
   });
@@ -58,13 +50,9 @@ client.interceptors.response.use(
 );
 
 // Configure client
-export const configureClient = (token, email) => {
+export const configureClient = token => {
   if (token) {
     setAuthorizationHeader(token);
-  }
-
-  if (email) {
-    setEmailHeader(email)
   }
 };
 

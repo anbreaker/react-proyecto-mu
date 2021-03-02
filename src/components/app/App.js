@@ -31,6 +31,8 @@ export const App = () => {
     firebaseInit.auth().onAuthStateChanged(user => {
       if (user) {
         user.getIdToken().then(token => {
+          console.log(user);
+
           dispatch(
             login(
               user.uid,
@@ -41,7 +43,7 @@ export const App = () => {
               user.phoneNumber
             )
           );
-          configureClient(token, user.email);
+          configureClient(token);
         });
       }
     });
