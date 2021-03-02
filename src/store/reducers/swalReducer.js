@@ -1,7 +1,11 @@
 import { types } from '../types/types';
 
 const initialState = {
-  sms: '',
+  alert: {
+    title: '',
+    text: '',
+    icon: '',
+  },
 };
 
 export const swalReducer = (state = initialState, action) => {
@@ -12,10 +16,7 @@ export const swalReducer = (state = initialState, action) => {
         alert: action.payload,
       };
     case types.swalRemoveAction:
-      return {
-        alert: '',
-      };
-
+      return initialState;
     default:
       return state;
   }

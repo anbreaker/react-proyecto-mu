@@ -12,4 +12,4 @@ export const getMsgError = state => state.ui;
 export const getMenuUserStatus = state => state.ui.menuUser;
 export const getSidebarStatus = state => state.ui.showSidebar;
 
-export const getSwalSms = state => state.swal;
+export const getSwalAlert = state => state.swal.alert;

@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { configureClient } from '../../api/client';
 import { getMenuByRole } from '../../auth/permisos';
 import { finishLoadingAction, startLoadingAction } from './ui';
+import { setAlertAction } from './swal';
 import { types } from '../types/types';
 
 export const startLoginEmailPassword = (email, password) => {
@@ -34,15 +35,23 @@ export const startLoginEmailPassword = (email, password) => {
       configureClient(token);
       dispatch(finishLoadingAction());
 
-      // TODO como traducir estos mensajes...
-
-      Swal.fire('Success', 'Bienvenido', 'success');
+      dispatch(
+        setAlertAction({
+          title: 'Success',
+          text: 'Bienvenido',
+          icon: 'success',
+        })
+      );
     } catch (error) {
-      console.error('Error ->', error);
-
+      //console.error('Error ->', error);
       dispatch(finishLoadingAction());
-      // TODO como traducir estos mensajes...
-      Swal.fire('Error', error.message, 'error');
+      dispatch(
+        setAlertAction({
+          title: 'ErrorSwal.Error',
+          text: `ErrorSwal.${error.code}`,
+          icon: 'error',
+        })
+      );
     }
   };
 };

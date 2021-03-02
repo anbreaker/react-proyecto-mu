@@ -63,7 +63,12 @@
     "Administration": "Gestão"
   },
   "ErrorSwal": {
-    "Email-InUse": "Este e-mail já está a ser utilizado por outra pessoa."
+    "Success": "Éxito",
+    "Welcome": "Login successful, welcome",
+    "Email-InUse": "Este e-mail já está a ser utilizado por outra pessoa.",
+    "Error": "Error",
+    "auth/wrong-password": "The password is invalid or the user does not have a password.",
+    "auth/user-not-found": "No hay ningún usuario asociado al email ingresado. El usuario puede haber sido eliminado."
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",

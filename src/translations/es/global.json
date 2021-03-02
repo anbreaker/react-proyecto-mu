@@ -63,7 +63,12 @@
     "Administration": "Admin."
   },
   "ErrorSwal": {
-    "Email-InUse": "Este email ya está siendo utilizado por otro usuario."
+    "Success": "Éxito",
+    "Welcome": "Login exitoso, bienvenido",
+    "Email-InUse": "Este email ya está siendo utilizado por otro usuario.",
+    "Error": "Error",
+    "auth/wrong-password": "La constraseña es inválida o el usuario no tiene una.",
+    "auth/user-not-found": "No hay ningún usuario asociado al email ingresado. El usuario puede haber sido eliminado."
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",

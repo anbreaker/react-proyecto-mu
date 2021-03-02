@@ -7,7 +7,7 @@ import '../../assets/vendor/fontawesome-free/css/all.min.css';
 import '../../assets/css/style.css';
 
 import PrivateRoute from '../basicComponents/PrivateRoute';
-import { uidOnIndexDB } from '../../store/selectors';
+import { uidOnIndexDB, getSwalAlert } from '../../store/selectors';
 import { LoginPage } from '../pages/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
@@ -18,10 +18,12 @@ import { DashboardProfilePage } from '../pages/DashboardProfilePage';
 import { firebaseInit } from '../../firebase/firebaseConfig';
 import { login } from '../../store/actions/auth';
 import { configureClient } from '../../api/client';
+import { SweetAlert } from '../parts/SweetAlert';
 
 export const App = () => {
   const dispatch = useDispatch();
   const isLogged = useSelector(uidOnIndexDB);
+  const alert = useSelector(getSwalAlert);
 
   useEffect(() => {
     firebaseInit.auth().onAuthStateChanged(user => {
@@ -49,45 +51,47 @@ export const App = () => {
   };
 
   return (
-    <Switch>
-      <Route path="/" exact>
-        {/* <Redirect to="/dashboard"></Redirect> */}
-        {isLogged ? (
-          <Redirect to="/profile"></Redirect>
-        ) : (
-          <LoginPage handlerOnFocus={handlerOnFocus} />
-        )}
-      </Route>
+    <SweetAlert alert={alert}>
+      <Switch>
+        <Route path="/" exact>
+          {/* <Redirect to="/dashboard"></Redirect> */}
+          {isLogged ? (
+            <Redirect to="/profile"></Redirect>
+          ) : (
+            <LoginPage handlerOnFocus={handlerOnFocus} />
+          )}
+        </Route>
 
-      <PrivateRoute path="/dashboard" exact component={Dashboard} />
+        <PrivateRoute path="/dashboard" exact component={Dashboard} />
 
-      <Route path="/login" exact>
-        {isLogged ? (
-          <Redirect to="/dashboard"></Redirect>
-        ) : (
-          <LoginPage handlerOnFocus={handlerOnFocus} />
-        )}
-      </Route>
+        <Route path="/login" exact>
+          {isLogged ? (
+            <Redirect to="/dashboard"></Redirect>
+          ) : (
+            <LoginPage handlerOnFocus={handlerOnFocus} />
+          )}
+        </Route>
 
-      <Route path="/registro" exact>
-        {isLogged ? (
-          <Redirect to="/dashboard"></Redirect>
-        ) : (
-          <RegisterPage handlerOnFocus={handlerOnFocus} />
-        )}
-      </Route>
+        <Route path="/registro" exact>
+          {isLogged ? (
+            <Redirect to="/dashboard"></Redirect>
+          ) : (
+            <RegisterPage handlerOnFocus={handlerOnFocus} />
+          )}
+        </Route>
 
-      <Route path="/recuperar-pass" exact>
-        <ForgotPasswordPage handlerOnFocus={handlerOnFocus} />
-      </Route>
+        <Route path="/recuperar-pass" exact>
+          <ForgotPasswordPage handlerOnFocus={handlerOnFocus} />
+        </Route>
 
-      <Route path="/404" exact component={NotFoundPage} />
+        <Route path="/404" exact component={NotFoundPage} />
 
-      <Route path="/profile" exact>
-        <DashboardProfilePage handlerOnFocus={handlerOnFocus} />
-      </Route>
+        <PrivateRoute path="/profile" exact>
+          <DashboardProfilePage handlerOnFocus={handlerOnFocus} />
+        </PrivateRoute>
 
-      <Redirect to="/404" />
-    </Switch>
+        <Redirect to="/404" />
+      </Switch>
+    </SweetAlert>
   );
 };

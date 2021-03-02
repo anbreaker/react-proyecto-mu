@@ -5,16 +5,13 @@ import { types } from '../types/types';
  * @param {Mesagge to translate i18n} sms
  * @param {Title to translate i18n Modal} title
  */
-export const setModelAction = (type, sms, title) => ({
+export const setAlertAction = alert => ({
   type: types.swalSetAction,
-  payload: (alert = {
-    icon: type,
-    title: title,
-    text: sms,
-  }),
+  payload: {
+    ...alert,
+  },
 });
 
-export const removeAction = () => ({
+export const removeAlertAction = () => ({
   type: types.swalRemoveAction,
-  payload: '',
 });
