@@ -93,6 +93,9 @@
     "Mobile-Need": "We need your mobile number so we can keep in touch, thank you!",
     "Update-Profile": "Update your profile"
   },
+  "TopBar": {
+    "Search": "Search..."
+  },
   "DashboardSuperAdminPage": {
     "Organizations": "Organizations:",
     "Info-Page": "SuperAdmin administration window, here you can add new organisations and list existing organisations in the system.",
@@ -103,6 +106,6 @@
     "President": "President",
     "Mobile": "Mobile",
     "Foundation": "Foundation",
-    "Search": "Search..."
+    "Search-Organizations": "Search Organizations..."
   }
 }

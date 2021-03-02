@@ -1,10 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { Button } from '../basicComponents/Button';
 
+import { Search } from '../basicComponents/Search';
+import { getMsgError } from '../../store/selectors';
 import MainLayout from '../layout/MainLayout';
 
 export const DashboardSuperAdminPage = () => {
   const { t } = useTranslation('global');
+
+  const { loading } = useSelector(getMsgError);
 
   return (
     <MainLayout>
@@ -15,8 +21,26 @@ export const DashboardSuperAdminPage = () => {
         </h1>
         <p className="mb-4">{t('DashboardSuperAdminPage.Info-Page')}</p>
 
+        <div className="row">
+          <div className="col-8">
+            <Search text={t('DashboardSuperAdminPage.Search-Organizations')} />
+          </div>
+
+          <div className="col-4">
+            <Button
+              type="submit"
+              variant="primary"
+              startIcon="fas fa-plus-square"
+              disabled={loading}
+            >
+              {' '}
+              {t('DashboardSuperAdminPage.Add-Org')}
+            </Button>
+          </div>
+        </div>
+
         {/* <!-- DataTales Example --> */}
-        <div className="card shadow mb-4">
+        <div className="card shadow mb-4 mt-4">
           <div className="card-header py-3">
             <h6 className="m-0 font-weight-bold text-primary">
               {t('DashboardSuperAdminPage.Organizations')}

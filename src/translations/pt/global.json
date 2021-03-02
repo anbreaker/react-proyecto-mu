@@ -93,16 +93,19 @@
     "Mobile-Need": "Precisamos do seu número de telemóvel para que possamos manter-nos em contacto. Obrigado!",
     "Update-Profile": "Actualize o seu perfil"
   },
+  "TopBar": {
+    "Search": "Pesquisar..."
+  },
   "DashboardSuperAdminPage": {
     "Organizations": "Organizações:",
     "Info-Page": "Janela de administração de SuperAdmin, aqui pode adicionar novas organizações e listar as já existentes no sistema.",
-    "Add-Org": "Adicionar organização",
+    "Add-Org": "Adicionar Organização",
     "Id": "Número Id",
     "Name": "Nombre",
     "Address": "Endereço",
     "President": "Presidente",
     "Mobile": "Telemóvel",
     "Foundation": "Fundação",
-    "Search": "Pesquisar..."
+    "Search-Organizations": "Pesquisar Organizações..."
   }
 }

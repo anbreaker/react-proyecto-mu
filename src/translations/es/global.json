@@ -93,16 +93,19 @@
     "Mobile-Need": "Necesitamos tu numero de móvil para poder tener mantener el contacto. ¡Gracias!",
     "Update-Profile": "Actualiza tu perfil"
   },
+  "TopBar": {
+    "Search": "Buscar..."
+  },
   "DashboardSuperAdminPage": {
     "Organizations": "Organizaciones:",
     "Info-Page": "Ventana de administración del SuperAdmin, aqui puede agregar nuevas organizaciones y listar las existentes en el sistema.",
-    "Add-Org": "Añadir organización",
+    "Add-Org": "Añadir Organización",
     "Id": "Número Id",
     "Name": "Nombre",
     "Address": "Dirección",
     "President": "Presidente",
     "Mobile": "Móvil",
     "Foundation": "Fundación",
-    "Search": "Buscar..."
+    "Search-Organizations": "Buscar Organizaciones..."
   }
 }
