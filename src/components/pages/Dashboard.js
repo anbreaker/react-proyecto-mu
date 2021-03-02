@@ -45,11 +45,16 @@ export const Dashboard = () => {
   const handleClickDelete = () => {
     Swal.fire({
       title: 'Are you sure?',
-      text:
-        'Once deleted, you will not be able to recover this imaginary file!',
+      text: "You won't be able to revert this!",
       icon: 'warning',
-      buttons: true,
-      dangerMode: true,
+      showCancelButton: true,
+      confirmButtonColor: '#f5365c',
+      cancelButtonColor: '#5E72E4',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.value) {
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+      }
     });
   };
 
