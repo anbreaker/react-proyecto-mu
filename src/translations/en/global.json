@@ -107,6 +107,12 @@
     "President": "President",
     "Mobile": "Mobile",
     "Foundation": "Foundation",
+    "Country": "Country",
+    "Post-Code": "Post Code",
     "Search-Organizations": "Search Organizations..."
+  },
+  "DashboardOrgProfilePage": {
+    "Delete-Org": "Delete Organization",
+    "Upload-Org": "Update Organization"
   }
 }

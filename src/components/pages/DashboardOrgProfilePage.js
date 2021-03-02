@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
-import profile from '../../assets/img/undraw_profile.svg';
+import profile from '../../assets/img/undraw_posting_photo.svg';
 
 import MainLayout from '../layout/MainLayout';
 import { InputText } from '../basicComponents/InputText';
@@ -23,35 +23,33 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
 
-  const user = useSelector(getUserAuth);
-
   const [formValues, handleInputChange, setFormValues] = useForm({
-    displayName: '',
     id: '',
-    foundation: '',
-    email: '',
-    president: '',
+    displayName: '',
     address: '',
-    phoneNumber: '',
+    president: '',
+    mobile: '',
+    foundation: '',
     country: '',
-    photoURL: '',
+    postCode: '',
+    imgFoundation: '',
   });
 
   const {
-    displayName,
     id,
-    foundation,
-    email,
-    president,
+    displayName,
     address,
-    phoneNumber,
+    president,
+    mobile,
+    foundation,
     country,
-    photoURL,
+    postCode,
+    imgFoundation,
   } = formValues;
 
   useEffect(() => {
-    setFormValues({ ...formValues, ...user });
-  }, [user]);
+    setFormValues({ ...formValues });
+  }, []);
 
   const handleChangeProfile = event => {
     event.preventDefault();
@@ -75,7 +73,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
     } else if (id.length <= 2) {
       dispatch(setErrorAction('DashboardProfilePage.FirstSurname-Required'));
       return false;
-    } else if (!validator.isMobilePhone(phoneNumber)) {
+    } else if (!validator.isMobilePhone(mobile)) {
       dispatch(setErrorAction('DashboardProfilePage.Mobile-Need'));
       return false;
     } else if (address.length <= 2) {
@@ -122,7 +120,8 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                 width="152"
                 height="141"
                 alt=""
-                src={photoURL ? photoURL : profile}
+                // TODO Usar imagen de organizacion.
+                src={imgFoundation ? imgFoundation : profile}
               />
 
               <div className="card mt-3 border-bottom-success text-center">
@@ -154,12 +153,12 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                   <div className="row">
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
-                        {t('DashboardProfilePage.FirtSurname')}:
+                        {t('DashboardSuperAdminPage.Name')}:
                       </h6>
                       <InputText
-                        text={`${t('DashboardProfilePage.FirtSurname')}...`}
-                        name="firstSurname"
-                        value={id}
+                        text={`${t('DashboardSuperAdminPage.Name')}...`}
+                        name="displayName"
+                        value={displayName}
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}
                         required
@@ -167,25 +166,26 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                     </div>
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
-                        {t('DashboardProfilePage.SecondSurname')}:
+                        {t('DashboardSuperAdminPage.Id')}:
                       </h6>
                       <InputText
-                        text={`${t('DashboardProfilePage.SecondSurname')}...`}
-                        name="secondSurname"
-                        value={foundation}
+                        text={`${t('DashboardSuperAdminPage.Id')}...`}
+                        name="id"
+                        value={id}
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}
+                        required
                       />
                     </div>
                     {/*  */}
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
-                        {t('DashboardProfilePage.FirtSurname')}:
+                        {t('DashboardSuperAdminPage.Mobile')}:
                       </h6>
                       <InputText
-                        text={`${t('DashboardProfilePage.FirtSurname')}...`}
-                        name="firstSurname"
-                        value={id}
+                        text={`${t('DashboardSuperAdminPage.Mobile')}...`}
+                        name="mobile"
+                        value={mobile}
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}
                         required
@@ -193,25 +193,26 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                     </div>
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
-                        {t('DashboardProfilePage.SecondSurname')}:
+                        {t('DashboardSuperAdminPage.Foundation')}:
                       </h6>
                       <InputText
-                        text={`${t('DashboardProfilePage.SecondSurname')}...`}
-                        name="secondSurname"
+                        text={`${t('DashboardSuperAdminPage.Foundation')}...`}
+                        name="foundation"
                         value={foundation}
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}
+                        required
                       />
                     </div>
                     {/*  */}
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
-                        {t('DashboardProfilePage.FirtSurname')}:
+                        {t('DashboardSuperAdminPage.Country')}:
                       </h6>
                       <InputText
-                        text={`${t('DashboardProfilePage.FirtSurname')}...`}
-                        name="firstSurname"
-                        value={id}
+                        text={`${t('DashboardSuperAdminPage.Country')}...`}
+                        name="country"
+                        value={country}
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}
                         required
@@ -219,44 +220,41 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                     </div>
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
-                        {t('DashboardProfilePage.SecondSurname')}:
+                        {t('DashboardSuperAdminPage.Post-Code')}:
                       </h6>
                       <InputText
-                        text={`${t('DashboardProfilePage.SecondSurname')}...`}
-                        name="secondSurname"
-                        value={foundation}
+                        text={`${t('DashboardSuperAdminPage.Post-Code')}...`}
+                        name="postCode"
+                        value={postCode}
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}
+                        required
                       />
                     </div>
                   </div>
                   <h6 className="font-weight-bold mt-3">
-                    {t('DashboardProfilePage.Fiscal')}:
+                    {t('DashboardSuperAdminPage.Address')}:
                   </h6>
                   <InputText
-                    text={`${t('DashboardProfilePage.Fiscal')}...`}
-                    name="fiscalNumber"
-                    value={president}
+                    text={`${t('DashboardSuperAdminPage.Address')}...`}
+                    name="address"
+                    value={address}
                     onFocus={handlerOnFocus}
                     onChange={handleInputChange}
                     required
                   />
                   <h6 className="font-weight-bold mt-3">
-                    {t('DashboardProfilePage.Fiscal')}:
+                    {t('DashboardSuperAdminPage.President')}:
                   </h6>
                   <InputText
-                    text={`${t('DashboardProfilePage.Fiscal')}...`}
-                    name="fiscalNumber"
+                    text={`${t('DashboardSuperAdminPage.President')}...`}
+                    name="president"
                     value={president}
                     onFocus={handlerOnFocus}
                     onChange={handleInputChange}
                     required
                   />
-                  <div className="mt-3">
-                    <h6 className="m-0 font-weight-bold text-primary">
-                      {t('DashboardProfilePage.Contact-Information')}:
-                    </h6>
-                  </div>
+
                   <hr />
                   <MessageError msgError={msgError} />
                   <div className="row">
@@ -264,11 +262,11 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                       <Button
                         type="submit"
                         variant="alert"
-                        startIcon="fas fa-id-card"
+                        startIcon="fas fa-exclamation-triangle"
                         disabled={loading}
                       >
                         {' '}
-                        Eliminar...
+                        {t('DashboardOrgProfilePage.Delete-Org')}
                       </Button>
                     </div>
                     <div className="col-6">
@@ -279,7 +277,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                         disabled={loading}
                       >
                         {' '}
-                        {t('DashboardProfilePage.Update-Profile')}
+                        {t('DashboardOrgProfilePage.Upload-Org')}
                       </Button>
                     </div>
                   </div>

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import MainLayout from '../layout/MainLayout';
 import { Button } from '../basicComponents/Button';
 import { setAlertAction } from '../../store/actions/swal';
+import Swal from 'sweetalert2';
 
 export const Dashboard = () => {
   //! Sólo para pruebas
@@ -12,11 +13,7 @@ export const Dashboard = () => {
 
   const handleClickExito = () => {
     dispatch(
-      setAlertAction({
-        title: 'ErrorSwal.Success',
-        text: 'ErrorSwal.Welcome',
-        icon: 'success',
-      })
+      setAlertAction('ErrorSwal.Success', 'ErrorSwal.Welcome', 'success')
     );
   };
 
@@ -30,6 +27,32 @@ export const Dashboard = () => {
     );
   };
 
+  const handleClickLoading = () => {
+    Swal.fire({
+      title: 'Uploading...',
+      text: 'Please wait...',
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
+    setTimeout(() => {
+      Swal.close();
+    }, 1500);
+  };
+  const handleClickDelete = () => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text:
+        'Once deleted, you will not be able to recover this imaginary file!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    });
+  };
+
   return (
     <MainLayout>
       <div className="container-fluid">
@@ -39,6 +62,12 @@ export const Dashboard = () => {
         </Button>
         <Button type="button" variant="alert" onClick={handleClickError}>
           Alerta Error
+        </Button>
+        <Button type="button" variant="primary" onClick={handleClickLoading}>
+          Loading Example
+        </Button>
+        <Button type="button" variant="alert" onClick={handleClickDelete}>
+          Delete
         </Button>
       </div>
     </MainLayout>
