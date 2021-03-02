@@ -21,7 +21,6 @@ const SidebarList = ({ showSidebar }) => {
     return setMenuExpanded('');
   }, [showSidebar]);
 
-  // TODO map is undefined al cerrar sesion...
   useEffect(() => {
     const elementos =
       permisos &&

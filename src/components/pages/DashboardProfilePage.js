@@ -60,18 +60,16 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
       // TODO enviar este objeto al back
       // user: { uid, displayName, email, phonNumber, photURL, role }
 
-      client.post('/user', formValues)
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+      client
+        .post('/user', formValues)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
   };
 
   const isFormChangeProfileValid = () => {
     if (displayName.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
-      return false;
-    } else if (!validator.isEmail(email)) {
-      dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
     } else if (firstSurname.length <= 2) {
       dispatch(setErrorAction('DashboardProfilePage.FirstSurname-Required'));
@@ -151,24 +149,24 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                 </h6>
               </div>
               <div className="card-body">
-                <h6 className="font-weight-bold">{t('RegisterPage.Name')}:</h6>
-
+                <h6 className="font-weight-bold">
+                  {t('DashboardProfilePage.EmailUser')}
+                </h6>
                 <form onSubmit={handleChangeProfile}>
+                  <InputText
+                    text={t(email)}
+                    name="email"
+                    value={email}
+                    disabled
+                  />
+
+                  <h6 className="font-weight-bold mt-3">
+                    {t('RegisterPage.Name')}:
+                  </h6>
                   <InputText
                     text={t(displayName ? displayName : 'RegisterPage.Name')}
                     name="displayName"
                     value={displayName}
-                    onFocus={handlerOnFocus}
-                    onChange={handleInputChange}
-                  />
-
-                  <h6 className="font-weight-bold mt-3">
-                    {t('LoginPage.Enter-Mail')}:
-                  </h6>
-                  <InputText
-                    text={t(email ? email : 'LoginPage.Enter-Mail')}
-                    name="email"
-                    value={email}
                     onFocus={handlerOnFocus}
                     onChange={handleInputChange}
                   />
@@ -200,7 +198,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                       />
                     </div>
                   </div>
-
                   <h6 className="font-weight-bold mt-3">
                     {t('DashboardProfilePage.Fiscal')}:
                   </h6>
@@ -212,7 +209,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                     onChange={handleInputChange}
                     required
                   />
-
                   <div className="mt-3">
                     <h6 className="m-0 font-weight-bold text-primary">
                       {t('DashboardProfilePage.Contact-Information')}:
@@ -258,9 +254,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                     </div>
                   </div>
                   <hr />
-
                   <MessageError msgError={msgError} />
-
                   <Button
                     type="submit"
                     variant="primary"

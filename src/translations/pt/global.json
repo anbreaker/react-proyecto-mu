@@ -63,12 +63,12 @@
     "Administration": "Gestão"
   },
   "ErrorSwal": {
-    "Success": "Éxito",
-    "Welcome": "Login successful, welcome",
+    "Success": "Êxito",
+    "Welcome": "Login bem sucedido, Bem-vindo!",
     "Email-InUse": "Este e-mail já está a ser utilizado por outra pessoa.",
-    "Error": "Error",
-    "auth/wrong-password": "The password is invalid or the user does not have a password.",
-    "auth/user-not-found": "No hay ningún usuario asociado al email ingresado. El usuario puede haber sido eliminado."
+    "Error": "Erro",
+    "auth/wrong-password": "A senha é inválida ou o utilizador não tem uma senha.",
+    "auth/user-not-found": "Não há nenhum usuário com este endereço de e-mail. O usuário pode ter sido excluído."
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",
@@ -78,6 +78,7 @@
   "DashboardProfilePage": {
     "Incoming": "Bem-vindo, esta é a sua primeira entrada em egestion! Precisamos de algumas informações para que possa desfrutar ao máximo do website.",
     "Profile-Data": "Dados do Perfil",
+    "EmailUser": "O seu e-mail:",
     "Profile-Picture": "Mude a sua foto:",
     "FirtSurname": "Primeiro Apelido",
     "SecondSurname": "Segundo Apelido",

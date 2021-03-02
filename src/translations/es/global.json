@@ -64,11 +64,11 @@
   },
   "ErrorSwal": {
     "Success": "Éxito",
-    "Welcome": "Login exitoso, bienvenido",
+    "Welcome": "Login exitoso, ¡Bienvenido!",
     "Email-InUse": "Este email ya está siendo utilizado por otro usuario.",
     "Error": "Error",
-    "auth/wrong-password": "La constraseña es inválida o el usuario no tiene una.",
-    "auth/user-not-found": "No hay ningún usuario asociado al email ingresado. El usuario puede haber sido eliminado."
+    "auth/wrong-password": "La constraseña es inválida o el usuario no tiene ninguna.",
+    "auth/user-not-found": "No existe ningún usuario con este email. El usuario puede haber sido eliminado."
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",
@@ -77,7 +77,8 @@
   },
   "DashboardProfilePage": {
     "Incoming": "¡Bienvenido, esta es tu primera entrada en egestion! Necesitamos algunos datos para que puedas disfrutar al máximo del sitio web.",
-    "Profile-Data": "Datos del Perfil",
+    "Profile-Data": "Datos del Perfil:",
+    "EmailUser": "Tú email:",
     "Profile-Picture": "Cambia tu Foto:",
     "FirtSurname": "Primer Apellido",
     "SecondSurname": "Segundo Apellido",

@@ -64,9 +64,10 @@ export const App = () => {
 
         <PrivateRoute path="/dashboard" exact component={Dashboard} />
 
+        {/* <Redirect to="/dashboard"></Redirect> */}
         <Route path="/login" exact>
           {isLogged ? (
-            <Redirect to="/dashboard"></Redirect>
+            <Redirect to="/profile"></Redirect>
           ) : (
             <LoginPage handlerOnFocus={handlerOnFocus} />
           )}
