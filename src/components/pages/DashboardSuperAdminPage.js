@@ -6,6 +6,7 @@ import { Button } from '../basicComponents/Button';
 import { Search } from '../basicComponents/Search';
 import { getMsgError } from '../../store/selectors';
 import MainLayout from '../layout/MainLayout';
+import { Link } from 'react-router-dom';
 
 export const DashboardSuperAdminPage = () => {
   const { t } = useTranslation('global');
@@ -27,15 +28,16 @@ export const DashboardSuperAdminPage = () => {
           </div>
 
           <div className="col-4">
-            <Button
-              type="submit"
-              variant="primary"
-              startIcon="fas fa-plus-square"
-              disabled={loading}
-            >
-              {' '}
-              {t('DashboardSuperAdminPage.Add-Org')}
-            </Button>
+            <Link to="/admin-org">
+              <Button
+                variant="primary"
+                startIcon="fas fa-plus-square"
+                disabled={loading}
+              >
+                {' '}
+                {t('DashboardSuperAdminPage.Add-Org')}
+              </Button>
+            </Link>
           </div>
         </div>
 

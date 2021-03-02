@@ -11,7 +11,7 @@ export const InputText = props => {
       name={name}
       className="form-control form-control-user"
       placeholder={text}
-      value={value}
+      value={value ? value : ''}
       onChange={onChange}
     />
   );
