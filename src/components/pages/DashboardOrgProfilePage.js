@@ -10,9 +10,9 @@ import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLocale, getMsgError, getUserAuth } from '../../store/selectors';
+import { getLocale, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
-import { uploadFileCloudinaryAction } from '../../store/actions/upCloudinary';
+import { checkDataTypeImg } from '../../store/actions/upCloudinary';
 import client from '../../api/client';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
@@ -101,7 +101,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const handleFileChange = event => {
     const file = event.target.files[0];
 
-    if (file) dispatch(uploadFileCloudinaryAction(file));
+    dispatch(checkDataTypeImg(file));
   };
 
   return (
