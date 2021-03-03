@@ -114,10 +114,14 @@
     "Search-Organizations": "Buscar Organizaciones..."
   },
   "DashboardOrgProfilePage": {
+    "Dashboard-Organization": "Perfil Organización",
+    "Info": "Ventana de administración del SuperAdmin, aqui puedes agregar, cambiar o actualizar los datos de la organización seleccionada.",
     "Delete-Org": "Eliminar Organización",
     "Upload-Org": "Actualizar Organización"
   },
   "PresidentProfilePage": {
-    "Save": "Actualizar Datos"
+    "President": "Presidente",
+    "Info": "Ventana de administración del Presidente, desde aqui puedes asignar los roles de Tesorero, Secretario o asignar un nuevo Presidente.",
+    "Save": "Actualizar datos"
   }
 }

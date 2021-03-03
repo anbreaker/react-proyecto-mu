@@ -112,10 +112,8 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
     <MainLayout>
       <div className="container-fluid">
         <h1 className="h3 mb-4 text-gray-800">{t('NavBars.Profile')}:</h1>
-        <h2 className="h4 mb-4 text-gray-600">
-          {/* TODO Cambiar frase Translate...  */}
-          {t('PresidentProfilePage.Phrase')}
-        </h2>
+
+        <p className="h5 mb-4">{t('PresidentProfilePage.Info')}</p>
 
         <div className="row mt-3 align-items-start minh-100">
           <div className="col-lg-2">
@@ -125,7 +123,7 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
                 width="152"
                 height="141"
                 alt=""
-                // TODO Usar imagen de organizacion.
+                // TODO Usar imagen de presidente
                 src={imgFoundation ? imgFoundation : profile}
               />
 

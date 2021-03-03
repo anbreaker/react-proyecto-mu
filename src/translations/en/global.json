@@ -114,10 +114,14 @@
     "Search-Organizations": "Search Organizations..."
   },
   "DashboardOrgProfilePage": {
+    "Dashboard-Organization": "Dashboard Organization",
+    "Info": "SuperAdmin administration window, here you can add, change or update the data of the selected organisation.",
     "Delete-Org": "Delete Organization",
     "Upload-Org": "Update Organization"
   },
   "PresidentProfilePage": {
+    "President": "President",
+    "Info": "President administration window, from here you can assign the roles of Treasurer, Secretary or assign a new President.",
     "Save": "Update Data"
   }
 }

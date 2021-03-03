@@ -16,11 +16,11 @@ export const DashboardSuperAdminPage = () => {
   return (
     <MainLayout>
       <div className="container-fluid">
-        {/* <!-- Page Heading --> */}
-        <h1 className="h3 mb-2 text-gray-800">
+        <h1 className="h3 mb-3 text-gray-800">
           {t('DashboardSuperAdminPage.Organizations')}
         </h1>
-        <p className="mb-4">{t('DashboardSuperAdminPage.Info-Page')}</p>
+
+        <p className="h5 mb-4">{t('DashboardSuperAdminPage.Info-Page')}</p>
 
         <div className="row">
           <div className="col-8">

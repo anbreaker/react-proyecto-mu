@@ -114,10 +114,14 @@
     "Search-Organizations": "Pesquisar Organizações..."
   },
   "DashboardOrgProfilePage": {
+    "Dashboard-Organization": "Organização do Perfil",
+    "Info": "Janela de administração SuperAdmin, aqui pode adicionar, alterar ou actualizar os dados da organização seleccionada.",
     "Delete-Org": "Apagar Organização",
     "Upload-Org": "Organização de atualização"
   },
   "PresidentProfilePage": {
+    "President": "Presidente",
+    "Info": "Janela de administração do Presidente, a partir daqui pode atribuir os papéis de Tesoureiro, Secretário ou designar um novo Presidente.",
     "Save": "Actualização de dados"
   }
 }

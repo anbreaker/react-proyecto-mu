@@ -109,10 +109,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   return (
     <MainLayout>
       <div className="container-fluid">
-        <h1 className="h3 mb-4 text-gray-800">{t('NavBars.Profile')}:</h1>
-        <h2 className="h4 mb-4 text-gray-600">
-          {t('DashboardProfilePage.Incoming')}
-        </h2>
+        <h1 className="h3 mb-3 text-gray-800">{t('NavBars.Profile')}:</h1>
+
+        <p className="h5 mb-4">{t('DashboardProfilePage.Incoming')}</p>
 
         <div className="row mt-3 align-items-start minh-100">
           <div className="col-lg-2">
