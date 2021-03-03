@@ -15,6 +15,8 @@ import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { uploadFileCloudinaryAction } from '../../store/actions/upCloudinary';
 import client from '../../api/client';
 
+import { setAlertAction } from '../../store/actions/swal';
+
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
@@ -103,7 +105,24 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const handleFileChange = event => {
     const file = event.target.files[0];
 
-    if (file) dispatch(uploadFileCloudinaryAction(file));
+    if (file.type === 'image/jpeg' || file.type === 'image/png') {
+      dispatch(uploadFileCloudinaryAction(file));
+      dispatch(
+        setAlertAction(
+          'ErrorSwal.Success',
+          'DashboardProfilePage.Change-Photo',
+          'success'
+        )
+      );
+    } else {
+      dispatch(
+        setAlertAction(
+          'ErrorSwal.Error',
+          'DashboardProfilePage.Types-File',
+          'error'
+        )
+      );
+    }
   };
 
   return (

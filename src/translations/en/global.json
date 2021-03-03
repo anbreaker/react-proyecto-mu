@@ -92,7 +92,9 @@
     "Telephone": "Telephone",
     "Mobile": "Mobile",
     "Mobile-Need": "We need your mobile number so we can keep in touch, thank you!",
-    "Update-Profile": "Update your profile"
+    "Update-Profile": "Update your profile",
+    "Change-Photo": "Profile picture successfully changed!",
+    "Types-File": "You need jpeg, jpg or png files to change your profile picture."
   },
   "TopBar": {
     "Search": "Search..."
