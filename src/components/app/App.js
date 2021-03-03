@@ -17,6 +17,7 @@ import { removeErrorAction } from '../../store/actions/ui';
 import { DashboardProfilePage } from '../pages/DashboardProfilePage';
 import { DashboardSuperAdminPage } from '../pages/DashboardSuperAdminPage';
 import { DashboardOrgProfilePage } from '../pages/DashboardOrgProfilePage';
+import { PresidentProfilePage } from '../pages/PresidentProfilePage';
 import { firebaseInit } from '../../firebase/firebaseConfig';
 import { login } from '../../store/actions/auth';
 import { configureClient } from '../../api/client';
@@ -85,9 +86,13 @@ export const App = () => {
         <Route path="/admin" exact>
           <DashboardSuperAdminPage />
         </Route>
-        {/* //TODO proteger ruta admin... */}
+        {/* //TODO proteger ruta adminOrg... */}
         <Route path="/admin-org" exact>
           <DashboardOrgProfilePage />
+        </Route>
+        {/* //TODO proteger ruta President... */}
+        <Route path="/president" exact>
+          <PresidentProfilePage />
         </Route>
 
         <Route path="/recovery-pass" exact>

@@ -116,5 +116,8 @@
   "DashboardOrgProfilePage": {
     "Delete-Org": "Eliminar Organización",
     "Upload-Org": "Actualizar Organización"
+  },
+  "PresidentProfilePage": {
+    "Save": "Actualizar Datos"
   }
 }
