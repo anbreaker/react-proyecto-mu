@@ -113,7 +113,8 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
       <div className="container-fluid">
         <h1 className="h3 mb-4 text-gray-800">{t('NavBars.Profile')}:</h1>
         <h2 className="h4 mb-4 text-gray-600">
-          {t('DashboardProfilePage.Incoming')}
+          {/* TODO Cambiar frase Translate...  */}
+          {t('PresidentProfilePage.Phrase')}
         </h2>
 
         <div className="row mt-3 align-items-start minh-100">
