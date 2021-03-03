@@ -138,7 +138,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
                       <hr />
                       <LinkForms
-                        path={'/registro'}
+                        path={'/register'}
                         text={t('LoginPage.Create-Account')}
                       />
                       <LinkForms

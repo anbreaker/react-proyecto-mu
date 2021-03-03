@@ -99,7 +99,7 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
                         text={t('ForgotPasswordPage.Have-Acount')}
                       />
                       <LinkForms
-                        path={'/registro'}
+                        path={'/register'}
                         text={t('LoginPage.Create-Account')}
                       />
                     </div>
