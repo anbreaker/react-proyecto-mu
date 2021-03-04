@@ -13,8 +13,16 @@ const setAuthorizationHeader = token => {
   client.defaults.headers.common['Authorization'] = token;
 };
 
+export const setHeaderOrgId = orgId => {
+  client.defaults.headers.common['X-orgId'] = orgId;
+};
+
 const removeAuthorizationHeader = () => {
   delete client.defaults.headers.common['Authorization'];
+};
+
+export const removeHeaderOrgId = () => {
+  delete client.defaults.headers.common['X-orgId'];
 };
 
 // Login method
@@ -33,27 +41,27 @@ client.logout = () =>
     resolve();
   });
 
-// Intercepts response
-client.interceptors.response.use(
-  ({ data: { ok, ...result } }) => {
-    if (!ok) {
-      return Promise.reject(result.error);
-    }
-    return Promise.resolve(result);
-  },
-  error => {
-    if (error.response) {
-      return Promise.reject(error.response.data.error);
-    }
-    return Promise.reject(error);
-  }
-);
+// TODO Comprobar Interceptor no recoge bien los Errores
+// // Intercepts response
+// client.interceptors.response.use(
+//   ({ data: { ok, ...result } }) => {
+//     if (!ok) {
+//       return Promise.reject(result.error);
+//     }
+//     return Promise.resolve(result);
+//   },
+//   error => {
+//     if (error.response) {
+//       return Promise.reject(error.response.data.error);
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 
 // Configure client
-export const configureClient = token => {
-  if (token) {
-    setAuthorizationHeader(token);
-  }
+export const configureClient = (token, orgId) => {
+  if (token) setAuthorizationHeader(token);
+  if (orgId) setHeaderOrgId(orgId);
 };
 
 export default client;

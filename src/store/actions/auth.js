@@ -3,7 +3,7 @@ import {
   googleAuthProvider,
 } from '../../firebase/firebaseConfig';
 
-import { configureClient } from '../../api/client';
+import client, { configureClient } from '../../api/client';
 import { getMenuByRole } from '../../auth/permisos';
 import { finishLoadingAction, startLoadingAction } from './ui';
 import { setAlertAction } from './swal';
@@ -20,22 +20,22 @@ export const startLoginEmailPassword = (email, password) => {
         .signInWithEmailAndPassword(email, password);
 
       const token = await user.getIdToken();
-      dispatch(
-        login(
-          user.uid,
-          user.displayName,
-          token,
-          user.photoURL,
-          user.email,
-          user.phoneNumber
-        )
-      );
 
+      const dbUser = await client.get('/user');
+      console.log({ dbUser }, '<--dbUser');
+
+      dispatch(login({ ...user, ...dbUser, token }));
+
+      // TODO orgId
       configureClient(token);
       dispatch(finishLoadingAction());
     } catch (error) {
-      //console.error('Error ->', error);
+      console.log(error.response.data.errorCode, '<--Error');
+
       dispatch(finishLoadingAction());
+      if (error.response.data.errorCode === 'NOUSERDATABASE')
+        history.push('/register');
+
       dispatch(
         setAlertAction('ErrorSwal.Error', `ErrorSwal.${error.code}`, 'error')
       );
@@ -54,16 +54,7 @@ export const startGoogleLogin = () => {
 
       const token = await user.getIdToken();
 
-      dispatch(
-        login(
-          user.uid,
-          user.displayName,
-          token,
-          user.photoURL,
-          user.email,
-          user.phoneNumber
-        )
-      );
+      dispatch(login({ ...user, token }));
 
       configureClient(token);
 
