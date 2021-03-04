@@ -149,5 +149,15 @@
     "Description": "Descripción",
     "Add-Pay": "Añadir Pago",
     "Cancel": "Cancenlar"
+  },
+  "TreasurerExpenseRegisterPage": {
+    "Treasurer-Expense": "Registro de Gastos",
+    "Info": "Ventana para registrar los datos de gastos por parte del Tesorero.",
+    "Member": "Miembro",
+    "Date": "Fecha",
+    "Quantity": "Cantidad",
+    "Description": "Descripción",
+    "Add-Pay": "Añadir Pago",
+    "Cancel": "Cancenlar"
   }
 }

@@ -149,5 +149,15 @@
     "Description": "Description",
     "Add-Pay": "Add Payment",
     "Cancel": "Cancenl"
+  },
+  "TreasurerExpenseRegisterPage": {
+    "Treasurer-Expense": "Registro de Gastos",
+    "Info": "Window for recording expenditure data by the Treasurer.",
+    "Member": "Member",
+    "Date": "Date",
+    "Quantity": "Quantity",
+    "Description": "Description",
+    "Add-Pay": "Add Pay ",
+    "Cancel": "Cancel"
   }
 }

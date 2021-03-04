@@ -23,10 +23,11 @@ import { login } from '../../store/actions/auth';
 import { configureClient } from '../../api/client';
 import { SweetAlert } from '../parts/SweetAlert';
 import { VerifyMailPage } from '../pages/VerifyMailPage';
+import { UnauthorizedPage } from '../pages/UnauthorizedPage';
 import { TreasurerResumePage } from '../pages/TreasurerResumePage';
 import { TreasurerIncomePage } from '../pages/TreasurerIncomePage';
 import { TreasurerIncomeRegisterPage } from '../pages/TreasurerIncomeRegisterPage';
-import UnauthorizedPage from '../pages/UnauthorizedPage';
+import { TreasurerExpenseRegisterPage } from '../pages/TreasurerExpenseRegisterPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -117,6 +118,10 @@ export const App = () => {
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <Route path="/income-register" exact>
           <TreasurerIncomeRegisterPage />
+        </Route>
+        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
+        <Route path="/expense-register" exact>
+          <TreasurerExpenseRegisterPage />
         </Route>
 
         <Route path="/recovery-pass" exact>

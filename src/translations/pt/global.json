@@ -149,5 +149,15 @@
     "Description": "Descrição",
     "Add-Pay": "Adicionar pagamento",
     "Cancel": "Cancenlar"
+  },
+  "TreasurerExpenseRegisterPage": {
+    "Treasurer-Expense": "Registo de Despesas",
+    "Info": "Janela para registo de dados de despesas pelo Tesoureiro.",
+    "Member": "Membro",
+    "Date": "Data",
+    "Quantity": "Quantidade",
+    "Description": "Descrição",
+    "Add-Pay": "Adicionar Pagamento",
+    "Cancel": "Cancenlar"
   }
 }
