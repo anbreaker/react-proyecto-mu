@@ -104,7 +104,7 @@
     "Info-Page": "Janela de administração de SuperAdmin, aqui pode adicionar novas organizações e listar as já existentes no sistema.",
     "Add-Org": "Adicionar Organização",
     "Id": "Número Id",
-    "Name": "Nombre",
+    "Name": "Nome",
     "Address": "Endereço",
     "President": "Presidente",
     "Mobile": "Telemóvel",
@@ -126,5 +126,25 @@
   },
   "VerifyMailPage": {
     "Info": "Se quiser entrar no lado oculto deste website... o seu e-mail tem de ser verificado, estamos à sua espera!"
+  },
+  "TreasurerResumePage": {
+    "Treasurer-Resume": "Resumo do fluxo de caixa",
+    "Filter": "Filtrar...",
+    "Info": "Janela para mostrar o resumo de despesas / receitas para o Tesoureiro."
+  },
+  "TreasurerIncomePage": {
+    "Treasurer-Income": "Ingresos",
+    "Info": "Janela para exibir o resumo dos rendimentos para o Tesoureiro.",
+    "Payment": "Novo Pagamento"
+  },
+  "TreasurerIncomeRegisterPage": {
+    "Treasurer-Income": "Rendimento",
+    "Info": "Janela para mostrar a adição dos detalhes de pagamento de um membro pelo Tesoureiro.",
+    "Member": "Membro",
+    "Date": "Data",
+    "Quantity": "Quantidade",
+    "Description": "Descrição",
+    "Add-Pay": "Adicionar pagamento",
+    "Cancel": "Cancenlar"
   }
 }

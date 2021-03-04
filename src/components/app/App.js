@@ -23,6 +23,9 @@ import { login } from '../../store/actions/auth';
 import { configureClient } from '../../api/client';
 import { SweetAlert } from '../parts/SweetAlert';
 import { VerifyMailPage } from '../pages/VerifyMailPage';
+import { TreasurerResumePage } from '../pages/TreasurerResumePage';
+import { TreasurerIncomePage } from '../pages/TreasurerIncomePage';
+import { TreasurerIncomeRegisterPage } from '../pages/TreasurerIncomeRegisterPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -98,6 +101,18 @@ export const App = () => {
         {/* //TODO Una vez hecho el registro, deberia enviarnos a esta ventana para indicar Que tenemos que verificar el email*/}
         <Route path="/verify" exact>
           <VerifyMailPage />
+        </Route>
+        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
+        <Route path="/treasurer-income" exact>
+          <TreasurerIncomePage />
+        </Route>
+        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
+        <Route path="/treasurer" exact>
+          <TreasurerResumePage />
+        </Route>
+        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
+        <Route path="/income-register" exact>
+          <TreasurerIncomeRegisterPage />
         </Route>
 
         <Route path="/recovery-pass" exact>

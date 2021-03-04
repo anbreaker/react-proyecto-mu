@@ -38,7 +38,7 @@
   },
   "UnauthorizedPage": {
     "Unauthorized": "Acceso no autorizado",
-    "Message": "Al parecer llegaste acá por accidente. Por favor haz login."
+    "Message": "¡Vaya! parece que llegaste hasta aqui por accidente. Por favor inicia sesión."
   },
   "NavBars": {
     "Dashboard": "Panel de Control",
@@ -126,5 +126,25 @@
   },
   "VerifyMailPage": {
     "Info": "Si al lado oscuro de esta web quieres entrar... tu email has de verificar, ¡Te esperamos!"
+  },
+  "TreasurerResumePage": {
+    "Treasurer-Resume": "Resumen de tesorería",
+    "Filter": "Filtrar...",
+    "Info": "Ventana para mostrar el resumen de gastos/ingresos del Tesorero."
+  },
+  "TreasurerIncomePage": {
+    "Treasurer-Income": "Ingresos",
+    "Info": "Ventana para mostrar el resumen de ingresos del Tesorero.",
+    "Payment": "Nuevo Pago"
+  },
+  "TreasurerIncomeRegisterPage": {
+    "Treasurer-Income": "Ingreso",
+    "Info": "Ventana para mostrar agregar los datos de pago de un miembro por parte del Tesorero.",
+    "Member": "Miembro",
+    "Date": "Fecha",
+    "Quantity": "Cantidad",
+    "Description": "Descripción",
+    "Add-Pay": "Añadir Pago",
+    "Cancel": "Cancenlar"
   }
 }

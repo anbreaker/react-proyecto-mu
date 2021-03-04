@@ -4,6 +4,7 @@ import clsx from 'clsx';
 export const Button = ({ children, startIcon, variant, ...props }) => {
   const classes = {
     primary: 'btn-primary btn-user btn-block',
+    success: 'btn-success btn-user btn-block',
     google: 'btn btn-google btn-user btn-block',
     alert: 'btn-google btn-user btn-block alert-error mb-3',
   };
@@ -14,6 +15,7 @@ export const Button = ({ children, startIcon, variant, ...props }) => {
       className={clsx(
         'btn',
         variant === 'primary' && classes.primary,
+        variant === 'success' && classes.success,
         variant === 'google' && classes.google,
         variant === 'alert' && classes.alert
       )}

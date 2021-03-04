@@ -37,8 +37,8 @@
     "Made-With": "Web application made with ❤️‍🔥 by Talent-Mu."
   },
   "UnauthorizedPage": {
-    "Unauthorized": "Unauthorized access",
-    "Message": "Seems you got here by accident, please login"
+    "Unauthorized": "Unauthorized Access",
+    "Message": "Wow!, it looks like you got here by accident. Please log in."
   },
   "NavBars": {
     "Dashboard": "Dashboard",
@@ -126,5 +126,25 @@
   },
   "VerifyMailPage": {
     "Info": "If you want to enter the dark side of this website... your email has to be verified, we are waiting for you!"
+  },
+  "TreasurerResumePage": {
+    "Treasurer-Resume": "Summary of cash flow",
+    "Filter": "Filter...",
+    "Info": "Window to display the expenditure / income summary for the Treasurer."
+  },
+  "TreasurerIncomePage": {
+    "Treasurer-Income": "Income",
+    "Info": "Window to display the income summary for the Treasurer.",
+    "Payment": "New Payment"
+  },
+  "TreasurerIncomeRegisterPage": {
+    "Treasurer-Income": "Income",
+    "Info": "Window to display the Treasurer's aggregation of a member's payment details.",
+    "Member": "Member",
+    "Date": "Date",
+    "Quantity": "Quantity",
+    "Description": "Description",
+    "Add-Pay": "Add Payment",
+    "Cancel": "Cancenl"
   }
 }

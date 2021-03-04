@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Helmet from 'react-helmet';
 
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
+import { LinkForms } from '../basicComponents/LinkForms';
 
 //
 
@@ -43,6 +44,18 @@ export const VerifyMailPage = ({ handlerOnFocus }) => {
                       </div>
 
                       <hr />
+                      <LinkForms
+                        path={'/register'}
+                        text={t('LoginPage.Create-Account')}
+                      />
+                      <LinkForms
+                        path={'/register'}
+                        text={t('ForgotPasswordPage.Have-Acount')}
+                      />
+                      <LinkForms
+                        path={'/recovery-pass'}
+                        text={t('LoginPage.Forgot-Password')}
+                      />
                     </div>
                     <ChangeLanguaje />
                   </div>

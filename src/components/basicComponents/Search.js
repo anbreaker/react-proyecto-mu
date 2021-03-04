@@ -7,7 +7,7 @@ import { Button } from './Button';
 import { getMsgError } from '../../store/selectors';
 
 export const Search = ({ ...props }) => {
-  const { handlerOnFocus, text } = props;
+  const { handlerOnFocus, text, icon, variant } = props;
 
   const { loading } = useSelector(getMsgError);
 
@@ -32,8 +32,8 @@ export const Search = ({ ...props }) => {
           <div className="input-group-append">
             <Button
               type="submit"
-              variant="primary"
-              startIcon="fas fa-search fa-sm"
+              variant={variant || 'primary'}
+              startIcon={icon || 'fas fa-search fa-sm'}
               disabled={loading}
             />
           </div>
