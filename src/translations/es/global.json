@@ -123,5 +123,8 @@
     "President": "Presidente",
     "Info": "Ventana de administración del Presidente, desde aqui puedes asignar los roles de Tesorero, Secretario o asignar un nuevo Presidente.",
     "Save": "Actualizar datos"
+  },
+  "VerifyMailPage": {
+    "Info": "Si al lado oscuro de esta web quieres entrar... tu email has de verificar, ¡Te esperamos!"
   }
 }

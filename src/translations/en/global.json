@@ -123,5 +123,8 @@
     "President": "President",
     "Info": "President administration window, from here you can assign the roles of Treasurer, Secretary or assign a new President.",
     "Save": "Update Data"
+  },
+  "VerifyMailPage": {
+    "Info": "If you want to enter the dark side of this website... your email has to be verified, we are waiting for you!"
   }
 }

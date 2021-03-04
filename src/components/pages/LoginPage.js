@@ -50,16 +50,11 @@ export const LoginPage = ({ handlerOnFocus }) => {
     if (!validator.isEmail(email)) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
-
-      //TODO Refrescar input password... Preguntar
+      // TODO Refrescar input password... Preguntar
     } else if (password <= 5) {
-      console.log('dentro del if');
-
       dispatch(setErrorAction('LoginPage.Password-Error'));
-
       return false;
     }
-
     dispatch(removeErrorAction());
     return true;
   };

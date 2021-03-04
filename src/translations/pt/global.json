@@ -123,5 +123,8 @@
     "President": "Presidente",
     "Info": "Janela de administração do Presidente, a partir daqui pode atribuir os papéis de Tesoureiro, Secretário ou designar um novo Presidente.",
     "Save": "Actualização de dados"
+  },
+  "VerifyMailPage": {
+    "Info": "Se quiser entrar no lado oculto deste website... o seu e-mail tem de ser verificado, estamos à sua espera!"
   }
 }

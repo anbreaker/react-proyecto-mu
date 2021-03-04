@@ -22,6 +22,7 @@ import { firebaseInit } from '../../firebase/firebaseConfig';
 import { login } from '../../store/actions/auth';
 import { configureClient } from '../../api/client';
 import { SweetAlert } from '../parts/SweetAlert';
+import { VerifyMailPage } from '../pages/VerifyMailPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -93,6 +94,10 @@ export const App = () => {
         {/* //TODO proteger ruta President... */}
         <Route path="/president" exact>
           <PresidentProfilePage />
+        </Route>
+        {/* //TODO Una vez hecho el registro, deberia enviarnos a esta ventana para indicar Que tenemos que verificar el email*/}
+        <Route path="/verify" exact>
+          <VerifyMailPage />
         </Route>
 
         <Route path="/recovery-pass" exact>

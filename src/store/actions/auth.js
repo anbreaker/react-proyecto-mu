@@ -131,7 +131,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
             // TODO preguntar por esto a Luis (user.email???)
             url: `https://www.egestion.xyz/login?user=${user.email}`,
           })
-          .then(data => () => {}) // TODO ver despues...
+          .then(data => () => {}) // TODO Pedir explicacion?? para entender...
           .catch(err => console.log(err));
 
         dispatch(finishLoadingAction());
