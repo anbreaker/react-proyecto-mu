@@ -39,7 +39,7 @@ export const TreasurerIncomePage = () => {
                 disabled={loading}
               >
                 {' '}
-                {t('DashboardSuperAdminPage.Add-Org')}
+                {t('TreasurerIncomePage.Payment')}
               </Button>
             </Link>
           </div>

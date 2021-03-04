@@ -23,13 +23,13 @@ export const TreasurerIncomeRegisterPage = ({ handlerOnFocus }) => {
 
   const [formValues, handleInputChange, setFormValues] = useForm({
     id: '',
-    displayName: '',
+    member: '',
     date: '',
     quantity: '',
     description: '',
   });
 
-  const { id, displayName, date, quantity, description } = formValues;
+  const { id, member, date, quantity, description } = formValues;
 
   useEffect(() => {
     setFormValues({ ...formValues });
@@ -51,7 +51,7 @@ export const TreasurerIncomeRegisterPage = ({ handlerOnFocus }) => {
   };
 
   const isFormChangeProfileValid = () => {
-    if (displayName.length <= 2) {
+    if (member.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
     } else if (id.length <= 2) {
@@ -95,8 +95,8 @@ export const TreasurerIncomeRegisterPage = ({ handlerOnFocus }) => {
                   </h6>
                   <InputText
                     text={`${t('TreasurerIncomeRegisterPage.Member')}...`}
-                    name="date"
-                    value={date}
+                    name="member"
+                    value={member}
                     onFocus={handlerOnFocus}
                     onChange={handleInputChange}
                     required
@@ -127,14 +127,17 @@ export const TreasurerIncomeRegisterPage = ({ handlerOnFocus }) => {
                   <h6 className="font-weight-bold mt-3">
                     {t('TreasurerIncomeRegisterPage.Description')}:
                   </h6>
-                  <InputText
-                    text={`${t('TreasurerIncomeRegisterPage.Description')}...`}
+                  <textarea
+                    className="form-control"
+                    rows="3"
+                    placeholder={`${t(
+                      'TreasurerIncomeRegisterPage.Description'
+                    )}...`}
                     name="description"
                     value={description}
                     onFocus={handlerOnFocus}
                     onChange={handleInputChange}
-                    required
-                  />
+                  ></textarea>
 
                   <hr />
                   <MessageError msgError={msgError} />

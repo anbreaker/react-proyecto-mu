@@ -50,6 +50,37 @@ export const TreasurerResumePage = () => {
           </div>
         </div>
 
+        {/* Cards */}
+        <div className="row">
+          <div className="col-md-4">
+            <div className="card mb-4 py-3 border-bottom-success">
+              <div className="card-body">
+                <h5 className="m-0 font-weight-bold text-success">
+                  {t('TreasurerResumePage.Income')}
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card mb-4 py-3 border-bottom-danger">
+              <div className="card-body">
+                <h5 className="m-0 font-weight-bold text-danger">
+                  {t('TreasurerResumePage.Expenses')}
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card mb-4 py-3 border-bottom-info">
+              <div className="card-body">
+                <h5 className="m-0 font-weight-bold text-info">
+                  {t('TreasurerResumePage.Net')}
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* <!-- DataTales Example --> */}
         <div className="card shadow mb-4 mt-4">
           <div className="card-header py-3">

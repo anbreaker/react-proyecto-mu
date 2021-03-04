@@ -26,6 +26,7 @@ import { VerifyMailPage } from '../pages/VerifyMailPage';
 import { TreasurerResumePage } from '../pages/TreasurerResumePage';
 import { TreasurerIncomePage } from '../pages/TreasurerIncomePage';
 import { TreasurerIncomeRegisterPage } from '../pages/TreasurerIncomeRegisterPage';
+import UnauthorizedPage from '../pages/UnauthorizedPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -98,17 +99,20 @@ export const App = () => {
         <Route path="/president" exact>
           <PresidentProfilePage />
         </Route>
+
         {/* //TODO Una vez hecho el registro, deberia enviarnos a esta ventana para indicar Que tenemos que verificar el email*/}
         <Route path="/verify" exact>
           <VerifyMailPage />
         </Route>
+
+        {/* --------------------Treasurer-------------------- */}
+        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
+        <Route path="/treasurer-resume" exact>
+          <TreasurerResumePage />
+        </Route>
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <Route path="/treasurer-income" exact>
           <TreasurerIncomePage />
-        </Route>
-        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
-        <Route path="/treasurer" exact>
-          <TreasurerResumePage />
         </Route>
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <Route path="/income-register" exact>
@@ -120,6 +124,7 @@ export const App = () => {
         </Route>
 
         <Route path="/404" exact component={NotFoundPage} />
+        <Route path="/401" exact component={UnauthorizedPage} />
 
         <PrivateRoute path="/profile" exact>
           <DashboardProfilePage handlerOnFocus={handlerOnFocus} />

@@ -130,6 +130,9 @@
   "TreasurerResumePage": {
     "Treasurer-Resume": "Resumo do fluxo de caixa",
     "Filter": "Filtrar...",
+    "Income": "Rendimento",
+    "Expenses": "Despesas",
+    "Net": "Net",
     "Info": "Janela para mostrar o resumo de despesas / receitas para o Tesoureiro."
   },
   "TreasurerIncomePage": {

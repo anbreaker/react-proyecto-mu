@@ -130,6 +130,9 @@
   "TreasurerResumePage": {
     "Treasurer-Resume": "Resumen de tesorería",
     "Filter": "Filtrar...",
+    "Income": "Ingresos",
+    "Expenses": "Gastos",
+    "Net": "Neto",
     "Info": "Ventana para mostrar el resumen de gastos/ingresos del Tesorero."
   },
   "TreasurerIncomePage": {

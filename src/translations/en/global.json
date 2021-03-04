@@ -130,6 +130,9 @@
   "TreasurerResumePage": {
     "Treasurer-Resume": "Summary of cash flow",
     "Filter": "Filter...",
+    "Income": "Income",
+    "Expenses": "Expenses",
+    "Net": "Net",
     "Info": "Window to display the expenditure / income summary for the Treasurer."
   },
   "TreasurerIncomePage": {

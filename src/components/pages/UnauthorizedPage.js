@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
-import lost from '../../assets/img/401-error.svg';
 
 export const UnauthorizedPage = () => {
   const { t } = useTranslation('global');
