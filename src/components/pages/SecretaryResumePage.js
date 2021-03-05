@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { Search } from '../basicComponents/Search';
 import { getMsgError } from '../../store/selectors';
-import MainLayout from '../layout/MainLayout';
+import { MainLayout } from '../layout/MainLayout';
 
 export const SecretaryResumePage = () => {
   const { t } = useTranslation('global');

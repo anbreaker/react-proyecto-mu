@@ -2,7 +2,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import MainLayout from '../layout/MainLayout';
+import { MainLayout } from '../layout/MainLayout';
 import { Button } from '../basicComponents/Button';
 import { setAlertAction } from '../../store/actions/swal';
 import Swal from 'sweetalert2';

@@ -175,5 +175,13 @@
     "Email": "Email",
     "Status": "Situação",
     "Change-Status": "Alterar o estado"
+  },
+  "SecretaryMeetingsPage": {
+    "SecretaryMeetings": "Reuniões Realizadas",
+    "Info": "Janela do Secretário, para mostrar o resumo das reuniões realizadas.",
+    "New-Meeting": "Adicionar Reunião",
+    "Date": "Data",
+    "Assistants": "Assistentes",
+    "View-Details": "Ver Detalhes"
   }
 }

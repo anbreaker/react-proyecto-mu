@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import validator from 'validator';
 import profile from '../../assets/img/undraw_profile.svg';
 
-import MainLayout from '../layout/MainLayout';
+import { MainLayout } from '../layout/MainLayout';
 import { InputText } from '../basicComponents/InputText';
 import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';

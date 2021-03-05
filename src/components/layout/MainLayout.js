@@ -4,7 +4,7 @@ import { TalentMuFooter } from './TalentMuFooter';
 import Topbar from '../layout/Topbar';
 import Sidebar from './Sidebar/Sidebar';
 
-const MainLayout = ({ children }) => {
+export const MainLayout = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleOutsideClick = () => {
@@ -35,5 +35,3 @@ const MainLayout = ({ children }) => {
     </div>
   );
 };
-
-export default MainLayout;

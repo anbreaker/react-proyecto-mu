@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
 
-import MainLayout from '../layout/MainLayout';
+import { MainLayout } from '../layout/MainLayout';
 import { InputText } from '../basicComponents/InputText';
 import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';

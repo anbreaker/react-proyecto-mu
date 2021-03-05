@@ -175,5 +175,13 @@
     "Email": "Email",
     "Status": "Estado",
     "Change-Status": "Cambiar Estado"
+  },
+  "SecretaryMeetingsPage": {
+    "SecretaryMeetings": "Reuniones Celebradas",
+    "Info": "Ventana del Secretario, para mostrar el resumen de las reuniones celebradas.",
+    "New-Meeting": "Añadir Reunión",
+    "Date": "Fecha",
+    "Assistants": "Asistentes",
+    "View-Details": "Ver Detalles"
   }
 }

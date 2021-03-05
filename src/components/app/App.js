@@ -30,6 +30,7 @@ import { TreasurerIncomeRegisterPage } from '../pages/TreasurerIncomeRegisterPag
 import { TreasurerExpenseRegisterPage } from '../pages/TreasurerExpenseRegisterPage';
 import { TreasurerExpensePage } from '../pages/TreasurerExpensePage';
 import { SecretaryResumePage } from '../pages/SecretaryResumePage';
+import { SecretaryMeetingsPage } from '../pages/SecretaryMeetingsPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -134,6 +135,9 @@ export const App = () => {
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <Route path="/secretary-resume" exact>
           <SecretaryResumePage />
+        </Route>
+        <Route path="/secretary-meetings" exact>
+          <SecretaryMeetingsPage />
         </Route>
 
         <Route path="/recovery-pass" exact>

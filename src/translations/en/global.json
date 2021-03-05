@@ -175,5 +175,13 @@
     "Email": "Email",
     "Status": "Status",
     "Change-Status": "Change Status"
+  },
+  "SecretaryMeetingsPage": {
+    "SecretaryMeetings": "Meetings Held",
+    "Info": "Secretary's window, to show the summary of the meetings held.",
+    "New-Meeting": "Add Meeting",
+    "Date": "Date",
+    "Assistants": "Assistants",
+    "View-Details": "View Details"
   }
 }

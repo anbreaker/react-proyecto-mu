@@ -6,9 +6,8 @@ import { Button } from '../basicComponents/Button';
 import { Search } from '../basicComponents/Search';
 import { getMsgError } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
-import { Link } from 'react-router-dom';
 
-export const TreasurerIncomePage = () => {
+export const SecretaryMeetingsPage = () => {
   const { t } = useTranslation('global');
 
   const { loading } = useSelector(getMsgError);
@@ -17,31 +16,25 @@ export const TreasurerIncomePage = () => {
     <MainLayout>
       <div className="container-fluid">
         <h1 className="h3 mb-3 text-gray-800">
-          {t('TreasurerIncomePage.Treasurer-Income')}
+          {t('SecretaryMeetingsPage.SecretaryMeetings')}
         </h1>
 
-        <p className="h5 mb-4">{t('TreasurerIncomePage.Info')}</p>
+        <p className="h5 mb-4">{t('SecretaryMeetingsPage.Info')}</p>
 
         <div className="row">
           <div className="col-9">
-            <Search
-              text={t('TreasurerResumePage.Filter')}
-              icon={'fas fa-funnel-dollar'}
-              variant="success"
-            />
+            <Search text={t('TreasurerResumePage.Filter')} variant="success" />
           </div>
 
           <div className="col-3">
-            <Link to="/income-register">
-              <Button
-                variant="success"
-                startIcon="fas fa-money-check-alt"
-                disabled={loading}
-              >
-                {' '}
-                {t('TreasurerIncomePage.Payment')}
-              </Button>
-            </Link>
+            <Button
+              variant="success"
+              startIcon="fas fa-plus-circle"
+              disabled={loading}
+            >
+              {' '}
+              {t('SecretaryMeetingsPage.New-Meeting')}
+            </Button>
           </div>
         </div>
 
@@ -62,22 +55,16 @@ export const TreasurerIncomePage = () => {
               >
                 <thead className="font-weight-bold text-info">
                   <tr>
-                    <th>{t('DashboardSuperAdminPage.Id')}</th>
-                    <th>{t('DashboardSuperAdminPage.Name')}</th>
-                    <th>{t('DashboardSuperAdminPage.Address')}</th>
-                    <th>{t('DashboardSuperAdminPage.President')}</th>
-                    <th>{t('DashboardSuperAdminPage.Mobile')}</th>
-                    <th>{t('DashboardSuperAdminPage.Foundation')}</th>
+                    <th>{t('SecretaryMeetingsPage.Date')}</th>
+                    <th>{t('SecretaryMeetingsPage.Assistants')}</th>
+                    <th>{t('SecretaryMeetingsPage.View-Details')}</th>
                   </tr>
                 </thead>
                 <tfoot className="font-weight-bold text-info">
                   <tr>
-                    <th>{t('DashboardSuperAdminPage.Id')}</th>
-                    <th>{t('DashboardSuperAdminPage.Name')}</th>
-                    <th>{t('DashboardSuperAdminPage.Address')}</th>
-                    <th>{t('DashboardSuperAdminPage.President')}</th>
-                    <th>{t('DashboardSuperAdminPage.Mobile')}</th>
-                    <th>{t('DashboardSuperAdminPage.Foundation')}</th>
+                    <th>{t('SecretaryMeetingsPage.Date')}</th>
+                    <th>{t('SecretaryMeetingsPage.Assistants')}</th>
+                    <th>{t('SecretaryMeetingsPage.View-Details')}</th>
                   </tr>
                 </tfoot>
 
@@ -88,25 +75,11 @@ export const TreasurerIncomePage = () => {
                     <td>Tiger Nixon</td>
                     <td>System Architect</td>
                     <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
                   </tr>
                   <tr>
                     <td>Garrett Winters</td>
                     <td>Accountant</td>
                     <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                  </tr>
-                  <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
                   </tr>
                 </tbody>
               </table>

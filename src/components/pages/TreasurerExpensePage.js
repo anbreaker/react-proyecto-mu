@@ -5,7 +5,7 @@ import { Button } from '../basicComponents/Button';
 
 import { Search } from '../basicComponents/Search';
 import { getMsgError } from '../../store/selectors';
-import MainLayout from '../layout/MainLayout';
+import { MainLayout } from '../layout/MainLayout';
 import { Link } from 'react-router-dom';
 
 export const TreasurerExpensePage = () => {

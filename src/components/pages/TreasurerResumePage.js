@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import MainLayout from '../layout/MainLayout';
+import { MainLayout } from '../layout/MainLayout';
 
 export const TreasurerResumePage = () => {
   const { t } = useTranslation('global');
