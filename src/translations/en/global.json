@@ -70,7 +70,7 @@
     "Error": "Error",
     "auth/wrong-password": "The password is invalid or the user does not have a password.",
     "auth/user-not-found": "There is no user record corresponding to this identifier. The user may have been deleted.",
-    "NOUSERDATABASE": ""
+    "NOUSERDATABASE": "Not User on Data Base!"
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",
@@ -129,7 +129,7 @@
     "Info": "If you want to enter the dark side of this website... your email has to be verified, we are waiting for you!"
   },
   "TreasurerResumePage": {
-    "Treasurer-Resume": "Summary of cash flow",
+    "Treasurer-Resume": "Summary of Cash Flow",
     "Filter": "Filter...",
     "Income": "Income",
     "Expenses": "Expenses",
@@ -138,12 +138,12 @@
   },
   "TreasurerIncomePage": {
     "Treasurer-Income": "Income",
-    "Info": "Window to display the income summary for the Treasurer.",
+    "Info": "Treasurer's window, to show the summary of finances.",
     "Payment": "New Payment"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Income",
-    "Info": "Window to display the Treasurer's aggregation of a member's payment details.",
+    "Info": "Treasurer's window to add income and payment details of a member.",
     "Member": "Member",
     "Date": "Date",
     "Quantity": "Quantity",
@@ -152,13 +152,18 @@
     "Cancel": "Cancenl"
   },
   "TreasurerExpenseRegisterPage": {
-    "Treasurer-Expense": "Registro de Gastos",
-    "Info": "Window for recording expenditure data by the Treasurer.",
+    "Treasurer-Expense": "Register of Expenditure",
+    "Info": "Treasurer's window for recording expenditure data.",
     "Member": "Member",
     "Date": "Date",
     "Quantity": "Quantity",
     "Description": "Description",
     "Add-Pay": "Add Pay ",
     "Cancel": "Cancel"
+  },
+  "TreasurerExpensePage": {
+    "Treasurer-Expense": "Summary of Expenditure",
+    "New-Expense": "New Expense",
+    "Info": "Treasurer's window, to show the summary of expenses."
   }
 }

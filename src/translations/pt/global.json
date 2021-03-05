@@ -69,7 +69,8 @@
     "Password-Send": "Senha enviada com sucesso para o seu e-mail",
     "Error": "Erro",
     "auth/wrong-password": "A senha é inválida ou o utilizador não tem uma senha.",
-    "auth/user-not-found": "Não há nenhum usuário com este endereço de e-mail. O usuário pode ter sido excluído."
+    "auth/user-not-found": "Não há nenhum usuário com este endereço de e-mail. O usuário pode ter sido excluído.",
+    "NOUSERDATABASE": "Não Utilizador em Base de Dados!"
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",
@@ -128,7 +129,7 @@
     "Info": "Se quiser entrar no lado oculto deste website... o seu e-mail tem de ser verificado, estamos à sua espera!"
   },
   "TreasurerResumePage": {
-    "Treasurer-Resume": "Resumo do fluxo de caixa",
+    "Treasurer-Resume": "Resumo do Fluxo de Caixa",
     "Filter": "Filtrar...",
     "Income": "Rendimento",
     "Expenses": "Despesas",
@@ -137,12 +138,12 @@
   },
   "TreasurerIncomePage": {
     "Treasurer-Income": "Ingresos",
-    "Info": "Janela para exibir o resumo dos rendimentos para o Tesoureiro.",
+    "Info": "Janela do Tesoureiro, para mostrar o resumo das finanças.",
     "Payment": "Novo Pagamento"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Rendimento",
-    "Info": "Janela para mostrar a adição dos detalhes de pagamento de um membro pelo Tesoureiro.",
+    "Info": "Janela do tesoureiro para adicionar rendimentos e detalhes de pagamento para um membro.",
     "Member": "Membro",
     "Date": "Data",
     "Quantity": "Quantidade",
@@ -152,12 +153,17 @@
   },
   "TreasurerExpenseRegisterPage": {
     "Treasurer-Expense": "Registo de Despesas",
-    "Info": "Janela para registo de dados de despesas pelo Tesoureiro.",
+    "Info": "Janela do tesoureiro para registo de dados de despesas.",
     "Member": "Membro",
     "Date": "Data",
     "Quantity": "Quantidade",
     "Description": "Descrição",
     "Add-Pay": "Adicionar Pagamento",
     "Cancel": "Cancenlar"
+  },
+  "TreasurerExpensePage": {
+    "Treasurer-Expense": "Resumo das despesas",
+    "New-Expense": "Acrescentar despesas",
+    "Info": "Janela do tesoureiro, para exibir o resumo das despesas."
   }
 }

@@ -69,7 +69,8 @@
     "Password-Send": "Contraseña enviada con éxito a su e-mail",
     "Error": "Error",
     "auth/wrong-password": "La constraseña es inválida o el usuario no tiene ninguna.",
-    "auth/user-not-found": "No existe ningún usuario con este email. El usuario puede haber sido eliminado."
+    "auth/user-not-found": "No existe ningún usuario con este email. El usuario puede haber sido eliminado.",
+    "NOUSERDATABASE": "No es un usuario de la base de datos."
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",
@@ -128,7 +129,7 @@
     "Info": "Si al lado oscuro de esta web quieres entrar... tu email has de verificar, ¡Te esperamos!"
   },
   "TreasurerResumePage": {
-    "Treasurer-Resume": "Resumen de tesorería",
+    "Treasurer-Resume": "Resumen de Tesorería",
     "Filter": "Filtrar...",
     "Income": "Ingresos",
     "Expenses": "Gastos",
@@ -137,12 +138,12 @@
   },
   "TreasurerIncomePage": {
     "Treasurer-Income": "Ingresos",
-    "Info": "Ventana para mostrar el resumen de ingresos del Tesorero.",
+    "Info": "Ventana del Tesorero, para mostrar el resumen de las finanzas.",
     "Payment": "Nuevo Pago"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Ingreso",
-    "Info": "Ventana para mostrar agregar los datos de pago de un miembro por parte del Tesorero.",
+    "Info": "Ventana del Tesorero para añadir ingresos y detalles de pago de un miembro.",
     "Member": "Miembro",
     "Date": "Fecha",
     "Quantity": "Cantidad",
@@ -152,12 +153,17 @@
   },
   "TreasurerExpenseRegisterPage": {
     "Treasurer-Expense": "Registro de Gastos",
-    "Info": "Ventana para registrar los datos de gastos por parte del Tesorero.",
+    "Info": "Ventana del Tesorero para registrar datos de gastos.",
     "Member": "Miembro",
     "Date": "Fecha",
     "Quantity": "Cantidad",
     "Description": "Descripción",
     "Add-Pay": "Añadir Pago",
     "Cancel": "Cancenlar"
+  },
+  "TreasurerExpensePage": {
+    "Treasurer-Expense": "Resumen de Gastos",
+    "New-Expense": "Añadir Gasto",
+    "Info": "Ventana del Tesorero, para mostrar el resumen de gastos."
   }
 }

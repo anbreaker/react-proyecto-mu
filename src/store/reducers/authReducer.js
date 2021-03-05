@@ -9,6 +9,7 @@ const initialState = {
   photoURL: '',
   phoneNumber: '',
   role: '',
+  // TODO PREGUNTAR POR LOS DOS ACTIVE CON TIPOS DIFERENTES...
   active: false,
   permisos: [],
 };
