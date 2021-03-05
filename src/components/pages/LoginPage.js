@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import validator from 'validator';
 
@@ -25,9 +25,9 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   const dispatch = useDispatch();
 
-  // TODO Leer con el hook el parametro.
-  // eslint-disable-next-line
-  const { user } = useParams();
+  const location = useLocation();
+  const queryParmas = new URLSearchParams(location.search);
+  const mailRecovery = queryParmas.get('user');
 
   const { msgError, loading } = useSelector(getMsgError);
 
@@ -91,7 +91,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
                           <InputMail
                             text={t('LoginPage.Enter-Mail')}
                             name="email"
-                            value={email}
+                            value={mailRecovery || email}
                             onFocus={handlerOnFocus}
                             onChange={handleInputChange}
                           />

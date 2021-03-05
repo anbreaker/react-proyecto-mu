@@ -30,6 +30,8 @@ export const startLoginEmailPassword = (email, password) => {
       // TODO orgId
       configureClient(token);
       dispatch(finishLoadingAction());
+
+      // TODO ventana Modal
     } catch (error) {
       console.log(error);
       dispatch(finishLoadingAction());

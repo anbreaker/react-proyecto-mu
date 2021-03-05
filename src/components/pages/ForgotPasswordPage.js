@@ -37,7 +37,7 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
 
     dispatch(recoveryPassAction(email));
 
-    history.push('/login');
+    history.push('/verify');
 
     dispatch(removeErrorAction());
     return true;
