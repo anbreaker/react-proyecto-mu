@@ -165,5 +165,15 @@
     "Treasurer-Expense": "Summary of Expenditure",
     "New-Expense": "New Expense",
     "Info": "Treasurer's window, to show the summary of expenses."
+  },
+  "SecretaryResumePage": {
+    "Secretary-Resume": "User management",
+    "Info": "Secretary window, to show the summary of users and their status. ",
+    "Activate": "To be activated",
+    "Users": "Users",
+    "Name": "Name",
+    "Email": "Email",
+    "Status": "Status",
+    "Change-Status": "Change Status"
   }
 }

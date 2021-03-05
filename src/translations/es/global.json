@@ -165,5 +165,15 @@
     "Treasurer-Expense": "Resumen de Gastos",
     "New-Expense": "Añadir Gasto",
     "Info": "Ventana del Tesorero, para mostrar el resumen de gastos."
+  },
+  "SecretaryResumePage": {
+    "Secretary-Resume": "Gestión de Usuarios",
+    "Info": "Ventana del Secretario, para mostrar el resumen de usuarios y el estado en que se encuentran. ",
+    "Activate": "Pendientes de activar",
+    "Users": "Usuarios",
+    "Name": "Nombre",
+    "Email": "Email",
+    "Status": "Estado",
+    "Change-Status": "Cambiar Estado"
   }
 }

@@ -29,6 +29,7 @@ import { TreasurerIncomePage } from '../pages/TreasurerIncomePage';
 import { TreasurerIncomeRegisterPage } from '../pages/TreasurerIncomeRegisterPage';
 import { TreasurerExpenseRegisterPage } from '../pages/TreasurerExpenseRegisterPage';
 import { TreasurerExpensePage } from '../pages/TreasurerExpensePage';
+import { SecretaryResumePage } from '../pages/SecretaryResumePage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -127,6 +128,12 @@ export const App = () => {
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <Route path="/treasurer-expense" exact>
           <TreasurerExpensePage />
+        </Route>
+
+        {/* --------------------Secretary-------------------- */}
+        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
+        <Route path="/secretary-resume" exact>
+          <SecretaryResumePage />
         </Route>
 
         <Route path="/recovery-pass" exact>

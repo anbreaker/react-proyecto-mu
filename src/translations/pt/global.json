@@ -165,5 +165,15 @@
     "Treasurer-Expense": "Resumo das despesas",
     "New-Expense": "Acrescentar despesas",
     "Info": "Janela do tesoureiro, para exibir o resumo das despesas."
+  },
+  "SecretaryResumePage": {
+    "Secretary-Resume": "User management",
+    "Info": "Janela do Secretário, para mostrar o resumo dos utilizadores e o seu estatuto.",
+    "Activate": "Para ser activado",
+    "Users": "Membros",
+    "Name": "Nome",
+    "Email": "Email",
+    "Status": "Situação",
+    "Change-Status": "Alterar o estado"
   }
 }
