@@ -3,6 +3,12 @@ export const getLanguaje = state => state.languaje;
 export const getLocale = state => state.locale;
 
 export const uidOnIndexDB = state => !!state.auth.uid;
+export const userStatus = state => {
+  if (!state.auth.active && state.auth.role === 'NotRegistered')
+    return 'NotRegistered';
+  if (!state.auth.active && state.auth.role) return 'Disabled';
+  return 'Enabled';
+};
 export const getUserAuth = state => state.auth;
 export const getUserName = state => state.auth.displayName;
 export const getPermisos = state => state.auth.permisos;

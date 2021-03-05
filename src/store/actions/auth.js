@@ -19,22 +19,20 @@ export const startLoginEmailPassword = (email, password) => {
         .auth()
         .signInWithEmailAndPassword(email, password);
 
+      console.log(user, ',<---User');
+
       const token = await user.getIdToken();
 
-      const dbUser = await client.get('/user');
-      console.log({ dbUser }, '<--dbUser');
+      const dataUserDB = await checkUserDB();
 
-      dispatch(login({ ...user, ...dbUser, token }));
+      dispatch(login({ ...user, ...dataUserDB, token }));
 
       // TODO orgId
       configureClient(token);
       dispatch(finishLoadingAction());
     } catch (error) {
-      console.log(error.response.data.errorCode, '<--Error');
-
+      console.log(error);
       dispatch(finishLoadingAction());
-      if (error.response.data.errorCode === 'NOUSERDATABASE')
-        history.push('/register');
 
       dispatch(
         setAlertAction('ErrorSwal.Error', `ErrorSwal.${error.code}`, 'error')
@@ -70,16 +68,25 @@ export const startGoogleLogin = () => {
   };
 };
 
-export const login = (
+const checkUserDB = async history => {
+  const dbUser = await client.get('/user');
+  if (dbUser.errorCode === 'NOUSERDATABASE')
+    return { active: false, role: 'NotRegistered' }; //history.push('/profile');
+
+  return dbUser.data;
+};
+
+export const login = ({
   uid,
   displayName,
   token,
   photoURL,
   email,
-  phoneNumber
-) => {
-  //! HARDCODED POR EL MOMENTO
-  const permisos = getMenuByRole('SuperAdmin');
+  phoneNumber,
+  active,
+  role,
+}) => {
+  const permisos = getMenuByRole(role);
 
   return {
     type: types.login,
@@ -90,6 +97,8 @@ export const login = (
       photoURL,
       email,
       phoneNumber,
+      role,
+      active,
       permisos,
     },
   };

@@ -69,7 +69,8 @@
     "Password-Send": "Password successfully sent to your e-mail",
     "Error": "Error",
     "auth/wrong-password": "The password is invalid or the user does not have a password.",
-    "auth/user-not-found": "There is no user record corresponding to this identifier. The user may have been deleted."
+    "auth/user-not-found": "There is no user record corresponding to this identifier. The user may have been deleted.",
+    "NOUSERDATABASE": ""
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",

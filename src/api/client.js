@@ -41,22 +41,21 @@ client.logout = () =>
     resolve();
   });
 
-// TODO Comprobar Interceptor no recoge bien los Errores
-// // Intercepts response
-// client.interceptors.response.use(
-//   ({ data: { ok, ...result } }) => {
-//     if (!ok) {
-//       return Promise.reject(result.error);
-//     }
-//     return Promise.resolve(result);
-//   },
-//   error => {
-//     if (error.response) {
-//       return Promise.reject(error.response.data.error);
-//     }
-//     return Promise.reject(error);
-//   }
-// );
+// Intercepts response
+client.interceptors.response.use(
+  ({ data }) => {
+    if (!data) {
+      return Promise.reject('Empty response - Interceptor');
+    }
+    return Promise.resolve(data);
+  },
+  error => {
+    if (error.response) {
+      return Promise.reject(error.response.data);
+    }
+    return Promise.reject(error);
+  }
+);
 
 // Configure client
 export const configureClient = (token, orgId) => {

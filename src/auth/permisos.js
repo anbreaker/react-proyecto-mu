@@ -12,7 +12,14 @@ const menus = [
       {
         name: 'Profile',
         route: '/profile',
-        role: ['SuperAdmin', 'President', 'Treasurer', 'Secretary', 'Member'],
+        role: [
+          'SuperAdmin',
+          'President',
+          'Treasurer',
+          'Secretary',
+          'Member',
+          'NotRegistered',
+        ],
       },
     ],
   },

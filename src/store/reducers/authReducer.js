@@ -3,11 +3,13 @@ import { types } from '../types/types';
 const initialState = {
   uid: '',
   displayName: '',
+  active: 'false',
   token: '',
   email: '',
   photoURL: '',
   phoneNumber: '',
   role: '',
+  active: false,
   permisos: [],
 };
 
