@@ -7,9 +7,9 @@ export const InputText = props => {
     <input
       {...props}
       aria-describedby="enterText"
+      className="form-control form-control-user"
       type="text"
       name={name}
-      className="form-control form-control-user"
       placeholder={text}
       value={value || ''}
       onChange={onChange}

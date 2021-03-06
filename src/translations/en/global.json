@@ -28,7 +28,8 @@
     "Organization": "Organization",
     "Name-Required": "Name is required, to contain at least 3 characters.",
     "Email-NotValid": "Email is not valid",
-    "Password-Error": "Password should be at least 6 characters and match each other"
+    "Password-Error": "Password should be at least 6 characters and match each other",
+    "Verify-Email": "Verification email sent successfully check your email."
   },
   "NotFoundPage": {
     "Not-Found": "Page Not Found",

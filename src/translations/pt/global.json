@@ -28,7 +28,8 @@
     "Organization": "Organização",
     "Name-Required": "O nome é obrigatório, deve conter pelo menos 3 caracteres.",
     "Email-NotValid": "O email é inválido",
-    "Password-Error": "A senha deve ter pelo menos 6 caracteres e os campos devem corresponder"
+    "Password-Error": "A senha deve ter pelo menos 6 caracteres e os campos devem corresponder",
+    "Verify-Email": "E-mail de verificação enviado com sucesso verifique o seu e-mail."
   },
   "NotFoundPage": {
     "Not-Found": "Página não encontrada",

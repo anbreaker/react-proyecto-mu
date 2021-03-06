@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -27,16 +27,20 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   const location = useLocation();
   const queryParmas = new URLSearchParams(location.search);
-  const mailRecovery = queryParmas.get('user');
+  const emailRecovery = queryParmas.get('user');
 
   const { msgError, loading } = useSelector(getMsgError);
 
-  const [formValues, handleInputChange] = useForm({
+  const [formValues, handleInputChange, setFormValues] = useForm({
     email: '',
     password: '',
   });
 
   const { email, password } = formValues;
+
+  useEffect(() => {
+    setFormValues({ ...formValues });
+  }, []);
 
   const handleLogin = event => {
     event.preventDefault();
@@ -91,7 +95,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
                           <InputMail
                             text={t('LoginPage.Enter-Mail')}
                             name="email"
-                            value={mailRecovery || email}
+                            value={email || emailRecovery}
                             onFocus={handlerOnFocus}
                             onChange={handleInputChange}
                           />

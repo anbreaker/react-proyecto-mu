@@ -2,6 +2,7 @@ import React from 'react';
 
 export const InputMail = props => {
   const { text, value, onChange, name } = props;
+
   return (
     <input
       {...props}
@@ -9,7 +10,7 @@ export const InputMail = props => {
       type="email"
       placeholder={text}
       name={name}
-      value={value}
+      value={value || ''}
       onChange={onChange}
     />
   );

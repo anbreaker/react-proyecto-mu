@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Helmet from 'react-helmet';
 import validator from 'validator';
@@ -14,6 +15,7 @@ import { InputText } from '../basicComponents/InputText';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { getMsgError } from '../../store/selectors';
 import { MessageError } from '../parts/MessageError';
+import { setAlertAction } from '../../store/actions/swal';
 import '../../assets/css/style.css';
 import {
   startGoogleLogin,
@@ -24,6 +26,8 @@ export const RegisterPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   const { msgError, loading } = useSelector(getMsgError);
 
@@ -56,6 +60,17 @@ export const RegisterPage = ({ handlerOnFocus }) => {
       dispatch(setErrorAction('RegisterPage.Password-Error'));
       return false;
     }
+
+    setTimeout(() => {
+      dispatch(
+        setAlertAction(
+          'ErrorSwal.Success',
+          'RegisterPage.Verify-Email',
+          'success'
+        )
+      );
+      history.push('/verify');
+    }, 500);
 
     dispatch(removeErrorAction());
     return true;

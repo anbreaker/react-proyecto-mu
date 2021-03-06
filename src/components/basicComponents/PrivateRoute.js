@@ -25,11 +25,11 @@ const PrivateRoute = props => {
         <Redirect to="/profile" />
       );
 
-    if (isLogged && uStatus === 'Disabled') return <Redirect to="/Login" />;
+    if (isLogged && uStatus === 'Disabled') return <Redirect to="/login" />;
 
     if (isLogged && uStatus === 'Enabled') return <Route {...props} />;
 
-    return <Redirect to="/Login" />;
+    return <Redirect to="/login" />;
   };
 
   return checkStatus();
