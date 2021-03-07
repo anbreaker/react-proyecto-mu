@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLocale, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 //import { checkDataTypeImg } from '../../store/actions/upCloudinary';
-import client from '../../api/client';
+import { saveOrgDB } from '../../api';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -24,26 +24,24 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const { locale } = useSelector(getLocale);
 
   const [formValues, handleInputChange, setFormValues] = useForm({
-    id: '',
     displayName: '',
     address: '',
     president: '',
-    mobile: '',
     foundation: '',
     country: '',
-    postCode: '',
+    province: '',
+    city: '',
     imgFoundation: '',
   });
 
   const {
-    id,
     displayName,
     address,
     president,
-    mobile,
     foundation,
     country,
-    postCode,
+    province,
+    city,
     imgFoundation,
   } = formValues;
 
@@ -51,7 +49,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
     setFormValues({ ...formValues });
   }, []);
 
-  const handleChangeProfile = event => {
+  const handleChangeProfile = async event => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
@@ -59,22 +57,14 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
       // TODO enviar este objeto al back
       // user: { uid, displayName, email, phonNumber, photURL, role }
 
-      client
-        .post('/user', formValues)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+      const resp = await saveOrgDB(formValues);
+      console.log(resp);
     }
   };
 
   const isFormChangeProfileValid = () => {
     if (displayName.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
-      return false;
-    } else if (id.length <= 2) {
-      dispatch(setErrorAction('DashboardProfilePage.FirstSurname-Required'));
-      return false;
-    } else if (!validator.isMobilePhone(mobile)) {
-      dispatch(setErrorAction('DashboardProfilePage.Mobile-Need'));
       return false;
     } else if (address.length <= 2) {
       dispatch(setErrorAction('DashboardProfilePage.Mobile-Need'));
@@ -166,33 +156,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                       />
                     </div>
                     <div className="col-lg-6">
-                      <h6 className="font-weight-bold mt-3">
-                        {t('DashboardSuperAdminPage.Id')}:
-                      </h6>
-                      <InputText
-                        text={`${t('DashboardSuperAdminPage.Id')}...`}
-                        name="id"
-                        value={id}
-                        onFocus={handlerOnFocus}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                    {/*  */}
-                    <div className="col-lg-6">
-                      <h6 className="font-weight-bold mt-3">
-                        {t('DashboardSuperAdminPage.Mobile')}:
-                      </h6>
-                      <InputText
-                        text={`${t('DashboardSuperAdminPage.Mobile')}...`}
-                        name="mobile"
-                        value={mobile}
-                        onFocus={handlerOnFocus}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                    <div className="col-lg-6">
+                      {/* //TODO Debe ser un DateTimePicker */}
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardSuperAdminPage.Foundation')}:
                       </h6>
@@ -221,12 +185,25 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                     </div>
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
-                        {t('DashboardSuperAdminPage.Post-Code')}:
+                        {t('DashboardSuperAdminPage.Province')}:
                       </h6>
                       <InputText
-                        text={`${t('DashboardSuperAdminPage.Post-Code')}...`}
-                        name="postCode"
-                        value={postCode}
+                        text={`${t('DashboardSuperAdminPage.Province')}...`}
+                        name="province"
+                        value={province}
+                        onFocus={handlerOnFocus}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    <div className="col-lg-6">
+                      <h6 className="font-weight-bold mt-3">
+                        {t('DashboardSuperAdminPage.City')}:
+                      </h6>
+                      <InputText
+                        text={`${t('DashboardSuperAdminPage.City')}...`}
+                        name="city"
+                        value={city}
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}
                         required
