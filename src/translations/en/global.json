@@ -68,12 +68,13 @@
     "Welcome": "Login successful, Welcome!",
     "Email-InUse": "The email address is already in use by another account.",
     "Password-Send": "Password successfully sent to your e-mail",
-    "Error": "Error",
+    "Error": "Error, please contact an Administrator",
     "auth/wrong-password": "The password is invalid or the user does not have a password.",
     "auth/user-not-found": "There is no user record corresponding to this identifier. The user may have been deleted.",
     "auth/email-already-in-use": "The email address is already in use by another account.",
     "auth/email-not-verified": "The email has not been verified, please check your inbox",
-    "NOUSERDATABASE": "Not User on Data Base!"
+    "NOUSERDATABASE": "Not User on Data Base!",
+    "SuccessUpdateProfile": "Profile data updated successfully!. If you are a new user please wait until an administrator assign you to an organization"
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",

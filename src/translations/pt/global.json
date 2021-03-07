@@ -68,12 +68,13 @@
     "Welcome": "Login bem sucedido, Bem-vindo!",
     "Email-InUse": "Este e-mail já está a ser utilizado por outra pessoa.",
     "Password-Send": "Senha enviada com sucesso para o seu e-mail",
-    "Error": "Erro",
+    "Error": "Erro, por favor contacte a un Administrador",
     "auth/wrong-password": "A senha é inválida ou o utilizador não tem uma senha.",
     "auth/user-not-found": "Não há nenhum usuário com este endereço de e-mail. O usuário pode ter sido excluído.",
     "auth/email-already-in-use": "El email ingresado ya se encuentra utilizado por otra cuenta.",
     "auth/email-not-verified": "La dirección email no se ha verificado, por favor revise su correo",
-    "NOUSERDATABASE": "Não Utilizador em Base de Dados!"
+    "NOUSERDATABASE": "Não Utilizador em Base de Dados!",
+    "SuccessUpdateProfile": "Datos actualizados correctamente. Si es un usuario nuevo por favor espere a que un administrador lo asigne a alguna organización"
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",

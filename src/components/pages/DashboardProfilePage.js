@@ -68,10 +68,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
-      // Enviar al Back en un Objeto..
-      // TODO enviar este objeto al back
-      // user: { uid, displayName, email, phoneNumber, photoURL, role }
-
       dispatch(updateProfileAction(formValues));
     }
   };
@@ -248,7 +244,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                     </h6>
                   </div>
                   <div className="row">
-                    <div className="col-lg-4">
+                    <div className="col-12">
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardProfilePage.Address')}:
                       </h6>
@@ -260,7 +256,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                         onChange={handleInputChange}
                       />
                     </div>
-                    <div className="col-lg-4">
+                  </div>
+                  <div className="row">
+                    <div className="col-6">
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardProfilePage.Mobile')}:
                       </h6>
@@ -273,7 +271,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                         onChange={handleInputChange}
                       />
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-6">
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardProfilePage.Telephone')}:
                       </h6>

@@ -19,8 +19,6 @@ export const startLoginEmailPassword = (email, password) => {
         .auth()
         .signInWithEmailAndPassword(email, password);
 
-      console.log(user, ',<---User');
-
       const token = await user.getIdToken();
 
       dispatch(login({ ...user, token }));
@@ -66,13 +64,21 @@ export const startGoogleLogin = () => {
 
 export const login = userData => {
   return async (dispatch, getState, { history, api }) => {
+    // Sólo deja entrar si el mail ha sido verificado
     if (userData.emailVerified) {
-      configureClient(userData.token);
-      const dataUserDB = await api.checkUserDB();
-      console.log(dataUserDB);
-      userData = { ...userData, ...dataUserDB };
-      dispatch(updateAuth(userData));
-      return;
+      try {
+        configureClient(userData.token);
+        const dataUserDB = await api.checkUserDB();
+        userData = { ...userData, ...dataUserDB };
+        dispatch(updateAuth(userData));
+      } catch (error) {
+        console.log(`ErrorSwal.${error}`);
+        dispatch(
+          setAlertAction('ErrorSwal.Error', `ErrorSwal.${error}`, 'error')
+        );
+      } finally {
+        return;
+      }
     }
     dispatch(
       setAlertAction(
@@ -218,8 +224,13 @@ export const updateProfileAction = userData => {
       const resp = await api.saveUserDB({ ...userData, uid });
       dispatch(updateAuth(resp));
       dispatch(
-        setAlertAction('ErrorSwal.Success', 'ErrorSwal.Success', 'success')
+        setAlertAction(
+          'ErrorSwal.Success',
+          'ErrorSwal.SuccessUpdateProfile',
+          'success'
+        )
       );
+      history.push('/dashboard');
     } catch (error) {
       dispatch(
         setAlertAction('ErrorSwal.Error', `ErrorSwal.${error.code}`, 'error')
