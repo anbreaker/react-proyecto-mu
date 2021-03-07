@@ -1,5 +1,5 @@
 // eslint-disable
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,7 +32,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { locale } = useSelector(getLocale);
 
   const user = useSelector(getUserAuth);
-  const photo = useSelector(getPhotoURL);
 
   const [
     formValues,

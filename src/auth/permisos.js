@@ -24,6 +24,18 @@ const menus = [
     ],
   },
   {
+    menu: 'Administration',
+    activo: true,
+    icon: 'fa-cog',
+    submenu: [
+      {
+        name: 'OrgAdmin',
+        route: '/admin',
+        role: ['SuperAdmin'],
+      },
+    ],
+  },
+  {
     menu: 'Treasurer',
     activo: true,
     icon: 'fa-wallet',

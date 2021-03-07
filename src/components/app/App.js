@@ -86,9 +86,9 @@ export const App = () => {
         <Route path="/disabled" exact component={DisabledUserPage} />
 
         {/* //TODO proteger ruta admin... */}
-        <Route path="/admin" exact>
+        <PrivateRoute path="/admin" exact>
           <DashboardSuperAdminPage />
-        </Route>
+        </PrivateRoute>
         {/* //TODO proteger ruta adminOrg... */}
         <Route path="/admin-org" exact>
           <DashboardOrgProfilePage />

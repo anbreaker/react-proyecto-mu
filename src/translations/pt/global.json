@@ -61,7 +61,8 @@
     "Activity-Log": "Diário de actividades",
     "Logout": "Sair",
     "Cancel": "Cancenlar",
-    "Administration": "Gestão"
+    "Administration": "Gestão",
+    "OrgAdmin": "Org. Admin."
   },
   "ErrorSwal": {
     "Success": "Êxito",

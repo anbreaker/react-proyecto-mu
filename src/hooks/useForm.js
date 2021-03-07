@@ -22,8 +22,6 @@ export const useForm = (initialStateForm = {}) => {
   };
 
   const setFieldValue = (key, value) => {
-    console.log(key, value);
-    console.log({ ...formValues, [key]: value });
     setFormValues({ ...formValues, [key]: value });
   };
 
