@@ -71,6 +71,8 @@
     "Error": "Erro",
     "auth/wrong-password": "A senha é inválida ou o utilizador não tem uma senha.",
     "auth/user-not-found": "Não há nenhum usuário com este endereço de e-mail. O usuário pode ter sido excluído.",
+    "auth/email-already-in-use": "El email ingresado ya se encuentra utilizado por otra cuenta.",
+    "auth/email-not-verified": "La dirección email no se ha verificado, por favor revise su correo",
     "NOUSERDATABASE": "Não Utilizador em Base de Dados!"
   },
   "ChangeLanguaje": {

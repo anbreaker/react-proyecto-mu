@@ -59,7 +59,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     if (isFormChangeProfileValid()) {
       // Enviar al Back en un Objeto..
       // TODO enviar este objeto al back
-      // user: { uid, displayName, email, phonNumber, photURL, role }
+      // user: { uid, displayName, email, phoneNumber, photoURL, role }
 
       client
         .post('/user', formValues)

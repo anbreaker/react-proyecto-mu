@@ -4,30 +4,24 @@ import { useSelector } from 'react-redux';
 
 import { uidOnIndexDB, userStatus } from '../../store/selectors';
 
-/*const PrivateRoute = props => {
-  // redux selector isLogged
-  const isLogged = useSelector(uidOnIndexDB);
-
-  return isLogged ? <Route {...props} /> : <Redirect to="/login" />;
-};*/
-
 const PrivateRoute = props => {
   // redux selector isLogged
   const isLogged = useSelector(uidOnIndexDB);
   const uStatus = useSelector(userStatus);
 
   const checkStatus = () => {
-    console.log(uStatus);
-    if (isLogged && uStatus === 'NotRegistered')
+    if (!isLogged) return <Redirect to="/login" />;
+
+    if (uStatus === 'NotRegistered')
       return props.path === '/profile' ? (
         <Route {...props} />
       ) : (
         <Redirect to="/profile" />
       );
 
-    if (isLogged && uStatus === 'Disabled') return <Redirect to="/login" />;
+    if (uStatus === 'Disabled') return <Redirect to="/disabled" />;
 
-    if (isLogged && uStatus === 'Enabled') return <Route {...props} />;
+    if (uStatus === 'Enabled') return <Route {...props} />;
 
     return <Redirect to="/login" />;
   };

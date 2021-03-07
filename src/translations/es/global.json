@@ -71,6 +71,8 @@
     "Error": "Error",
     "auth/wrong-password": "La constraseña es inválida o el usuario no tiene ninguna.",
     "auth/user-not-found": "No existe ningún usuario con este email. El usuario puede haber sido eliminado.",
+    "auth/email-already-in-use": "El email ingresado ya se encuentra utilizado por otra cuenta.",
+    "auth/email-not-verified": "La dirección email no se ha verificado, por favor revise su correo",
     "NOUSERDATABASE": "No es un usuario de la base de datos."
   },
   "ChangeLanguaje": {

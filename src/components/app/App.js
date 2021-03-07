@@ -31,6 +31,7 @@ import { TreasurerExpenseRegisterPage } from '../pages/TreasurerExpenseRegisterP
 import { TreasurerExpensePage } from '../pages/TreasurerExpensePage';
 import { SecretaryResumePage } from '../pages/SecretaryResumePage';
 import { SecretaryMeetingsPage } from '../pages/SecretaryMeetingsPage';
+import { DisabledUserPage } from '../pages/DisabledUserPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -41,16 +42,7 @@ export const App = () => {
     firebaseInit.auth().onAuthStateChanged(user => {
       if (user) {
         user.getIdToken().then(token => {
-          dispatch(
-            login(
-              user.uid,
-              user.displayName,
-              token,
-              user.photoURL,
-              user.email,
-              user.phoneNumber
-            )
-          );
+          dispatch(login({ ...user, token }));
           configureClient(token);
         });
       }
@@ -90,6 +82,8 @@ export const App = () => {
             <RegisterPage handlerOnFocus={handlerOnFocus} />
           )}
         </Route>
+
+        <Route path="/disabled" exact component={DisabledUserPage} />
 
         {/* //TODO proteger ruta admin... */}
         <Route path="/admin" exact>

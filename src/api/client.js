@@ -1,8 +1,13 @@
 import axios from 'axios';
 
-const { REACT_APP_NODE: host, REACT_APP_API_VERSION: version } = process.env;
+//const { REACT_APP_NODE: host, REACT_APP_API_VERSION: version } = process.env;
 
-const baseURL = `${host}/${version}`;
+const baseURL =
+  process.env.NODE_ENV == 'development'
+    ? process.env.REACT_APP_DEV_NODE + process.env.REACT_APP_DEV_API_VERSION
+    : process.env.REACT_APP_PROD_NODE + process.env.REACT_APP_PROD_API_VERSION;
+
+//const baseURL = `${host}/${version}`;
 
 // Create axios instance
 const client = axios.create({

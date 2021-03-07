@@ -61,17 +61,6 @@ export const RegisterPage = ({ handlerOnFocus }) => {
       return false;
     }
 
-    setTimeout(() => {
-      dispatch(
-        setAlertAction(
-          'ErrorSwal.Success',
-          'RegisterPage.Verify-Email',
-          'success'
-        )
-      );
-      history.push('/verify');
-    }, 500);
-
     dispatch(removeErrorAction());
     return true;
   };
