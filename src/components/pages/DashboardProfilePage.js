@@ -2,39 +2,54 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
-import profile from '../../assets/img/undraw_profile.svg';
+import { useDispatch, useSelector } from 'react-redux';
 
+import profile from '../../assets/img/undraw_profile.svg';
 import { MainLayout } from '../layout/MainLayout';
 import { InputText } from '../basicComponents/InputText';
 import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import { getLocale, getMsgError, getUserAuth } from '../../store/selectors';
+import {
+  getLocale,
+  getMsgError,
+  getUserAuth,
+  getPhotoURL,
+  userStatus,
+} from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
-import { checkDataTypeImg } from '../../store/actions/upCloudinary';
-import client from '../../api/client';
+import { updateProfileAction } from '../../store/actions/auth';
+import { setAlertAction } from '../../store/actions/swal';
+import { fileUpload } from '../../helpers/fileUploads';
 
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
+  const uStatus = useSelector(userStatus);
 
   const { msgError, loading } = useSelector(getMsgError);
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
 
   const user = useSelector(getUserAuth);
+  const photo = useSelector(getPhotoURL);
 
-  const [formValues, handleInputChange, setFormValues] = useForm({
-    displayName: '',
-    firstSurname: '',
-    secondSurname: '',
-    email: '',
-    fiscalNumber: '',
-    address: '',
-    phoneNumber: '',
-    phone: '',
-    photoURL: '',
+  const [
+    formValues,
+    handleInputChange,
+    setFormValues,
+    reset,
+    setFieldValue,
+  ] = useForm({
+    displayName: user.displayName || '',
+    firstSurname: user.firstSurname || '',
+    secondSurname: user.secondSurname || '',
+    email: user.email || '',
+    fiscalNumber: user.fiscalNumber || '',
+    address: (user.contact && user.contact.address) || '',
+    mobile: (user.contact && user.contact.mobile) || '',
+    phone: (user.contact && user.contact.homePhone) || '',
+    photoURL: user.photoURL || '',
   });
 
   const {
@@ -44,14 +59,10 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     email,
     fiscalNumber,
     address,
-    phoneNumber,
+    mobile,
     phone,
     photoURL,
   } = formValues;
-
-  useEffect(() => {
-    setFormValues({ ...formValues, ...user });
-  }, [user]);
 
   const handleChangeProfile = event => {
     event.preventDefault();
@@ -61,10 +72,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
       // TODO enviar este objeto al back
       // user: { uid, displayName, email, phoneNumber, photoURL, role }
 
-      client
-        .post('/user', formValues)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+      dispatch(updateProfileAction(formValues));
     }
   };
 
@@ -75,7 +83,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     } else if (firstSurname.length <= 2) {
       dispatch(setErrorAction('DashboardProfilePage.FirstSurname-Required'));
       return false;
-    } else if (!validator.isMobilePhone(phoneNumber)) {
+    } else if (!validator.isMobilePhone(mobile)) {
       dispatch(setErrorAction('DashboardProfilePage.Mobile-Need'));
       return false;
     } else if (address.length <= 2) {
@@ -90,8 +98,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     */
 
     dispatch(removeErrorAction());
-    // TODO eliminar cuando este verificado
-    console.log(formValues, '<-- Viedon formValues');
 
     return true;
   };
@@ -103,7 +109,28 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const handleFileChange = event => {
     const file = event.target.files[0];
 
-    dispatch(checkDataTypeImg(file));
+    //! cambié esto acá ya que no se justificaba hacer esto en redux, es un estado local del formulario
+    //! se cambiaría en redux cuando el usuario presione el botón de guardar
+    fileUpload(file)
+      .then(url => {
+        setFieldValue('photoURL', url);
+        dispatch(
+          setAlertAction(
+            'ErrorSwal.Success',
+            'DashboardProfilePage.Change-Photo',
+            'success'
+          )
+        );
+      })
+      .catch(err => {
+        dispatch(
+          setAlertAction(
+            'ErrorSwal.Error',
+            'DashboardProfilePage.Types-File',
+            'error'
+          )
+        );
+      });
   };
 
   return (
@@ -111,7 +138,11 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
       <div className="container-fluid">
         <h1 className="h3 mb-3 text-gray-800">{t('NavBars.Profile')}:</h1>
 
-        <p className="h5 mb-4">{t('DashboardProfilePage.Incoming')}</p>
+        <p className="h5 mb-4">
+          {uStatus === 'NotRegistered'
+            ? t('DashboardProfilePage.Incoming')
+            : ''}
+        </p>
 
         <div className="row mt-3 align-items-start minh-100">
           <div className="col-lg-2">
@@ -130,7 +161,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                   name="file"
                   style={{ display: 'none' }}
                   type="file"
+                  accept="image/*"
                   onChange={handleFileChange}
+                  hidden
                 />
                 <Button disabled={loading} onClick={handleUploadFile}>
                   {t('DashboardProfilePage.Profile-Picture')}
@@ -233,8 +266,8 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                       </h6>
                       <InputText
                         text={`${t('DashboardProfilePage.Mobile')}...`}
-                        name="phoneNumber"
-                        value={phoneNumber || ''}
+                        name="mobile"
+                        value={mobile || ''}
                         required
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}

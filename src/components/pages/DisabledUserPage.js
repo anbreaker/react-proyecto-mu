@@ -8,8 +8,8 @@ export const DisabledUserPage = () => {
     <MainLayout>
       <div className="container-fluid">
         <h1 className="h3 mb-4 text-gray-800">
-          Su cuenta se encuentra creada, pero no ha sido asociada a ninguna
-          organización. Debe solicitar a un administrador que lo habilite.
+          Su cuenta ha sido creada exitosamente, pero aún no ha sido asociada a
+          ninguna organización. Un administrador completará este proceso.
         </h1>
       </div>
     </MainLayout>

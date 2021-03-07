@@ -1,20 +1,12 @@
 import { fileUpload } from '../../helpers/fileUploads';
 import { setAlertAction } from './swal';
+import { updateProfileImage } from '../actions/auth';
 
-export const uploadFileCloudinaryAction = file => {
+export const uploadProfilePhoto = file => {
   return async dispatch => {
-    const fileUrl = await fileUpload(file);
-
-    // TODO url cloudinary
-    // Guardar URL (actualizar dato en Back)
-    console.log(fileUrl, '<-- URL Cloudinary');
-  };
-};
-
-export const checkDataTypeImg = file => {
-  return dispatch => {
-    if (file.type === 'image/jpeg' || file.type === 'image/png') {
-      dispatch(uploadFileCloudinaryAction(file));
+    try {
+      const url = await fileUpload(file);
+      dispatch(updateProfileImage(url));
       dispatch(
         setAlertAction(
           'ErrorSwal.Success',
@@ -22,7 +14,7 @@ export const checkDataTypeImg = file => {
           'success'
         )
       );
-    } else {
+    } catch (error) {
       dispatch(
         setAlertAction(
           'ErrorSwal.Error',

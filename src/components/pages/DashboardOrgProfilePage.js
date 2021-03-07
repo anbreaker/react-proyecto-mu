@@ -12,7 +12,7 @@ import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocale, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
-import { checkDataTypeImg } from '../../store/actions/upCloudinary';
+//import { checkDataTypeImg } from '../../store/actions/upCloudinary';
 import client from '../../api/client';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
@@ -101,7 +101,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const handleFileChange = event => {
     const file = event.target.files[0];
 
-    dispatch(checkDataTypeImg(file));
+    //dispatch(checkDataTypeImg(file));
   };
 
   return (

@@ -8,4 +8,9 @@ export const checkUserDB = async () => {
   return dbUser.data;
 };
 
-export const saveUserDB = async () => {};
+export const saveUserDB = async userData => {
+  return client
+    .post('/user', userData)
+    .then(res => res.data)
+    .catch(err => err);
+};

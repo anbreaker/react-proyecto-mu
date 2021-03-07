@@ -69,8 +69,9 @@ export const login = userData => {
     if (userData.emailVerified) {
       configureClient(userData.token);
       const dataUserDB = await api.checkUserDB();
+      console.log(dataUserDB);
       userData = { ...userData, ...dataUserDB };
-      dispatch(finishLogin(userData));
+      dispatch(updateAuth(userData));
       return;
     }
     dispatch(
@@ -83,15 +84,19 @@ export const login = userData => {
   };
 };
 
-export const finishLogin = ({
+export const updateAuth = ({
   uid,
   displayName,
+  firstSurname,
+  secondSurname,
+  fiscalNumber,
   token,
   photoURL,
   email,
-  phoneNumber,
+  contact,
   active,
   role,
+  organizations,
 }) => {
   const permisos = getMenuByRole(role);
   return {
@@ -99,13 +104,17 @@ export const finishLogin = ({
     payload: {
       uid,
       displayName,
+      firstSurname,
+      secondSurname,
+      fiscalNumber,
       token,
       photoURL,
       email,
-      phoneNumber,
+      contact,
       role,
       active,
       permisos,
+      organizations,
     },
   };
 };
@@ -123,7 +132,7 @@ export const logout = () => ({
 });
 
 export const startRegisterWithEmailPasswordName = (email, password, name) => {
-  return (dispatch, getState, { history }) => {
+  return async (dispatch, getState, { history }) => {
     dispatch(startLoadingAction());
     firebaseInit
       .auth()
@@ -164,7 +173,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
 };
 
 export const recoveryPassAction = email => {
-  return dispatch => {
+  return async dispatch => {
     dispatch(startLoadingAction());
     firebaseInit
       .auth()
@@ -182,7 +191,6 @@ export const recoveryPassAction = email => {
           )
         );
       })
-
       .catch(error => {
         dispatch(finishLoadingAction());
 
@@ -191,5 +199,32 @@ export const recoveryPassAction = email => {
         );
         console.log(error);
       });
+  };
+};
+
+export const updateProfileImage = url => {
+  return {
+    type: types.setProfileImg,
+    payload: {
+      photoURL: url,
+    },
+  };
+};
+
+export const updateProfileAction = userData => {
+  return async (dispatch, getState, { history, api }) => {
+    try {
+      const { uid } = getState().auth;
+      const resp = await api.saveUserDB({ ...userData, uid });
+      dispatch(updateAuth(resp));
+      dispatch(
+        setAlertAction('ErrorSwal.Success', 'ErrorSwal.Success', 'success')
+      );
+    } catch (error) {
+      dispatch(
+        setAlertAction('ErrorSwal.Error', `ErrorSwal.${error.code}`, 'error')
+      );
+      console.log(error);
+    }
   };
 };

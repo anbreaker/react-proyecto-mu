@@ -10,6 +10,7 @@ const PrivateRoute = props => {
   const uStatus = useSelector(userStatus);
 
   const checkStatus = () => {
+    console.log(`islogged: ${isLogged} - uStatus: ${uStatus}`);
     if (!isLogged) return <Redirect to="/login" />;
 
     if (uStatus === 'NotRegistered')

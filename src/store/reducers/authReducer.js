@@ -3,13 +3,17 @@ import { types } from '../types/types';
 const initialState = {
   uid: '',
   displayName: '',
+  firstSurname: '',
+  secondSurname: '',
+  fiscalNumber: '',
   token: '',
   email: '',
   photoURL: '',
-  phoneNumber: '',
+  contact: { mobile: '', homePhone: '', address: '' },
   role: '',
   active: false,
   permisos: [],
+  organizations: [],
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -22,6 +26,9 @@ export const authReducer = (state = initialState, action) => {
 
     case types.logout:
       return { ...initialState };
+
+    case types.setProfileImg:
+      return { ...state, ...action.payload };
 
     default:
       return state;
