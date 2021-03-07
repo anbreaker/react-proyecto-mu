@@ -50,8 +50,13 @@ export const LoginPage = ({ handlerOnFocus }) => {
     }
   };
 
+  // TODO comprobar con login?user=antunez19@gmail.com
   const isLoginValid = () => {
-    if (!validator.isEmail(email)) {
+    let mail;
+    if (emailRecovery) mail = !validator.isEmail(emailRecovery);
+    else mail = !validator.isEmail(email);
+
+    if (mail) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
       // TODO Refrescar input password... Preguntar
