@@ -1,9 +1,9 @@
-// eslint-disable
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
-import profile from '../../assets/img/undraw_posting_photo.svg';
+import { Label, Input, FormText } from 'reactstrap';
 
+import profile from '../../assets/img/undraw_posting_photo.svg';
 import { MainLayout } from '../layout/MainLayout';
 import { InputText } from '../basicComponents/InputText';
 import { useForm } from '../../hooks/useForm';
@@ -12,8 +12,9 @@ import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocale, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
+import { setAlertAction } from '../../store/actions/swal';
 //import { checkDataTypeImg } from '../../store/actions/upCloudinary';
-import { saveOrgDB } from '../../api';
+import { saveOrgDB, getAllUsers } from '../../api';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -22,31 +23,47 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const { msgError, loading } = useSelector(getMsgError);
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
+  const [userSelect, setUserSelect] = useState();
 
   const [formValues, handleInputChange, setFormValues] = useForm({
-    displayName: '',
+    name: '',
     address: '',
     president: '',
-    foundation: '',
+    foundationDate: '',
     country: '',
     province: '',
     city: '',
-    imgFoundation: '',
+    photoURL: '',
   });
 
   const {
-    displayName,
+    name,
     address,
     president,
-    foundation,
+    foundationDate,
     country,
     province,
     city,
-    imgFoundation,
+    photoURL,
   } = formValues;
 
   useEffect(() => {
     setFormValues({ ...formValues });
+  }, []);
+
+  useEffect(() => {
+    getAllUsers().then(data => {
+      const users = (
+        <>
+          {data.map(u => (
+            <option key={u.id} value={u.id}>
+              {u.fullName}
+            </option>
+          ))}
+        </>
+      );
+      setUserSelect(users);
+    });
   }, []);
 
   const handleChangeProfile = async event => {
@@ -56,14 +73,31 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
       // Enviar al Back en un Objeto..
       // TODO enviar este objeto al back
       // user: { uid, displayName, email, phonNumber, photURL, role }
-
-      const resp = await saveOrgDB(formValues);
-      console.log(resp);
+      try {
+        //Saved-Org
+        const resp = await saveOrgDB(formValues);
+        dispatch(
+          setAlertAction(
+            'ErrorSwal.Success',
+            'DashboardOrgProfilePage.Saved-Org',
+            'success'
+          )
+        );
+      } catch (error) {
+        console.log(error);
+        dispatch(
+          setAlertAction(
+            'ErrorSwal.Error',
+            'DashboardOrgProfilePage.Save-Error',
+            'success'
+          )
+        );
+      }
     }
   };
 
   const isFormChangeProfileValid = () => {
-    if (displayName.length <= 2) {
+    if (name.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
     } else if (address.length <= 2) {
@@ -112,7 +146,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                 height="141"
                 alt=""
                 // TODO Usar imagen de organizacion.
-                src={imgFoundation ? imgFoundation : profile}
+                src={photoURL ? photoURL : profile}
               />
 
               <div className="card mt-3 border-bottom-success text-center">
@@ -148,8 +182,8 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                       </h6>
                       <InputText
                         text={`${t('DashboardSuperAdminPage.Name')}...`}
-                        name="displayName"
-                        value={displayName}
+                        name="name"
+                        value={name}
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}
                         required
@@ -162,8 +196,8 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                       </h6>
                       <InputText
                         text={`${t('DashboardSuperAdminPage.Foundation')}...`}
-                        name="foundation"
-                        value={foundation}
+                        name="foundationDate"
+                        value={foundationDate}
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}
                         required
@@ -224,14 +258,18 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                   <h6 className="font-weight-bold mt-3">
                     {t('DashboardSuperAdminPage.President')}:
                   </h6>
-                  <InputText
-                    text={`${t('DashboardSuperAdminPage.President')}...`}
+                  <Input
+                    type="select"
                     name="president"
+                    id="president"
                     value={president}
                     onFocus={handlerOnFocus}
                     onChange={handleInputChange}
                     required
-                  />
+                  >
+                    <option value=""></option>
+                    {userSelect}
+                  </Input>
 
                   <hr />
                   <MessageError msgError={msgError} />

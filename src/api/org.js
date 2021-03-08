@@ -1,6 +1,11 @@
 import client from './client';
 
-export const getAllOrgs = async () => {};
+export const getAllOrgs = async () => {
+  return client
+    .get('/org/all')
+    .then(res => res.data)
+    .catch(err => err);
+};
 
 export const saveOrgDB = async orgData => {
   return client

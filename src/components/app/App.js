@@ -90,9 +90,9 @@ export const App = () => {
           <DashboardSuperAdminPage />
         </PrivateRoute>
         {/* //TODO proteger ruta adminOrg... */}
-        <Route path="/admin-org" exact>
+        <PrivateRoute path="/admin-org" exact>
           <DashboardOrgProfilePage />
-        </Route>
+        </PrivateRoute>
         {/* //TODO proteger ruta President... */}
         <Route path="/president" exact>
           <PresidentProfilePage />

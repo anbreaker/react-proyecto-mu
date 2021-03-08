@@ -123,7 +123,9 @@
     "Dashboard-Organization": "Organização do Perfil",
     "Info": "Janela de administração SuperAdmin, aqui pode adicionar, alterar ou actualizar os dados da organização seleccionada.",
     "Delete-Org": "Apagar Organização",
-    "Upload-Org": "Organização de atualização"
+    "Upload-Org": "Organização de atualização",
+    "Saved-Org": "Organización guardada con éxito",
+    "Save-Error": "Error al guardar la organización, por favor inténtelo nuevamente"
   },
   "PresidentProfilePage": {
     "President": "Presidente",

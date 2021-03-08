@@ -123,7 +123,9 @@
     "Dashboard-Organization": "Dashboard Organization",
     "Info": "SuperAdmin administration window, here you can add, change or update the data of the selected organisation.",
     "Delete-Org": "Delete Organization",
-    "Upload-Org": "Update Organization"
+    "Upload-Org": "Update Organization",
+    "Saved-Org": "Organization saved successfully",
+    "Save-Error": "Error saving the organization, plese retry"
   },
   "PresidentProfilePage": {
     "President": "President",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Button } from '../basicComponents/Button';
@@ -7,11 +7,32 @@ import { Search } from '../basicComponents/Search';
 import { getMsgError } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
 import { Link } from 'react-router-dom';
+import { getAllOrgs } from '../../api';
 
 export const DashboardSuperAdminPage = () => {
   const { t } = useTranslation('global');
+  const [orgs, setOrgs] = useState();
 
   const { loading } = useSelector(getMsgError);
+
+  useEffect(() => {
+    getAllOrgs().then(data => {
+      const orgItems = (
+        <>
+          {data.map(o => (
+            <tr key={o._id}>
+              <td>{o.name}</td>
+              <td>{o.country}</td>
+              <td>{o.city}</td>
+              <td>{o.address}</td>
+              <td>{o.foundationDate}</td>
+            </tr>
+          ))}
+        </>
+      );
+      setOrgs(orgItems);
+    });
+  }, []);
 
   return (
     <MainLayout>
@@ -58,53 +79,15 @@ export const DashboardSuperAdminPage = () => {
               >
                 <thead className="font-weight-bold text-info">
                   <tr>
-                    <th>{t('DashboardSuperAdminPage.Id')}</th>
                     <th>{t('DashboardSuperAdminPage.Name')}</th>
+                    <th>{t('DashboardSuperAdminPage.Country')}</th>
+                    <th>{t('DashboardSuperAdminPage.City')}</th>
                     <th>{t('DashboardSuperAdminPage.Address')}</th>
-                    <th>{t('DashboardSuperAdminPage.President')}</th>
-                    <th>{t('DashboardSuperAdminPage.Mobile')}</th>
                     <th>{t('DashboardSuperAdminPage.Foundation')}</th>
                   </tr>
                 </thead>
-                <tfoot className="font-weight-bold text-info">
-                  <tr>
-                    <th>{t('DashboardSuperAdminPage.Id')}</th>
-                    <th>{t('DashboardSuperAdminPage.Name')}</th>
-                    <th>{t('DashboardSuperAdminPage.Address')}</th>
-                    <th>{t('DashboardSuperAdminPage.President')}</th>
-                    <th>{t('DashboardSuperAdminPage.Mobile')}</th>
-                    <th>{t('DashboardSuperAdminPage.Foundation')}</th>
-                  </tr>
-                </tfoot>
 
-                {/* // TODO crear tabla dinamica... */}
-
-                <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                  </tr>
-                  <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                  </tr>
-                  <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
-                  </tr>
-                </tbody>
+                <tbody>{orgs}</tbody>
               </table>
             </div>
           </div>

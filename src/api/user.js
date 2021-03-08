@@ -14,3 +14,10 @@ export const saveUserDB = async userData => {
     .then(res => res.data)
     .catch(err => err);
 };
+
+export const getAllUsers = async () => {
+  return client
+    .get('/user/all')
+    .then(res => res.data)
+    .catch(err => err);
+};
