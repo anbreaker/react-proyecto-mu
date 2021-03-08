@@ -102,31 +102,29 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     document.querySelector('#fileSelector').click();
   };
 
-  const handleFileChange = event => {
+  const handleFileChange = async event => {
     const file = event.target.files[0];
 
-    // TODO customHook de esto UseFileUpload
+    try {
+      const urlFile = await fileUpload(file);
+      setFieldValue('photoURL', urlFile);
 
-    fileUpload(file)
-      .then(url => {
-        setFieldValue('photoURL', url);
-        dispatch(
-          setAlertAction(
-            'ErrorSwal.Success',
-            'DashboardProfilePage.Change-Photo',
-            'success'
-          )
-        );
-      })
-      .catch(err => {
-        dispatch(
-          setAlertAction(
-            'ErrorSwal.Error',
-            'DashboardProfilePage.Types-File',
-            'error'
-          )
-        );
-      });
+      dispatch(
+        setAlertAction(
+          'ErrorSwal.Success',
+          'DashboardProfilePage.Change-Photo',
+          'success'
+        )
+      );
+    } catch (error) {
+      dispatch(
+        setAlertAction(
+          'ErrorSwal.Error',
+          'DashboardProfilePage.Types-File',
+          'error'
+        )
+      );
+    }
   };
 
   return (

@@ -1,47 +1,29 @@
-import { useEffect, useState } from 'react';
-
 import { fileUpload } from '../helpers/fileUploads';
+import { setAlertAction } from '../store/actions/swal';
 
 // TODO crear custom hook para subir archivos a cloudinary
+// TODO Como usar dispatch sin redux...
 
-export const useUploadCloudinary = file => {
-  const [fieldValue, setFieldValue] = useState();
+export const useUploadCloudinary = async file => {
+  try {
+    const url = await fileUpload(file);
 
-  useEffect(async () => {
-    try {
-      const url = await fileUpload(file);
+    dispatch(
+      setAlertAction(
+        'ErrorSwal.Success',
+        'DashboardProfilePage.Change-Photo',
+        'success'
+      )
+    );
 
-      setFieldValue('photoURL', file);
-      console.log('Subida la imagen...');
-    } catch (error) {
-      console.log('error');
-    }
-  }, [file]);
-
-  console.log(fieldValue);
-
-  return fieldValue;
+    return url;
+  } catch (error) {
+    dispatch(
+      setAlertAction(
+        'ErrorSwal.Error',
+        'DashboardProfilePage.Types-File',
+        'error'
+      )
+    );
+  }
 };
-
-/*
-    try {
-      const url = await fileUpload(file);
-
-      setFieldValue('photoURL', url);
-      dispatch(
-        setAlertAction(
-          'ErrorSwal.Success',
-          'DashboardProfilePage.Change-Photo',
-          'success'
-        )
-      );
-    } catch (error) {
-      dispatch(
-        setAlertAction(
-          'ErrorSwal.Error',
-          'DashboardProfilePage.Types-File',
-          'error'
-        )
-      );
-    }
-*/
