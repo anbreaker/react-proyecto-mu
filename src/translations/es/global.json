@@ -99,7 +99,7 @@
     "Mobile": "Movil",
     "Mobile-Need": "Necesitamos tu numero de móvil para poder tener mantener el contacto. ¡Gracias!",
     "Update-Profile": "Actualiza tu perfil",
-    "Change-Photo": "¡Imagen de perfil cambiada con éxito!. Por favor presione \"Actualiza tu perfil\" para guardar los cambios",
+    "Change-Photo": "¡Imagen de perfil cambiada con éxito!. Por favor presione \"Actualiza tu perfil\" para guardar los cambios.",
     "Types-File": "Se necesitan archivos jpeg, jpg o png para cambiar su foto de perfil"
   },
   "TopBar": {
@@ -190,5 +190,8 @@
     "Date": "Fecha",
     "Assistants": "Asistentes",
     "View-Details": "Ver Detalles"
+  },
+  "DisabledUserPage": {
+    "Info": "La cuenta ha sido creada correctamente, pero aún no ha sido asociada a ninguna organización. Un administrador completará este proceso."
   }
 }

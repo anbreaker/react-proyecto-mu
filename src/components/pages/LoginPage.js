@@ -19,7 +19,6 @@ import {
   startLoginEmailPassword,
 } from '../../store/actions/auth';
 
-//TODO cuando verificas la cuenta via email , el uri viene como params el email, podiamos autocompletar el campo email https://www.egestion.xyz/?email=luissanchez_1992@hotmail.com
 export const LoginPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
@@ -50,7 +49,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
     }
   };
 
-  // TODO comprobar con login?user=antunez19@gmail.com
+  // /login?user=antunez19@gmail.com
   const isLoginValid = () => {
     let mail;
     if (emailRecovery) mail = !validator.isEmail(emailRecovery);

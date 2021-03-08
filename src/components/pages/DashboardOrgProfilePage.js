@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLocale, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { setAlertAction } from '../../store/actions/swal';
-//import { checkDataTypeImg } from '../../store/actions/upCloudinary';
 import { saveOrgDB, getAllUsers } from '../../api';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
@@ -125,7 +124,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const handleFileChange = event => {
     const file = event.target.files[0];
 
-    //dispatch(checkDataTypeImg(file));
+    //TODO Subir file
   };
 
   return (

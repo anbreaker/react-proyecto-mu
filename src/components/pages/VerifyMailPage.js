@@ -1,14 +1,11 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-
 import Helmet from 'react-helmet';
+import { useTranslation } from 'react-i18next';
 
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { LinkForms } from '../basicComponents/LinkForms';
 
-//
-
-export const VerifyMailPage = ({ handlerOnFocus }) => {
+export const VerifyMailPage = () => {
   const { t } = useTranslation('global');
 
   return (

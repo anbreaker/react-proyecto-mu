@@ -33,6 +33,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const user = useSelector(getUserAuth);
 
+  // TODO Preguntar a Sebastian, el motivo de pasar estos valores asi.
   const [
     formValues,
     handleInputChange,
@@ -147,7 +148,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                 width="152"
                 height="141"
                 alt=""
-                src={photoURL ? photoURL : profile}
+                src={photoURL || profile}
               />
 
               <div className="card mt-3 border-bottom-success text-center">
@@ -192,7 +193,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                     {t('RegisterPage.Name')}:
                   </h6>
                   <InputText
-                    text={t(displayName ? displayName : 'RegisterPage.Name')}
+                    text={t(displayName || 'RegisterPage.Name')}
                     name="displayName"
                     value={displayName}
                     onFocus={handlerOnFocus}

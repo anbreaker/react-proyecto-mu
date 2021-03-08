@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Helmet from 'react-helmet';
 import validator from 'validator';
@@ -15,7 +14,6 @@ import { InputText } from '../basicComponents/InputText';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { getMsgError } from '../../store/selectors';
 import { MessageError } from '../parts/MessageError';
-import { setAlertAction } from '../../store/actions/swal';
 import '../../assets/css/style.css';
 import {
   startGoogleLogin,
@@ -26,8 +24,6 @@ export const RegisterPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
   const dispatch = useDispatch();
-
-  const history = useHistory();
 
   const { msgError, loading } = useSelector(getMsgError);
 

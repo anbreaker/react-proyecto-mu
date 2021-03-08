@@ -190,5 +190,8 @@
     "Date": "Date",
     "Assistants": "Assistants",
     "View-Details": "View Details"
+  },
+  "DisabledUserPage": {
+    "Info": "The account has been successfully created, but has not yet been associated with any organisation. An administrator will complete this process."
   }
 }
