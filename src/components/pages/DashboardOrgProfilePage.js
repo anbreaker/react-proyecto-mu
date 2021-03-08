@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import validator from 'validator';
-import { Label, Input, FormText } from 'reactstrap';
+import { Input } from 'reactstrap';
 
 import profile from '../../assets/img/undraw_posting_photo.svg';
 import { MainLayout } from '../layout/MainLayout';
@@ -145,7 +144,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                 height="141"
                 alt=""
                 // TODO Usar imagen de organizacion.
-                src={photoURL ? photoURL : profile}
+                src={photoURL || profile}
               />
 
               <div className="card mt-3 border-bottom-success text-center">

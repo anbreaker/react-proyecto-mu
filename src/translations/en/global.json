@@ -69,7 +69,7 @@
     "Welcome": "Login successful, Welcome!",
     "Email-InUse": "The email address is already in use by another account.",
     "Password-Send": "Password successfully sent to your e-mail",
-    "Error": "Error, please contact an Administrator",
+    "Error": "Error, please contact the Administrator talentmuteam@gmail.com",
     "auth/wrong-password": "The password is invalid or the user does not have a password.",
     "auth/user-not-found": "There is no user record corresponding to this identifier. The user may have been deleted.",
     "auth/email-already-in-use": "The email address is already in use by another account.",
@@ -117,12 +117,14 @@
     "Foundation": "Foundation",
     "Country": "Country",
     "Post-Code": "Post Code",
-    "Search-Organizations": "Search Organizations..."
+    "Search-Organizations": "Search Organizations...",
+    "View-Details": "Details"
   },
   "DashboardOrgProfilePage": {
     "Dashboard-Organization": "Dashboard Organization",
     "Info": "SuperAdmin administration window, here you can add, change or update the data of the selected organisation.",
     "Delete-Org": "Delete Organization",
+    "Created-Org": "Created Organization",
     "Upload-Org": "Update Organization",
     "Saved-Org": "Organization saved successfully",
     "Save-Error": "Error saving the organization, plese retry"

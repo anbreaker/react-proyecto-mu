@@ -105,8 +105,8 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const handleFileChange = event => {
     const file = event.target.files[0];
 
-    //! cambié esto acá ya que no se justificaba hacer esto en redux, es un estado local del formulario
-    //! se cambiaría en redux cuando el usuario presione el botón de guardar
+    // TODO customHook de esto UseFileUpload
+
     fileUpload(file)
       .then(url => {
         setFieldValue('photoURL', url);

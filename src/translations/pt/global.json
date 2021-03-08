@@ -69,7 +69,7 @@
     "Welcome": "Login bem sucedido, Bem-vindo!",
     "Email-InUse": "Este e-mail já está a ser utilizado por outra pessoa.",
     "Password-Send": "Senha enviada com sucesso para o seu e-mail",
-    "Error": "Erro, por favor contacte a un Administrador",
+    "Error": "Erro, Por favor contacte o Administrador talentmuteam@gmail.com",
     "auth/wrong-password": "A senha é inválida ou o utilizador não tem uma senha.",
     "auth/user-not-found": "Não há nenhum usuário com este endereço de e-mail. O usuário pode ter sido excluído.",
     "auth/email-already-in-use": "El email ingresado ya se encuentra utilizado por otra cuenta.",
@@ -117,12 +117,14 @@
     "Foundation": "Fundação",
     "Country": "País",
     "Post-Code": "Código Postal",
-    "Search-Organizations": "Pesquisar Organizações..."
+    "Search-Organizations": "Pesquisar Organizações...",
+    "View-Details": "Ver Detalhes"
   },
   "DashboardOrgProfilePage": {
     "Dashboard-Organization": "Organização do Perfil",
     "Info": "Janela de administração SuperAdmin, aqui pode adicionar, alterar ou actualizar os dados da organização seleccionada.",
     "Delete-Org": "Apagar Organização",
+    "Created-Org": "Criar Organização",
     "Upload-Org": "Organização de atualização",
     "Saved-Org": "Organización guardada con éxito",
     "Save-Error": "Error al guardar la organización, por favor inténtelo nuevamente"

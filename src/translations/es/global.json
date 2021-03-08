@@ -69,7 +69,7 @@
     "Welcome": "Login exitoso, ¡Bienvenido!",
     "Email-InUse": "Este email ya está siendo utilizado por otro usuario.",
     "Password-Send": "Contraseña enviada con éxito a su e-mail",
-    "Error": "Error, por favor contacte a un administrador",
+    "Error": "Error, por favor contacte con el Administrador talentmuteam@gmail.com",
     "auth/wrong-password": "La constraseña es inválida o el usuario no tiene ninguna.",
     "auth/user-not-found": "No existe ningún usuario con este email. El usuario puede haber sido eliminado.",
     "auth/email-already-in-use": "El email ingresado ya se encuentra utilizado por otra cuenta.",
@@ -117,12 +117,14 @@
     "Foundation": "Fundación",
     "Country": "País",
     "Post-Code": "Código Postal",
-    "Search-Organizations": "Buscar Organizaciones..."
+    "Search-Organizations": "Buscar Organizaciones...",
+    "View-Details": "Ver Detalles"
   },
   "DashboardOrgProfilePage": {
     "Dashboard-Organization": "Perfil Organización",
     "Info": "Ventana de administración del SuperAdmin, aqui puedes agregar, cambiar o actualizar los datos de la organización seleccionada.",
     "Delete-Org": "Eliminar Organización",
+    "Created-Org": "Crear Organización",
     "Upload-Org": "Actualizar Organización",
     "Saved-Org": "Organización guardada con éxito",
     "Save-Error": "Error al guardar la organización, por favor inténtelo nuevamente"

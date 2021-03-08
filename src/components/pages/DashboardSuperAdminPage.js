@@ -1,32 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Button } from '../basicComponents/Button';
+import { Link } from 'react-router-dom';
 
+import { MainLayout } from '../layout/MainLayout';
+import { Button } from '../basicComponents/Button';
 import { Search } from '../basicComponents/Search';
 import { getMsgError } from '../../store/selectors';
-import { MainLayout } from '../layout/MainLayout';
-import { Link } from 'react-router-dom';
 import { getAllOrgs } from '../../api';
 
 export const DashboardSuperAdminPage = () => {
   const { t } = useTranslation('global');
   const [orgs, setOrgs] = useState();
 
+  const [viewDetailsOrg, setViewDetailsOrg] = useState();
+  console.log(viewDetailsOrg);
+
   const { loading } = useSelector(getMsgError);
 
   useEffect(() => {
     getAllOrgs().then(data => {
-      console.log(data);
+      // Pasar por pops a la siguiente ventana
+
+      setViewDetailsOrg(data[0]);
+
       const orgItems = (
         <>
-          {data.map(o => (
-            <tr key={o._id}>
-              <td>{o.name}</td>
-              <td>{o.country}</td>
-              <td>{o.city}</td>
-              <td>{o.address}</td>
-              <td>{o.foundationDate}</td>
+          {data.map(org => (
+            <tr key={org._id}>
+              <td>{org.name}</td>
+              <td>{org.country}</td>
+              <td>{org.city}</td>
+              <td>{org.address}</td>
+              <td>{org.foundationDate}</td>
+
+              {/* TODO endpoint */}
+              {/* /admin-org?org=org._id */}
+              <td>
+                <Link to="/admin-org">
+                  {t('DashboardSuperAdminPage.View-Details')}
+                </Link>
+              </td>
             </tr>
           ))}
         </>
@@ -85,6 +99,7 @@ export const DashboardSuperAdminPage = () => {
                     <th>{t('DashboardSuperAdminPage.City')}</th>
                     <th>{t('DashboardSuperAdminPage.Address')}</th>
                     <th>{t('DashboardSuperAdminPage.Foundation')}</th>
+                    <th>{t('DashboardSuperAdminPage.View-Details')}</th>
                   </tr>
                 </thead>
 
