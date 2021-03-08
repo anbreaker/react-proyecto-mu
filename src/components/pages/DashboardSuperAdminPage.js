@@ -17,6 +17,7 @@ export const DashboardSuperAdminPage = () => {
 
   useEffect(() => {
     getAllOrgs().then(data => {
+      console.log(data);
       const orgItems = (
         <>
           {data.map(o => (
