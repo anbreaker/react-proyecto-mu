@@ -9,16 +9,21 @@ import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLocale, getMsgError } from '../../store/selectors';
+import { getLanguaje, getLocale, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { setAlertAction } from '../../store/actions/swal';
 import { saveOrgDB, getAllUsers } from '../../api';
+import DateTimePicker from 'react-datetime-picker';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
+
+  const { languaje } = useSelector(getLanguaje);
+
   const dispatch = useDispatch();
 
   const { msgError, loading } = useSelector(getMsgError);
+
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
   const [userSelect, setUserSelect] = useState();
@@ -63,6 +68,15 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
       setUserSelect(users);
     });
   }, []);
+
+  const handleStartDateChange = event => {
+    setFormValues({
+      ...formValues,
+      foundationDate: event,
+    });
+  };
+
+  console.log({ foundationDate });
 
   const handleChangeProfile = async event => {
     event.preventDefault();
@@ -192,13 +206,12 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardSuperAdminPage.Foundation')}:
                       </h6>
-                      <InputText
-                        text={`${t('DashboardSuperAdminPage.Foundation')}...`}
-                        name="foundationDate"
+                      <DateTimePicker
+                        className="form-control react-datetime-picker"
+                        locale={languaje}
+                        format="dd,MM,y"
                         value={foundationDate}
-                        onFocus={handlerOnFocus}
-                        onChange={handleInputChange}
-                        required
+                        onChange={handleStartDateChange}
                       />
                     </div>
                     {/*  */}
