@@ -3,3 +3,7 @@
   color: azure;
   justify-content: center;
 }
+
+.react-datetime-picker__wrapper {
+  border: 0px !important;
+}
