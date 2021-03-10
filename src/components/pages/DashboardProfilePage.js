@@ -21,6 +21,7 @@ import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { updateProfileAction } from '../../store/actions/auth';
 import { setAlertAction } from '../../store/actions/swal';
 import { fileUpload } from '../../helpers/fileUploads';
+import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
 
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -103,28 +104,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   };
 
   const handleFileChange = async event => {
-    const file = event.target.files[0];
-
-    try {
-      const urlFile = await fileUpload(file);
-      setFieldValue('photoURL', urlFile);
-
-      dispatch(
-        setAlertAction(
-          'ErrorSwal.Success',
-          'DashboardProfilePage.Change-Photo',
-          'success'
-        )
-      );
-    } catch (error) {
-      dispatch(
-        setAlertAction(
-          'ErrorSwal.Error',
-          'DashboardProfilePage.Types-File',
-          'error'
-        )
-      );
-    }
+    const uploadFile = useUploadCloudinary();
+    const urlFile = await uploadFile(event.target.files[0], dispatch);
+    setFieldValue('photoURL', urlFile);
   };
 
   return (
