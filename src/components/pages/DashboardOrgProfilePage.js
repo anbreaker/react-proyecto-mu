@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'reactstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import DateTimePicker from 'react-datetime-picker';
 
@@ -14,11 +14,12 @@ import { Button } from '../basicComponents/Button';
 import { getLanguaje, getLocale, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { setAlertAction } from '../../store/actions/swal';
-import { saveOrgDB, getAllUsers, getOrgsById } from '../../api';
+import { saveOrgDB, getAllUsers, getOrgsById, removeOrgsById } from '../../api';
 import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
@@ -33,18 +34,38 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
   const [userSelect, setUserSelect] = useState();
-  const [orgById, setOrgById] = useState();
 
   useEffect(() => {
     getOrgsById(orgId)
-      .then(data => {
-        setOrgById(data);
-      })
+      .then(
+        ({
+          address,
+          city,
+          country,
+          fiscalYear,
+          foundationDate,
+          name,
+          photoURL,
+          president,
+          province,
+        }) => {
+          setFormValues({
+            address,
+            city,
+            country,
+            fiscalYear,
+            foundationDate,
+            name,
+            photoURL,
+            president,
+            province,
+          });
+        }
+      )
       .catch(error => console.log(error));
   }, [orgId]);
 
   // TODO este dato obtenido es una promesa, como renderizarlo en el FORM
-  console.log(orgById);
 
   const [formValues, handleInputChange, setFormValues, setFieldValue] = useForm(
     {
@@ -115,6 +136,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
             'success'
           )
         );
+        history.push('/admin');
       } catch (error) {
         console.log({ error });
         dispatch(
@@ -126,6 +148,19 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
         );
       }
     }
+  };
+
+  const handleDeleteorg = event => {
+    event.preventDefault();
+    removeOrgsById(orgId);
+    dispatch(
+      setAlertAction(
+        'ErrorSwal.Success',
+        'DashboardOrgProfilePage.Remove-Org',
+        'success'
+      )
+    );
+    history.push('/admin');
   };
 
   const isFormChangeProfileValid = () => {
@@ -322,10 +357,11 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                     </div>
                     <div className="col-5">
                       <Button
-                        type="submit"
+                        type="button"
                         variant="alert"
                         startIcon="fas fa-exclamation-triangle"
                         disabled={loading || !!orgId !== true}
+                        onClick={handleDeleteorg}
                       >
                         {' '}
                         {t('DashboardOrgProfilePage.Delete-Org')}

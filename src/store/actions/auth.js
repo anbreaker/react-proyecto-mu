@@ -3,7 +3,11 @@ import {
   googleAuthProvider,
 } from '../../firebase/firebaseConfig';
 
-import { configureClient } from '../../api/client';
+import {
+  configureClient,
+  setHeaderOrgId,
+  removeHeaderOrgId,
+} from '../../api/client';
 import { getMenuByRole } from '../../auth/permisos';
 import { finishLoadingAction, startLoadingAction } from './ui';
 import { setAlertAction } from './swal';
@@ -64,13 +68,15 @@ export const startGoogleLogin = () => {
 
 export const login = userData => {
   return async (dispatch, getState, { history, api }) => {
-    // Sólo deja entrar si el mail ha sido verificado
     if (userData.emailVerified) {
       try {
         configureClient(userData.token);
         const dataUserDB = await api.checkUserDB();
+
         userData = { ...userData, ...dataUserDB };
         dispatch(updateAuth(userData));
+
+        setHeaderOrgId(userData._id);
       } catch (error) {
         console.log(`ErrorSwal.${error}`);
         dispatch(
@@ -129,6 +135,7 @@ export const startLogout = () => {
   return async (dispatch, getState, { history }) => {
     await firebaseInit.auth().signOut();
     dispatch(logout());
+    removeHeaderOrgId();
     history.push('/');
   };
 };

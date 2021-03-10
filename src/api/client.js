@@ -63,9 +63,8 @@ client.interceptors.response.use(
 );
 
 // Configure client
-export const configureClient = (token, orgId) => {
+export const configureClient = token => {
   if (token) setAuthorizationHeader(token);
-  if (orgId) setHeaderOrgId(orgId);
 };
 
 export default client;

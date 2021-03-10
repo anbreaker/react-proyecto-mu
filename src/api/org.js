@@ -14,6 +14,15 @@ export const getOrgsById = async id => {
     .catch(err => err);
 };
 
+export const removeOrgsById = async id => {
+  return client
+    .delete('/org/' + id)
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(err => err);
+};
+
 export const saveOrgDB = async orgData => {
   return client
     .post('/org', orgData)

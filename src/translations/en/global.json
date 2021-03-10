@@ -128,6 +128,7 @@
     "Upload-Org": "Update Organization",
     "Back": "Back",
     "Saved-Org": "Organization saved successfully",
+    "Remove-Org": "Organization removed successfully",
     "Save-Error": "Error saving the organization, plese retry"
   },
   "PresidentProfilePage": {

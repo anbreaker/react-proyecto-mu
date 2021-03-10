@@ -38,16 +38,14 @@ export const App = () => {
   const isLogged = useSelector(uidOnIndexDB);
   const alert = useSelector(getSwalAlert);
 
-  useEffect(() => {
-    firebaseInit.auth().onAuthStateChanged(user => {
-      if (user) {
-        user.getIdToken().then(token => {
-          dispatch(login({ ...user, token }));
-          configureClient(token);
-        });
-      }
-    });
-  }, [dispatch]);
+  firebaseInit.auth().onAuthStateChanged(user => {
+    if (user) {
+      user.getIdToken().then(token => {
+        dispatch(login({ ...user, token }));
+        configureClient(token);
+      });
+    }
+  });
 
   const handlerOnFocus = event => {
     event.preventDefault();

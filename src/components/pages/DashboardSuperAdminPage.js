@@ -34,9 +34,9 @@ export const DashboardSuperAdminPage = () => {
               {/* TODO endpoint */}
               {/* /admin-org?org=org._id */}
               {/* Boton de volver en el profile del detalle */}
-              <td>
+              <td className="text-center">
                 <Link to={`/admin-org?org=${org._id}`}>
-                  {t('DashboardSuperAdminPage.View-Details')}
+                  <i className="fas fa-eye"></i>
                 </Link>
               </td>
             </tr>
