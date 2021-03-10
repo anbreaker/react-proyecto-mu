@@ -126,6 +126,7 @@
     "Delete-Org": "Delete Organization",
     "Created-Org": "Created Organization",
     "Upload-Org": "Update Organization",
+    "Back": "Back",
     "Saved-Org": "Organization saved successfully",
     "Save-Error": "Error saving the organization, plese retry"
   },

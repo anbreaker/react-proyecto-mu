@@ -125,6 +125,7 @@
     "Info": "Janela de administração SuperAdmin, aqui pode adicionar, alterar ou actualizar os dados da organização seleccionada.",
     "Delete-Org": "Apagar Organização",
     "Created-Org": "Criar Organização",
+    "Back": "Voltar",
     "Upload-Org": "Organização de atualização",
     "Saved-Org": "Organización guardada con éxito",
     "Save-Error": "Error al guardar la organización, por favor inténtelo nuevamente"

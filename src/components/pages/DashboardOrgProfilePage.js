@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'reactstrap';
+import { Link, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import DateTimePicker from 'react-datetime-picker';
 
 import profile from '../../assets/img/undraw_posting_photo.svg';
 import { MainLayout } from '../layout/MainLayout';
@@ -8,13 +11,11 @@ import { InputText } from '../basicComponents/InputText';
 import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
-import { useDispatch, useSelector } from 'react-redux';
 import { getLanguaje, getLocale, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { setAlertAction } from '../../store/actions/swal';
 import { saveOrgDB, getAllUsers, getOrgsById } from '../../api';
-import DateTimePicker from 'react-datetime-picker';
-import { useLocation } from 'react-router-dom';
+import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -45,16 +46,18 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   // TODO este dato obtenido es una promesa, como renderizarlo en el FORM
   console.log(orgById);
 
-  const [formValues, handleInputChange, setFormValues] = useForm({
-    name: '',
-    address: '',
-    president: '',
-    foundationDate: '',
-    country: '',
-    province: '',
-    city: '',
-    photoURL: '',
-  });
+  const [formValues, handleInputChange, setFormValues, setFieldValue] = useForm(
+    {
+      name: '',
+      address: '',
+      president: '',
+      foundationDate: '',
+      country: '',
+      province: '',
+      city: '',
+      photoURL: '',
+    }
+  );
 
   const {
     name,
@@ -151,10 +154,12 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
     document.querySelector('#fileSelector').click();
   };
 
-  const handleFileChange = event => {
-    const file = event.target.files[0];
+  const handleFileChange = async event => {
+    // customHook Function
+    const uploadFile = useUploadCloudinary();
 
-    //TODO Subir file
+    const urlFile = await uploadFile(event.target.files[0], dispatch);
+    setFieldValue('photoURL', urlFile);
   };
 
   return (
@@ -302,18 +307,31 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                   <hr />
                   <MessageError msgError={msgError} />
                   <div className="row">
-                    <div className="col-6">
+                    <div className="col-2">
+                      <Link to="/admin">
+                        <Button
+                          type="submit"
+                          variant="warning"
+                          startIcon="fas fa-arrow-left"
+                          disabled={loading}
+                        >
+                          {' '}
+                          {t('DashboardOrgProfilePage.Back')}
+                        </Button>
+                      </Link>
+                    </div>
+                    <div className="col-5">
                       <Button
                         type="submit"
                         variant="alert"
                         startIcon="fas fa-exclamation-triangle"
-                        disabled={loading}
+                        disabled={loading || !!orgId !== true}
                       >
                         {' '}
                         {t('DashboardOrgProfilePage.Delete-Org')}
                       </Button>
                     </div>
-                    <div className="col-6">
+                    <div className="col-5">
                       <Button
                         type="submit"
                         variant="primary"
@@ -321,7 +339,9 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                         disabled={loading}
                       >
                         {' '}
-                        {t('DashboardOrgProfilePage.Upload-Org')}
+                        {!!orgId
+                          ? t('DashboardOrgProfilePage.Upload-Org')
+                          : t('DashboardOrgProfilePage.Created-Org')}
                       </Button>
                     </div>
                   </div>

@@ -125,6 +125,7 @@
     "Info": "Ventana de administración del SuperAdmin, aqui puedes agregar, cambiar o actualizar los datos de la organización seleccionada.",
     "Delete-Org": "Eliminar Organización",
     "Created-Org": "Crear Organización",
+    "Back": "Atrás",
     "Upload-Org": "Actualizar Organización",
     "Saved-Org": "Organización guardada con éxito",
     "Save-Error": "Error al guardar la organización, por favor inténtelo nuevamente"
