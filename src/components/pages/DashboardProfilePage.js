@@ -1,5 +1,5 @@
 // eslint-disable
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,13 +14,10 @@ import {
   getLocale,
   getMsgError,
   getUserAuth,
-  getPhotoURL,
   userStatus,
 } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { updateProfileAction } from '../../store/actions/auth';
-import { setAlertAction } from '../../store/actions/swal';
-import { fileUpload } from '../../helpers/fileUploads';
 import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
 
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
@@ -29,12 +26,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const uStatus = useSelector(userStatus);
 
   const { msgError, loading } = useSelector(getMsgError);
-  // eslint-disable-next-line
-  const { locale } = useSelector(getLocale);
 
   const user = useSelector(getUserAuth);
 
-  // TODO Preguntar a Sebastian, el motivo de pasar estos valores asi.
   const [
     formValues,
     handleInputChange,
