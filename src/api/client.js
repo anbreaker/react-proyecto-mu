@@ -33,7 +33,7 @@ export const removeHeaderOrgId = () => {
 // Login method
 client.login = credentials =>
   client.post('/auth/login', credentials).then(auth => {
-    console.log(auth);
+    console.log(auth, '<-- auth');
     setAuthorizationHeader(auth.token);
     return auth;
   });

@@ -12,21 +12,38 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLanguaje, getLocale, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { setAlertAction } from '../../store/actions/swal';
-import { saveOrgDB, getAllUsers } from '../../api';
+import { saveOrgDB, getAllUsers, getOrgsById } from '../../api';
 import DateTimePicker from 'react-datetime-picker';
+import { useLocation } from 'react-router-dom';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
-  const { languaje } = useSelector(getLanguaje);
-
   const dispatch = useDispatch();
+
+  const location = useLocation();
+  const queryParmas = new URLSearchParams(location.search);
+  const orgId = queryParmas.get('org');
+
+  const { languaje } = useSelector(getLanguaje);
 
   const { msgError, loading } = useSelector(getMsgError);
 
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
   const [userSelect, setUserSelect] = useState();
+  const [orgById, setOrgById] = useState();
+
+  useEffect(() => {
+    getOrgsById(orgId)
+      .then(data => {
+        setOrgById(data);
+      })
+      .catch(error => console.log(error));
+  }, [orgId]);
+
+  // TODO este dato obtenido es una promesa, como renderizarlo en el FORM
+  console.log(orgById);
 
   const [formValues, handleInputChange, setFormValues] = useForm({
     name: '',
@@ -58,9 +75,9 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
     getAllUsers().then(data => {
       const users = (
         <>
-          {data.map(u => (
-            <option key={u.id} value={u.id}>
-              {u.fullName}
+          {data.map(userPresident => (
+            <option key={userPresident.id} value={userPresident.id}>
+              {userPresident.fullName}
             </option>
           ))}
         </>
@@ -69,14 +86,14 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
     });
   }, []);
 
+  // TODO ver el temade las fechas
+  // console.log({ foundationDate }, '<-- foundationDate');
   const handleStartDateChange = event => {
     setFormValues({
       ...formValues,
       foundationDate: event,
     });
   };
-
-  console.log({ foundationDate });
 
   const handleChangeProfile = async event => {
     event.preventDefault();
@@ -96,7 +113,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
           )
         );
       } catch (error) {
-        console.log(error);
+        console.log({ error });
         dispatch(
           setAlertAction(
             'ErrorSwal.Error',

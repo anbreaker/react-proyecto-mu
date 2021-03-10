@@ -2,7 +2,7 @@ import { fileUpload } from '../helpers/fileUploads';
 import { setAlertAction } from '../store/actions/swal';
 
 export const useUploadCloudinary = () => {
-  const uploadImage = async (file, dispatch) => {
+  const uploadFile = async (file, dispatch) => {
     try {
       const url = await fileUpload(file);
 
@@ -27,5 +27,5 @@ export const useUploadCloudinary = () => {
     }
   };
 
-  return uploadImage;
+  return uploadFile;
 };

@@ -45,8 +45,8 @@ export const TreasurerIncomeRegisterPage = ({ handlerOnFocus }) => {
 
       client
         .post('/user', formValues)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+        .then(res => console.log({ res }))
+        .catch(err => console.log({ err }));
     }
   };
 

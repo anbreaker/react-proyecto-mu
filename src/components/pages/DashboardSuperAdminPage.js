@@ -14,14 +14,11 @@ export const DashboardSuperAdminPage = () => {
   const [orgs, setOrgs] = useState();
 
   const [viewDetailsOrg, setViewDetailsOrg] = useState();
-  console.log(viewDetailsOrg);
 
   const { loading } = useSelector(getMsgError);
 
   useEffect(() => {
     getAllOrgs().then(data => {
-      // Pasar por pops a la siguiente ventana
-
       setViewDetailsOrg(data[0]);
 
       const orgItems = (
@@ -36,8 +33,9 @@ export const DashboardSuperAdminPage = () => {
 
               {/* TODO endpoint */}
               {/* /admin-org?org=org._id */}
+              {/* Boton de volver en el profile del detalle */}
               <td>
-                <Link to="/admin-org">
+                <Link to={`/admin-org?org=${org._id}`}>
                   {t('DashboardSuperAdminPage.View-Details')}
                 </Link>
               </td>

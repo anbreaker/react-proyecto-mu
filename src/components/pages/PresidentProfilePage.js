@@ -12,6 +12,7 @@ import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocale, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
+import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
 import client from '../../api/client';
 
 export const PresidentProfilePage = ({ handlerOnFocus }) => {
@@ -22,19 +23,21 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
 
-  const [formValues, handleInputChange, setFormValues] = useForm({
-    id: '',
-    displayName: '',
-    address: '',
-    mobile: '',
-    foundation: '',
-    president: '',
-    treasurer: '',
-    secretary: '',
-    country: '',
-    postCode: '',
-    imgFoundation: '',
-  });
+  const [formValues, handleInputChange, setFormValues, setFieldValue] = useForm(
+    {
+      id: '',
+      displayName: '',
+      address: '',
+      mobile: '',
+      foundation: '',
+      president: '',
+      treasurer: '',
+      secretary: '',
+      country: '',
+      postCode: '',
+      imgFoundation: '',
+    }
+  );
 
   const {
     id,
@@ -64,8 +67,8 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
 
       client
         .post('/user', formValues)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+        .then(res => console.log({ res }))
+        .catch(err => console.log({ err }));
     }
   };
 
@@ -101,10 +104,12 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
     document.querySelector('#fileSelector').click();
   };
 
-  const handleFileChange = event => {
-    const file = event.target.files[0];
+  const handleFileChange = async event => {
+    // customHook Function
+    const uploadFile = useUploadCloudinary();
 
-    //TODO Subir file
+    const urlFile = await uploadFile(event.target.files[0], dispatch);
+    setFieldValue('photoURL', urlFile);
   };
 
   return (

@@ -27,7 +27,7 @@ export const startLoginEmailPassword = (email, password) => {
 
       // TODO ventana Modal
     } catch (error) {
-      console.log(error);
+      console.log({ error });
       dispatch(finishLoadingAction());
 
       dispatch(
@@ -52,7 +52,7 @@ export const startGoogleLogin = () => {
 
       dispatch(finishLoadingAction());
     } catch (error) {
-      console.log(error);
+      console.log({ error });
       dispatch(finishLoadingAction());
 
       dispatch(
@@ -152,7 +152,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
             url: `https://www.egestion.xyz/login?user=${user.email}`,
           })
           .then(data => {
-            console.log(data);
+            console.log({ data });
             dispatch(
               setAlertAction(
                 'ErrorSwal.Success',
@@ -162,7 +162,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
             );
             history.push('/verify');
           }) // TODO Pedir explicacion?? para entender...
-          .catch(err => console.log(err));
+          .catch(err => console.log({ err }));
 
         dispatch(finishLoadingAction());
       })
@@ -203,7 +203,7 @@ export const recoveryPassAction = email => {
         dispatch(
           setAlertAction('ErrorSwal.Error', `ErrorSwal.${error.code}`, 'error')
         );
-        console.log(error);
+        console.log({ error });
       });
   };
 };
@@ -235,7 +235,7 @@ export const updateProfileAction = userData => {
       dispatch(
         setAlertAction('ErrorSwal.Error', `ErrorSwal.${error.code}`, 'error')
       );
-      console.log(error);
+      console.log({ error });
     }
   };
 };

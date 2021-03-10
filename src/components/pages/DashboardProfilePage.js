@@ -29,13 +29,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const user = useSelector(getUserAuth);
 
-  const [
-    formValues,
-    handleInputChange,
-    setFormValues,
-    reset,
-    setFieldValue,
-  ] = useForm({
+  const [formValues, handleInputChange, setFieldValue] = useForm({
     displayName: user.displayName || '',
     firstSurname: user.firstSurname || '',
     secondSurname: user.secondSurname || '',
@@ -98,7 +92,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   };
 
   const handleFileChange = async event => {
+    // customHook Function
     const uploadFile = useUploadCloudinary();
+
     const urlFile = await uploadFile(event.target.files[0], dispatch);
     setFieldValue('photoURL', urlFile);
   };

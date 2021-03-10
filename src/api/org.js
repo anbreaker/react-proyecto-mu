@@ -7,6 +7,13 @@ export const getAllOrgs = async () => {
     .catch(err => err);
 };
 
+export const getOrgsById = async id => {
+  return client
+    .get('/org/' + id)
+    .then(res => res.data)
+    .catch(err => err);
+};
+
 export const saveOrgDB = async orgData => {
   return client
     .post('/org', orgData)
