@@ -56,7 +56,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
             city,
             country,
             fiscalYear,
-            foundationDate,
+            foundationDate: new Date(foundationDate),
             name,
             photoURL,
             president,
