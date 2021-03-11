@@ -105,6 +105,7 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
   };
 
   const handleFileChange = async event => {
+    event.preventDefault();
     // customHook Function
     const uploadFile = useUploadCloudinary();
 

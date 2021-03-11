@@ -11,16 +11,10 @@ import { InputText } from '../basicComponents/InputText';
 import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
-import { getLanguaje, getLocale, getMsgError } from '../../store/selectors';
+import { getLanguaje, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { setAlertAction } from '../../store/actions/swal';
-import {
-  saveOrgDB,
-  getAllUsers,
-  getOrgsById,
-  removeOrgsById,
-  updateOrgDB,
-} from '../../api';
+import { saveOrgDB, getAllUsers, getOrgsById, removeOrgsById } from '../../api';
 import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
@@ -38,13 +32,14 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const { msgError, loading } = useSelector(getMsgError);
 
   // eslint-disable-next-line
-  const { locale } = useSelector(getLocale);
+  // const { locale } = useSelector(getLocale);
+
   const [userSelect, setUserSelect] = useState();
 
   useEffect(() => {
     getOrgsById(orgId)
-      .then(
-        ({
+      .then(date => {
+        const {
           address,
           city,
           country,
@@ -54,20 +49,19 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
           photoURL,
           president,
           province,
-        }) => {
-          setFormValues({
-            address,
-            city,
-            country,
-            fiscalYear,
-            foundationDate,
-            name,
-            photoURL,
-            president,
-            province,
-          });
-        }
-      )
+        } = date;
+        setFormValues({
+          address,
+          city,
+          country,
+          fiscalYear,
+          foundationDate,
+          name,
+          photoURL,
+          president,
+          province,
+        });
+      })
       .catch(error => console.log(error));
   }, [orgId]);
 
@@ -98,10 +92,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   } = formValues;
 
   useEffect(() => {
-    setFormValues({ ...formValues });
-  }, []);
-
-  useEffect(() => {
+    // TODO sacar el jsx mantener el estado al minimo...
     getAllUsers().then(data => {
       const users = (
         <>
@@ -134,8 +125,9 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
       // user: { uid, displayName, email, phonNumber, photURL, role }
       try {
         //Saved-Org
-        if (orgId) await updateOrgDB(formValues);
-        else await saveOrgDB(formValues);
+        // if (orgId) await updateOrgDB(formValues);
+        // else await saveOrgDB(formValues);
+        await saveOrgDB(formValues);
 
         dispatch(
           setAlertAction(
@@ -198,6 +190,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   };
 
   const handleFileChange = async event => {
+    event.preventDefault();
     // customHook Function
     const uploadFile = useUploadCloudinary();
 

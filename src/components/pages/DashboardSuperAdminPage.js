@@ -13,14 +13,10 @@ export const DashboardSuperAdminPage = () => {
   const { t } = useTranslation('global');
   const [orgs, setOrgs] = useState();
 
-  const [viewDetailsOrg, setViewDetailsOrg] = useState();
-
   const { loading } = useSelector(getMsgError);
 
   useEffect(() => {
     getAllOrgs().then(data => {
-      setViewDetailsOrg(data[0]);
-
       const orgItems = (
         <>
           {data.map(org => (

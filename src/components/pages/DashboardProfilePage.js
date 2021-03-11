@@ -11,7 +11,7 @@ import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import {
-  getLocale,
+  // getLocale,
   getMsgError,
   getUserAuth,
   userStatus,
@@ -92,6 +92,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   };
 
   const handleFileChange = async event => {
+    event.preventDefault();
     // customHook Function
     const uploadFile = useUploadCloudinary();
 
