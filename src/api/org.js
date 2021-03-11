@@ -24,6 +24,8 @@ export const removeOrgsById = async id => {
 };
 
 export const saveOrgDB = async orgData => {
+  console.log(orgData, '<-- orgData');
+
   return client
     .post('/org', orgData)
     .then(res => res.data)
@@ -32,6 +34,8 @@ export const saveOrgDB = async orgData => {
 
 // TODO crear para actualizar en Backend
 export const updateOrgDB = async orgData => {
+  console.log(orgData, '<-- orgData');
+
   return client
     .put('/org', orgData)
     .then(res => res.data)

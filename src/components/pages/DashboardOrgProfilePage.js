@@ -67,8 +67,6 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
     }
   }, [orgId]);
 
-  // TODO este dato obtenido es una promesa, como renderizarlo en el FORM
-
   const {
     formValues,
     handleInputChange,
@@ -114,7 +112,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
 
   // TODO ver el temade las fechas
   // console.log({ foundationDate }, '<-- foundationDate');
-  const handleStartDateChange = event => {
+  const handleDateChange = event => {
     setFormValues({
       ...formValues,
       foundationDate: event,
@@ -274,7 +272,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                         locale={languaje}
                         format="dd,MM,y"
                         value={foundationDate}
-                        onChange={handleStartDateChange}
+                        onChange={handleDateChange}
                       />
                     </div>
                     {/*  */}
