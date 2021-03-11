@@ -21,7 +21,7 @@ export const TreasurerIncomeRegisterPage = ({ handlerOnFocus }) => {
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
 
-  const [formValues, handleInputChange, setFormValues] = useForm({
+  const { formValues, handleInputChange, setFormValues } = useForm({
     id: '',
     member: '',
     date: '',

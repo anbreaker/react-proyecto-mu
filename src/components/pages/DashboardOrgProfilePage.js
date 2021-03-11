@@ -67,18 +67,21 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
 
   // TODO este dato obtenido es una promesa, como renderizarlo en el FORM
 
-  const [formValues, handleInputChange, setFormValues, setFieldValue] = useForm(
-    {
-      name: '',
-      address: '',
-      president: '',
-      foundationDate: '',
-      country: '',
-      province: '',
-      city: '',
-      photoURL: '',
-    }
-  );
+  const {
+    formValues,
+    handleInputChange,
+    setFormValues,
+    setFieldValue,
+  } = useForm({
+    name: '',
+    address: '',
+    president: '',
+    foundationDate: '',
+    country: '',
+    province: '',
+    city: '',
+    photoURL: '',
+  });
 
   const {
     name,

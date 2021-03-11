@@ -29,7 +29,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
 
   const user = useSelector(getUserAuth);
 
-  const [formValues, handleInputChange, setFieldValue] = useForm({
+  const { formValues, handleInputChange, setFieldValue } = useForm({
     displayName: user.displayName || '',
     firstSurname: user.firstSurname || '',
     secondSurname: user.secondSurname || '',

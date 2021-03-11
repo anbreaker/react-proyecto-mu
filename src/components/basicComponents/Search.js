@@ -11,7 +11,7 @@ export const Search = ({ ...props }) => {
 
   const { loading } = useSelector(getMsgError);
 
-  const [formValues, handleInputChange] = useForm({
+  const { formValues, handleInputChange } = useForm({
     search: '',
   });
 

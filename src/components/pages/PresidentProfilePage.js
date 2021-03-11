@@ -23,21 +23,24 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
 
-  const [formValues, handleInputChange, setFormValues, setFieldValue] = useForm(
-    {
-      id: '',
-      displayName: '',
-      address: '',
-      mobile: '',
-      foundation: '',
-      president: '',
-      treasurer: '',
-      secretary: '',
-      country: '',
-      postCode: '',
-      imgFoundation: '',
-    }
-  );
+  const {
+    formValues,
+    handleInputChange,
+    setFormValues,
+    setFieldValue,
+  } = useForm({
+    id: '',
+    displayName: '',
+    address: '',
+    mobile: '',
+    foundation: '',
+    president: '',
+    treasurer: '',
+    secretary: '',
+    country: '',
+    postCode: '',
+    imgFoundation: '',
+  });
 
   const {
     id,

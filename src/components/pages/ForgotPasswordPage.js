@@ -24,7 +24,7 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
 
   const { msgError } = useSelector(getMsgError);
 
-  const [formValues, handleInputChange] = useForm({ email: '' });
+  const { formValues, handleInputChange } = useForm({ email: '' });
 
   const { email } = formValues;
 

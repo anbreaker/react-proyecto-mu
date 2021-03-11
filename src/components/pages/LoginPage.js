@@ -30,7 +30,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
 
   const { msgError, loading } = useSelector(getMsgError);
 
-  const [formValues, handleInputChange, setFormValues] = useForm({
+  const { formValues, handleInputChange, setFormValues } = useForm({
     email: '',
     password: '',
   });

@@ -27,7 +27,7 @@ export const RegisterPage = ({ handlerOnFocus }) => {
 
   const { msgError, loading } = useSelector(getMsgError);
 
-  const [formValues, handleInputChange] = useForm({
+  const { formValues, handleInputChange } = useForm({
     username: '',
     email: '',
     password: '',
