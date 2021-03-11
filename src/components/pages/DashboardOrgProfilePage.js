@@ -37,32 +37,34 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const [userSelect, setUserSelect] = useState();
 
   useEffect(() => {
-    getOrgsById(orgId)
-      .then(date => {
-        const {
-          address,
-          city,
-          country,
-          fiscalYear,
-          foundationDate,
-          name,
-          photoURL,
-          president,
-          province,
-        } = date;
-        setFormValues({
-          address,
-          city,
-          country,
-          fiscalYear,
-          foundationDate,
-          name,
-          photoURL,
-          president,
-          province,
-        });
-      })
-      .catch(error => console.log(error));
+    if (orgId) {
+      getOrgsById(orgId)
+        .then(date => {
+          const {
+            address,
+            city,
+            country,
+            fiscalYear,
+            foundationDate,
+            name,
+            photoURL,
+            president,
+            province,
+          } = date;
+          setFormValues({
+            address,
+            city,
+            country,
+            fiscalYear,
+            foundationDate,
+            name,
+            photoURL,
+            president,
+            province,
+          });
+        })
+        .catch(error => console.log(error));
+    }
   }, [orgId]);
 
   // TODO este dato obtenido es una promesa, como renderizarlo en el FORM
