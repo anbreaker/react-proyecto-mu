@@ -14,7 +14,13 @@ import { Button } from '../basicComponents/Button';
 import { getLanguaje, getLocale, getMsgError } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { setAlertAction } from '../../store/actions/swal';
-import { saveOrgDB, getAllUsers, getOrgsById, removeOrgsById } from '../../api';
+import {
+  saveOrgDB,
+  getAllUsers,
+  getOrgsById,
+  removeOrgsById,
+  updateOrgDB,
+} from '../../api';
 import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
@@ -128,7 +134,9 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
       // user: { uid, displayName, email, phonNumber, photURL, role }
       try {
         //Saved-Org
-        const resp = await saveOrgDB(formValues);
+        if (orgId) await updateOrgDB(formValues);
+        else await saveOrgDB(formValues);
+
         dispatch(
           setAlertAction(
             'ErrorSwal.Success',
