@@ -177,10 +177,10 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
                     </div>
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
-                        {t('DashboardSuperAdminPage.Id')}:
+                        {t('DashboardSuperAdminPage.Org-Id')}:
                       </h6>
                       <InputText
-                        text={`${t('DashboardSuperAdminPage.Id')}...`}
+                        text={`${t('DashboardSuperAdminPage.Org-Id')}...`}
                         name="id"
                         value={id}
                         onFocus={handlerOnFocus}

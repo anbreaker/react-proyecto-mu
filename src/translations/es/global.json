@@ -107,6 +107,7 @@
   },
   "DashboardSuperAdminPage": {
     "Organizations": "Organizaciones:",
+    "Org-Id": "Identificador de la Organización",
     "Info-Page": "Ventana de administración del SuperAdmin, aqui puede agregar nuevas organizaciones y listar las existentes en el sistema.",
     "Add-Org": "Añadir Organización",
     "Province": "Provincia",
@@ -114,6 +115,7 @@
     "Address": "Dirección",
     "President": "Presidente",
     "City": "Ciudad",
+    "Mobile": "Movil",
     "Foundation": "Fundación",
     "Country": "País",
     "Post-Code": "Código Postal",

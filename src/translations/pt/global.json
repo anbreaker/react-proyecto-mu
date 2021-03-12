@@ -107,6 +107,7 @@
   },
   "DashboardSuperAdminPage": {
     "Organizations": "Organizações:",
+    "Org-Id": "Identificador da organização",
     "Info-Page": "Janela de administração de SuperAdmin, aqui pode adicionar novas organizações e listar as já existentes no sistema.",
     "Add-Org": "Adicionar Organização",
     "Id": "Número Id",

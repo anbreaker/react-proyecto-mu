@@ -106,6 +106,7 @@
     "Search": "Search..."
   },
   "DashboardSuperAdminPage": {
+    "Org-Id": "Organization Id",
     "Organizations": "Organizations:",
     "Info-Page": "SuperAdmin administration window, here you can add new organisations and list existing organisations in the system.",
     "Add-Org": "Add Organizations",
@@ -114,6 +115,7 @@
     "Address": "Address",
     "President": "President",
     "City": "City",
+    "Mobile": "Mobile",
     "Foundation": "Foundation",
     "Country": "Country",
     "Post-Code": "Post Code",
