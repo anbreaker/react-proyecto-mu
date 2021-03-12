@@ -10,7 +10,7 @@ import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLocale, getMsgError } from '../../store/selectors';
+import { getLocale, getUiState } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
 import client from '../../api/client';
@@ -19,7 +19,7 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
 
-  const { msgError, loading } = useSelector(getMsgError);
+  const { msgError, loading } = useSelector(getUiState);
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
 

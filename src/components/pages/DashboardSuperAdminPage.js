@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Spinner } from 'reactstrap';
 
 import { MainLayout } from '../layout/MainLayout';
 import { Button } from '../basicComponents/Button';
 import { Search } from '../basicComponents/Search';
-import { getMsgError } from '../../store/selectors';
 import { getAllOrgs } from '../../api';
 
 export const DashboardSuperAdminPage = () => {
   const { t } = useTranslation('global');
   const [orgs, setOrgs] = useState();
-
-  const { loading } = useSelector(getMsgError);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     getAllOrgs().then(data => {
       const orgItems = (
         <>
@@ -39,6 +38,7 @@ export const DashboardSuperAdminPage = () => {
           ))}
         </>
       );
+      setLoading(false);
       setOrgs(orgItems);
     });
   }, []);
@@ -79,27 +79,33 @@ export const DashboardSuperAdminPage = () => {
             </h6>
           </div>
           <div className="card-body">
-            <div className="table-responsive">
-              <table
-                className="table table-bordered"
-                id="dataTable"
-                width="100%"
-                cellSpacing="0"
-              >
-                <thead className="font-weight-bold text-info">
-                  <tr>
-                    <th>{t('DashboardSuperAdminPage.Name')}</th>
-                    <th>{t('DashboardSuperAdminPage.Country')}</th>
-                    <th>{t('DashboardSuperAdminPage.City')}</th>
-                    <th>{t('DashboardSuperAdminPage.Address')}</th>
-                    <th>{t('DashboardSuperAdminPage.Foundation')}</th>
-                    <th>{t('DashboardSuperAdminPage.View-Details')}</th>
-                  </tr>
-                </thead>
+            {loading ? (
+              <div className="d-flex justify-content-center">
+                <Spinner color="primary" />
+              </div>
+            ) : (
+              <div className="table-responsive">
+                <table
+                  className="table table-bordered"
+                  id="dataTable"
+                  width="100%"
+                  cellSpacing="0"
+                >
+                  <thead className="font-weight-bold text-info">
+                    <tr>
+                      <th>{t('DashboardSuperAdminPage.Name')}</th>
+                      <th>{t('DashboardSuperAdminPage.Country')}</th>
+                      <th>{t('DashboardSuperAdminPage.City')}</th>
+                      <th>{t('DashboardSuperAdminPage.Address')}</th>
+                      <th>{t('DashboardSuperAdminPage.Foundation')}</th>
+                      <th>{t('DashboardSuperAdminPage.View-Details')}</th>
+                    </tr>
+                  </thead>
 
-                <tbody>{orgs}</tbody>
-              </table>
-            </div>
+                  <tbody>{orgs}</tbody>
+                </table>
+              </div>
+            )}
           </div>
         </div>
       </div>

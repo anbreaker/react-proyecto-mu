@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux';
 import { Button } from '../basicComponents/Button';
 
 import { Search } from '../basicComponents/Search';
-import { getMsgError } from '../../store/selectors';
+import { getUiState } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
 import { Link } from 'react-router-dom';
 
 export const TreasurerExpensePage = () => {
   const { t } = useTranslation('global');
 
-  const { loading } = useSelector(getMsgError);
+  const { loading } = useSelector(getUiState);
 
   return (
     <MainLayout>

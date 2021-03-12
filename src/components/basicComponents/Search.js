@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import { InputText } from './InputText';
 import { useForm } from '../../hooks/useForm';
 import { Button } from './Button';
-import { getMsgError } from '../../store/selectors';
+import { getUiState } from '../../store/selectors';
 
 export const Search = ({ ...props }) => {
   const { handlerOnFocus, text, icon, variant } = props;
 
-  const { loading } = useSelector(getMsgError);
+  const { loading } = useSelector(getUiState);
 
   const { formValues, handleInputChange } = useForm({
     search: '',

@@ -11,7 +11,7 @@ import { InputText } from '../basicComponents/InputText';
 import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
-import { getLanguaje, getMsgError } from '../../store/selectors';
+import { getLanguaje, getUiState } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { setAlertAction } from '../../store/actions/swal';
 import {
@@ -35,7 +35,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
 
   const { languaje } = useSelector(getLanguaje);
 
-  const { msgError, loading } = useSelector(getMsgError);
+  const { msgError, loading } = useSelector(getUiState);
 
   // eslint-disable-next-line
   // const { locale } = useSelector(getLocale);
@@ -135,8 +135,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
       // user: { uid, displayName, email, phonNumber, photURL, role }
       try {
         //Saved-Org
-        if (orgId) await updateOrgDB(formValues);
-        else await saveOrgDB(formValues);
+        await saveOrgDB(formValues);
 
         dispatch(
           setAlertAction(
@@ -145,7 +144,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
             'success'
           )
         );
-        history.push('/admin');
+        //history.push('/admin');
       } catch (error) {
         console.log({ error });
         dispatch(

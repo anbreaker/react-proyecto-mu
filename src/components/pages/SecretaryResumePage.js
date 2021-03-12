@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { Search } from '../basicComponents/Search';
-import { getMsgError } from '../../store/selectors';
+import { getUiState } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
 
 export const SecretaryResumePage = () => {
   const { t } = useTranslation('global');
 
   // eslint-disable-next-line
-  const { loading } = useSelector(getMsgError);
+  const { loading } = useSelector(getUiState);
 
   return (
     <MainLayout>

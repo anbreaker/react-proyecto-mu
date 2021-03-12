@@ -29,10 +29,3 @@ export const saveOrgDB = async orgData => {
     .then(res => res.data)
     .catch(err => err);
 };
-
-export const updateOrgDB = async orgData => {
-  return client
-    .put('/org', orgData)
-    .then(res => res.data)
-    .catch(err => err);
-};

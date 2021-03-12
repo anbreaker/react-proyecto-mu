@@ -12,7 +12,7 @@ import { InputPassword } from '../basicComponents/InputPassword';
 import { LinkForms } from '../basicComponents/LinkForms';
 import { Button } from '../basicComponents/Button';
 import { MessageError } from '../parts/MessageError';
-import { getMsgError } from '../../store/selectors';
+import { getUiState } from '../../store/selectors';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import {
   startGoogleLogin,
@@ -28,7 +28,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
   const queryParmas = new URLSearchParams(location.search);
   const emailRecovery = queryParmas.get('user');
 
-  const { msgError, loading } = useSelector(getMsgError);
+  const { msgError, loading } = useSelector(getUiState);
 
   const { formValues, handleInputChange, setFormValues } = useForm({
     email: '',

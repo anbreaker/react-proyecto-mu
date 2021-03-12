@@ -9,7 +9,7 @@ import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLocale, getMsgError } from '../../store/selectors';
+import { getLocale, getUiState } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import client from '../../api/client';
 
@@ -17,7 +17,7 @@ export const TreasurerExpenseRegisterPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
 
-  const { msgError } = useSelector(getMsgError);
+  const { msgError } = useSelector(getUiState);
   // eslint-disable-next-line
   const { locale } = useSelector(getLocale);
 

@@ -12,7 +12,7 @@ import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import {
   // getLocale,
-  getMsgError,
+  getUiState,
   getUserAuth,
   userStatus,
 } from '../../store/selectors';
@@ -25,7 +25,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const dispatch = useDispatch();
   const uStatus = useSelector(userStatus);
 
-  const { msgError, loading } = useSelector(getMsgError);
+  const { msgError, loading } = useSelector(getUiState);
 
   const user = useSelector(getUserAuth);
 

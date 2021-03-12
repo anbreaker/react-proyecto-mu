@@ -12,7 +12,7 @@ import { InputMail } from '../basicComponents/InputMail';
 import { InputPassword } from '../basicComponents/InputPassword';
 import { InputText } from '../basicComponents/InputText';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
-import { getMsgError } from '../../store/selectors';
+import { getUiState } from '../../store/selectors';
 import { MessageError } from '../parts/MessageError';
 import '../../assets/css/style.css';
 import {
@@ -25,7 +25,7 @@ export const RegisterPage = ({ handlerOnFocus }) => {
 
   const dispatch = useDispatch();
 
-  const { msgError, loading } = useSelector(getMsgError);
+  const { msgError, loading } = useSelector(getUiState);
 
   const { formValues, handleInputChange } = useForm({
     username: '',

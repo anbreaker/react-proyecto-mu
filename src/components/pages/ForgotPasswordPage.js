@@ -10,7 +10,7 @@ import { InputMail } from '../basicComponents/InputMail';
 import { ChangeLanguaje } from '../utils/ChangeLanguaje';
 import { Button } from '../basicComponents/Button';
 import { useForm } from '../../hooks/useForm';
-import { getMsgError } from '../../store/selectors';
+import { getUiState } from '../../store/selectors';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import { MessageError } from '../parts/MessageError';
 import { recoveryPassAction } from '../../store/actions/auth';
@@ -22,7 +22,7 @@ export const ForgotPasswordPage = ({ handlerOnFocus }) => {
 
   const dispatch = useDispatch();
 
-  const { msgError } = useSelector(getMsgError);
+  const { msgError } = useSelector(getUiState);
 
   const { formValues, handleInputChange } = useForm({ email: '' });
 

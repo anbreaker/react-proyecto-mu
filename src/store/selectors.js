@@ -14,7 +14,7 @@ export const getUserName = state => state.auth.displayName;
 export const getPermisos = state => state.auth.permisos;
 export const getPhotoURL = state => state.auth.photoURL;
 
-export const getMsgError = state => state.ui;
+export const getUiState = state => state.ui;
 export const getMenuUserStatus = state => state.ui.menuUser;
 export const getSidebarStatus = state => state.ui.showSidebar;
 
