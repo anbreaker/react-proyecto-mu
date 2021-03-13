@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
@@ -22,6 +22,8 @@ const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
   const userName = useSelector(getUserName);
   const orgs = useSelector(getUserOrgs);
   const orgSelected = useSelector(getUserOrgSel);
+
+  console.log({ orgs });
 
   const dispatch = useDispatch();
 

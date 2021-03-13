@@ -123,14 +123,12 @@ export const DashboardSuperAdminPage = () => {
                           ))}
                       </>
                     </tbody>
-                    {/* <tbody>{orgs}</tbody> */}
                   </table>
                 </div>
               ))}
           </div>
         </div>
       </div>
-      {/* <!-- /.container-fluid -->  */}
     </MainLayout>
   );
 };
