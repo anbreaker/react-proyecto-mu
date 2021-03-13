@@ -33,6 +33,11 @@ const menus = [
         route: '/admin',
         role: ['SuperAdmin'],
       },
+      {
+        name: 'UsersAdmin',
+        route: '/users-admin',
+        role: ['SuperAdmin'],
+      },
     ],
   },
   {

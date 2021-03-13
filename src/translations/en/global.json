@@ -62,7 +62,8 @@
     "Logout": "Logout",
     "Cancel": "Cancel",
     "Administration": "Admin.",
-    "OrgAdmin": "Org. Admin."
+    "OrgAdmin": "Org. Admin.",
+    "UsersAdmin": "Users. Admin."
   },
   "ErrorSwal": {
     "Success": "Success",
@@ -205,5 +206,15 @@
   },
   "DisabledUserPage": {
     "Info": "The account has been successfully created, but has not yet been associated with any organisation. An administrator will complete this process."
+  },
+  "UsersAdminPage": {
+    "Title": "Users Administration",
+    "Description": "Users administrations page, you can add users to an organization here",
+    "Users": "Usuarios",
+    "displayName": "Names",
+    "firstSurname": "First Surname",
+    "secondSurname": "Second Surname",
+    "email": "Email",
+    "View-Details": "Details"
   }
 }

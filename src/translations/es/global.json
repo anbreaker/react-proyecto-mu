@@ -62,7 +62,8 @@
     "Logout": "Cerrar sesión",
     "Cancel": "Cancenlar",
     "Administration": "Admin.",
-    "OrgAdmin": "Admin. Org."
+    "OrgAdmin": "Admin. Org.",
+    "UsersAdmin": "Admin. Usuarios"
   },
   "ErrorSwal": {
     "Success": "Éxito",
@@ -205,5 +206,15 @@
   },
   "DisabledUserPage": {
     "Info": "La cuenta ha sido creada correctamente, pero aún no ha sido asociada a ninguna organización. Un administrador completará este proceso."
+  },
+  "UsersAdminPage": {
+    "Title": "Administración de usuarios",
+    "Description": "Página de administración de usuarios, acá puede agregar usuarios a una organización",
+    "Users": "Usuarios",
+    "displayName": "Nombres",
+    "firstSurname": "Apellido Paterno",
+    "secondSurname": "Apellino Materno",
+    "email": "Email",
+    "View-Details": "Detalles"
   }
 }

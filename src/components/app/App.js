@@ -32,6 +32,7 @@ import { TreasurerExpensePage } from '../pages/TreasurerExpensePage';
 import { SecretaryResumePage } from '../pages/SecretaryResumePage';
 import { SecretaryMeetingsPage } from '../pages/SecretaryMeetingsPage';
 import { DisabledUserPage } from '../pages/DisabledUserPage';
+import { UsersAdminPage } from '../pages/UsersAdminPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -85,13 +86,16 @@ export const App = () => {
 
         <Route path="/disabled" exact component={DisabledUserPage} />
 
-        {/* //TODO proteger ruta admin... */}
         <PrivateRoute path="/admin" exact>
           <DashboardSuperAdminPage />
         </PrivateRoute>
-        {/* //TODO proteger ruta adminOrg... */}
+
         <PrivateRoute path="/admin-org" exact>
           <DashboardOrgProfilePage />
+        </PrivateRoute>
+
+        <PrivateRoute path="/users-admin" exact>
+          <UsersAdminPage />
         </PrivateRoute>
         {/* //TODO proteger ruta President... */}
         <Route path="/president" exact>

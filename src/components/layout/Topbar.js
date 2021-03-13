@@ -23,8 +23,6 @@ const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
   const orgs = useSelector(getUserOrgs);
   const orgSelected = useSelector(getUserOrgSel);
 
-  console.log({ orgs });
-
   const dispatch = useDispatch();
 
   const showSidebar = useSelector(getSidebarStatus);
