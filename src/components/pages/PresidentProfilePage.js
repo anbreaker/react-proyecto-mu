@@ -131,8 +131,7 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
                 width="152"
                 height="141"
                 alt=""
-                // TODO Usar imagen de presidente
-                src={imgFoundation ? imgFoundation : profile}
+                src={imgFoundation || profile}
               />
 
               <div className="card mt-3 border-bottom-success text-center">

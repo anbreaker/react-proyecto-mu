@@ -28,8 +28,6 @@ export const startLoginEmailPassword = (email, password) => {
       dispatch(login({ ...user, token }));
 
       dispatch(finishLoadingAction());
-
-      // TODO ventana Modal
     } catch (error) {
       console.log({ error });
       dispatch(finishLoadingAction());
@@ -166,7 +164,6 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
         firebaseInit
           .auth()
           .currentUser.sendEmailVerification({
-            // TODO preguntar por esto a Luis (user.email???)
             url: `https://www.egestion.xyz/login?user=${user.email}`,
           })
           .then(data => {
@@ -179,7 +176,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
               )
             );
             history.push('/verify');
-          }) // TODO Pedir explicacion?? para entender...
+          })
           .catch(err => console.log({ err }));
 
         dispatch(finishLoadingAction());

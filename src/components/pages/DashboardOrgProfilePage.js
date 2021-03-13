@@ -90,8 +90,6 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
     });
   }, []);
 
-  // TODO ver el tema de las fechas
-  // console.log({ foundationDate }, '<-- foundationDate');
   const handleDateChange = event => {
     setFormValues({
       ...formValues,
@@ -201,7 +199,6 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                 width="152"
                 height="141"
                 alt=""
-                // TODO Usar imagen de organizacion.
                 src={photoURL || profile}
               />
 
@@ -246,7 +243,6 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                       />
                     </div>
                     <div className="col-lg-6">
-                      {/* //TODO Debe ser un DateTimePicker */}
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardSuperAdminPage.Foundation')}:
                       </h6>
