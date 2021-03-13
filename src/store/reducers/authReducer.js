@@ -14,6 +14,7 @@ const initialState = {
   active: false,
   permisos: [],
   organizations: [],
+  orgSelected: {},
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -29,6 +30,9 @@ export const authReducer = (state = initialState, action) => {
 
     case types.setProfileImg:
       return { ...state, ...action.payload };
+
+    case types.changeOrg:
+      return { ...state, orgSelected: action.payload };
 
     default:
       return state;

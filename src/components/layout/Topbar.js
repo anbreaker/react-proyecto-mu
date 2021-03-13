@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useDetectClickOutside } from 'react-detect-click-outside';
+import { Input } from 'reactstrap';
 
 import img from '../../assets/img/undraw_profile_1.svg';
-import { getPhotoURL, getUserName } from '../../store/selectors';
-import { startLogout } from '../../store/actions/auth';
+import {
+  getPhotoURL,
+  getUserName,
+  getUserOrgs,
+  getUserOrgSel,
+} from '../../store/selectors';
+import { startLogout, changeOrgAction } from '../../store/actions/auth';
 import { setShowSidebar } from '../../store/actions/ui';
 import { getSidebarStatus } from '../../store/selectors';
-import { Search } from '../basicComponents/Search';
 
 const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
   const { t } = useTranslation('global');
   const userName = useSelector(getUserName);
+  const orgs = useSelector(getUserOrgs);
+  const orgSelected = useSelector(getUserOrgSel);
 
   const dispatch = useDispatch();
 
@@ -41,50 +48,41 @@ const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
       >
         <i className="fa fa-bars"></i>
       </button>
-
-      {/* <!-- Topbar Search --> */}
-
-      <Search text={t('TopBar.Search')} />
-
-      {/* <!-- Topbar Navbar --> */}
+      <div className="input-group">
+        <div className="pr-3 d-sm-none d-md-block">
+          <h6 className="font-weight-bold pt-2">
+            {t('TopBar.Organization-Selected')}:
+          </h6>
+        </div>
+        <Input
+          className="col-4"
+          type="select"
+          name="organization"
+          id="organization"
+          value={orgSelected.id}
+          //onFocus={handlerOnFocus}
+          onChange={event => {
+            const { target } = event.nativeEvent;
+            const index = target.selectedIndex;
+            dispatch(
+              changeOrgAction({
+                name: target[index].text,
+                id: target[index].value,
+              })
+            );
+          }}
+        >
+          {orgs &&
+            orgs.map(org => {
+              return (
+                <option key={org._id} value={org._id}>
+                  {org.name}
+                </option>
+              );
+            })}
+        </Input>
+      </div>
       <ul className="navbar-nav ml-auto">
-        {/* <!-- Nav Item - Search Dropdown (Visible Only XS) --> */}
-        <li className="nav-item dropdown no-arrow d-sm-none">
-          <a
-            className="nav-link dropdown-toggle"
-            href="/s"
-            id="searchDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <i className="fas fa-search fa-fw"></i>
-          </a>
-          {/* <!-- Dropdown - Messages --> */}
-          <div
-            className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-            aria-labelledby="searchDropdown"
-          >
-            <form className="form-inline mr-auto w-100 navbar-search">
-              <div className="input-group">
-                <input
-                  type="text"
-                  className="form-control bg-light border-0 small"
-                  placeholder="Search for..."
-                  aria-label="Search"
-                  aria-describedby="basic-addon2"
-                />
-                <div className="input-group-append">
-                  <button className="btn btn-primary" type="button">
-                    <i className="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </li>
-
         <div className="topbar-divider d-none d-sm-block"></div>
 
         {/* <!-- Nav Item - User Information --> */}

@@ -75,7 +75,11 @@
     "auth/email-already-in-use": "The email address is already in use by another account.",
     "auth/email-not-verified": "The email has not been verified, please check your inbox",
     "NOUSERDATABASE": "Not User on Data Base!",
-    "SuccessUpdateProfile": "Profile data updated successfully!. If you are a new user please wait until an administrator assign you to an organization"
+    "SuccessUpdateProfile": "Profile data updated successfully!. If you are a new user please wait until an administrator assign you to an organization",
+    "Confirmation-Sure": "Are you sure?",
+    "Warning-undone": "¡This action can not be undone!",
+    "Confirm-Delete": "Delete",
+    "Confirm-Cancel": "Cancel"
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",
@@ -103,7 +107,8 @@
     "Types-File": "You need jpeg, jpg or png files to change your profile picture."
   },
   "TopBar": {
-    "Search": "Search..."
+    "Search": "Search...",
+    "Organization-Selected": "Selected Organization"
   },
   "DashboardSuperAdminPage": {
     "Org-Id": "Organization Id",
@@ -128,6 +133,7 @@
     "Delete-Org": "Delete Organization",
     "Created-Org": "Created Organization",
     "Upload-Org": "Update Organization",
+    "Foundation-Need": "Foundation date needed",
     "Back": "Back",
     "Saved-Org": "Organization saved successfully",
     "Remove-Org": "Organization removed successfully",

@@ -72,11 +72,11 @@ export const login = userData => {
       try {
         configureClient(userData.token);
         const dataUserDB = await api.checkUserDB();
-
+        if (dataUserDB.organizations && dataUserDB.organizations.length > 0) {
+          setHeaderOrgId(dataUserDB.organizations[0]._id);
+        }
         userData = { ...userData, ...dataUserDB };
         dispatch(updateAuth(userData));
-
-        setHeaderOrgId(userData._id);
       } catch (error) {
         console.log(`ErrorSwal.${error}`);
         dispatch(
@@ -108,9 +108,11 @@ export const updateAuth = ({
   contact,
   active,
   role,
-  organizations,
+  organizations: orgs,
 }) => {
   const permisos = getMenuByRole(role);
+  const orgSelected =
+    orgs && orgs.length > 0 ? { id: orgs[0]._id, name: orgs[0].name } : {};
   return {
     type: types.login,
     payload: {
@@ -126,8 +128,17 @@ export const updateAuth = ({
       role,
       active,
       permisos,
-      organizations,
+      organizations: orgs,
+      orgSelected,
     },
+  };
+};
+
+export const changeOrgAction = org => {
+  setHeaderOrgId(org.id);
+  return {
+    type: types.changeOrg,
+    payload: org,
   };
 };
 

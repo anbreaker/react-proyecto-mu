@@ -75,7 +75,11 @@
     "auth/email-already-in-use": "El email ingresado ya se encuentra utilizado por otra cuenta.",
     "auth/email-not-verified": "La dirección email no se ha verificado, por favor revise su correo",
     "NOUSERDATABASE": "Não Utilizador em Base de Dados!",
-    "SuccessUpdateProfile": "Datos actualizados correctamente. Si es un usuario nuevo por favor espere a que un administrador lo asigne a alguna organización"
+    "SuccessUpdateProfile": "Datos actualizados correctamente. Si es un usuario nuevo por favor espere a que un administrador lo asigne a alguna organización",
+    "Confirmation-Sure": "¿Está seguro?",
+    "Warning-undone": "Esta acción no se puede deshacer",
+    "Confirm-Delete": "Eliminar",
+    "Confirm-Cancel": "Cancelar"
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",
@@ -128,6 +132,7 @@
     "Created-Org": "Criar Organização",
     "Back": "Voltar",
     "Upload-Org": "Organização de atualização",
+    "Foundation-Need": "Se necesita la fecha de fundación",
     "Saved-Org": "Organización guardada con éxito",
     "Remove-Org": "Organização removida com êxito",
     "Save-Error": "Error al guardar la organización, por favor inténtelo nuevamente"

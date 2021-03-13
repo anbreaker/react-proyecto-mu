@@ -4,6 +4,8 @@ import { Input } from 'reactstrap';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import DateTimePicker from 'react-datetime-picker';
+import Swal from 'sweetalert2';
+import { Spinner } from 'reactstrap';
 
 import profile from '../../assets/img/undraw_posting_photo.svg';
 import { MainLayout } from '../layout/MainLayout';
@@ -12,15 +14,14 @@ import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import { getLanguaje, getUiState } from '../../store/selectors';
-import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
-import { setAlertAction } from '../../store/actions/swal';
 import {
-  saveOrgDB,
-  getAllUsers,
-  getOrgsById,
-  removeOrgsById,
-  updateOrgDB,
-} from '../../api';
+  removeErrorAction,
+  setErrorAction,
+  startLoadingAction,
+  finishLoadingAction,
+} from '../../store/actions/ui';
+import { setAlertAction } from '../../store/actions/swal';
+import { saveOrgDB, getAllUsers, getOrgsById, removeOrgsById } from '../../api';
 import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
@@ -34,43 +35,24 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const orgId = queryParmas.get('org');
 
   const { languaje } = useSelector(getLanguaje);
-
   const { msgError, loading } = useSelector(getUiState);
-
-  // eslint-disable-next-line
-  // const { locale } = useSelector(getLocale);
-
   const [userSelect, setUserSelect] = useState();
 
   useEffect(() => {
     if (orgId) {
+      dispatch(startLoadingAction());
       getOrgsById(orgId)
-        .then(date => {
-          const {
-            address,
-            city,
-            country,
-            fiscalYear,
-            foundationDate,
-            name,
-            photoURL,
-            president,
-            province,
-          } = date;
+        .then(org => {
           setFormValues({
-            address,
-            city,
-            country,
-            fiscalYear,
-            foundationDate: new Date(foundationDate),
-            name,
-            photoURL,
-            president,
-            province,
-            orgId,
+            ...org,
+            orgId: orgId,
+            foundationDate: new Date(org.foundationDate),
           });
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
+        .finally(() => {
+          dispatch(finishLoadingAction());
+        });
     }
   }, [orgId]);
 
@@ -130,9 +112,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
-      // Enviar al Back en un Objeto..
-      // TODO enviar este objeto al back
-      // user: { uid, displayName, email, phonNumber, photURL, role }
+      dispatch(startLoadingAction());
       try {
         //Saved-Org
         await saveOrgDB(formValues);
@@ -144,7 +124,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
             'success'
           )
         );
-        //history.push('/admin');
+        history.push('/admin');
       } catch (error) {
         console.log({ error });
         dispatch(
@@ -155,20 +135,32 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
           )
         );
       }
+      dispatch(finishLoadingAction());
     }
   };
 
   const handleDeleteorg = event => {
     event.preventDefault();
-    removeOrgsById(orgId);
-    dispatch(
-      setAlertAction(
-        'ErrorSwal.Success',
-        'DashboardOrgProfilePage.Remove-Org',
-        'success'
-      )
-    );
-    history.push('/admin');
+    Swal.fire({
+      title: t('ErrorSwal.Confirmation-Sure'),
+      text: t('ErrorSwal.Warning-undone'),
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: t('ErrorSwal.Confirm-Delete'),
+      cancelButtonText: t('ErrorSwal.Confirm-Cancel'),
+    }).then(result => {
+      if (result.value) {
+        removeOrgsById(orgId);
+        dispatch(
+          setAlertAction(
+            'ErrorSwal.Success',
+            'DashboardOrgProfilePage.Remove-Org',
+            'success'
+          )
+        );
+        history.push('/admin');
+      }
+    });
   };
 
   const isFormChangeProfileValid = () => {
@@ -178,17 +170,12 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
     } else if (address.length <= 2) {
       dispatch(setErrorAction('DashboardProfilePage.Mobile-Need'));
       return false;
-    }
-    /*
-    else if (!validator.isTaxID(fiscalNumber, locale)) {
-      dispatch(setErrorAction('RegisterPage.Fiscal-NotValid'));
+    } else if (!foundationDate) {
+      dispatch(setErrorAction('DashboardOrgProfilePage.Foundation-Need'));
       return false;
     }
-    */
 
     dispatch(removeErrorAction());
-    // TODO eliminar cuando este verificado
-    console.log(formValues, '<-- Viedon formValues');
 
     return true;
   };
@@ -359,7 +346,6 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                           startIcon="fas fa-arrow-left"
                           disabled={loading}
                         >
-                          {' '}
                           {t('DashboardOrgProfilePage.Back')}
                         </Button>
                       </Link>
@@ -368,25 +354,33 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                       <Button
                         type="button"
                         variant="alert"
-                        startIcon="fas fa-exclamation-triangle"
+                        startIcon={!loading && 'fas fa-exclamation-triangle'}
                         disabled={loading || !!orgId !== true}
                         onClick={handleDeleteorg}
                       >
                         {' '}
-                        {t('DashboardOrgProfilePage.Delete-Org')}
+                        {loading ? (
+                          <Spinner />
+                        ) : (
+                          t('DashboardOrgProfilePage.Delete-Org')
+                        )}
                       </Button>
                     </div>
                     <div className="col-5">
                       <Button
                         type="submit"
                         variant="primary"
-                        startIcon="fas fa-id-card"
+                        startIcon={!loading && 'fas fa-id-card'}
                         disabled={loading}
                       >
                         {' '}
-                        {!!orgId
-                          ? t('DashboardOrgProfilePage.Upload-Org')
-                          : t('DashboardOrgProfilePage.Created-Org')}
+                        {loading ? (
+                          <Spinner />
+                        ) : !!orgId ? (
+                          t('DashboardOrgProfilePage.Upload-Org')
+                        ) : (
+                          t('DashboardOrgProfilePage.Created-Org')
+                        )}
                       </Button>
                     </div>
                   </div>

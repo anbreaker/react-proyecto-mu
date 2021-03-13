@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -38,14 +38,16 @@ export const App = () => {
   const isLogged = useSelector(uidOnIndexDB);
   const alert = useSelector(getSwalAlert);
 
-  firebaseInit.auth().onAuthStateChanged(user => {
-    if (user) {
-      user.getIdToken().then(token => {
-        dispatch(login({ ...user, token }));
-        configureClient(token);
-      });
-    }
-  });
+  useEffect(() => {
+    firebaseInit.auth().onAuthStateChanged(user => {
+      if (user) {
+        user.getIdToken().then(token => {
+          dispatch(login({ ...user, token }));
+          configureClient(token);
+        });
+      }
+    });
+  }, []);
 
   const handlerOnFocus = event => {
     event.preventDefault();

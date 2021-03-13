@@ -75,7 +75,11 @@
     "auth/email-already-in-use": "El email ingresado ya se encuentra utilizado por otra cuenta.",
     "auth/email-not-verified": "La dirección email no se ha verificado, por favor revise su correo",
     "NOUSERDATABASE": "No es un usuario de la base de datos.",
-    "SuccessUpdateProfile": "Datos actualizados correctamente. Si es un usuario nuevo por favor espere a que un administrador lo asigne a alguna organización"
+    "SuccessUpdateProfile": "Datos actualizados correctamente. Si es un usuario nuevo por favor espere a que un administrador lo asigne a alguna organización",
+    "Confirmation-Sure": "¿Está seguro?",
+    "Warning-undone": "Esta acción no se puede deshacer",
+    "Confirm-Delete": "Eliminar",
+    "Confirm-Cancel": "Cancelar"
   },
   "ChangeLanguaje": {
     "Spanish": "🇪🇸",
@@ -103,7 +107,8 @@
     "Types-File": "Se necesitan archivos jpeg, jpg o png para cambiar su foto de perfil"
   },
   "TopBar": {
-    "Search": "Buscar..."
+    "Search": "Buscar...",
+    "Organization-Selected": "Organización Seleccionada"
   },
   "DashboardSuperAdminPage": {
     "Organizations": "Organizaciones:",
@@ -127,6 +132,7 @@
     "Info": "Ventana de administración del SuperAdmin, aqui puedes agregar, cambiar o actualizar los datos de la organización seleccionada.",
     "Delete-Org": "Eliminar Organización",
     "Created-Org": "Crear Organización",
+    "Foundation-Need": "Se necesita la fecha de fundación",
     "Back": "Atrás",
     "Upload-Org": "Actualizar Organización",
     "Saved-Org": "Organización guardada con éxito",

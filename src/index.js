@@ -9,9 +9,16 @@ import i18next from 'i18next';
 import { configureStore } from './store/storeConfig';
 import './i18n/i18nextConfig';
 import { App } from './components/app/App';
+import { removeErrorAction } from './store/actions/ui';
 
 const history = createBrowserHistory();
 const store = configureStore({}, history);
+
+// Listener para limpiar los errores de la aplicación en cada cambio
+// de ruta
+history.listen(() => {
+  store.dispatch(removeErrorAction());
+});
 
 ReactDOM.render(
   <Provider store={store}>

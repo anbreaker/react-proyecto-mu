@@ -10,6 +10,8 @@ export const userStatus = state => {
   return 'Enabled';
 };
 export const getUserAuth = state => state.auth;
+export const getUserOrgs = state => state.auth.organizations;
+export const getUserOrgSel = state => state.auth.orgSelected;
 export const getUserName = state => state.auth.displayName;
 export const getPermisos = state => state.auth.permisos;
 export const getPhotoURL = state => state.auth.photoURL;
