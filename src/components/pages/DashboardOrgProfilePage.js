@@ -332,7 +332,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                   <MessageError msgError={msgError} />
                   <div className="row">
                     <div className="col-2">
-                      <Link to="/admin">
+                      <Link to="/admin" className="text-decoration-none">
                         <Button
                           type="submit"
                           variant="warning"

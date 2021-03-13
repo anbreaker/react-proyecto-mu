@@ -21,3 +21,10 @@ export const getAllUsers = async () => {
     .then(res => res.data)
     .catch(err => err);
 };
+
+export const getSingleUser = async userId => {
+  return client
+    .get(`/user?userId=${userId}`)
+    .then(res => res.data)
+    .catch(err => err);
+};

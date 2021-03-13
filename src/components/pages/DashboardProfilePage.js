@@ -1,8 +1,10 @@
 // eslint-disable
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, Link } from 'react-router-dom';
+import clsx from 'clsx';
 
 import profile from '../../assets/img/undraw_profile.svg';
 import { MainLayout } from '../layout/MainLayout';
@@ -16,30 +18,55 @@ import {
   getUserAuth,
   userStatus,
 } from '../../store/selectors';
-import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
+import {
+  removeErrorAction,
+  setErrorAction,
+  startLoadingAction,
+  finishLoadingAction,
+} from '../../store/actions/ui';
 import { updateProfileAction } from '../../store/actions/auth';
 import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
+import { getSingleUser, saveUserDB } from '../../api/index';
 
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
   const uStatus = useSelector(userStatus);
 
+  const location = useLocation();
+  const queryParmas = new URLSearchParams(location.search);
+  const userId = queryParmas.get('user');
+
   const { msgError, loading } = useSelector(getUiState);
 
-  const user = useSelector(getUserAuth);
+  const currentUser = useSelector(getUserAuth);
 
-  const { formValues, handleInputChange, setFieldValue } = useForm({
-    displayName: user.displayName || '',
-    firstSurname: user.firstSurname || '',
-    secondSurname: user.secondSurname || '',
-    email: user.email || '',
-    fiscalNumber: user.fiscalNumber || '',
-    address: (user.contact && user.contact.address) || '',
-    mobile: (user.contact && user.contact.mobile) || '',
-    phone: (user.contact && user.contact.homePhone) || '',
-    photoURL: user.photoURL || '',
+  const descompone = ({
+    displayName,
+    firstSurname,
+    secondSurname,
+    email,
+    fiscalNumber,
+    photoURL,
+    contact,
+  }) => ({
+    displayName,
+    firstSurname,
+    secondSurname,
+    email,
+    fiscalNumber,
+    photoURL,
+    address: contact && contact.address,
+    mobile: contact && contact.mobile,
+    phone: contact && contact.homePhone,
   });
+
+  const {
+    formValues,
+    handleInputChange,
+    setFieldValue,
+    setFormValues,
+  } = useForm({});
 
   const {
     displayName,
@@ -53,11 +80,36 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     photoURL,
   } = formValues;
 
+  useEffect(() => {
+    console.log(formValues);
+  }, [formValues]);
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(startLoadingAction());
+      getSingleUser(userId)
+        .then(user => {
+          setFormValues(descompone(user));
+        })
+        .finally(() => {
+          dispatch(finishLoadingAction());
+        });
+      return;
+    }
+    setFormValues(descompone(currentUser));
+  }, [userId]);
+
   const handleChangeProfile = event => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
-      dispatch(updateProfileAction(formValues));
+      if (!userId) {
+        // Si viene el userId entonces lo está editando un admin y no debe despachar la acción
+        dispatch(updateProfileAction(formValues));
+        return;
+      }
+      // Si viene el userId se llama directo a la api
+      saveUserDB(formValues).then(data => console.log(data));
     }
   };
 
@@ -257,15 +309,32 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                   </div>
                   <hr />
                   <MessageError msgError={msgError} />
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    startIcon="fas fa-id-card"
-                    disabled={loading}
-                  >
-                    {' '}
-                    {t('DashboardProfilePage.Update-Profile')}
-                  </Button>
+                  <div className="row">
+                    <div className={clsx(userId ? 'col-4' : 'd-none')}>
+                      {' '}
+                      <Link to="/users-admin" className="text-decoration-none">
+                        <Button
+                          type="submit"
+                          variant="warning"
+                          startIcon="fas fa-arrow-left"
+                          disabled={loading}
+                        >
+                          {t('DashboardOrgProfilePage.Back')}
+                        </Button>
+                      </Link>
+                    </div>
+                    <div className={clsx(userId ? 'col-8' : 'col-12')}>
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        startIcon="fas fa-id-card"
+                        disabled={loading}
+                      >
+                        {' '}
+                        {t('DashboardProfilePage.Update-Profile')}
+                      </Button>
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>
