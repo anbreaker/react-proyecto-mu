@@ -133,7 +133,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
               'success'
             )
           );
-          //history.push('/users-admin');
+          history.push('/users-admin');
         })
         .catch(err => {
           dispatch(
