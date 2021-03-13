@@ -75,10 +75,10 @@
     "auth/email-already-in-use": "El email ingresado ya se encuentra utilizado por otra cuenta.",
     "auth/email-not-verified": "La dirección email no se ha verificado, por favor revise su correo",
     "NOUSERDATABASE": "Não Utilizador em Base de Dados!",
-    "SuccessUpdateProfile": "Datos actualizados correctamente. Si es un usuario nuevo por favor espere a que un administrador lo asigne a alguna organización",
-    "Confirmation-Sure": "¿Está seguro?",
-    "Warning-undone": "Esta acción no se puede deshacer",
-    "Confirm-Delete": "Eliminar",
+    "SuccessUpdateProfile": "Dados de perfil actualizados com sucesso! Se for um novo utilizador por favor aguarde até que um administrador o atribua a uma organização",
+    "Confirmation-Sure": "Tem a certeza?",
+    "Warning-undone": "¡Esta acção não pode ser desfeita!",
+    "Confirm-Delete": "Apagar",
     "Confirm-Cancel": "Cancelar"
   },
   "ChangeLanguaje": {
@@ -107,7 +107,8 @@
     "Types-File": "Os ficheiros Jpeg, jpg ou png são necessários para alterar a imagem do seu perfil."
   },
   "TopBar": {
-    "Search": "Pesquisar..."
+    "Search": "Pesquisar...",
+    "Organization-Selected": "Organização Seleccionada"
   },
   "DashboardSuperAdminPage": {
     "Organizations": "Organizações:",
@@ -130,12 +131,12 @@
     "Info": "Janela de administração SuperAdmin, aqui pode adicionar, alterar ou actualizar os dados da organização seleccionada.",
     "Delete-Org": "Apagar Organização",
     "Created-Org": "Criar Organização",
-    "Back": "Voltar",
     "Upload-Org": "Organização de atualização",
-    "Foundation-Need": "Se necesita la fecha de fundación",
-    "Saved-Org": "Organización guardada con éxito",
+    "Foundation-Need": "Data de fundação é necessária",
+    "Back": "Voltar",
+    "Saved-Org": "Organização salva com êxito",
     "Remove-Org": "Organização removida com êxito",
-    "Save-Error": "Error al guardar la organización, por favor inténtelo nuevamente"
+    "Save-Error": "Erro ao salvar a organização, por favor tente novamente."
   },
   "PresidentProfilePage": {
     "President": "Presidente",
