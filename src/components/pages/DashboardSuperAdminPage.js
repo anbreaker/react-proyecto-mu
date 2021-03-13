@@ -20,37 +20,17 @@ import { formatToLocaleDate } from '../utils/dateFormat';
 
 export const DashboardSuperAdminPage = () => {
   const { t } = useTranslation('global');
-  const [orgs, setOrgs] = useState();
+  const [orgs, setOrgs] = useState(null);
   const dispatch = useDispatch();
   const { loading, msgError } = useSelector(getUiState);
 
   useEffect(() => {
     dispatch(startLoadingAction());
     dispatch(removeErrorAction());
+
     getAllOrgs()
       .then(data => {
-        const orgItems = (
-          <>
-            {data.map(org => (
-              <tr key={org._id}>
-                <td>{org.name}</td>
-                <td>{org.country}</td>
-                <td>{org.city}</td>
-                <td>{org.address}</td>
-                <td>{formatToLocaleDate(org.foundationDate)}</td>
-
-                {/* TODO endpoint */}
-                {/* /admin-org?org=org._id */}
-                {/* Boton de volver en el profile del detalle */}
-                <td className="text-center">
-                  <Link to={`/admin-org?org=${org._id}`}>
-                    <i className="fas fa-eye"></i>
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </>
-        );
+        const orgItems = data;
         dispatch(finishLoadingAction());
         setOrgs(orgItems);
       })
@@ -123,7 +103,27 @@ export const DashboardSuperAdminPage = () => {
                       </tr>
                     </thead>
 
-                    <tbody>{orgs}</tbody>
+                    <tbody>
+                      <>
+                        {orgs &&
+                          orgs.map(org => (
+                            <tr key={org._id}>
+                              <td>{org.name}</td>
+                              <td>{org.country}</td>
+                              <td>{org.city}</td>
+                              <td>{org.address}</td>
+                              <td>{formatToLocaleDate(org.foundationDate)}</td>
+
+                              <td className="text-center">
+                                <Link to={`/admin-org?org=${org._id}`}>
+                                  <i className="fas fa-eye"></i>
+                                </Link>
+                              </td>
+                            </tr>
+                          ))}
+                      </>
+                    </tbody>
+                    {/* <tbody>{orgs}</tbody> */}
                   </table>
                 </div>
               ))}

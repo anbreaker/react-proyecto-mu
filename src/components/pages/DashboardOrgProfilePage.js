@@ -36,7 +36,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
 
   const { languaje } = useSelector(getLanguaje);
   const { msgError, loading } = useSelector(getUiState);
-  const [userSelect, setUserSelect] = useState();
+  const [userSelect, setUserSelect] = useState(null);
 
   useEffect(() => {
     if (orgId) {
@@ -84,22 +84,13 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   } = formValues;
 
   useEffect(() => {
-    // TODO sacar el jsx mantener el estado al minimo...
     getAllUsers().then(data => {
-      const users = (
-        <>
-          {data.map(userPresident => (
-            <option key={userPresident.id} value={userPresident.id}>
-              {userPresident.fullName}
-            </option>
-          ))}
-        </>
-      );
+      const users = data;
       setUserSelect(users);
     });
   }, []);
 
-  // TODO ver el temade las fechas
+  // TODO ver el tema de las fechas
   // console.log({ foundationDate }, '<-- foundationDate');
   const handleDateChange = event => {
     setFormValues({
@@ -332,7 +323,13 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                     required
                   >
                     <option value=""></option>
-                    {userSelect}
+
+                    {userSelect &&
+                      userSelect.map(userPresident => (
+                        <option key={userPresident.id} value={userPresident.id}>
+                          {userPresident.fullName}
+                        </option>
+                      ))}
                   </Input>
 
                   <hr />
