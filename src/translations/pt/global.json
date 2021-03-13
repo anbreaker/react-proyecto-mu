@@ -204,5 +204,21 @@
   },
   "DisabledUserPage": {
     "Info": "A conta foi criada com sucesso, mas ainda não foi associada a uma organização. Um administrador irá completar este processo."
+  },
+  "UsersAdminPage": {
+    "Title": "Users Administration",
+    "Description": "Página de administração de utilizadores, pode adicionar utilizadores a uma organização aqui",
+    "Users": "Utilizadores",
+    "displayName": "Nomes",
+    "firstSurname": "Primeiro Apelido",
+    "secondSurname": "Segundo Apelido",
+    "email": "E-mail",
+    "View-Details": "Detalhes"
+  },
+  "TreasurerSetQuotaPage": {
+    "Info": "Definir quota",
+    "Description": "Área para estabelecer a taxa anual para as organizações.",
+    "Established-Quota": "Quota estabelecida",
+    "Set-Quota": "Definir quota"
   }
 }

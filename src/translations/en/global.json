@@ -211,11 +211,17 @@
   "UsersAdminPage": {
     "Title": "Users Administration",
     "Description": "Users administrations page, you can add users to an organization here",
-    "Users": "Usuarios",
+    "Users": "Users",
     "displayName": "Names",
     "firstSurname": "First Surname",
     "secondSurname": "Second Surname",
     "email": "Email",
     "View-Details": "Details"
+  },
+  "TreasurerSetQuotaPage": {
+    "Info": "Set Quota",
+    "Description": "Area for setting the annual fee for organisations.",
+    "Established-Quota": "Established quota",
+    "Set-Quota": "Set Quota"
   }
 }

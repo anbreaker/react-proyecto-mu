@@ -29,6 +29,7 @@ import { TreasurerIncomePage } from '../pages/TreasurerIncomePage';
 import { TreasurerIncomeRegisterPage } from '../pages/TreasurerIncomeRegisterPage';
 import { TreasurerExpenseRegisterPage } from '../pages/TreasurerExpenseRegisterPage';
 import { TreasurerExpensePage } from '../pages/TreasurerExpensePage';
+import { TreasurerSetQuotaPage } from '../pages/TreasurerSetQuotaPage';
 import { SecretaryResumePage } from '../pages/SecretaryResumePage';
 import { SecretaryMeetingsPage } from '../pages/SecretaryMeetingsPage';
 import { DisabledUserPage } from '../pages/DisabledUserPage';
@@ -127,6 +128,10 @@ export const App = () => {
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <Route path="/treasurer-expense" exact>
           <TreasurerExpensePage />
+        </Route>
+        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
+        <Route path="/treasurer-quota" exact>
+          <TreasurerSetQuotaPage />
         </Route>
 
         {/* --------------------Secretary-------------------- */}

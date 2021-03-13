@@ -210,12 +210,18 @@
   },
   "UsersAdminPage": {
     "Title": "Administración de usuarios",
-    "Description": "Página de administración de usuarios, acá puede agregar usuarios a una organización",
+    "Description": "Página de administración de usuarios, aquí puedes agregar usuarios a una organización",
     "Users": "Usuarios",
     "displayName": "Nombres",
-    "firstSurname": "Apellido Paterno",
-    "secondSurname": "Apellino Materno",
+    "firstSurname": "Primer Apellido",
+    "secondSurname": "Segundo Apellido",
     "email": "Email",
     "View-Details": "Detalles"
+  },
+  "TreasurerSetQuotaPage": {
+    "Info": "Establecer cuota",
+    "Description": "Zona para establecer la cuota anual de las organizaciones.",
+    "Established-Quota": "Cuota Establecida",
+    "Set-Quota": "Establecer cuota"
   }
 }
