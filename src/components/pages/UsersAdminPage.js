@@ -5,8 +5,6 @@ import { Spinner } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { MainLayout } from '../layout/MainLayout';
-import { Button } from '../basicComponents/Button';
-import { Search } from '../basicComponents/Search';
 import { MessageError } from '../parts/MessageError';
 import { getAllUsers } from '../../api';
 import { getUiState } from '../../store/selectors';
@@ -16,7 +14,6 @@ import {
   removeErrorAction,
   setErrorAction,
 } from '../../store/actions/ui';
-import { formatToLocaleDate } from '../utils/dateFormat';
 
 export const UsersAdminPage = () => {
   const { t } = useTranslation('global');
@@ -30,7 +27,6 @@ export const UsersAdminPage = () => {
 
     getAllUsers()
       .then(data => {
-        console.log(data);
         dispatch(finishLoadingAction());
         setUsers(data);
       })
