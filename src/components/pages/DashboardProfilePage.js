@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import validator from 'validator';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useHistory } from 'react-router-dom';
 import clsx from 'clsx';
+import Select from 'react-select';
 
 import profile from '../../assets/img/undraw_profile.svg';
 import { MainLayout } from '../layout/MainLayout';
@@ -24,14 +25,18 @@ import {
   startLoadingAction,
   finishLoadingAction,
 } from '../../store/actions/ui';
+import { setAlertAction } from '../../store/actions/swal';
 import { updateProfileAction } from '../../store/actions/auth';
 import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
-import { getSingleUser, saveUserDB } from '../../api/index';
+import { getSingleUser, saveUserDB, getAllOrgs } from '../../api/index';
 
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
   const uStatus = useSelector(userStatus);
+  const history = useHistory();
+  const [allOrgs, setAllOrgs] = useState({});
+  const [orgsUser, setOrgsUser] = useState([]);
 
   const location = useLocation();
   const queryParmas = new URLSearchParams(location.search);
@@ -81,19 +86,28 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   } = formValues;
 
   useEffect(() => {
-    console.log(formValues);
-  }, [formValues]);
-
-  useEffect(() => {
     if (userId) {
       dispatch(startLoadingAction());
-      getSingleUser(userId)
-        .then(user => {
-          setFormValues(descompone(user));
-        })
-        .finally(() => {
-          dispatch(finishLoadingAction());
-        });
+      getSingleUser(userId).then(user => {
+        console.log(user);
+        setFormValues(descompone(user));
+        getAllOrgs()
+          .then(data => {
+            const orgsArray = [];
+            data.map(org =>
+              orgsArray.push({ value: org._id, label: org.name })
+            );
+            const orgsFiltered = orgsArray.filter(
+              org => user.organizations.findIndex(o => o._id === org.value) >= 0
+            );
+            setOrgsUser(orgsFiltered);
+            setAllOrgs(orgsArray);
+          })
+          .finally(() => {
+            dispatch(finishLoadingAction());
+          });
+      });
+
       return;
     }
     setFormValues(descompone(currentUser));
@@ -109,7 +123,23 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
         return;
       }
       // Si viene el userId se llama directo a la api
-      saveUserDB(formValues).then(data => console.log(data));
+      formValues.orgs = orgsUser;
+      saveUserDB(formValues)
+        .then(() => {
+          dispatch(
+            setAlertAction(
+              'ErrorSwal.Success',
+              'ErrorSwal.SuccessUpdateProfile',
+              'success'
+            )
+          );
+          //history.push('/users-admin');
+        })
+        .catch(err => {
+          dispatch(
+            setAlertAction('ErrorSwal.Error', `ErrorSwal.${err.code}`, 'error')
+          );
+        });
     }
   };
 
@@ -307,6 +337,30 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                       />
                     </div>
                   </div>
+                  {userId && (
+                    <>
+                      <hr />
+                      <div className="mt-3">
+                        <h6 className="m-0 font-weight-bold text-primary">
+                          {t('DashboardProfilePage.Organizations')}
+                        </h6>
+                        <div className="row mt-3">
+                          <div className="col-12">
+                            <Select
+                              value={orgsUser}
+                              isMulti
+                              name="orgSelect"
+                              options={allOrgs}
+                              className="basic-multi-select"
+                              classNamePrefix="select"
+                              onChange={values => setOrgsUser(values)}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
                   <hr />
                   <MessageError msgError={msgError} />
                   <div className="row">
