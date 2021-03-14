@@ -2,6 +2,7 @@ import { types } from '../types/types';
 
 const initialState = {
   uid: '',
+  id: '',
   displayName: '',
   firstSurname: '',
   secondSurname: '',

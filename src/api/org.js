@@ -7,9 +7,16 @@ export const getAllOrgs = async () => {
     .catch(err => err);
 };
 
-export const getOrgsById = async id => {
+export const getOrgById = async id => {
   return client
-    .get('/org/' + id)
+    .get(`/org/${id || ''}`)
+    .then(res => res.data)
+    .catch(err => err);
+};
+
+export const getMyOrg = async () => {
+  return client
+    .get('/org')
     .then(res => res.data)
     .catch(err => err);
 };
@@ -26,6 +33,13 @@ export const removeOrgsById = async id => {
 export const saveOrgDB = async orgData => {
   return client
     .post('/org', orgData)
+    .then(res => res.data)
+    .catch(err => err);
+};
+
+export const getUsersMyOrg = async () => {
+  return client
+    .get('/org/users')
     .then(res => res.data)
     .catch(err => err);
 };

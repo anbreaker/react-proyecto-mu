@@ -96,6 +96,7 @@ export const login = userData => {
 
 export const updateAuth = ({
   uid,
+  id,
   displayName,
   firstSurname,
   secondSurname,
@@ -115,6 +116,7 @@ export const updateAuth = ({
     type: types.login,
     payload: {
       uid,
+      id,
       displayName,
       firstSurname,
       secondSurname,

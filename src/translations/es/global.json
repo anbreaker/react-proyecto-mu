@@ -1,4 +1,7 @@
 {
+  "App": {
+    "ForbiddenAccess": "Acceso no permitido. No tienes el rol necesario para ver esta página."
+  },
   "LoginPage": {
     "Welcome": "¡Bienvenido!",
     "Change-Languaje": "Cambiar idioma:",
@@ -44,6 +47,7 @@
   "NavBars": {
     "Dashboard": "Panel de Control",
     "User": "Usuario",
+    "President": "Presidente",
     "Treasurer": "Tesorero",
     "Secretary": "Secretario",
     "Set fee": "Establecer cuota",
@@ -121,6 +125,8 @@
     "Name": "Nombre de la Organización",
     "Address": "Dirección",
     "President": "Presidente",
+    "Treasurer": "Tesorero",
+    "Secretary": "Secretario",
     "City": "Ciudad",
     "Mobile": "Movil",
     "Foundation": "Fundación",
@@ -132,6 +138,7 @@
   "DashboardOrgProfilePage": {
     "Dashboard-Organization": "Perfil Organización",
     "Info": "Ventana de administración del SuperAdmin, aqui puedes agregar, cambiar o actualizar los datos de la organización seleccionada.",
+    "Info-President": "Ventana de administración del Presidente, aqui puedes agregar, cambiar o actualizar los datos de tu organización.",
     "Delete-Org": "Eliminar Organización",
     "Created-Org": "Crear Organización",
     "Upload-Org": "Actualizar Organización",

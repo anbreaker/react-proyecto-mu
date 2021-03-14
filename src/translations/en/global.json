@@ -1,4 +1,7 @@
 {
+  "App": {
+    "ForbiddenAccess": "Access forbidden. You don't have the role to access this page."
+  },
   "LoginPage": {
     "Welcome": "Welcome!",
     "Change-Languaje": "Change language:",
@@ -44,6 +47,7 @@
   "NavBars": {
     "Dashboard": "Dashboard",
     "User": "User",
+    "President": "President",
     "Treasurer": "Treasurer",
     "Secretary": "Secretary",
     "Set fee": "Set fee",
@@ -121,6 +125,8 @@
     "Name": "Organization Name",
     "Address": "Address",
     "President": "President",
+    "Treasurer": "Treasurer",
+    "Secretary": "Secretary",
     "City": "City",
     "Mobile": "Mobile",
     "Foundation": "Foundation",
@@ -132,6 +138,7 @@
   "DashboardOrgProfilePage": {
     "Dashboard-Organization": "Dashboard Organization",
     "Info": "SuperAdmin administration window, here you can add, change or update the data of the selected organisation.",
+    "Info-President": "President administration window, here you can add, change or update the data of your organisation.",
     "Delete-Org": "Delete Organization",
     "Created-Org": "Created Organization",
     "Upload-Org": "Update Organization",
