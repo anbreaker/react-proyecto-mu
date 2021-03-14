@@ -77,6 +77,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   }, [orgId, selOrg]);
 
   useEffect(() => {
+    // Si el usuario es SuperAdmin se listan todos los usuarios en los select
     if (userRole === 'SuperAdmin') {
       getAllUsers()
         .then(data => {
@@ -89,6 +90,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
         });
       return;
     }
+    // Si el usuario es Presidente se listan sólo los usuarios de su organización en los select
     if (userRole === 'President') {
       getUsersMyOrg()
         .then(data => {
