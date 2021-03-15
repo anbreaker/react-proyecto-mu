@@ -65,7 +65,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
             orgId: orgId,
             foundationDate: new Date(org.foundationDate),
           });
-          if (org.president != userId && userRole != 'SuperAdmin') {
+          if (org.president !== userId && userRole !== 'SuperAdmin') {
             return setForbiddenAccess(true);
           }
           setForbiddenAccess(false);
@@ -410,7 +410,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                       value={treasurer}
                       onFocus={handlerOnFocus}
                       onChange={handleInputChange}
-                      disabled={userRole != 'President'}
+                      disabled={userRole !== 'President'}
                     >
                       <option value=""></option>
 
@@ -431,7 +431,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                       value={secretary}
                       onFocus={handlerOnFocus}
                       onChange={handleInputChange}
-                      disabled={userRole != 'President'}
+                      disabled={userRole !== 'President'}
                     >
                       <option value=""></option>
 

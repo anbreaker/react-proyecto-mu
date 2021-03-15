@@ -230,7 +230,12 @@
   "TreasurerSetQuotaPage": {
     "Info": "Definir quota",
     "Description": "Área para estabelecer a taxa anual para as organizações.",
+    "Table-Description": "Descrição das quotas por organizações",
     "Established-Quota": "Quota estabelecida",
-    "Set-Quota": "Definir quota"
+    "Set-Quota": "Definir quota",
+    "Select-Year": "Seleccionar Ano:",
+    "Organization": "Organização",
+    "Amount": "Montante",
+    "Default-Fee": "Taxa por Defeito"
   }
 }

@@ -230,7 +230,12 @@
   "TreasurerSetQuotaPage": {
     "Info": "Establecer cuota",
     "Description": "Zona para establecer la cuota anual de las organizaciones.",
+    "Table-Description": "Descripción de cuotas por Organizaciones",
     "Established-Quota": "Cuota Establecida",
-    "Set-Quota": "Establecer cuota"
+    "Set-Quota": "Establecer cuota",
+    "Select-Year": "Selecionar Año:",
+    "Organization": "Organización",
+    "Amount": "Importe",
+    "Default-Fee": "Importe por defecto"
   }
 }

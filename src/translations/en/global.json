@@ -230,7 +230,12 @@
   "TreasurerSetQuotaPage": {
     "Info": "Set Quota",
     "Description": "Area for setting the annual fee for organisations.",
+    "Table-Description": "Description of dues by Organisations",
     "Established-Quota": "Established quota",
-    "Set-Quota": "Set Quota"
+    "Set-Quota": "Set Quota",
+    "Select-Year": "Select Year:",
+    "Organization": "Organization",
+    "Amount": "Amount",
+    "Default-Fee": "Default Fee"
   }
 }

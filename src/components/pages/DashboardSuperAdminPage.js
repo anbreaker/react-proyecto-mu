@@ -98,8 +98,12 @@ export const DashboardSuperAdminPage = () => {
                         <th>{t('DashboardSuperAdminPage.Country')}</th>
                         <th>{t('DashboardSuperAdminPage.City')}</th>
                         <th>{t('DashboardSuperAdminPage.Address')}</th>
-                        <th>{t('DashboardSuperAdminPage.Foundation')}</th>
-                        <th>{t('DashboardSuperAdminPage.View-Details')}</th>
+                        <th className="text-center">
+                          {t('DashboardSuperAdminPage.Foundation')}
+                        </th>
+                        <th className="text-center">
+                          {t('DashboardSuperAdminPage.View-Details')}
+                        </th>
                       </tr>
                     </thead>
 
@@ -112,8 +116,9 @@ export const DashboardSuperAdminPage = () => {
                               <td>{org.country}</td>
                               <td>{org.city}</td>
                               <td>{org.address}</td>
-                              <td>{formatToLocaleDate(org.foundationDate)}</td>
-
+                              <td className="text-center">
+                                {formatToLocaleDate(org.foundationDate)}
+                              </td>
                               <td className="text-center">
                                 <Link to={`/admin-org?org=${org._id}`}>
                                   <i className="fas fa-eye"></i>
