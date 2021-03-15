@@ -1,4 +1,7 @@
 {
+  "App": {
+    "ForbiddenAccess": "Acesso proibido. Não tem a função requerida para aceder a esta página."
+  },
   "LoginPage": {
     "Welcome": "Bem-vindo!",
     "Change-Languaje": "Mudar idioma",
@@ -44,6 +47,7 @@
   "NavBars": {
     "Dashboard": "Painel de controlo",
     "User": "Usuário",
+    "President": "Presidente",
     "Treasurer": "Tesoureiro",
     "Secretary": "Secretário",
     "Set fee": "Definir quota",
@@ -62,7 +66,8 @@
     "Logout": "Sair",
     "Cancel": "Cancenlar",
     "Administration": "Gestão",
-    "OrgAdmin": "Org. Admin."
+    "OrgAdmin": "Org. Admin.",
+    "UsersAdmin": "Utilizadores Administração"
   },
   "ErrorSwal": {
     "Success": "Êxito",
@@ -104,31 +109,38 @@
     "Mobile-Need": "Precisamos do seu número de telemóvel para que possamos manter-nos em contacto. Obrigado!",
     "Update-Profile": "Actualize o seu perfil",
     "Change-Photo": "A imagem do perfil mudou com sucesso. Por favor prima \"Actualizar o seu perfil\" para guardar as alterações.",
-    "Types-File": "Os ficheiros Jpeg, jpg ou png são necessários para alterar a imagem do seu perfil."
+    "Types-File": "Os ficheiros Jpeg, jpg ou png são necessários para alterar a imagem do seu perfil.",
+    "Organizations": "Organizações atribuídas ao utilizador:",
+    "PlaceHolder-Select": "Seleccionar..."
   },
   "TopBar": {
     "Search": "Pesquisar...",
     "Organization-Selected": "Organização Seleccionada"
   },
   "DashboardSuperAdminPage": {
-    "Organizations": "Organizações:",
     "Org-Id": "Identificador da organização",
+    "Organizations": "Organizações:",
     "Info-Page": "Janela de administração de SuperAdmin, aqui pode adicionar novas organizações e listar as já existentes no sistema.",
     "Add-Org": "Adicionar Organização",
-    "Id": "Número Id",
+    "Province": "Províncias",
     "Name": "Nome",
     "Address": "Endereço",
     "President": "Presidente",
+    "Treasurer": "Tesoureiro",
+    "Secretary": "Secretário",
+    "City": "Cidade",
     "Mobile": "Telemóvel",
     "Foundation": "Fundação",
     "Country": "País",
     "Post-Code": "Código Postal",
     "Search-Organizations": "Pesquisar Organizações...",
-    "View-Details": "Ver Detalhes"
+    "View-Details": "Ver Detalhes",
+    "Advise": "Apenas o Presidente pode alterar os seguintes papéis:"
   },
   "DashboardOrgProfilePage": {
     "Dashboard-Organization": "Organização do Perfil",
     "Info": "Janela de administração SuperAdmin, aqui pode adicionar, alterar ou actualizar os dados da organização seleccionada.",
+    "Info-President": "Janela de administração do Presidente, aqui pode adicionar, alterar ou actualizar os dados da sua organização.",
     "Delete-Org": "Apagar Organização",
     "Created-Org": "Criar Organização",
     "Upload-Org": "Organização de atualização",

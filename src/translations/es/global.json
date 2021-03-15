@@ -110,7 +110,8 @@
     "Update-Profile": "Actualiza tu perfil",
     "Change-Photo": "¡Imagen de perfil cambiada con éxito!. Por favor presione \"Actualiza tu perfil\" para guardar los cambios.",
     "Types-File": "Se necesitan archivos jpeg, jpg o png para cambiar su foto de perfil",
-    "Organizations": "Organizaciones asignadas al usuario"
+    "Organizations": "Organizaciones asignadas al usuario:",
+    "PlaceHolder-Select": "Seleccionar..."
   },
   "TopBar": {
     "Search": "Buscar...",
@@ -133,7 +134,8 @@
     "Country": "País",
     "Post-Code": "Código Postal",
     "Search-Organizations": "Buscar Organizaciones...",
-    "View-Details": "Ver Detalles"
+    "View-Details": "Ver Detalles",
+    "Advise": "Sólo el Presidente puede modificar los siguientes roles:"
   },
   "DashboardOrgProfilePage": {
     "Dashboard-Organization": "Perfil Organización",
