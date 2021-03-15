@@ -349,6 +349,9 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                             <Select
                               value={orgsUser}
                               isMulti
+                              placeholder={t(
+                                'DashboardProfilePage.PlaceHolder-Select'
+                              )}
                               name="orgSelect"
                               options={allOrgs}
                               className="basic-multi-select"

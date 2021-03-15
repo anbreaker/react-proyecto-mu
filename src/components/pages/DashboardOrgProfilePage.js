@@ -386,7 +386,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                     </Input>
                     {orgId && (
                       <h6 className="font-weight-bold mt-3 text-warning">
-                        Sólo el Presidente puede modificar los siguientes roles:
+                        {t('DashboardSuperAdminPage.Advise')}
                       </h6>
                     )}
                     <h6 className="font-weight-bold mt-3">

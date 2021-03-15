@@ -50,7 +50,7 @@
     "President": "President",
     "Treasurer": "Treasurer",
     "Secretary": "Secretary",
-    "Set-Fee": "Set fee",
+    "Set fee": "Set fee",
     "Expenses": "Expenses",
     "Meetings": "Meetings",
     "Members": "Members",
@@ -110,7 +110,8 @@
     "Update-Profile": "Update your profile",
     "Change-Photo": "Profile picture successfully uploaded!. Please press \"Update your profile\" to save changes",
     "Types-File": "You need jpeg, jpg or png files to change your profile picture.",
-    "Organizations": "Organizations assigned to the user:"
+    "Organizations": "Organizations assigned to the user:",
+    "PlaceHolder-Select": "Select..."
   },
   "TopBar": {
     "Search": "Search...",
@@ -133,7 +134,8 @@
     "Country": "Country",
     "Post-Code": "Post Code",
     "Search-Organizations": "Search Organizations...",
-    "View-Details": "Details"
+    "View-Details": "Details",
+    "Advise": "Only the President can change the following roles:"
   },
   "DashboardOrgProfilePage": {
     "Dashboard-Organization": "Dashboard Organization",
