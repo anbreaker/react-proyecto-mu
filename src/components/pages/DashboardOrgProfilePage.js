@@ -56,23 +56,34 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const [forbiddenAccess, setForbiddenAccess] = useState(false);
 
   useEffect(() => {
-    dispatch(startLoadingAction());
-    getOrgById(orgId)
-      .then(org => {
-        setFormValues({
-          ...org,
-          orgId: orgId,
-          foundationDate: new Date(org.foundationDate),
+    const getOrg = id => {
+      dispatch(startLoadingAction());
+      getOrgById(id)
+        .then(org => {
+          setFormValues({
+            ...org,
+            orgId: orgId,
+            foundationDate: new Date(org.foundationDate),
+          });
+          if (org.president != userId && userRole != 'SuperAdmin') {
+            return setForbiddenAccess(true);
+          }
+          setForbiddenAccess(false);
+        })
+        .catch(error => console.log(error))
+        .finally(() => {
+          dispatch(finishLoadingAction());
         });
-        if (org.president != userId && userRole != 'SuperAdmin') {
-          return setForbiddenAccess(true);
-        }
-        setForbiddenAccess(false);
-      })
-      .catch(error => console.log(error))
-      .finally(() => {
-        dispatch(finishLoadingAction());
-      });
+    };
+
+    if (userRole === 'SuperAdmin' && orgId) {
+      getOrg(orgId);
+    }
+
+    if (userRole === 'President') {
+      getOrg();
+    }
+
     return;
   }, [orgId, selOrg]);
 
@@ -451,7 +462,9 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                           type="button"
                           variant="alert"
                           startIcon={!loading && 'fas fa-exclamation-triangle'}
-                          disabled={loading || userRole !== 'SuperAdmin'}
+                          disabled={
+                            loading || userRole !== 'SuperAdmin' || !orgId
+                          }
                           onClick={handleDeleteorg}
                         >
                           {' '}
