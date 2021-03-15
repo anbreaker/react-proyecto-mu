@@ -58,7 +58,6 @@ export const TreasurerSetQuotaPage = () => {
                     <th className="text-center">
                       {t('TreasurerSetQuotaPage.Set-Quota')}
                     </th>
-                    >
                   </tr>
                 </thead>
                 <tfoot className="font-weight-bold text-info">
