@@ -54,8 +54,6 @@ export const App = () => {
   const handlerOnFocus = event => {
     event.preventDefault();
 
-    console.log('ver');
-
     dispatch(removeErrorAction());
   };
 
