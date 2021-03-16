@@ -237,6 +237,7 @@
     "Select-Year": "Select Year:",
     "Organization": "Organization",
     "Amount": "Amount",
+    "Amount-Error": "The amount must be numerical",
     "Default-Fee": "Default Fee"
   }
 }

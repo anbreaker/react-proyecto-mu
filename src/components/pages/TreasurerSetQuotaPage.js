@@ -1,17 +1,52 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import validator from 'validator';
 import { Input } from 'reactstrap';
 
 import { Button } from '../basicComponents/Button';
 import { getUiState } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
 import { InputText } from '../basicComponents/InputText';
+import { useForm } from '../../hooks/useForm';
+import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
+import { MessageError } from '../parts/MessageError';
 
-export const TreasurerSetQuotaPage = () => {
+export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
-  const { loading } = useSelector(getUiState);
+  const { msgError, loading } = useSelector(getUiState);
+  const dispatch = useDispatch();
+
+  const { formValues, handleInputChange } = useForm({
+    year: '',
+    description: '',
+    amount: '',
+    setFee: '',
+  });
+
+  const handleQuoteRegister = event => {
+    event.preventDefault();
+
+    if (isFormValid()) {
+      //Enviar al Back...
+      console.log(formValues);
+    }
+  };
+
+  const isFormValid = () => {
+    if (!validator.isNumeric(amount)) {
+      dispatch(setErrorAction(t('TreasurerSetQuotaPage.Amount-Error')));
+      return false;
+    } else if (!validator.isNumeric(setFee)) {
+      dispatch(setErrorAction(t('TreasurerSetQuotaPage.Amount-Error')));
+      return false;
+    }
+    dispatch(removeErrorAction());
+    return true;
+  };
+
+  const { year, description, amount, setFee } = formValues;
 
   return (
     <MainLayout>
@@ -32,7 +67,7 @@ export const TreasurerSetQuotaPage = () => {
             <div className="table-responsive">
               {/* TODO caputurar Formulario */}
 
-              <form>
+              <form onSubmit={handleQuoteRegister}>
                 <h6 className="m-0 font-weight-bold text-info">
                   {t('TreasurerSetQuotaPage.Select-Year')}
                 </h6>
@@ -40,10 +75,10 @@ export const TreasurerSetQuotaPage = () => {
                   type="select"
                   name="year"
                   id="year"
-                  // value={year}
-                  // onFocus={handlerOnFocus}
-                  // onChange={handleInputChange}
-                  required
+                  value={year}
+                  onFocus={handlerOnFocus}
+                  onChange={handleInputChange}
+                  // required
                 >
                   <option value=""></option>
                 </Input>
@@ -58,9 +93,9 @@ export const TreasurerSetQuotaPage = () => {
                       rows="3"
                       placeholder={t('TreasurerSetQuotaPage.Description-Text')}
                       name="description"
-                      // value={description}
-                      // onFocus={handlerOnFocus}
-                      // onChange={handleInputChange}
+                      value={description}
+                      onFocus={handlerOnFocus}
+                      onChange={handleInputChange}
                     ></textarea>
                   </div>
 
@@ -71,10 +106,10 @@ export const TreasurerSetQuotaPage = () => {
                     </h6>
                     <InputText
                       text={`${t('TreasurerSetQuotaPage.Amount')}...`}
-                      name="member"
-                      // value={member}
-                      // onFocus={handlerOnFocus}
-                      // onChange={handleInputChange}
+                      name="amount"
+                      value={amount}
+                      onFocus={handlerOnFocus}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
@@ -84,16 +119,19 @@ export const TreasurerSetQuotaPage = () => {
                     </h6>
                     <InputText
                       text={`${t('TreasurerSetQuotaPage.Default-Fee')}...`}
-                      name="member"
-                      // value={member}
-                      // onFocus={handlerOnFocus}
-                      // onChange={handleInputChange}
+                      name="setFee"
+                      type="number"
+                      value={setFee}
+                      onFocus={handlerOnFocus}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
                 </div>
 
                 <hr />
+
+                <MessageError msgError={msgError} />
 
                 <Button
                   type="submit"

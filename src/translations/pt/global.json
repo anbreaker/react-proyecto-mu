@@ -237,6 +237,7 @@
     "Select-Year": "Seleccionar Ano:",
     "Organization": "Organização",
     "Amount": "Montante",
+    "Amount-Error": "A quantia deve ser numérica",
     "Default-Fee": "Taxa por Defeito"
   }
 }

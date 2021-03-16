@@ -237,6 +237,7 @@
     "Select-Year": "Selecionar Año:",
     "Organization": "Organización",
     "Amount": "Importe",
+    "Amount-Error": "El importe debe ser un dato numérico",
     "Default-Fee": "Importe por defecto"
   }
 }

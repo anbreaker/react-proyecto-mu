@@ -53,6 +53,9 @@ export const App = () => {
 
   const handlerOnFocus = event => {
     event.preventDefault();
+
+    console.log('ver');
+
     dispatch(removeErrorAction());
   };
 
@@ -131,7 +134,7 @@ export const App = () => {
         </Route>
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <Route path="/treasurer-quota" exact>
-          <TreasurerSetQuotaPage />
+          <TreasurerSetQuotaPage handlerOnFocus={handlerOnFocus} />
         </Route>
 
         {/* --------------------Secretary-------------------- */}
