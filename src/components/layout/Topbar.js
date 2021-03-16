@@ -7,15 +7,15 @@ import { useDetectClickOutside } from 'react-detect-click-outside';
 import { Input } from 'reactstrap';
 
 import img from '../../assets/img/undraw_profile_1.svg';
+import { startLogout, changeOrgAction } from '../../store/actions/auth';
+import { setShowSidebar } from '../../store/actions/ui';
+import { getSidebarStatus } from '../../store/selectors';
 import {
   getPhotoURL,
   getUserName,
   getUserOrgs,
   getUserOrgSel,
 } from '../../store/selectors';
-import { startLogout, changeOrgAction } from '../../store/actions/auth';
-import { setShowSidebar } from '../../store/actions/ui';
-import { getSidebarStatus } from '../../store/selectors';
 
 const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
   const { t } = useTranslation('global');
@@ -40,7 +40,6 @@ const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
 
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-      {/* <!-- Sidebar Toggle (Topbar) --> */}
       <button
         id="sidebarToggleTop"
         className="btn btn-link d-md-none rounded-circle mr-3"
@@ -85,7 +84,6 @@ const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
       <ul className="navbar-nav ml-auto">
         <div className="topbar-divider d-none d-sm-block"></div>
 
-        {/* <!-- Nav Item - User Information --> */}
         <li
           className={clsx('nav-item dropdown no-arrow', showMenu && 'show')}
           ref={ref}
@@ -105,11 +103,10 @@ const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
             <img
               className="img-profile rounded-circle"
               alt=""
-              src={photoURL ? photoURL : img}
+              src={photoURL || img}
             />
           </div>
 
-          {/* <!-- Dropdown - User Information --> */}
           <div
             className={clsx(
               'dropdown-menu dropdown-menu-right shadow animated--grow-in',

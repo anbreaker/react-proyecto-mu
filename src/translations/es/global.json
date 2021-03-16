@@ -230,6 +230,7 @@
   "TreasurerSetQuotaPage": {
     "Info": "Establecer cuota",
     "Description": "Zona para establecer la cuota anual de las organizaciones.",
+    "Description-Text": "Para escribir detalles y notas acerca del usuario, los pagos recordatorios...",
     "Table-Description": "Descripción de cuotas por Organizaciones",
     "Established-Quota": "Cuota Establecida",
     "Set-Quota": "Establecer cuota",

@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 
 import { removeAlertAction } from '../../store/actions/swal';
 
-// TODO...
-
 export const SweetAlert = ({ alert, children }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();

@@ -2,9 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Input } from 'reactstrap';
-import { Button } from '../basicComponents/Button';
-import { Link } from 'react-router-dom';
 
+import { Button } from '../basicComponents/Button';
 import { getUiState } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
 import { InputText } from '../basicComponents/InputText';
@@ -23,7 +22,6 @@ export const TreasurerSetQuotaPage = () => {
 
         <p className="h5 mb-4">{t('TreasurerSetQuotaPage.Description')}</p>
 
-        {/* <!-- DataTales Example --> */}
         <div className="card shadow mb-4 mt-4">
           <div className="card-header py-3">
             <h6 className="m-0 font-weight-bold text-primary">
@@ -31,16 +29,18 @@ export const TreasurerSetQuotaPage = () => {
             </h6>
           </div>
           <div className="card-body">
-            <form>
-              <div className="table-responsive">
+            <div className="table-responsive">
+              {/* TODO caputurar Formulario */}
+
+              <form>
                 <h6 className="m-0 font-weight-bold text-info">
                   {t('TreasurerSetQuotaPage.Select-Year')}
                 </h6>
                 <Input
                   type="select"
-                  name="president"
-                  id="president"
-                  // value={president}
+                  name="year"
+                  id="year"
+                  // value={year}
                   // onFocus={handlerOnFocus}
                   // onChange={handleInputChange}
                   required
@@ -56,9 +56,7 @@ export const TreasurerSetQuotaPage = () => {
                     <textarea
                       className="form-control"
                       rows="3"
-                      placeholder={`${t(
-                        'TreasurerIncomeRegisterPage.Description'
-                      )}...`}
+                      placeholder={t('TreasurerSetQuotaPage.Description-Text')}
                       name="description"
                       // value={description}
                       // onFocus={handlerOnFocus}
@@ -101,80 +99,64 @@ export const TreasurerSetQuotaPage = () => {
                   type="submit"
                   variant="primary"
                   startIcon="fas fa-id-card"
+                  disabled={loading}
                 >
                   {' '}
                   {t('TreasurerIncomeRegisterPage.Add-Pay')}
                 </Button>
+              </form>
 
-                <h6 className="m-0 mt-4 mb-2 font-weight-bold text-info">
-                  {t('TreasurerSetQuotaPage.Table-Description')}:
-                </h6>
-                <table
-                  className="table table-bordered"
-                  id="dataTable"
-                  width="100%"
-                  cellSpacing="0"
-                >
-                  <thead className="font-weight-bold text-info">
-                    <tr>
-                      <th>{t('TreasurerSetQuotaPage.Organization')}</th>
-                      <th>Año</th>
-                      <th>Cuota Definida</th>
-                      <th className="text-center">
-                        {t('TreasurerSetQuotaPage.Set-Quota')}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tfoot className="font-weight-bold text-info">
-                    <tr>
-                      <th>{t('TreasurerSetQuotaPage.Organization')}</th>
-                      <th>Año</th>
-                      <th>Cuota Definida</th>
+              <h6 className="m-0 mt-4 mb-2 font-weight-bold text-info">
+                {t('TreasurerSetQuotaPage.Table-Description')}:
+              </h6>
+              <table
+                className="table table-bordered"
+                id="dataTable"
+                width="100%"
+                cellSpacing="0"
+              >
+                <thead className="font-weight-bold text-info">
+                  <tr>
+                    <th>{t('TreasurerSetQuotaPage.Organization')}</th>
+                    <th className="text-center">Año</th>
+                    <th className="text-center">Cuota Definida</th>
+                  </tr>
+                </thead>
+                <tfoot className="font-weight-bold text-info">
+                  <tr>
+                    <th>{t('TreasurerSetQuotaPage.Organization')}</th>
+                    <th className="text-center">Año</th>
+                    <th className="text-center">Cuota Definida</th>
+                  </tr>
+                </tfoot>
 
-                      <th className="text-center">
-                        {t('TreasurerSetQuotaPage.Set-Quota')}
-                      </th>
-                    </tr>
-                  </tfoot>
+                {/* // TODO crear tabla dinamica... */}
 
-                  {/* // TODO crear tabla dinamica... */}
+                <tbody>
+                  <tr>
+                    <td>Nombre organizaciones</td>
+                    <td className="text-center">2021</td>
 
-                  <tbody>
-                    <tr>
-                      <td>Nombre organizaciones</td>
-                      <td>System Architect</td>
+                    <td className="text-center">$320,800</td>
+                  </tr>
+                  <tr>
+                    <td>Nombre organizaciones</td>
+                    <td className="text-center">2021</td>
 
-                      <td className="text-center">$320,800</td>
-                      <td className="text-center">
-                        <i className="fas fa-eye"></i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Nombre organizaciones</td>
-                      <td>Accountant</td>
+                    <td className="text-center">$320,800</td>
+                  </tr>
+                  <tr>
+                    <td>Nombre organizaciones</td>
+                    <td className="text-center">2021</td>
 
-                      <td className="text-center">$320,800</td>
-                      <td className="text-center">
-                        <i className="fas fa-eye"></i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Nombre organizaciones</td>
-                      <td>Junior Technical Author</td>
-
-                      <td className="text-center">$320,800</td>
-                      <td className="text-center">
-                        <i className="fas fa-eye"></i>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </form>
+                    <td className="text-center">$320,800</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-      {/* <!-- /.container-fluid -->  */}
     </MainLayout>
   );
 };

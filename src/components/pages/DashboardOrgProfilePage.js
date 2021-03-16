@@ -76,13 +76,9 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
         });
     };
 
-    if (userRole === 'SuperAdmin' && orgId) {
-      getOrg(orgId);
-    }
+    if (userRole === 'SuperAdmin' && orgId) getOrg(orgId);
 
-    if (userRole === 'President') {
-      getOrg();
-    }
+    if (userRole === 'President') getOrg();
 
     return;
   }, [orgId, selOrg]);

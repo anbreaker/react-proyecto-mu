@@ -230,6 +230,7 @@
   "TreasurerSetQuotaPage": {
     "Info": "Definir quota",
     "Description": "Área para estabelecer a taxa anual para as organizações.",
+    "Description-Text": "Para escrever detalhes e notas sobre o utilizador, lembretes de pagamento...",
     "Table-Description": "Descrição das quotas por organizações",
     "Established-Quota": "Quota estabelecida",
     "Set-Quota": "Definir quota",
