@@ -89,7 +89,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     if (userId) {
       dispatch(startLoadingAction());
       getSingleUser(userId).then(user => {
-        console.log(user);
         setFormValues(descompone(user));
         getAllOrgs()
           .then(data => {

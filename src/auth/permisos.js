@@ -48,7 +48,7 @@ const menus = [
       {
         name: 'OrgAdmin',
         route: '/admin-org',
-        role: ['SuperAdmin', 'President'],
+        role: ['President'],
       },
     ],
   },
@@ -59,7 +59,7 @@ const menus = [
     submenu: [
       {
         name: 'Set fee',
-        route: '/setfee',
+        route: '/treasurer-quota',
         role: ['SuperAdmin', 'Treasurer'],
       },
       {
