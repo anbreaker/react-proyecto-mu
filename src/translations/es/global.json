@@ -2,6 +2,10 @@
   "App": {
     "ForbiddenAccess": "Acceso no permitido. No tienes el rol necesario para ver esta página."
   },
+  "Dashboard": {
+    "Welcome": "¡Bienvenido!",
+    "Resume": "Este es un resumen de los eventos producidos en su organización."
+  },
   "LoginPage": {
     "Welcome": "¡Bienvenido!",
     "Change-Languaje": "Cambiar idioma:",
@@ -95,7 +99,7 @@
     "Incoming": "¡Bienvenido, esta es tu primera entrada en egestion! Necesitamos algunos datos para que puedas disfrutar al máximo del sitio web.",
     "Profile-Data": "Datos del Perfil:",
     "EmailUser": "Tú email:",
-    "Profile-Picture": "Cambia tu Foto:",
+    "Profile-Picture": "Cambia de imagen",
     "FirtSurname": "Primer Apellido",
     "SecondSurname": "Segundo Apellido",
     "FirstSurname-Required": "El apellido es requerido, debe contener al menos 3 caracteres",

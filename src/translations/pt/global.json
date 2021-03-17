@@ -2,6 +2,10 @@
   "App": {
     "ForbiddenAccess": "Acesso proibido. Não tem a função requerida para aceder a esta página."
   },
+  "Dashboard": {
+    "Welcome": "Bem-vindo!",
+    "Resume": "Este é um resumo dos eventos produzidos na sua organização."
+  },
   "LoginPage": {
     "Welcome": "Bem-vindo!",
     "Change-Languaje": "Mudar idioma",
@@ -95,7 +99,7 @@
     "Incoming": "Bem-vindo, esta é a sua primeira entrada em egestion! Precisamos de algumas informações para que possa desfrutar ao máximo do website.",
     "Profile-Data": "Dados do Perfil",
     "EmailUser": "O seu e-mail:",
-    "Profile-Picture": "Mude a sua foto:",
+    "Profile-Picture": "Mude a foto",
     "FirtSurname": "Primeiro Apelido",
     "SecondSurname": "Segundo Apelido",
     "FirstSurname-Required": "O apelido é obrigatório, deve conter pelo menos 3 caracteres.",
