@@ -4,7 +4,18 @@
   },
   "Dashboard": {
     "Welcome": "Welcome!",
-    "Resume": "Este es un resumen de los eventos producidos en su organización."
+    "Resume": "Este es un resumen de los eventos producidos en su organización.",
+    "Annual-Fee": "Annual fee",
+    "Payments": "Payments made",
+    "Balance": "Balance to be paid",
+    "Date-Pay": "Date of Payment",
+    "Name": "Organization Name",
+    "Address": "Address",
+    "President": "President",
+    "Treasurer": "Treasurer",
+    "City": "City",
+    "Foundation": "Foundation",
+    "Country": "Country"
   },
   "LoginPage": {
     "Welcome": "Welcome!",
@@ -143,6 +154,7 @@
   },
   "DashboardOrgProfilePage": {
     "Dashboard-Organization": "Dashboard Organization",
+    "Data-Org": "Organisational Data:",
     "Info": "SuperAdmin administration window, here you can add, change or update the data of the selected organisation.",
     "Info-President": "President administration window, here you can add, change or update the data of your organisation.",
     "Delete-Org": "Delete Organization",

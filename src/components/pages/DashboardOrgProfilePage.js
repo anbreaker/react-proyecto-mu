@@ -287,7 +287,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
               <div className="card shadow mb-4">
                 <div className="card-header py-3">
                   <h6 className="m-0 font-weight-bold text-primary">
-                    {t('DashboardProfilePage.Profile-Data')}
+                    {t('DashboardOrgProfilePage.Data-Org')}
                   </h6>
                 </div>
                 <div className="card-body">
