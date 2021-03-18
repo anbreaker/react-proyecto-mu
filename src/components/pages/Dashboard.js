@@ -7,7 +7,7 @@ import { CardsProfile } from '../parts/CardsProfile';
 import { ContactAdmin } from '../parts/ContactAdmin';
 import { InfoCards } from '../parts/InfoCards';
 
-export const Dashboard = () => {
+export const Dashboard = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
   return (
@@ -88,7 +88,7 @@ export const Dashboard = () => {
           </table>
 
           <hr />
-          <ContactAdmin />
+          <ContactAdmin handlerOnFocus={handlerOnFocus} />
         </div>
       </div>
     </MainLayout>

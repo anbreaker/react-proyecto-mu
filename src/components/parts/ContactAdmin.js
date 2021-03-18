@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { useSelector } from 'react-redux';
+import { useForm } from '../../hooks/useForm';
+import { getUserAuth } from '../../store/selectors';
 import { Button } from '../basicComponents/Button';
 import { InputText } from '../basicComponents/InputText';
 
-export const ContactAdmin = () => {
+export const ContactAdmin = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
+
+  const {
+    email: emailDefault,
+    displayName: nameDefault,
+    contact: contactDefault,
+  } = useSelector(getUserAuth);
+
+  const { formValues, handleInputChange, setFormValues } = useForm({
+    email: '',
+    displayName: '',
+    contact: '',
+  });
+  const { email, displayName, contact } = formValues;
+
+  useEffect(() => {
+    setFormValues({ ...formValues });
+  }, []);
+
+  const handleChangeContact = event => {
+    event.preventDefault();
+    console.log('Enviar mail');
+  };
 
   return (
     <>
@@ -18,7 +43,7 @@ export const ContactAdmin = () => {
         <div className="card-body">
           <div className="row">
             <div className="col">
-              <form>
+              <form onSubmit={handleChangeContact}>
                 <div className="row">
                   <div className="col-4 text-center">
                     <h6 className="font-weight-bold mt-3 text-primary">
@@ -26,10 +51,10 @@ export const ContactAdmin = () => {
                     </h6>
                     <InputText
                       text={`${t('ContactAdmin.Name')}...`}
-                      name="member"
-                      // value={member}
-                      // onFocus={handlerOnFocus}
-                      // onChange={handleInputChange}
+                      name="name"
+                      value={displayName || nameDefault}
+                      onFocus={handlerOnFocus}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
@@ -39,10 +64,10 @@ export const ContactAdmin = () => {
                     </h6>
                     <InputText
                       text={`${t('ContactAdmin.Email')}...`}
-                      name="member"
-                      // value={member}
-                      // onFocus={handlerOnFocus}
-                      // onChange={handleInputChange}
+                      name="email"
+                      value={emailDefault}
+                      onFocus={handlerOnFocus}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
@@ -52,28 +77,26 @@ export const ContactAdmin = () => {
                     </h6>
                     <InputText
                       text={`${t('ContactAdmin.Mobile')}...`}
-                      name="member"
-                      // value={member}
-                      // onFocus={handlerOnFocus}
-                      // onChange={handleInputChange}
+                      name="mobile"
+                      value={contactDefault.mobile}
+                      onFocus={handlerOnFocus}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
                 </div>
-
-                <h6 className="font-weight-bold mt-3">
-                  {t('TreasurerIncomeRegisterPage.Date')}:
+                <br />
+                <h6 className="font-weight-bold mt-3 text-center text-primary">
+                  {t('ContactAdmin.Description')}:
                 </h6>
                 <textarea
                   className="form-control"
                   rows="3"
-                  placeholder={`${t(
-                    'TreasurerIncomeRegisterPage.Description'
-                  )}...`}
-                  name="description"
-                  // value={description}
-                  // onFocus={handlerOnFocus}
-                  // onChange={handleInputChange}
+                  placeholder={`${t('ContactAdmin.Description')}...`}
+                  name="text"
+                  // value={text}
+                  onFocus={handlerOnFocus}
+                  onChange={handleInputChange}
                 ></textarea>
 
                 <hr />
@@ -85,7 +108,7 @@ export const ContactAdmin = () => {
                     startIcon="fas fa-share-square"
                   >
                     {' '}
-                    {t('TreasurerIncomeRegisterPage.Cancel')}
+                    {t('ContactAdmin.Send')}
                   </Button>
                 </div>
               </form>

@@ -262,6 +262,7 @@
     "Name": "Nombre",
     "Email": "Email",
     "Mobile": "Movil",
-    "Description": "Escribenos y contactaremos lo antes posible, !Gracias!"
+    "Send": "Enviar Email",
+    "Description": "Escribenos y contactaremos lo antes posible, ¡Gracias!"
   }
 }

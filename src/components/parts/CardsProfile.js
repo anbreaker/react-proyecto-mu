@@ -1,8 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
+import { getUserOrgSel } from '../../store/selectors';
 
 export const CardsProfile = () => {
   const { t } = useTranslation('global');
+  const currentOrg = useSelector(getUserOrgSel);
+  console.log(currentOrg);
 
   return (
     <>
