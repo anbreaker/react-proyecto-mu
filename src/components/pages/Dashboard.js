@@ -1,7 +1,8 @@
-// eslint-disable
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
+import { getUserName } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
 import { CardsProfile } from '../parts/CardsProfile';
 import { ContactAdmin } from '../parts/ContactAdmin';
@@ -10,10 +11,14 @@ import { InfoCards } from '../parts/InfoCards';
 export const Dashboard = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
+  const name = useSelector(getUserName);
+
   return (
     <MainLayout>
       <div className="container-fluid">
-        <h1 className="h3 mb-4 text-gray-800">{t('Dashboard.Welcome')}</h1>
+        <h1 className="h3 mb-4 text-gray-800">
+          {t('Dashboard.Welcome')}, {name}
+        </h1>
 
         <p className="h5 mb-4">{t('Dashboard.Resume')}</p>
 

@@ -1,5 +1,4 @@
-import { current } from 'immer';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useSelector } from 'react-redux';
@@ -13,17 +12,13 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
 
   const currentUser = useSelector(getUserAuth);
 
-  const { formValues, handleInputChange, setFormValues } = useForm({
+  const { formValues, handleInputChange } = useForm({
     email: currentUser.email,
     name: currentUser.displayName,
     mobile: currentUser.contact.mobile,
   });
 
   const { email, name, mobile } = formValues;
-
-  /*useEffect(() => {
-    setFormValues({ ...formValues });
-  }, []);*/
 
   const handleChangeContact = event => {
     event.preventDefault();
