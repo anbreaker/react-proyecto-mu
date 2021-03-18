@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
-// import { Input, Label } from 'reactstrap';
 
 import { Button } from '../basicComponents/Button';
 import { getUiState, getUserOrgSel, getUserAuth } from '../../store/selectors';

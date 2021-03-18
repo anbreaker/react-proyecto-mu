@@ -15,15 +15,15 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
 
   const { formValues, handleInputChange, setFormValues } = useForm({
     email: currentUser.email,
-    displayName: currentUser.displayName,
-    contact: currentUser.contact.mobile,
+    name: currentUser.displayName,
+    mobile: currentUser.contact.mobile,
   });
 
-  const { email, displayName, contact } = formValues;
+  const { email, name, mobile } = formValues;
 
-  useEffect(() => {
+  /*useEffect(() => {
     setFormValues({ ...formValues });
-  }, []);
+  }, []);*/
 
   const handleChangeContact = event => {
     event.preventDefault();
@@ -50,7 +50,7 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
                     <InputText
                       text={`${t('ContactAdmin.Name')}...`}
                       name="name"
-                      value={displayName}
+                      value={name}
                       onFocus={handlerOnFocus}
                       onChange={handleInputChange}
                       required
@@ -76,7 +76,7 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
                     <InputText
                       text={`${t('ContactAdmin.Mobile')}...`}
                       name="mobile"
-                      value={contact}
+                      value={mobile}
                       onFocus={handlerOnFocus}
                       onChange={handleInputChange}
                       required
