@@ -252,7 +252,7 @@
     "Set-Quota": "Establecer cuota",
     "Select-Year": "Selecionar Año:",
     "Organization": "Organización",
-    "Amount": "Importe (chequee para establecer como cuota por defecto)",
+    "Amount": "Importe (Check, para establecer como cuota por defecto)",
     "Amount-Error": "El importe debe ser un dato numérico",
     "Default-Fee": "Importe por defecto",
     "SubTitle": "Trabajando en la organización"

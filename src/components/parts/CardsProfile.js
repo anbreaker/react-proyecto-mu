@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 
 export const CardsProfile = () => {
   const { t } = useTranslation('global');
-  const name = 'mirar';
 
   return (
     <>

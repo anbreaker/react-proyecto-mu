@@ -252,8 +252,9 @@
     "Set-Quota": "Definir quota",
     "Select-Year": "Seleccionar Ano:",
     "Organization": "Organização",
-    "Amount": "Montante",
+    "Amount": "Quantia (Verificar, para definir como quota padrão)",
     "Amount-Error": "A quantia deve ser numérica",
-    "Default-Fee": "Taxa por Defeito"
+    "Default-Fee": "Taxa por Defeito",
+    "SubTitle": "Trabalhar na organização"
   }
 }

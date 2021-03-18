@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
-import { Input, Label } from 'reactstrap';
+// import { Input, Label } from 'reactstrap';
 
 import { Button } from '../basicComponents/Button';
 import { getUiState, getUserOrgSel, getUserAuth } from '../../store/selectors';
@@ -57,6 +57,8 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
       dispatch(setErrorAction(t('TreasurerSetQuotaPage.Amount-Error')));
       return false;
     } else if (!validator.isNumeric(setFee)) {
+      // TODO revisar formulario envio de este Dato
+      console.log({ setFee });
       dispatch(setErrorAction(t('TreasurerSetQuotaPage.Amount-Error')));
       return false;
     }
@@ -85,7 +87,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
 
               <form onSubmit={handleQuoteRegister}>
                 <div className="row">
-                  <div className="col-4">
+                  <div className="col-12">
                     <SelectYears
                       value={year}
                       onChange={handleInputChange}
@@ -94,24 +96,24 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                     />
                   </div>
                 </div>
-                <hr />
+
                 <div className="row">
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12">
                     <h6 className="font-weight-bold mt-3 text-info">
                       {t('TreasurerIncomeRegisterPage.Description')}:
                     </h6>
-
-                    <InputText
-                      text={`${t('TreasurerSetQuotaPage.Description-Text')}...`}
+                    <textarea
+                      className="form-control"
+                      rows="2"
+                      placeholder={t('TreasurerSetQuotaPage.Description-Text')}
                       name="description"
                       value={description}
                       onFocus={handlerOnFocus}
                       onChange={handleInputChange}
-                      required
-                    />
+                    ></textarea>
                   </div>
 
-                  <div className="col-12 col-lg-4 mb-4">
+                  <div className="col-12 col-lg-8 mb-4">
                     <h6 className="font-weight-bold mt-3 text-info">
                       {t('TreasurerSetQuotaPage.Amount')}:
                     </h6>
@@ -142,11 +144,11 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                       />
                     </div>
                   </div>
-                  <div className="col-lg-2 mt-3 d-flex flex-column justify-content-center">
+                  <div className="col-lg-4 mt-3 d-flex flex-column justify-content-center">
                     <Button
                       type="submit"
                       variant="primary"
-                      startIcon="fas fa-id-card"
+                      startIcon="fas fa-money-check-alt"
                       disabled={loading}
                     >
                       {' '}
@@ -159,7 +161,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
               </form>
               <MessageError msgError={msgError} />
 
-              <h6 className="m-0 mt-4 mb-2 font-weight-bold text-info">
+              <h6 className="m-0 mt-4 mb-2 font-weight-bold text-primary">
                 {t('TreasurerSetQuotaPage.Table-Description')}: {year}
               </h6>
               <table
@@ -179,7 +181,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                 {/* // TODO crear tabla dinamica... */}
 
                 <tbody>
-                  {fees &&
+                  {!fees &&
                     fees.map(fee => (
                       <tr key={fee._id}>
                         <td>{fee.description}</td>

@@ -252,8 +252,9 @@
     "Set-Quota": "Set Quota",
     "Select-Year": "Select Year:",
     "Organization": "Organization",
-    "Amount": "Amount",
+    "Amount": "Amount (Check, to set as default quota)",
     "Amount-Error": "The amount must be numerical",
-    "Default-Fee": "Default Fee"
+    "Default-Fee": "Default Fee",
+    "SubTitle": "Working in the Organisation"
   }
 }
