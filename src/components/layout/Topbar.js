@@ -49,7 +49,7 @@ const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
       </button>
       <div className="input-group">
         <div className="pr-3 d-sm-none d-md-block">
-          <h6 className="font-weight-bold pt-2">
+          <h6 className="font-weight-bold pt-2 text-primary">
             {t('TopBar.Organization-Selected')}:
           </h6>
         </div>

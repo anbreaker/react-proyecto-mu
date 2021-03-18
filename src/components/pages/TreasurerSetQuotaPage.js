@@ -11,7 +11,7 @@ import { InputText } from '../basicComponents/InputText';
 import { useForm } from '../../hooks/useForm';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { MessageError } from '../parts/MessageError';
-import SelectYears from '../basicComponents/SelectYears';
+import { SelectYears } from '../basicComponents/SelectYears';
 import { changeNum2Cur } from '../utils/formatNumber';
 import { getOrgFeesPerYear } from '../../api';
 
@@ -27,7 +27,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
     year: new Date().getFullYear(),
     description: '',
     amount: '',
-    setFee: '',
+    setFee: false,
   });
 
   const { year, description, amount, setFee } = formValues;
@@ -54,11 +54,6 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
 
   const isFormValid = () => {
     if (!validator.isNumeric(amount)) {
-      dispatch(setErrorAction(t('TreasurerSetQuotaPage.Amount-Error')));
-      return false;
-    } else if (!validator.isNumeric(setFee)) {
-      // TODO revisar formulario envio de este Dato
-      console.log({ setFee });
       dispatch(setErrorAction(t('TreasurerSetQuotaPage.Amount-Error')));
       return false;
     }
@@ -126,7 +121,6 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                             value={setFee}
                             onFocus={handlerOnFocus}
                             onChange={handleInputChange}
-                            type="checkbox"
                             aria-label={`${t(
                               'TreasurerSetQuotaPage.Default-Fee'
                             )}`}
@@ -181,6 +175,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                 {/* // TODO crear tabla dinamica... */}
 
                 <tbody>
+                  {/* // TODO preguntar a Sebastian... */}
                   {!fees &&
                     fees.map(fee => (
                       <tr key={fee._id}>

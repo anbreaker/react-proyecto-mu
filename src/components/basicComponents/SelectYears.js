@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Input } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 
-const SelectYears = ({ value, onFocus, onChange, ...props }) => {
+export const SelectYears = ({ value, onFocus, onChange, ...props }) => {
   const { t } = useTranslation('global');
   const [years, setYears] = useState([]);
 
@@ -28,14 +28,12 @@ const SelectYears = ({ value, onFocus, onChange, ...props }) => {
         onChange={onChange}
         {...props}
       >
-        {years.map(y => (
-          <option key={y} value={y}>
-            {y}
+        {years.map(year => (
+          <option key={year} value={year}>
+            {year}
           </option>
         ))}
       </Input>
     </>
   );
 };
-
-export default SelectYears;
