@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { MainLayout } from '../layout/MainLayout';
 import { CardsProfile } from '../parts/CardsProfile';
+import { ContactAdmin } from '../parts/ContactAdmin';
 import { InfoCards } from '../parts/InfoCards';
 
 export const Dashboard = () => {
@@ -85,6 +86,9 @@ export const Dashboard = () => {
               </tr>
             </tbody>
           </table>
+
+          <hr />
+          <ContactAdmin />
         </div>
       </div>
     </MainLayout>

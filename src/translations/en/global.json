@@ -256,5 +256,12 @@
     "Amount-Error": "The amount must be numerical",
     "Default-Fee": "Default Fee",
     "SubTitle": "Working in the Organisation"
+  },
+  "ContactAdmin": {
+    "Contact": "Contact us:",
+    "Name": "Name",
+    "Email": "Email",
+    "Mobile": "Mobile",
+    "Description": "Write to us and we will contact you as soon as possible, thank you!"
   }
 }

@@ -256,5 +256,12 @@
     "Amount-Error": "El importe debe ser un dato numérico",
     "Default-Fee": "Importe por defecto",
     "SubTitle": "Trabajando en la organización"
+  },
+  "ContactAdmin": {
+    "Contact": "Contacta con Nosotros:",
+    "Name": "Nombre",
+    "Email": "Email",
+    "Mobile": "Movil",
+    "Description": "Escribenos y contactaremos lo antes posible, !Gracias!"
   }
 }

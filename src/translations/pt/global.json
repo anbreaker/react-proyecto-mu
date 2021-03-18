@@ -256,5 +256,12 @@
     "Amount-Error": "A quantia deve ser numérica",
     "Default-Fee": "Taxa por Defeito",
     "SubTitle": "Trabalhar na organização"
+  },
+  "ContactAdmin": {
+    "Contact": "Contacte-nos:",
+    "Name": "Nome",
+    "Email": "Email",
+    "Mobile": "Móvel",
+    "Description": "Escreva-nos e entraremos em contacto consigo o mais rapidamente possível, obrigado!"
   }
 }
