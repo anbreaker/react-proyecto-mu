@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { uidOnIndexDB, userStatus } from '../../store/selectors';
 
-const PrivateRoute = props => {
+export const PrivateRoute = props => {
   // redux selector isLogged
   const isLogged = useSelector(uidOnIndexDB);
   const uStatus = useSelector(userStatus);
@@ -29,5 +29,3 @@ const PrivateRoute = props => {
 
   return checkStatus();
 };
-
-export default PrivateRoute;

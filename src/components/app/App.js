@@ -6,7 +6,7 @@ import '../../assets/css/sb-admin-2.min.css';
 import '../../assets/vendor/fontawesome-free/css/all.min.css';
 import '../../assets/css/style.css';
 
-import PrivateRoute from '../basicComponents/PrivateRoute';
+import { PrivateRoute } from '../basicComponents/PrivateRoute';
 import { uidOnIndexDB, getSwalAlert } from '../../store/selectors';
 import { LoginPage } from '../pages/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage';
