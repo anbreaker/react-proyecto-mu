@@ -34,9 +34,7 @@ export const CardsProfile = () => {
         console.log(err);
         dispatch(setErrorAction('Error al cargar la información del usuario'));
       });
-  }, [org.id]);
-
-  console.log(org);
+  }, [currentOrg.id]);
 
   return (
     <>
