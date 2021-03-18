@@ -49,25 +49,25 @@ export const CardsProfile = () => {
             <div className="col">
               <div className="row">
                 <div className="col-3">
-                  <h6 className="font-weight-bold mt-3">
+                  <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Name')}:
                   </h6>
                   <p>{org.name}</p>
                 </div>
                 <div className="col-3">
-                  <h6 className="font-weight-bold mt-3">
+                  <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Foundation')}:
                   </h6>
                   <p>{formatToLocaleDate(org.foundationDate)}</p>
                 </div>
                 <div className="col-3">
-                  <h6 className="font-weight-bold mt-3">
+                  <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Country')}:
                   </h6>
                   <p>{org.country}</p>
                 </div>
                 <div className="col-3">
-                  <h6 className="font-weight-bold mt-3">
+                  <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Province')}:
                   </h6>
                   <p>{org.province}</p>
@@ -76,25 +76,25 @@ export const CardsProfile = () => {
 
               <div className="row">
                 <div className="col-3">
-                  <h6 className="font-weight-bold mt-3">
+                  <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.City')}:
                   </h6>
                   <p>{org.city}</p>
                 </div>
                 <div className="col-3">
-                  <h6 className="font-weight-bold mt-3">
+                  <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Address')}:
                   </h6>
                   <p>{org.address}</p>
                 </div>
                 <div className="col-3">
-                  <h6 className="font-weight-bold mt-3">
+                  <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Treasurer')}:
                   </h6>
                   <p>{org.treasurer}</p>
                 </div>
                 <div className="col-3">
-                  <h6 className="font-weight-bold mt-3">
+                  <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.President')}:
                   </h6>
                   <p>{org.president}</p>
