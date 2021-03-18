@@ -230,14 +230,15 @@
   "TreasurerSetQuotaPage": {
     "Info": "Establecer cuota",
     "Description": "Zona para establecer la cuota anual de las organizaciones.",
-    "Description-Text": "Para escribir detalles y notas acerca del usuario, los pagos recordatorios...",
-    "Table-Description": "Descripción de cuotas por Organizaciones",
+    "Description-Text": "Descripción de la cuota a establecer",
+    "Table-Description": "Cuotas establecidas para el año",
     "Established-Quota": "Cuota Establecida",
     "Set-Quota": "Establecer cuota",
     "Select-Year": "Selecionar Año:",
     "Organization": "Organización",
-    "Amount": "Importe",
+    "Amount": "Importe (chequee para establecer como cuota por defecto)",
     "Amount-Error": "El importe debe ser un dato numérico",
-    "Default-Fee": "Importe por defecto"
+    "Default-Fee": "Importe por defecto",
+    "SubTitle": "Trabajando en la organización"
   }
 }

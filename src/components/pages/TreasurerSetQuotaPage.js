@@ -1,29 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
-import { Input } from 'reactstrap';
+import { Input, Label } from 'reactstrap';
 
 import { Button } from '../basicComponents/Button';
-import { getUiState } from '../../store/selectors';
+import { getUiState, getUserOrgSel, getUserAuth } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
 import { InputText } from '../basicComponents/InputText';
 import { useForm } from '../../hooks/useForm';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { MessageError } from '../parts/MessageError';
+import SelectYears from '../basicComponents/SelectYears';
+import { changeNum2Cur } from '../utils/formatNumber';
+import { getOrgFeesPerYear } from '../../api';
 
 export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
-
+  const orgSel = useSelector(getUserOrgSel);
+  const user = useSelector(getUserAuth);
   const { msgError, loading } = useSelector(getUiState);
+  const [fees, setFees] = useState([]);
   const dispatch = useDispatch();
 
   const { formValues, handleInputChange } = useForm({
-    year: '',
+    year: new Date().getFullYear(),
     description: '',
     amount: '',
     setFee: '',
   });
+
+  const { year, description, amount, setFee } = formValues;
+
+  useEffect(() => {
+    // TODO Agregar spinner loading y mensaje error
+    // TODO Migrar esto a redux
+    if (!user.uid) return;
+    getOrgFeesPerYear(year)
+      .then(data => {
+        return setFees(data);
+      })
+      .catch(err => console.log(err));
+  }, [year, user]);
 
   const handleQuoteRegister = event => {
     event.preventDefault();
@@ -46,8 +64,6 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
     return true;
   };
 
-  const { year, description, amount, setFee } = formValues;
-
   return (
     <MainLayout>
       <div className="container-fluid">
@@ -60,7 +76,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
         <div className="card shadow mb-4 mt-4">
           <div className="card-header py-3">
             <h6 className="m-0 font-weight-bold text-primary">
-              {t('DashboardSuperAdminPage.Organizations')}
+              {`${t('TreasurerSetQuotaPage.SubTitle')}: ${orgSel.name}`}
             </h6>
           </div>
           <div className="card-body">
@@ -68,84 +84,83 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
               {/* TODO caputurar Formulario */}
 
               <form onSubmit={handleQuoteRegister}>
-                <h6 className="m-0 font-weight-bold text-info">
-                  {t('TreasurerSetQuotaPage.Select-Year')}
-                </h6>
-                <Input
-                  type="select"
-                  name="year"
-                  id="year"
-                  value={year}
-                  onFocus={handlerOnFocus}
-                  onChange={handleInputChange}
-                  // required
-                >
-                  <option value=""></option>
-                </Input>
-
                 <div className="row">
-                  <div className="col-12">
-                    <h6 className="font-weight-bold mt-3 text-info">
-                      {t('TreasurerIncomeRegisterPage.Description')}:
-                    </h6>
-                    <textarea
-                      className="form-control"
-                      rows="3"
-                      placeholder={t('TreasurerSetQuotaPage.Description-Text')}
-                      name="description"
-                      value={description}
-                      onFocus={handlerOnFocus}
+                  <div className="col-4">
+                    <SelectYears
+                      value={year}
                       onChange={handleInputChange}
-                    ></textarea>
-                  </div>
-
-                  <hr />
-                  <div className="col-6 mb-4">
-                    <h6 className="font-weight-bold mt-3 text-info">
-                      {t('TreasurerSetQuotaPage.Amount')}:
-                    </h6>
-                    <InputText
-                      text={`${t('TreasurerSetQuotaPage.Amount')}...`}
-                      name="amount"
-                      value={amount}
                       onFocus={handlerOnFocus}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  <div className="col-6 mb-4">
-                    <h6 className="font-weight-bold mt-3 text-info">
-                      {t('TreasurerSetQuotaPage.Default-Fee')}:
-                    </h6>
-                    <InputText
-                      text={`${t('TreasurerSetQuotaPage.Default-Fee')}...`}
-                      name="setFee"
-                      type="number"
-                      value={setFee}
-                      onFocus={handlerOnFocus}
-                      onChange={handleInputChange}
                       required
                     />
                   </div>
                 </div>
+                <hr />
+                <div className="row">
+                  <div className="col-12 col-lg-6">
+                    <h6 className="font-weight-bold mt-3 text-info">
+                      {t('TreasurerIncomeRegisterPage.Description')}:
+                    </h6>
+
+                    <InputText
+                      text={`${t('TreasurerSetQuotaPage.Description-Text')}...`}
+                      name="description"
+                      value={description}
+                      onFocus={handlerOnFocus}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="col-12 col-lg-4 mb-4">
+                    <h6 className="font-weight-bold mt-3 text-info">
+                      {t('TreasurerSetQuotaPage.Amount')}:
+                    </h6>
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <div className="input-group-text">
+                          <input
+                            name="setFee"
+                            type="checkbox"
+                            value={setFee}
+                            onFocus={handlerOnFocus}
+                            onChange={handleInputChange}
+                            type="checkbox"
+                            aria-label={`${t(
+                              'TreasurerSetQuotaPage.Default-Fee'
+                            )}`}
+                          />
+                        </div>
+                      </div>
+                      <InputText
+                        text={changeNum2Cur(0)}
+                        name="amount"
+                        value={amount}
+                        onFocus={handlerOnFocus}
+                        onChange={handleInputChange}
+                        addClasses="text-right"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-2 mt-3 d-flex flex-column justify-content-center">
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      startIcon="fas fa-id-card"
+                      disabled={loading}
+                    >
+                      {' '}
+                      {t('TreasurerIncomeRegisterPage.Add-Pay')}
+                    </Button>
+                  </div>
+                </div>
 
                 <hr />
-
-                <MessageError msgError={msgError} />
-
-                <Button
-                  type="submit"
-                  variant="primary"
-                  startIcon="fas fa-id-card"
-                  disabled={loading}
-                >
-                  {' '}
-                  {t('TreasurerIncomeRegisterPage.Add-Pay')}
-                </Button>
               </form>
+              <MessageError msgError={msgError} />
 
               <h6 className="m-0 mt-4 mb-2 font-weight-bold text-info">
-                {t('TreasurerSetQuotaPage.Table-Description')}:
+                {t('TreasurerSetQuotaPage.Table-Description')}: {year}
               </h6>
               <table
                 className="table table-bordered"
@@ -155,40 +170,28 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
               >
                 <thead className="font-weight-bold text-info">
                   <tr>
-                    <th>{t('TreasurerSetQuotaPage.Organization')}</th>
-                    <th className="text-center">Año</th>
+                    <th>Descripción</th>
+                    <th className="text-center">Cuota por defecto</th>
                     <th className="text-center">Cuota Definida</th>
                   </tr>
                 </thead>
-                <tfoot className="font-weight-bold text-info">
-                  <tr>
-                    <th>{t('TreasurerSetQuotaPage.Organization')}</th>
-                    <th className="text-center">Año</th>
-                    <th className="text-center">Cuota Definida</th>
-                  </tr>
-                </tfoot>
 
                 {/* // TODO crear tabla dinamica... */}
 
                 <tbody>
-                  <tr>
-                    <td>Nombre organizaciones</td>
-                    <td className="text-center">2021</td>
-
-                    <td className="text-center">$320,800</td>
-                  </tr>
-                  <tr>
-                    <td>Nombre organizaciones</td>
-                    <td className="text-center">2021</td>
-
-                    <td className="text-center">$320,800</td>
-                  </tr>
-                  <tr>
-                    <td>Nombre organizaciones</td>
-                    <td className="text-center">2021</td>
-
-                    <td className="text-center">$320,800</td>
-                  </tr>
+                  {fees &&
+                    fees.map(fee => (
+                      <tr key={fee._id}>
+                        <td>{fee.description}</td>
+                        <td className="text-center">
+                          {fee.defaultFee.toString()}
+                        </td>
+                        <td className="text-right">
+                          {' '}
+                          {changeNum2Cur(fee.amount)}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>

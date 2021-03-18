@@ -52,6 +52,7 @@ client.interceptors.response.use(
     if (!data) {
       return Promise.reject('Empty response - Interceptor');
     }
+    //    console.log(data);
     return Promise.resolve(data);
   },
   error => {

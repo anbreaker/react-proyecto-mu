@@ -43,3 +43,10 @@ export const getUsersMyOrg = async () => {
     .then(res => res.data)
     .catch(err => err);
 };
+
+export const getOrgFeesPerYear = async year => {
+  return client
+    .get('/org/fee?year=' + year)
+    .then(res => res.data)
+    .catch(err => err);
+};
