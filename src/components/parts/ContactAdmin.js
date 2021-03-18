@@ -1,3 +1,4 @@
+import { current } from 'immer';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -10,17 +11,14 @@ import { InputText } from '../basicComponents/InputText';
 export const ContactAdmin = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
-  const {
-    email: emailDefault,
-    displayName: nameDefault,
-    contact: contactDefault,
-  } = useSelector(getUserAuth);
+  const currentUser = useSelector(getUserAuth);
 
   const { formValues, handleInputChange, setFormValues } = useForm({
-    email: '',
-    displayName: '',
-    contact: '',
+    email: currentUser.email,
+    displayName: currentUser.displayName,
+    contact: currentUser.contact.mobile,
   });
+
   const { email, displayName, contact } = formValues;
 
   useEffect(() => {
@@ -52,7 +50,7 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
                     <InputText
                       text={`${t('ContactAdmin.Name')}...`}
                       name="name"
-                      value={displayName || nameDefault}
+                      value={displayName}
                       onFocus={handlerOnFocus}
                       onChange={handleInputChange}
                       required
@@ -65,7 +63,7 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
                     <InputText
                       text={`${t('ContactAdmin.Email')}...`}
                       name="email"
-                      value={emailDefault}
+                      value={email}
                       onFocus={handlerOnFocus}
                       onChange={handleInputChange}
                       required
@@ -78,7 +76,7 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
                     <InputText
                       text={`${t('ContactAdmin.Mobile')}...`}
                       name="mobile"
-                      value={contactDefault.mobile}
+                      value={contact}
                       onFocus={handlerOnFocus}
                       onChange={handleInputChange}
                       required
