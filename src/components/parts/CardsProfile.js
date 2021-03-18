@@ -10,32 +10,33 @@ import {
   startLoadingAction,
 } from '../../store/actions/ui';
 import { getUserOrgSel } from '../../store/selectors';
+import { formatToLocaleDate } from '../utils/dateFormat';
 
 export const CardsProfile = () => {
   const { t } = useTranslation('global');
 
-  const [currentOrg, setCurrentOrg] = useState({});
+  const [org, setOrg] = useState({});
 
   const dispatch = useDispatch();
 
-  const currentUser = useSelector(getUserOrgSel);
+  const currentOrg = useSelector(getUserOrgSel);
 
   useEffect(() => {
     dispatch(startLoadingAction());
     dispatch(removeErrorAction());
 
-    getOrgById(currentUser.id)
+    getOrgById(org.id)
       .then(data => {
         dispatch(finishLoadingAction());
-        setCurrentOrg(data);
+        setOrg(data);
       })
       .catch(err => {
         console.log(err);
         dispatch(setErrorAction('Error al cargar la información del usuario'));
       });
-  }, [currentUser.id]);
+  }, [org.id]);
 
-  console.log(currentOrg);
+  console.log(org);
 
   return (
     <>
@@ -53,25 +54,25 @@ export const CardsProfile = () => {
                   <h6 className="font-weight-bold mt-3">
                     {t('Dashboard.Name')}:
                   </h6>
-                  <p>{currentUser.name}</p>
+                  <p>{org.name}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
                     {t('Dashboard.Foundation')}:
                   </h6>
-                  <p>{currentUser.foundationDate}</p>
+                  <p>{formatToLocaleDate(org.foundationDate)}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
                     {t('Dashboard.Country')}:
                   </h6>
-                  <p>{currentUser.name}</p>
+                  <p>{org.name}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
                     {t('Dashboard.Country')}:
                   </h6>
-                  <p>{currentUser.name}</p>
+                  <p>{org.name}</p>
                 </div>
               </div>
 
@@ -80,25 +81,25 @@ export const CardsProfile = () => {
                   <h6 className="font-weight-bold mt-3">
                     {t('Dashboard.Province')}:
                   </h6>
-                  <p>{currentUser.province}</p>
+                  <p>{org.province}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
                     {t('Dashboard.City')}:
                   </h6>
-                  <p>{currentUser.city}</p>
+                  <p>{org.city}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
                     {t('Dashboard.Address')}:
                   </h6>
-                  <p>{currentUser.address}</p>
+                  <p>{org.address}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
                     {t('Dashboard.President')}:
                   </h6>
-                  <p>{currentUser.president}</p>
+                  <p>{org.president}</p>
                 </div>
               </div>
             </div>
