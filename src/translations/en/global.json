@@ -8,14 +8,7 @@
     "Annual-Fee": "Annual fee",
     "Payments": "Payments made",
     "Balance": "Balance to be paid",
-    "Date-Pay": "Date of Payment",
-    "Name": "Organization Name",
-    "Address": "Address",
-    "President": "President",
-    "Treasurer": "Treasurer",
-    "City": "City",
-    "Foundation": "Foundation",
-    "Country": "Country"
+    "Date-Pay": "Date of Payment"
   },
   "LoginPage": {
     "Welcome": "Welcome!",
@@ -264,5 +257,15 @@
     "Mobile": "Mobile",
     "Send": "Send Email",
     "Description": "Write to us and we will contact you as soon as possible, thank you!"
+  },
+  "CardsProfile": {
+    "Name": "Organization Name",
+    "Address": "Address",
+    "President": "President",
+    "Province": "Province",
+    "Treasurer": "Treasurer",
+    "City": "City",
+    "Foundation": "Foundation",
+    "Country": "Country"
   }
 }

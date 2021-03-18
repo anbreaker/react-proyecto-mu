@@ -25,7 +25,7 @@ export const CardsProfile = () => {
     dispatch(startLoadingAction());
     dispatch(removeErrorAction());
 
-    getOrgById(org.id)
+    getOrgById(currentOrg.id)
       .then(data => {
         dispatch(finishLoadingAction());
         setOrg(data);
@@ -52,52 +52,52 @@ export const CardsProfile = () => {
               <div className="row">
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
-                    {t('Dashboard.Name')}:
+                    {t('CardsProfile.Name')}:
                   </h6>
                   <p>{org.name}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
-                    {t('Dashboard.Foundation')}:
+                    {t('CardsProfile.Foundation')}:
                   </h6>
                   <p>{formatToLocaleDate(org.foundationDate)}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
-                    {t('Dashboard.Country')}:
+                    {t('CardsProfile.Country')}:
                   </h6>
-                  <p>{org.name}</p>
+                  <p>{org.country}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
-                    {t('Dashboard.Country')}:
+                    {t('CardsProfile.Province')}:
                   </h6>
-                  <p>{org.name}</p>
+                  <p>{org.province}</p>
                 </div>
               </div>
 
               <div className="row">
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
-                    {t('Dashboard.Province')}:
-                  </h6>
-                  <p>{org.province}</p>
-                </div>
-                <div className="col-3">
-                  <h6 className="font-weight-bold mt-3">
-                    {t('Dashboard.City')}:
+                    {t('CardsProfile.City')}:
                   </h6>
                   <p>{org.city}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
-                    {t('Dashboard.Address')}:
+                    {t('CardsProfile.Address')}:
                   </h6>
                   <p>{org.address}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3">
-                    {t('Dashboard.President')}:
+                    {t('CardsProfile.Treasurer')}:
+                  </h6>
+                  <p>{org.treasurer}</p>
+                </div>
+                <div className="col-3">
+                  <h6 className="font-weight-bold mt-3">
+                    {t('CardsProfile.President')}:
                   </h6>
                   <p>{org.president}</p>
                 </div>

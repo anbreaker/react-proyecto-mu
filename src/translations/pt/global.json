@@ -8,14 +8,7 @@
     "Annual-Fee": "Taxa Anual:",
     "Payments": "Pagamentos efectuados:",
     "Balance": "Saldo a pagar:",
-    "Date-Pay": "Data de pagamento",
-    "Name": "Nome Organização",
-    "Address": "Endereço",
-    "President": "Presidente",
-    "Treasurer": "Tesoureiro",
-    "City": "Cidade",
-    "Foundation": "Fundação",
-    "Country": "País"
+    "Date-Pay": "Data de pagamento"
   },
   "LoginPage": {
     "Welcome": "Bem-vindo!",
@@ -264,5 +257,15 @@
     "Mobile": "Móvel",
     "Send": "Enviar E-mail",
     "Description": "Escreva-nos e entraremos em contacto consigo o mais rapidamente possível, obrigado!"
+  },
+  "CardsProfile": {
+    "Name": "Nome Organização",
+    "Address": "Endereço",
+    "President": "Presidente",
+    "Province": "Província",
+    "Treasurer": "Tesoureiro",
+    "City": "Cidade",
+    "Foundation": "Fundação",
+    "Country": "País"
   }
 }
