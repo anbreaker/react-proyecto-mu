@@ -2,6 +2,21 @@
   "App": {
     "ForbiddenAccess": "Access forbidden. You don't have the role to access this page."
   },
+  "Dashboard": {
+    "Welcome": "Welcome!",
+    "Resume": "Este es un resumen de los eventos producidos en su organización.",
+    "Annual-Fee": "Annual fee",
+    "Payments": "Payments made",
+    "Balance": "Balance to be paid",
+    "Date-Pay": "Date of Payment",
+    "Name": "Organization Name",
+    "Address": "Address",
+    "President": "President",
+    "Treasurer": "Treasurer",
+    "City": "City",
+    "Foundation": "Foundation",
+    "Country": "Country"
+  },
   "LoginPage": {
     "Welcome": "Welcome!",
     "Change-Languaje": "Change language:",
@@ -95,7 +110,7 @@
     "Incoming": "Welcome, this is your first entry to egestion! We need some information for you to enjoy the website to the fullest.",
     "Profile-Data": "Profile Data:",
     "EmailUser": "Your email:",
-    "Profile-Picture": "Change your Picture:",
+    "Profile-Picture": "Change Picture",
     "FirtSurname": "First Surname",
     "SecondSurname": "Second Surname",
     "FirstSurname-Required": "Surname is required, to contain at least 3 characters.",
@@ -139,6 +154,7 @@
   },
   "DashboardOrgProfilePage": {
     "Dashboard-Organization": "Dashboard Organization",
+    "Data-Org": "Organisational Data:",
     "Info": "SuperAdmin administration window, here you can add, change or update the data of the selected organisation.",
     "Info-President": "President administration window, here you can add, change or update the data of your organisation.",
     "Delete-Org": "Delete Organization",

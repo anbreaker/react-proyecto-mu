@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { MainLayout } from '../layout/MainLayout';
+import { InfoCards } from '../parts/InfoCards';
 
 export const TreasurerResumePage = () => {
   const { t } = useTranslation('global');
@@ -52,33 +53,23 @@ export const TreasurerResumePage = () => {
 
         {/* Cards */}
         <div className="row">
-          <div className="col-md-4">
-            <div className="card mb-4 py-3 border-bottom-success">
-              <div className="card-body">
-                <h5 className="m-0 font-weight-bold text-success">
-                  {t('TreasurerResumePage.Income')}
-                </h5>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card mb-4 py-3 border-bottom-danger">
-              <div className="card-body">
-                <h5 className="m-0 font-weight-bold text-danger">
-                  {t('TreasurerResumePage.Expenses')}
-                </h5>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card mb-4 py-3 border-bottom-info">
-              <div className="card-body">
-                <h5 className="m-0 font-weight-bold text-info">
-                  {t('TreasurerResumePage.Net')}
-                </h5>
-              </div>
-            </div>
-          </div>
+          <InfoCards
+            text={t('TreasurerResumePage.Income')}
+            variantBorder={'border-bottom-success'}
+            variantText={'text-success'}
+          />
+
+          <InfoCards
+            text={t('TreasurerResumePage.Expenses')}
+            variantBorder={'border-bottom-danger'}
+            variantText={'text-danger'}
+          />
+
+          <InfoCards
+            text={t('TreasurerResumePage.Net')}
+            variantBorder={'border-bottom-info'}
+            variantText={'text-info'}
+          />
         </div>
 
         {/* <!-- DataTales Example --> */}

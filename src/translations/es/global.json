@@ -2,6 +2,21 @@
   "App": {
     "ForbiddenAccess": "Acceso no permitido. No tienes el rol necesario para ver esta página."
   },
+  "Dashboard": {
+    "Welcome": "¡Bienvenido!",
+    "Resume": "Este es un resumen de tus movimientos en esta organización.",
+    "Annual-Fee": "Cuota Anual:",
+    "Payments": "Pagos Realizados:",
+    "Balance": "Saldo por pagar:",
+    "Date-Pay": "Fecha del Pago",
+    "Name": "Organización",
+    "Address": "Dirección",
+    "President": "Presidente",
+    "Treasurer": "Tesorero",
+    "City": "Ciudad",
+    "Foundation": "Fundación",
+    "Country": "País"
+  },
   "LoginPage": {
     "Welcome": "¡Bienvenido!",
     "Change-Languaje": "Cambiar idioma:",
@@ -95,7 +110,7 @@
     "Incoming": "¡Bienvenido, esta es tu primera entrada en egestion! Necesitamos algunos datos para que puedas disfrutar al máximo del sitio web.",
     "Profile-Data": "Datos del Perfil:",
     "EmailUser": "Tú email:",
-    "Profile-Picture": "Cambia tu Foto:",
+    "Profile-Picture": "Cambia de imagen",
     "FirtSurname": "Primer Apellido",
     "SecondSurname": "Segundo Apellido",
     "FirstSurname-Required": "El apellido es requerido, debe contener al menos 3 caracteres",
@@ -139,6 +154,7 @@
   },
   "DashboardOrgProfilePage": {
     "Dashboard-Organization": "Perfil Organización",
+    "Data-Org": "Datos de la Organización:",
     "Info": "Ventana de administración del SuperAdmin, aqui puedes agregar, cambiar o actualizar los datos de la organización seleccionada.",
     "Info-President": "Ventana de administración del Presidente, aqui puedes agregar, cambiar o actualizar los datos de tu organización.",
     "Delete-Org": "Eliminar Organización",
