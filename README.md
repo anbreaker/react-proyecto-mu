@@ -1,10 +1,4 @@
 <h1 align="center">Práctica Final Nº10 Proyecto: Mu – Sistema eGestión 👋</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
-  <a href="https://github.com/anbreaker/practica6FundamentosReact" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
-  </a>
-</p>
 
 > Frontend of Backend on Node Express egestion
 
@@ -106,7 +100,7 @@ npm i
 
 ## Authors
 
-👤 **Sebastián Pérez**
+👤 **Sebastián Pérez Morales**
 
 - Github: [@sebperezCL](https://github.com/sebperezCL)
 
@@ -114,7 +108,7 @@ npm i
 
 - Github: [@LSP-92](https://github.com/LSP-92)
 
-👤 **Francisco Javier Antúnez Durán aka anbreaker**
+👤 **Francisco Javier Antúnez Durán**
 
 - Github: [@anbreaker](https://github.com/anbreaker)
 
