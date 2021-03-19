@@ -132,7 +132,6 @@ export const updateAuth = ({
 };
 
 export const changeOrgAction = org => {
-  setHeaderOrgId(org._id);
   return {
     type: types.changeOrg,
     payload: org,
@@ -142,8 +141,9 @@ export const changeOrgAction = org => {
 export const getOrgData = orgId => {
   return async (dispatch, getState, { history, api }) => {
     dispatch(startLoadingAction());
+    setHeaderOrgId(orgId);
     api
-      .getOrgById(orgId)
+      .getOrgById()
       .then(data => dispatch(changeOrgAction(data)))
       .catch(err => {
         console.log(err);

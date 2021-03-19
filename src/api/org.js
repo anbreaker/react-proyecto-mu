@@ -50,3 +50,10 @@ export const getOrgFeesPerYear = async year => {
     .then(res => res.data)
     .catch(err => err);
 };
+
+export const setFeeToOrg = async feeData => {
+  return client
+    .post('/org/fee', feeData)
+    .then(res => res.data)
+    .catch(err => err);
+};

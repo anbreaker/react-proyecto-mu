@@ -2,52 +2,69 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
+import { Spinner } from 'reactstrap';
 
 import { Button } from '../basicComponents/Button';
 import { getUiState, getUserOrgSel, getUserAuth } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
 import { InputText } from '../basicComponents/InputText';
 import { useForm } from '../../hooks/useForm';
-import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
+import {
+  finishLoadingAction,
+  removeErrorAction,
+  setErrorAction,
+  startLoadingAction,
+} from '../../store/actions/ui';
 import { MessageError } from '../parts/MessageError';
 import { SelectYears } from '../basicComponents/SelectYears';
 import { changeNum2Cur } from '../utils/formatNumber';
-import { getOrgFeesPerYear } from '../../api';
+import { getOrgFeesPerYear, setFeeToOrg } from '../../api';
 
 export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const orgSel = useSelector(getUserOrgSel);
   const user = useSelector(getUserAuth);
   const { msgError, loading } = useSelector(getUiState);
-  const [fees, setFees] = useState([]);
+  const [fees, setFees] = useState(null);
   const dispatch = useDispatch();
 
   const { formValues, handleInputChange } = useForm({
     year: new Date().getFullYear(),
-    description: '',
+    desc: '',
     amount: '',
-    setFee: false,
+    defaultFee: false,
   });
 
-  const { year, description, amount, setFee } = formValues;
+  const { year, desc, amount, defaultFee } = formValues;
 
   useEffect(() => {
-    // TODO Agregar spinner loading y mensaje error
-    // TODO Migrar esto a redux
     if (!user.uid) return;
+    dispatch(startLoadingAction());
     getOrgFeesPerYear(year)
-      .then(data => {
-        return setFees(data);
-      })
-      .catch(err => console.log(err));
-  }, [year, user]);
+      .then(data => setFees(data))
+      .catch(err => dispatch(setErrorAction(err.message)))
+      .finally(() => dispatch(finishLoadingAction()));
+  }, [year, user.uid]);
 
   const handleQuoteRegister = event => {
     event.preventDefault();
 
     if (isFormValid()) {
       //Enviar al Back...
-      console.log(formValues);
+      setFeeToOrg(formValues)
+        .then(org => {
+          if (org) {
+            const newFees = org.fiscalYear.filter(
+              fy => fy.year === parseInt(year)
+            );
+            console.log(newFees.length);
+            if (newFees.length > 0) {
+              setFees(newFees[0].feePerYear);
+            }
+            // setFees([...fees, { ...formValues }]);
+          }
+        })
+        .catch(err => console.log(err));
     }
   };
 
@@ -100,8 +117,8 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                       className="form-control"
                       rows="2"
                       placeholder={t('TreasurerSetQuotaPage.Description-Text')}
-                      name="description"
-                      value={description}
+                      name="desc"
+                      value={desc}
                       onFocus={handlerOnFocus}
                       onChange={handleInputChange}
                     ></textarea>
@@ -115,9 +132,9 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                       <div className="input-group-prepend">
                         <div className="input-group-text">
                           <input
-                            name="setFee"
+                            name="defaultFee"
                             type="checkbox"
-                            value={setFee}
+                            value={defaultFee}
                             onFocus={handlerOnFocus}
                             onChange={handleInputChange}
                             aria-label={`${t(
@@ -157,39 +174,41 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
               <h6 className="m-0 mt-4 mb-2 font-weight-bold text-primary">
                 {t('TreasurerSetQuotaPage.Table-Description')}: {year}
               </h6>
-              <table
-                className="table table-bordered"
-                id="dataTable"
-                width="100%"
-                cellSpacing="0"
-              >
-                <thead className="font-weight-bold text-info">
-                  <tr>
-                    <th>Descripción</th>
-                    <th className="text-center">Cuota por defecto</th>
-                    <th className="text-center">Cuota Definida</th>
-                  </tr>
-                </thead>
-
-                {/* // TODO crear tabla dinamica... */}
-
-                <tbody>
-                  {/* // TODO preguntar a Sebastian... */}
-                  {!fees &&
-                    fees.map(fee => (
-                      <tr key={fee._id}>
-                        <td>{fee.description}</td>
-                        <td className="text-center">
-                          {fee.defaultFee.toString()}
-                        </td>
-                        <td className="text-right">
-                          {' '}
-                          {changeNum2Cur(fee.amount)}
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
+              {loading ? (
+                // TODO Mejorar la presentación de este spinner
+                <Spinner color="primary" />
+              ) : (
+                <table
+                  className="table table-bordered"
+                  id="dataTable"
+                  width="100%"
+                  cellSpacing="0"
+                >
+                  <thead className="font-weight-bold text-info">
+                    <tr>
+                      <th>Descripción</th>
+                      <th className="text-center">Cuota por defecto</th>
+                      <th className="text-center">Cuota Definida</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* // TODO preguntar a Sebastian... */}
+                    {Array.isArray(fees) &&
+                      fees.map(fee => (
+                        <tr key={fee._id}>
+                          <td>{fee.description}</td>
+                          <td className="text-center">
+                            {fee.defaultFee.toString()}
+                          </td>
+                          <td className="text-right">
+                            {' '}
+                            {changeNum2Cur(fee.amount)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
         </div>
