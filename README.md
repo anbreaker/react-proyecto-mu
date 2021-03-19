@@ -15,11 +15,12 @@ The whole project is supported with the following technologies and running on th
 - 3ª · Database machine
 
 Technologies:
-Firebase
-MongoDB
-NodeJs
-Frameworks Back: Express
-Frameworks Front: React (working with Redux) and bootstrap 4
+
+- Firebase
+- MongoDB
+- NodeJs
+- Frameworks Back: Express
+- Frameworks Front: React (working with Redux) and bootstrap 4
 
 ## To get the system up and running you can visit https://www.egestion.xyz/
 

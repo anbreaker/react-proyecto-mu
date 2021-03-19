@@ -45,7 +45,7 @@ export const VerifyMailPage = () => {
                         text={t('LoginPage.Create-Account')}
                       />
                       <LinkForms
-                        path={'/register'}
+                        path={'/login'}
                         text={t('ForgotPasswordPage.Have-Acount')}
                       />
                       <LinkForms
