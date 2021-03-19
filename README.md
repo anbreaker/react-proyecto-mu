@@ -6,6 +6,21 @@
 
 # Project deployment 📑
 
+This is a small explanation of the final work we delivered for Keepcoding's Full Stack Web Bootcamp IX.
+
+The whole project is supported with the following technologies and running on three different AWS machines.
+
+- 1ª · Machine for Front
+- 2ª · Machine for Back and microservice for sending emails.
+- 3ª · Database machine
+
+Technologies:
+Firebase
+MongoDB
+NodeJs
+Frameworks Back: Express
+Frameworks Front: React (working with Redux) and bootstrap 4
+
 ## To get the system up and running you can visit https://www.egestion.xyz/
 
 <br>
@@ -84,8 +99,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 ## 3️⃣ Microservice install dependencies services 🔧
 
 ```sh
-Path: ...
-npm i
+Path: git clone https://github.com/LSP-92/email-microservice
 ```
 
 <br>
