@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+<h1 align="center">Práctica Final Nº10 Proyecto: Mu – Sistema eGestión 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/anbreaker/practica6FundamentosReact" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Frontend of Backend on Node Express egestion
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+# Project deployment 📑
 
-### `npm start`
+## To get the system up and running you can visit https://www.egestion.xyz/
+
+<br>
+
+### 🏠 [Homepage](https://github.com/anbreaker/react-proyecto-mu)
+
+<br>
+
+## To init simulete project on local first:
+
+```sh
+Path: git clone https://github.com/anbreaker/react-proyecto-mu
+```
+
+## Install all dependencies (Web Application in React) 💾
+
+```sh
+Path:  cd react-proyecto-mu/
+npm i
+```
+
+<br>
+
+## Install Dependencies of backend egestion 🔧
+
+```sh
+Path: git clone https://github.com/sebperezCL/backend-proyecto-mu/tree/dev
+```
+
+<br>
+
+## Install all dependencies of backend egestion (Node Express and Mongo) 🔧
+
+```sh
+Path:  cd backend-proyecto-mu/
+npm i
+```
+
+<br>
+
+## To start a initial aplication, is necessary open 2 terminal 🏁
+
+<br>
+
+## 1️⃣ Backend on Node, Express, and Mongo 🔨
+
+Runs the app in the development mode.\
+[http://localhost:5000](http://localhost:5000)
+
+```sh
+Path: backend-proyecto-mu/
+npm run dev
+```
+
+<br>
+
+## 2️⃣ Frontend on REACT(first terminal) 🔨
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```sh
+Path: react-proyecto-mu/
+npm start
+```
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## To create a production build folder.
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 3️⃣ Microservice install dependencies services 🔧
 
-### `npm run eject`
+```sh
+Path: ...
+npm i
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<br>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# To see an example on youtube (click on the image) 📼
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[![](https://raw.githubusercontent.com/anbreaker/react-proyecto-mu/main/public/img/presentation.jpg)](https://www.youtube.com/watch?v=")
 
-## Learn More
+<br><br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Authors
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+👤 **Sebastián Pérez**
 
-### Code Splitting
+- Github: [@sebperezCL](https://github.com/sebperezCL)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+👤 **Luis Sánchez Prudencio**
 
-### Analyzing the Bundle Size
+- Github: [@LSP-92](https://github.com/LSP-92)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+👤 **Francisco Javier Antúnez Durán aka anbreaker**
 
-### Making a Progressive Web App
+- Github: [@anbreaker](https://github.com/anbreaker)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contac Us
 
-### Advanced Configuration
+- Website: https://www.egestion.xyz/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Gmail Talent-Mu: talentmuteam@gmail.com
 
-### Deployment
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Show your support
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Give a ⭐️ if this project helped you!
