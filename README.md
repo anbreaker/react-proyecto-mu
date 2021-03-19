@@ -21,7 +21,6 @@ Technologies:
 - NodeJs
 - Frameworks Back: Express
 - Frameworks Front: React (working with Redux) and bootstrap 4
-- - :ocotocat:
 
 ## To get the system up and running you can visit https://www.egestion.xyz/
 
