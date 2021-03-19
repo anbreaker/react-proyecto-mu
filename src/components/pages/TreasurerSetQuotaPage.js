@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 import { Spinner } from 'reactstrap';
+import Swal from 'sweetalert2';
 
 import { Button } from '../basicComponents/Button';
 import { getUiState, getUserOrgSel, getUserAuth } from '../../store/selectors';
@@ -18,7 +19,8 @@ import {
 import { MessageError } from '../parts/MessageError';
 import { SelectYears } from '../basicComponents/SelectYears';
 import { changeNum2Cur } from '../utils/formatNumber';
-import { getOrgFeesPerYear, setFeeToOrg } from '../../api';
+import { getOrgFeesPerYear, setFeeToOrg, deleteFee } from '../../api';
+import { setAlertAction } from '../../store/actions/swal';
 
 export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -28,7 +30,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
   const [fees, setFees] = useState(null);
   const dispatch = useDispatch();
 
-  const { formValues, handleInputChange } = useForm({
+  const { formValues, handleInputChange, reset } = useForm({
     year: new Date().getFullYear(),
     desc: '',
     amount: '',
@@ -48,7 +50,6 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
 
   const handleQuoteRegister = event => {
     event.preventDefault();
-
     if (isFormValid()) {
       //Enviar al Back...
       setFeeToOrg(formValues)
@@ -57,11 +58,10 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
             const newFees = org.fiscalYear.filter(
               fy => fy.year === parseInt(year)
             );
-            console.log(newFees.length);
             if (newFees.length > 0) {
               setFees(newFees[0].feePerYear);
             }
-            // setFees([...fees, { ...formValues }]);
+            reset();
           }
         })
         .catch(err => console.log(err));
@@ -75,6 +75,32 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
     }
     dispatch(removeErrorAction());
     return true;
+  };
+
+  const handleDeleteFee = feeId => {
+    Swal.fire({
+      title: t('ErrorSwal.Confirmation-Sure'),
+      text: t('ErrorSwal.Warning-undone'),
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: t('ErrorSwal.Confirm-Delete'),
+      cancelButtonText: t('ErrorSwal.Confirm-Cancel'),
+    }).then(result => {
+      if (result.value) {
+        deleteFee({ feeId, year })
+          .then(data => {
+            setFees(data);
+            dispatch(
+              setAlertAction(
+                'ErrorSwal.Success',
+                'DashboardOrgProfilePage.Remove-Org',
+                'success'
+              )
+            );
+          })
+          .catch(err => console.log(err));
+      }
+    });
   };
 
   return (
@@ -176,7 +202,9 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
               </h6>
               {loading ? (
                 // TODO Mejorar la presentación de este spinner
-                <Spinner color="primary" />
+                <div className="col-lg-12 m-3 d-flex justify-content-center">
+                  <Spinner color="primary" />
+                </div>
               ) : (
                 <table
                   className="table table-bordered"
@@ -189,6 +217,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                       <th>Descripción</th>
                       <th className="text-center">Cuota por defecto</th>
                       <th className="text-center">Cuota Definida</th>
+                      <th className="text-center">Eliminar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -203,6 +232,13 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                           <td className="text-right">
                             {' '}
                             {changeNum2Cur(fee.amount)}
+                          </td>
+                          <td className="text-center">
+                            <i
+                              role="button"
+                              onClick={() => handleDeleteFee(fee._id)}
+                              className="fas fa-trash text-primary"
+                            ></i>
                           </td>
                         </tr>
                       ))}
