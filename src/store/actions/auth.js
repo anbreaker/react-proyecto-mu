@@ -9,7 +9,7 @@ import {
   removeHeaderOrgId,
 } from '../../api/client';
 import { getMenuByRole } from '../../auth/permisos';
-import { finishLoadingAction, startLoadingAction } from './ui';
+import { finishLoadingAction, setErrorAction, startLoadingAction } from './ui';
 import { setAlertAction } from './swal';
 import { types } from '../types/types';
 
@@ -71,7 +71,7 @@ export const login = userData => {
         configureClient(userData.token);
         const dataUserDB = await api.checkUserDB();
         if (dataUserDB.organizations && dataUserDB.organizations.length > 0) {
-          setHeaderOrgId(dataUserDB.organizations[0]._id);
+          dispatch(getOrgData(dataUserDB.organizations[0]._id));
         }
         userData = { ...userData, ...dataUserDB };
         dispatch(updateAuth(userData));
@@ -110,8 +110,6 @@ export const updateAuth = ({
   organizations: orgs,
 }) => {
   const permisos = getMenuByRole(role);
-  const orgSelected =
-    orgs && orgs.length > 0 ? { id: orgs[0]._id, name: orgs[0].name } : {};
   return {
     type: types.login,
     payload: {
@@ -129,16 +127,29 @@ export const updateAuth = ({
       active,
       permisos,
       organizations: orgs,
-      orgSelected,
     },
   };
 };
 
 export const changeOrgAction = org => {
-  setHeaderOrgId(org.id);
+  setHeaderOrgId(org._id);
   return {
     type: types.changeOrg,
     payload: org,
+  };
+};
+
+export const getOrgData = orgId => {
+  return async (dispatch, getState, { history, api }) => {
+    dispatch(startLoadingAction());
+    api
+      .getOrgById(orgId)
+      .then(data => dispatch(changeOrgAction(data)))
+      .catch(err => {
+        console.log(err);
+        dispatch(setErrorAction(err.message));
+      })
+      .finally(() => dispatch(finishLoadingAction()));
   };
 };
 

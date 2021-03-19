@@ -15,26 +15,26 @@ import { formatToLocaleDate } from '../utils/dateFormat';
 export const CardsProfile = () => {
   const { t } = useTranslation('global');
 
-  const [org, setOrg] = useState({});
+  const [org, setOrg] = useState(null);
 
   const dispatch = useDispatch();
 
   const currentOrg = useSelector(getUserOrgSel);
 
   useEffect(() => {
-    dispatch(startLoadingAction());
     dispatch(removeErrorAction());
-
-    getOrgById(currentOrg.id)
+    console.log(currentOrg);
+    /*getOrgById(currentOrg.id)
       .then(data => {
         dispatch(finishLoadingAction());
+        console.log(data);
         setOrg(data);
       })
       .catch(err => {
         console.log(err);
         dispatch(setErrorAction('Error al cargar la información del usuario'));
-      });
-  }, [currentOrg.id]);
+      });*/
+  }, [currentOrg._id]);
 
   return (
     <>
@@ -52,25 +52,25 @@ export const CardsProfile = () => {
                   <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Name')}:
                   </h6>
-                  <p>{org.name}</p>
+                  <p>{org && org.name}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Foundation')}:
                   </h6>
-                  <p>{formatToLocaleDate(org.foundationDate)}</p>
+                  <p>{formatToLocaleDate(org && org.foundationDate)}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Country')}:
                   </h6>
-                  <p>{org.country}</p>
+                  <p>{org && org.country}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Province')}:
                   </h6>
-                  <p>{org.province}</p>
+                  <p>{org && org.province}</p>
                 </div>
               </div>
 
@@ -79,25 +79,25 @@ export const CardsProfile = () => {
                   <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.City')}:
                   </h6>
-                  <p>{org.city}</p>
+                  <p>{org && org.city}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Address')}:
                   </h6>
-                  <p>{org.address}</p>
+                  <p>{org && org.address}</p>
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.Treasurer')}:
                   </h6>
-                  <p>{org.treasurer}</p>
+                  {/* <p>{org && org.treasurer.fullName}</p> */}
                 </div>
                 <div className="col-3">
                   <h6 className="font-weight-bold mt-3 text-info">
                     {t('CardsProfile.President')}:
                   </h6>
-                  <p>{org.president}</p>
+                  {/* <p>{org && org.president.fullName}</p> */}
                 </div>
               </div>
             </div>

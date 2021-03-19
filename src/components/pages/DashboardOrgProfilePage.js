@@ -64,6 +64,9 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
             ...org,
             orgId: orgId,
             foundationDate: new Date(org.foundationDate),
+            president: org.president.id,
+            treasurer: org.treasurer.id,
+            secretary: org.secretary.id,
           });
           if (org.president !== userId && userRole !== 'SuperAdmin') {
             return setForbiddenAccess(true);

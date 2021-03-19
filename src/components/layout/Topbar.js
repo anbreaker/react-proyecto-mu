@@ -7,7 +7,7 @@ import { useDetectClickOutside } from 'react-detect-click-outside';
 import { Input } from 'reactstrap';
 
 import img from '../../assets/img/undraw_profile_1.svg';
-import { startLogout, changeOrgAction } from '../../store/actions/auth';
+import { startLogout, getOrgData } from '../../store/actions/auth';
 import { setShowSidebar } from '../../store/actions/ui';
 import { getSidebarStatus } from '../../store/selectors';
 import {
@@ -58,17 +58,12 @@ const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
           type="select"
           name="organization"
           id="organization"
-          value={orgSelected.id}
+          value={orgSelected._id}
           //onFocus={handlerOnFocus}
           onChange={event => {
             const { target } = event.nativeEvent;
             const index = target.selectedIndex;
-            dispatch(
-              changeOrgAction({
-                name: target[index].text,
-                id: target[index].value,
-              })
-            );
+            dispatch(getOrgData(target[index].value));
           }}
         >
           {orgs &&
