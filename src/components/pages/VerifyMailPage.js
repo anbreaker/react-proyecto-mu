@@ -16,12 +16,11 @@ export const VerifyMailPage = () => {
             class: 'bg-gradient-warning',
           }}
         />
-        {/* <!-- Outer Row --> */}
+
         <div className="row justify-content-center pt-5">
           <div className="col-xl-10 col-lg-12 col-md-9">
             <div className="card o-hidden border-0 shadow-lg my-5">
               <div className="card-body p-0">
-                {/* <!-- Nested Row within Card Body --> */}
                 <div className="row">
                   <div className="col-lg-6 d-none d-lg-block bg-verify-email"></div>
                   <div className="col-lg-6">
@@ -54,6 +53,7 @@ export const VerifyMailPage = () => {
                         text={t('LoginPage.Forgot-Password')}
                       />
                     </div>
+
                     <ChangeLanguaje />
                   </div>
                 </div>

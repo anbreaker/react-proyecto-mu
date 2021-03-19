@@ -43,7 +43,6 @@ export const UsersAdminPage = () => {
 
         <p className="h5 mb-4">{t('UsersAdminPage.Description')}</p>
 
-        {/* <!-- DataTales Example --> */}
         <div className="card shadow mb-4 mt-4">
           <div className="card-header py-3">
             <h6 className="m-0 font-weight-bold text-primary">

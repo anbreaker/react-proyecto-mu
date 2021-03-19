@@ -14,8 +14,7 @@ import { removeErrorAction } from './store/actions/ui';
 const history = createBrowserHistory();
 const store = configureStore({}, history);
 
-// Listener para limpiar los errores de la aplicación en cada cambio
-// de ruta
+// Listener limpia errores de la aplicación en cada cambio de ruta
 history.listen(() => {
   store.dispatch(removeErrorAction());
 });

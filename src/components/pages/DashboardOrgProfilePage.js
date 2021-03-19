@@ -35,7 +35,7 @@ import {
   getUsersMyOrg,
 } from '../../api';
 import { useUploadCloudinary } from '../../hooks/useUploadCloudinary';
-import ForbiddenCard from '../parts/ForbiddenCard';
+import { ForbiddenCard } from '../parts/ForbiddenCard';
 
 export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ForbiddenCard = ({ text }) => {
+export const ForbiddenCard = ({ text }) => {
   return (
     <div className="col-lg-12 mb-4 ml-3">
       <div className="col-lg-9 mb-4 ml-3">
@@ -13,5 +13,3 @@ const ForbiddenCard = ({ text }) => {
     </div>
   );
 };
-
-export default ForbiddenCard;

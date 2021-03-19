@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { Collapse } from 'reactstrap';
 import Helmet from 'react-helmet';
 import clsx from 'clsx';
@@ -12,10 +11,6 @@ import { setShowSidebar } from '../../../store/actions/ui';
 import SidebarList from './SidebarList';
 
 const Sidebar = () => {
-  // TODO Eliminar cuando se DEBA
-  // eslint-disable-next-line
-  const { t } = useTranslation('global');
-
   const [sidebarToggled, setSidebarToggled] = useState(false);
   const { width } = useWindowSize();
   const showSidebar = useSelector(getSidebarStatus);

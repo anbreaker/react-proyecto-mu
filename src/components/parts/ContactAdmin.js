@@ -29,9 +29,9 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
     <>
       <div className="card shadow mb-4">
         <div className="card-header py-3">
-          <h6 className="m-0 font-weight-bold text-primary text-center">
+          <h4 className="m-0 mt-2 font-weight-bold text-primary text-center">
             {t('ContactAdmin.Contact')}
-          </h6>
+          </h4>
         </div>
         <div className="card-body">
           <div className="row">
@@ -43,6 +43,7 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
                       {t('ContactAdmin.Name')}:
                     </h6>
                     <InputText
+                      addClasses="text-center"
                       text={`${t('ContactAdmin.Name')}...`}
                       name="name"
                       value={name}
@@ -56,6 +57,7 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
                       {t('ContactAdmin.Email')}:
                     </h6>
                     <InputText
+                      addClasses="text-center"
                       text={`${t('ContactAdmin.Email')}...`}
                       name="email"
                       value={email}
@@ -69,6 +71,7 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
                       {t('ContactAdmin.Mobile')}:
                     </h6>
                     <InputText
+                      addClasses="text-center"
                       text={`${t('ContactAdmin.Mobile')}...`}
                       name="mobile"
                       value={mobile}
@@ -83,7 +86,7 @@ export const ContactAdmin = ({ handlerOnFocus }) => {
                   {t('ContactAdmin.Description')}:
                 </h6>
                 <textarea
-                  className="form-control"
+                  className="form-control text-center"
                   rows="3"
                   placeholder={`${t('ContactAdmin.Description')}...`}
                   name="text"

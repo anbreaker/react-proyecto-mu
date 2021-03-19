@@ -72,7 +72,6 @@ export const TreasurerResumePage = () => {
           />
         </div>
 
-        {/* <!-- DataTales Example --> */}
         <div className="card shadow mb-4 mt-4">
           <div className="card-header py-3">
             <h6 className="m-0 font-weight-bold text-primary">
@@ -141,7 +140,6 @@ export const TreasurerResumePage = () => {
           </div>
         </div>
       </div>
-      {/* <!-- /.container-fluid -->  */}
     </MainLayout>
   );
 };
