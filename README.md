@@ -17,6 +17,7 @@ The whole project is supported with the following technologies and running on th
 Technologies:
 
 - Firebase
+- Cloudinary
 - MongoDB
 - NodeJs
 - Frameworks Back: Express
@@ -71,24 +72,55 @@ npm i
 
 ## 1️⃣ Backend on Node, Express, and Mongo 🔨
 
+<br>
+
 Runs the app in the development mode.\
 [http://localhost:5000](http://localhost:5000)
 
 ```sh
 Path: backend-proyecto-mu/
-npm run dev
 ```
+
+- In order to execute the back it is necessary to follow the following steps:
+
+1. You can copy the **.env.example** to note that you need a Mongo instance (Mongo Atlas for example or a mauqina running Mongo Atlas).
+
+2. In addition, we have used Firebase to follow the following authentication pattern:
+
+- - You will need to configure in the front end the connection file with your firebase account You can see the example configuration in the following file.
+    mu-project-d4298-firebase_ExampleConfig.json
 
 <br>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sebperezCL/backend-proyecto-mu/master/visualPatterns/Opciones_de_autenticacion_-_MU.jpg">
+</p>
+
+<br>
+
+Once everything is set up, you can boot into dev mode as follows:
+
+```sh
+Path: npm run dev
+```
+
 ## 2️⃣ Frontend on REACT(first terminal) 🔨
+
+<br>
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ```sh
 Path: react-proyecto-mu/
-npm start
+```
+
+You will have to configure on the Frontend for the connection to firebase, cloudinary and other services the environment variables, you can look at the **.env.example** file.
+
+Once everything is set up, you can boot into dev mode as follows:
+
+```sh
+Path: npm start
 ```
 
 ## To create a production build folder.
@@ -101,6 +133,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 <br>
 
 ## 3️⃣ Microservice install dependencies services 🔧
+
+<br>
 
 ```sh
 Path: git clone https://github.com/LSP-92/email-microservice
