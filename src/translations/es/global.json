@@ -180,15 +180,19 @@
   "TreasurerIncomePage": {
     "Treasurer-Income": "Ingresos",
     "Info": "Ventana del Tesorero, para mostrar el resumen de las finanzas.",
+    "Table-Title": "Cuotas pagadas por los usuarios en el año:",
     "Payment": "Nuevo Pago"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Ingreso",
     "Info": "Ventana del Tesorero para añadir ingresos y detalles de pago de un miembro.",
+    "Enter-Pay": "Ingresar pago para el año",
+    "Select-User": "Seleccione el usuario:",
     "Member": "Miembro",
     "Date": "Fecha",
     "Quantity": "Cantidad",
     "Description": "Descripción",
+    "Description-Sms": "Añade un comentario, recordatorio o  mensaje asociado (si lo desea ;-) ). Esta aclaración irá en el correo generado automáticamente para informar al usuario.",
     "Add-Pay": "Añadir Pago",
     "Cancel": "Cancenlar"
   },

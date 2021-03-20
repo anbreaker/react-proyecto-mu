@@ -60,6 +60,7 @@
     "Secretary": "Secretário",
     "Set fee": "Definir quota",
     "Expenses": "Despesas",
+    "NewPayment": "Novo Pagamento",
     "Meetings": "Reuniões",
     "Members": "Membros",
     "Interface": "Interface",
@@ -179,15 +180,19 @@
   "TreasurerIncomePage": {
     "Treasurer-Income": "Ingresos",
     "Info": "Janela do Tesoureiro, para mostrar o resumo das finanças.",
+    "Table-Title": "Taxas pagas pelos utilizadores durante o ano:",
     "Payment": "Novo Pagamento"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Rendimento",
     "Info": "Janela do tesoureiro para adicionar rendimentos e detalhes de pagamento para um membro.",
+    "Enter-Pay": "Introduzir pagamento para o ano",
+    "Select-User": "Seleccionar o utilizador:",
     "Member": "Membro",
     "Date": "Data",
     "Quantity": "Quantidade",
     "Description": "Descrição",
+    "Description-Sms": "Acrescentar um comentário, lembrete ou mensagem associada (se desejar ;-) ). Este esclarecimento irá para o e-mail gerado automaticamente para informar o utilizador.",
     "Add-Pay": "Adicionar pagamento",
     "Cancel": "Cancenlar"
   },

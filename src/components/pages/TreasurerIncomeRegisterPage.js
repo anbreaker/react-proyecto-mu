@@ -87,8 +87,7 @@ export const TreasurerIncomeRegisterPage = () => {
     <MainLayout>
       <div className="container-fluid">
         <h1 className="h3 mb-3 text-gray-800">
-          {/* //TODO Traducir estos mensajes */}
-          Ingresar pago para el año <b>{year}</b>:
+          {t('TreasurerIncomeRegisterPage.Enter-Pay')} <b>{year}</b>:
         </h1>
 
         <p className="h5 mb-4">{t('TreasurerIncomeRegisterPage.Info')}</p>
@@ -100,7 +99,7 @@ export const TreasurerIncomeRegisterPage = () => {
             <div className="card shadow mb-4">
               <div className="card-header py-3">
                 <h6 className="m-0 font-weight-bold text-primary">
-                  Seleccione el usuario:
+                  {t('TreasurerIncomeRegisterPage.Select-User')}
                 </h6>
               </div>
               <div className="card-body">
@@ -143,7 +142,9 @@ export const TreasurerIncomeRegisterPage = () => {
                       />
                     </div>
                     <div className="col-6">
-                      <h6 className="font-weight-bold mt-3">Monto:</h6>
+                      <h6 className="font-weight-bold mt-3">
+                        {t('TreasurerIncomeRegisterPage.Quantity')}:
+                      </h6>
                       <InputText
                         text={`$ 0,0`}
                         addClasses="text-right"
@@ -160,9 +161,11 @@ export const TreasurerIncomeRegisterPage = () => {
                         {t('TreasurerIncomeRegisterPage.Description')}:
                       </h6>
                       <textarea
-                        className="form-control"
+                        className="form-control text-center"
                         rows="3"
-                        placeholder={`Ingrese un mensaje asociado (opcional). Este texto irá en el correo generado automáticamente al usuario.`}
+                        placeholder={t(
+                          'TreasurerIncomeRegisterPage.Description-Sms'
+                        )}
                         name="desc"
                         value={desc}
                         onChange={handleInputChange}

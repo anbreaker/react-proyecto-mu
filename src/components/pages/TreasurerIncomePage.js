@@ -55,10 +55,9 @@ export const TreasurerIncomePage = () => {
         {/* <!-- DataTales Example --> */}
         <div className="card shadow mb-4 mt-4">
           <div className="card-header py-3">
-            <h6 className="m-0 font-weight-bold text-primary">
-              {/* // TODO traducir */}
-              Cuotas pagadas por los usuarios en el año: {year}
-            </h6>
+            <h5 className="m-0 font-weight-bold text-primary">
+              {t('TreasurerIncomePage.Table-Title')} <b>{year}</b>
+            </h5>
           </div>
           <div className="card-body">
             <div className="table-responsive">
