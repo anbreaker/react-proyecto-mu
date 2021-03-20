@@ -74,9 +74,9 @@
     "Activity-Log": "Activity-Log",
     "Logout": "Logout",
     "Cancel": "Cancel",
-    "Administration": "Admin.",
+    "Administration": "Admin",
     "OrgAdmin": "Org. Admin.",
-    "UsersAdmin": "Users. Admin."
+    "UsersAdmin": "Users Admin."
   },
   "ErrorSwal": {
     "Success": "Success",
