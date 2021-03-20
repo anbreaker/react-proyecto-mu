@@ -74,14 +74,12 @@ export const login = userData => {
           dispatch(getOrgData(dataUserDB.organizations[0]._id));
         }
         userData = { ...userData, ...dataUserDB };
-        dispatch(updateAuth(userData));
+        return dispatch(updateAuth(userData));
       } catch (error) {
         console.log(`ErrorSwal.${error}`);
-        dispatch(
+        return dispatch(
           setAlertAction('ErrorSwal.Error', `ErrorSwal.${error}`, 'error')
         );
-      } finally {
-        return;
       }
     }
     dispatch(

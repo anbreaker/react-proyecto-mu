@@ -67,11 +67,11 @@ export const TreasurerIncomeRegisterPage = () => {
 
       // Si no hay una cuota establecida para el usuario se asume que entonces
       // debe pagar la cuota por defecto para el año y hay que buscarla
-      /*const feePerYear = orgSel.fiscalYear
+      const feePerYear = orgSel.fiscalYear
         .find(fy => fy.year === year)
-        .feePerYear.find(fee => fee.defaultFee);*/
+        ?.feePerYear.find(fee => fee.defaultFee);
 
-      console.log(orgDataUser?.feePerYear);
+      console.log(feePerYear);
     }
   }, [userId]);
 

@@ -144,7 +144,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                   ></textarea>
                 </div>
 
-                <div class="col-12">
+                <div className="col-12">
                   <h6 className="font-weight-bold mt-3 text-info">
                     {t('TreasurerSetQuotaPage.Amount')}:
                   </h6>

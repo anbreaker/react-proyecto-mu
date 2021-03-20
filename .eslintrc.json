@@ -16,7 +16,8 @@
   "rules": {
     "react/prop-types": "off",
     "no-unused-vars": "warn",
-    "react/display-name": "off"
+    "react/display-name": "off",
+    "no-extra-boolean-cast": "off"
   },
   "parser": "babel-eslint"
 }
