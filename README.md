@@ -10,9 +10,9 @@ This is a small explanation of the final work we delivered for Keepcoding's Full
 
 The whole project is supported with the following technologies and running on three different AWS machines.
 
-- 1ª · Machine for Front
-- 2ª · Machine for Back and microservice for sending emails.
-- 3ª · Database machine
+1. Machine for Front
+2. Machine for Back and microservice for sending emails.
+3. Database machine
 
 Technologies:
 
@@ -21,6 +21,9 @@ Technologies:
 - NodeJs
 - Frameworks Back: Express
 - Frameworks Front: React (working with Redux) and bootstrap 4
+- Github, For version control
+
+<br>
 
 ## To get the system up and running you can visit https://www.egestion.xyz/
 

@@ -144,14 +144,12 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                   ></textarea>
                 </div>
 
-                {/* TODO Arreglar este Row para eliminar el scroll container-fluid??? */}
-
-                <div className="row">
-                  <div className="col-12 col-lg-8 mb-4">
-                    <h6 className="font-weight-bold mt-3 text-info">
-                      {t('TreasurerSetQuotaPage.Amount')}:
-                    </h6>
-                    <div className="input-group">
+                <div class="col-12">
+                  <h6 className="font-weight-bold mt-3 text-info">
+                    {t('TreasurerSetQuotaPage.Amount')}:
+                  </h6>
+                  <div className="row">
+                    <div className="input-group mb-3 col-8">
                       <div className="input-group-prepend">
                         <div className="input-group-text">
                           <input
@@ -166,6 +164,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                           />
                         </div>
                       </div>
+
                       <InputText
                         text={changeNum2Cur(0)}
                         name="amount"
@@ -176,18 +175,18 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                         required
                       />
                     </div>
-                  </div>
 
-                  <div className="col-4 mt-3 d-flex flex-column justify-content-center">
-                    <Button
-                      type="submit"
-                      variant="primary"
-                      startIcon="fas fa-money-check-alt"
-                      disabled={loading}
-                    >
-                      {' '}
-                      {t('TreasurerIncomeRegisterPage.Add-Pay')}
-                    </Button>
+                    <div className="col-4">
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        startIcon="fas fa-money-check-alt"
+                        disabled={loading}
+                      >
+                        {' '}
+                        {t('TreasurerIncomeRegisterPage.Add-Pay')}
+                      </Button>
+                    </div>
                   </div>
                 </div>
 
