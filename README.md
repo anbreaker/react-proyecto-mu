@@ -92,11 +92,9 @@ Path: backend-proyecto-mu/
 
 <br>
 
-<center>
-
-![](https://raw.githubusercontent.com/sebperezCL/backend-proyecto-mu/master/visualPatterns/Opciones_de_autenticacion_-_MU.jpg)
-
-</center>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sebperezCL/backend-proyecto-mu/master/visualPatterns/Opciones_de_autenticacion_-_MU.jpg">
+</p>
 
 <br>
 
