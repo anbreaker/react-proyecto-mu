@@ -6,12 +6,20 @@ import { Button } from '../basicComponents/Button';
 import { Search } from '../basicComponents/Search';
 import { getUiState } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { SelectYears } from '../basicComponents/SelectYears';
+import { useForm } from '../../hooks/useForm';
 
 export const TreasurerIncomePage = () => {
   const { t } = useTranslation('global');
 
   const { loading } = useSelector(getUiState);
+
+  const { formValues, handleInputChange } = useForm({
+    year: new Date().getFullYear(),
+  });
+
+  const { year } = formValues;
 
   return (
     <MainLayout>
@@ -23,16 +31,15 @@ export const TreasurerIncomePage = () => {
         <p className="h5 mb-4">{t('TreasurerIncomePage.Info')}</p>
 
         <div className="row">
-          <div className="col-9">
-            <Search
-              text={t('TreasurerResumePage.Filter')}
-              icon={'fas fa-funnel-dollar'}
-              variant="success"
-            />
+          <div className="col-12 col-lg-4">
+            <SelectYears value={year} onChange={handleInputChange} required />
           </div>
 
-          <div className="col-3">
-            <Link to="/income-register">
+          <div className="col-12 mt-3 mt-lg-0 col-lg-3 d-flex flex-column justify-content-end">
+            <Link
+              to={{ pathname: '/income-register', state: { year: year } }}
+              className="text-decoration-none"
+            >
               <Button
                 variant="success"
                 startIcon="fas fa-money-check-alt"
@@ -49,7 +56,8 @@ export const TreasurerIncomePage = () => {
         <div className="card shadow mb-4 mt-4">
           <div className="card-header py-3">
             <h6 className="m-0 font-weight-bold text-primary">
-              {t('DashboardSuperAdminPage.Organizations')}
+              {/* // TODO traducir */}
+              Cuotas pagadas por los usuarios en el año: {year}
             </h6>
           </div>
           <div className="card-body">

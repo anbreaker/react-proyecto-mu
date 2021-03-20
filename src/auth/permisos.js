@@ -63,8 +63,8 @@ const menus = [
         role: ['SuperAdmin', 'Treasurer'],
       },
       {
-        name: 'Expenses',
-        route: '/expenses',
+        name: 'NewPayment',
+        route: '/treasurer-income',
         role: ['SuperAdmin', 'Treasurer'],
       },
     ],

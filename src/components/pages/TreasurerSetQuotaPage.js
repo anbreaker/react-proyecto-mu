@@ -227,7 +227,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                         <tr key={fee._id}>
                           <td>{fee.description}</td>
                           <td className="text-center">
-                            {fee.defaultFee.toString()}
+                            {fee.defaultFee ? 'SI' : 'NO'}
                           </td>
                           <td className="text-right">
                             {' '}

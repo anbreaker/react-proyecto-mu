@@ -1,6 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link, useLocation } from 'react-router-dom';
 import validator from 'validator';
+import { Input } from 'reactstrap';
+import DateTimePicker from 'react-datetime-picker';
 
 import { MainLayout } from '../layout/MainLayout';
 import { InputText } from '../basicComponents/InputText';
@@ -8,31 +11,41 @@ import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLocale, getUiState } from '../../store/selectors';
+import { getLanguaje, getUiState, getUserAuth } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
-import client from '../../api/client';
+import { getUsersMyOrg } from '../../api';
 
-export const TreasurerIncomeRegisterPage = ({ handlerOnFocus }) => {
+export const TreasurerIncomeRegisterPage = () => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
+  const location = useLocation();
+  const year = location.state.year;
 
   const { msgError } = useSelector(getUiState);
-  // eslint-disable-next-line
-  const { locale } = useSelector(getLocale);
+  const loggedUser = useSelector(getUserAuth);
+  const { languaje } = useSelector(getLanguaje);
+  const [userSelect, setUserSelect] = useState([]);
 
   const { formValues, handleInputChange, setFormValues } = useForm({
     id: '',
-    member: '',
+    orgMember: '',
     date: '',
     quantity: '',
     description: '',
   });
 
-  const { id, member, date, quantity, description } = formValues;
+  const { id, orgMember, date, quantity, description } = formValues;
 
   useEffect(() => {
-    setFormValues({ ...formValues });
-  }, []);
+    if (loggedUser.uid) {
+      getUsersMyOrg()
+        .then(data => {
+          console.log(data);
+          setUserSelect(data);
+        })
+        .catch(err => console.log(err));
+    }
+  }, [loggedUser.uid]);
 
   const handleChangeProfile = event => {
     event.preventDefault();
@@ -41,16 +54,18 @@ export const TreasurerIncomeRegisterPage = ({ handlerOnFocus }) => {
       // Enviar al Back en un Objeto..
       // TODO enviar este objeto al back
       // user: { uid, displayName, email, phonNumber, photURL, role }
-
-      client
-        .post('/user', formValues)
-        .then(res => console.log({ res }))
-        .catch(err => console.log({ err }));
     }
   };
 
+  const handleDateChange = event => {
+    setFormValues({
+      ...formValues,
+      date: event,
+    });
+  };
+
   const isFormChangeProfileValid = () => {
-    if (member.length <= 2) {
+    if (orgMember.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
     } else if (id.length <= 2) {
@@ -72,7 +87,8 @@ export const TreasurerIncomeRegisterPage = ({ handlerOnFocus }) => {
     <MainLayout>
       <div className="container-fluid">
         <h1 className="h3 mb-3 text-gray-800">
-          {t('TreasurerIncomeRegisterPage.Treasurer-Income')}:
+          {/* //TODO Traducir estos mensajes */}
+          Ingresar pago para el año <b>{year}</b>:
         </h1>
 
         <p className="h5 mb-4">{t('TreasurerIncomeRegisterPage.Info')}</p>
@@ -84,73 +100,93 @@ export const TreasurerIncomeRegisterPage = ({ handlerOnFocus }) => {
             <div className="card shadow mb-4">
               <div className="card-header py-3">
                 <h6 className="m-0 font-weight-bold text-primary">
-                  {t('DashboardProfilePage.Profile-Data')}
+                  Seleccione el usuario:
                 </h6>
               </div>
               <div className="card-body">
                 <form onSubmit={handleChangeProfile}>
-                  <h6 className="font-weight-bold mt-3">
-                    {t('TreasurerIncomeRegisterPage.Member')}:
-                  </h6>
-                  <InputText
-                    text={`${t('TreasurerIncomeRegisterPage.Member')}...`}
-                    name="member"
-                    value={member}
-                    onFocus={handlerOnFocus}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <h6 className="font-weight-bold mt-3">
-                    {t('TreasurerIncomeRegisterPage.Date')}:
-                  </h6>
-                  {/* TODO formato Fecha */}
-                  <InputText
-                    text={`${t('TreasurerIncomeRegisterPage.Date')}...`}
-                    name="date"
-                    value={date}
-                    onFocus={handlerOnFocus}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <h6 className="font-weight-bold mt-3">
-                    {t('TreasurerIncomeRegisterPage.Quantity')}:
-                  </h6>
-                  <InputText
-                    text={`${t('TreasurerIncomeRegisterPage.Quantity')}...`}
-                    name="quantity"
-                    value={quantity}
-                    onFocus={handlerOnFocus}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <h6 className="font-weight-bold mt-3">
-                    {t('TreasurerIncomeRegisterPage.Description')}:
-                  </h6>
-                  <textarea
-                    className="form-control"
-                    rows="3"
-                    placeholder={`${t(
-                      'TreasurerIncomeRegisterPage.Description'
-                    )}...`}
-                    name="description"
-                    value={description}
-                    onFocus={handlerOnFocus}
-                    onChange={handleInputChange}
-                  ></textarea>
+                  <div className="row">
+                    <div className="col-12">
+                      <h6 className="font-weight-bold mt-0">
+                        {t('TreasurerIncomeRegisterPage.Member')}:
+                      </h6>
+                      <Input
+                        type="select"
+                        name="orgMember"
+                        id="orgMember"
+                        value={orgMember}
+                        onChange={handleInputChange}
+                        required
+                      >
+                        <option value=""></option>
+
+                        {userSelect &&
+                          userSelect.map(user => (
+                            <option key={user.id} value={user.id}>
+                              {user.fullName}
+                            </option>
+                          ))}
+                      </Input>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-6">
+                      <h6 className="font-weight-bold mt-3">
+                        {t('TreasurerIncomeRegisterPage.Date')}:
+                      </h6>
+                      <DateTimePicker
+                        className="form-control react-datetime-picker"
+                        locale={languaje}
+                        format="dd,MM,y"
+                        value={date}
+                        onChange={handleDateChange}
+                      />
+                    </div>
+                    <div className="col-6">
+                      <h6 className="font-weight-bold mt-3">Monto:</h6>
+                      <InputText
+                        text={`$ 0,0`}
+                        addClasses="text-right"
+                        name="quantity"
+                        value={quantity}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-12">
+                      <h6 className="font-weight-bold mt-3">
+                        {t('TreasurerIncomeRegisterPage.Description')}:
+                      </h6>
+                      <textarea
+                        className="form-control"
+                        rows="3"
+                        placeholder={`Ingrese un mensaje asociado (opcional). Este texto irá en el correo generado automáticamente al usuario.`}
+                        name="description"
+                        value={description}
+                        onChange={handleInputChange}
+                      ></textarea>
+                    </div>
+                  </div>
 
                   <hr />
                   <MessageError msgError={msgError} />
 
                   <div className="row">
                     <div className="col-6">
-                      <Button
-                        type="submit"
-                        variant="alert"
-                        startIcon="fas fa-ban"
+                      <Link
+                        to="/treasurer-income"
+                        className="text-decoration-none"
                       >
-                        {' '}
-                        {t('TreasurerIncomeRegisterPage.Cancel')}
-                      </Button>
+                        <Button
+                          type="submit"
+                          variant="warning"
+                          startIcon="fas fa-arrow-left"
+                        >
+                          {t('DashboardOrgProfilePage.Back')}
+                        </Button>
+                      </Link>
                     </div>
                     <div className="col-6">
                       <Button
