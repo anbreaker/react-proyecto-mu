@@ -11,7 +11,12 @@ import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLanguaje, getUiState, getUserAuth } from '../../store/selectors';
+import {
+  getLanguaje,
+  getUiState,
+  getUserAuth,
+  getUserOrgSel,
+} from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { getUsersMyOrg, setPayment } from '../../api';
 
@@ -23,6 +28,7 @@ export const TreasurerIncomeRegisterPage = () => {
 
   const { msgError } = useSelector(getUiState);
   const loggedUser = useSelector(getUserAuth);
+  const orgSel = useSelector(getUserOrgSel);
   const { languaje } = useSelector(getLanguaje);
   const [userSelect, setUserSelect] = useState([]);
 
@@ -40,12 +46,34 @@ export const TreasurerIncomeRegisterPage = () => {
     if (loggedUser.uid) {
       getUsersMyOrg()
         .then(data => {
-          console.log(data);
           setUserSelect(data);
         })
         .catch(err => console.log(err));
     }
   }, [loggedUser.uid]);
+
+  useEffect(() => {
+    if (userId) {
+      const user = userSelect.find(u => u.id === userId);
+      console.log(user);
+      const orgDataUser = user.organizations.find(
+        org => org._id === orgSel._id
+      );
+      console.log(orgDataUser);
+      if (orgDataUser.length > 0) {
+        return console.log('hay una cuota ya establecida');
+        // poner en el select
+      }
+
+      // Si no hay una cuota establecida para el usuario se asume que entonces
+      // debe pagar la cuota por defecto para el año y hay que buscarla
+      /*const feePerYear = orgSel.fiscalYear
+        .find(fy => fy.year === year)
+        .feePerYear.find(fee => fee.defaultFee);*/
+
+      console.log(orgDataUser?.feePerYear);
+    }
+  }, [userId]);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -124,6 +152,41 @@ export const TreasurerIncomeRegisterPage = () => {
                     </div>
                   </div>
                   <div className="row">
+                    <div className="col-12">
+                      <h6 className="font-weight-bold mt-3">
+                        {/* //TODO Traducir */}
+                        Cuota asociada al usuario:
+                      </h6>
+                      <div className="col-lg-12 mb-4 p-0">
+                        <div className="card text-dark border-warning">
+                          {/* //TODO Traducir */}
+                          <div className="card-body">
+                            No existe ninguna cuota por defecto para el año,
+                            debe crear una para que sea asignada a los miembros
+                            de la organización.
+                          </div>
+                        </div>
+                      </div>
+                      <Input
+                        type="select"
+                        name="quotaYear"
+                        id="quotaYear"
+                        value={userId}
+                        onChange={handleInputChange}
+                        required
+                      >
+                        <option value=""></option>
+
+                        {userSelect &&
+                          userSelect.map(user => (
+                            <option key={user.id} value={user.id}>
+                              {user.fullName}
+                            </option>
+                          ))}
+                      </Input>
+                    </div>
+                  </div>
+                  <div className="row">
                     <div className="col-6">
                       <h6 className="font-weight-bold mt-3">
                         {t('TreasurerIncomeRegisterPage.Date')}:
@@ -156,7 +219,7 @@ export const TreasurerIncomeRegisterPage = () => {
                         {t('TreasurerIncomeRegisterPage.Description')}:
                       </h6>
                       <textarea
-                        className="form-control text-center"
+                        className="form-control text-justify"
                         rows="3"
                         placeholder={t(
                           'TreasurerIncomeRegisterPage.Description-Sms'
