@@ -3,10 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Button } from '../basicComponents/Button';
 
-import { Search } from '../basicComponents/Search';
 import { getUiState } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SelectYears } from '../basicComponents/SelectYears';
 import { useForm } from '../../hooks/useForm';
 
@@ -69,22 +68,28 @@ export const TreasurerIncomePage = () => {
               >
                 <thead className="font-weight-bold text-info">
                   <tr>
-                    <th>{t('DashboardSuperAdminPage.Id')}</th>
-                    <th>{t('DashboardSuperAdminPage.Name')}</th>
-                    <th>{t('DashboardSuperAdminPage.Address')}</th>
-                    <th>{t('DashboardSuperAdminPage.President')}</th>
-                    <th>{t('DashboardSuperAdminPage.Mobile')}</th>
-                    <th>{t('DashboardSuperAdminPage.Foundation')}</th>
+                    <th>{t('TreasurerIncomePage.Username')}</th>
+                    <th>{t('TreasurerIncomePage.Organization-Name')}</th>
+                    <th className="text-center">
+                      {t('TreasurerIncomePage.Date')}
+                    </th>
+                    <th className="text-center">
+                      {t('TreasurerIncomePage.Quantity')}
+                    </th>
+                    <th>{t('TreasurerIncomePage.Description')}</th>
                   </tr>
                 </thead>
                 <tfoot className="font-weight-bold text-info">
                   <tr>
-                    <th>{t('DashboardSuperAdminPage.Id')}</th>
-                    <th>{t('DashboardSuperAdminPage.Name')}</th>
-                    <th>{t('DashboardSuperAdminPage.Address')}</th>
-                    <th>{t('DashboardSuperAdminPage.President')}</th>
-                    <th>{t('DashboardSuperAdminPage.Mobile')}</th>
-                    <th>{t('DashboardSuperAdminPage.Foundation')}</th>
+                    <th>{t('TreasurerIncomePage.Username')}</th>
+                    <th>{t('TreasurerIncomePage.Organization-Name')}</th>
+                    <th className="text-center">
+                      {t('TreasurerIncomePage.Date')}
+                    </th>
+                    <th className="text-center">
+                      {t('TreasurerIncomePage.Quantity')}
+                    </th>
+                    <th>{t('TreasurerIncomePage.Description')}</th>
                   </tr>
                 </tfoot>
 
@@ -94,26 +99,23 @@ export const TreasurerIncomePage = () => {
                   <tr>
                     <td>Tiger Nixon</td>
                     <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
+                    <td className="text-center">20-03-2021</td>
+                    <td className="text-center">61</td>
+                    <td>Description</td>
                   </tr>
                   <tr>
                     <td>Garrett Winters</td>
                     <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
+                    <td className="text-center">20-03-2021</td>
+                    <td className="text-center">63</td>
+                    <td>Description</td>
                   </tr>
                   <tr>
                     <td>Ashton Cox</td>
                     <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
+                    <td className="text-center">20-03-2021</td>
+                    <td className="text-center">66</td>
+                    <td>Description</td>
                   </tr>
                 </tbody>
               </table>

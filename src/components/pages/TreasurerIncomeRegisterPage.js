@@ -11,12 +11,7 @@ import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getLanguaje,
-  getUiState,
-  getUserAuth,
-  getUserOrgSel,
-} from '../../store/selectors';
+import { getLanguaje, getUiState, getUserAuth } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { getUsersMyOrg, setPayment } from '../../api';
 
@@ -102,7 +97,7 @@ export const TreasurerIncomeRegisterPage = () => {
                   {t('TreasurerIncomeRegisterPage.Select-User')}
                 </h6>
               </div>
-              <div className="card-body">
+              <div className="card-body text-info">
                 <form onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-12">

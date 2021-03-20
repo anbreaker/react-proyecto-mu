@@ -181,7 +181,12 @@
     "Treasurer-Income": "Ingresos",
     "Info": "Janela do Tesoureiro, para mostrar o resumo das finanças.",
     "Table-Title": "Taxas pagas pelos utilizadores durante o ano:",
-    "Payment": "Novo Pagamento"
+    "Payment": "Novo Pagamento",
+    "Username": "Nome do utilizador",
+    "Organization-Name": "Nome Organização",
+    "Date": "Data",
+    "Quantity": "Quantidade",
+    "Description": "Descrição"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Rendimento",

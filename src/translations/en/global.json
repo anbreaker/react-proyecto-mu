@@ -181,7 +181,12 @@
     "Treasurer-Income": "Income",
     "Info": "Treasurer's window, to show the summary of finances.",
     "Table-Title": "Fees paid by users in the year:",
-    "Payment": "New Payment"
+    "Payment": "New Payment",
+    "Username": "Username",
+    "Organization-Name": "Organization Name",
+    "Date": "Date",
+    "Quantity": "Quantity",
+    "Description": "Description"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Income",

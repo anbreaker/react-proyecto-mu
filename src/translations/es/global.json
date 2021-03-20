@@ -181,7 +181,12 @@
     "Treasurer-Income": "Ingresos",
     "Info": "Ventana del Tesorero, para mostrar el resumen de las finanzas.",
     "Table-Title": "Cuotas pagadas por los usuarios en el año:",
-    "Payment": "Nuevo Pago"
+    "Payment": "Nuevo Pago",
+    "Username": "Nombre Usuario",
+    "Organization-Name": "Nombre de la Organización",
+    "Date": "Fecha",
+    "Quantity": "Cantidad",
+    "Description": "Descripción"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Ingreso",
