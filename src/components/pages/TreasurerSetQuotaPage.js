@@ -120,36 +120,33 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
           </div>
           <div className="card-body">
             <div className="table-responsive">
-              {/* TODO caputurar Formulario */}
-
               <form onSubmit={handleQuoteRegister}>
-                <div className="row">
-                  <div className="col-12">
-                    <SelectYears
-                      value={year}
-                      onChange={handleInputChange}
-                      onFocus={handlerOnFocus}
-                      required
-                    />
-                  </div>
+                <div className="col-12">
+                  <SelectYears
+                    value={year}
+                    onChange={handleInputChange}
+                    onFocus={handlerOnFocus}
+                    required
+                  />
+                </div>
+                <div className="col-12">
+                  <h6 className="font-weight-bold mt-3 text-info">
+                    {t('TreasurerIncomeRegisterPage.Description')}:
+                  </h6>
+                  <textarea
+                    className="form-control"
+                    rows="2"
+                    placeholder={t('TreasurerSetQuotaPage.Description-Text')}
+                    name="desc"
+                    value={desc}
+                    onFocus={handlerOnFocus}
+                    onChange={handleInputChange}
+                  ></textarea>
                 </div>
 
-                <div className="row">
-                  <div className="col-12">
-                    <h6 className="font-weight-bold mt-3 text-info">
-                      {t('TreasurerIncomeRegisterPage.Description')}:
-                    </h6>
-                    <textarea
-                      className="form-control"
-                      rows="2"
-                      placeholder={t('TreasurerSetQuotaPage.Description-Text')}
-                      name="desc"
-                      value={desc}
-                      onFocus={handlerOnFocus}
-                      onChange={handleInputChange}
-                    ></textarea>
-                  </div>
+                {/* TODO Arreglar este Row para eliminar el scroll container-fluid??? */}
 
+                <div className="row">
                   <div className="col-12 col-lg-8 mb-4">
                     <h6 className="font-weight-bold mt-3 text-info">
                       {t('TreasurerSetQuotaPage.Amount')}:
@@ -180,7 +177,8 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                       />
                     </div>
                   </div>
-                  <div className="col-lg-4 mt-3 d-flex flex-column justify-content-center">
+
+                  <div className="col-4 mt-3 d-flex flex-column justify-content-center">
                     <Button
                       type="submit"
                       variant="primary"

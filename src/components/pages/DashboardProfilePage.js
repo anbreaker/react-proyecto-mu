@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import validator from 'validator';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, Link, useHistory } from 'react-router-dom';
+import { Input } from 'reactstrap';
 import clsx from 'clsx';
 import Select from 'react-select';
 
@@ -32,10 +33,14 @@ import { getSingleUser, saveUserDB, getAllOrgs } from '../../api/index';
 export const DashboardProfilePage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
-  const uStatus = useSelector(userStatus);
   const history = useHistory();
+
+  const uStatus = useSelector(userStatus);
+
   const [allOrgs, setAllOrgs] = useState({});
   const [orgsUser, setOrgsUser] = useState([]);
+
+  const roles = ['Member', 'Treasurer', 'President', 'Secretary', 'SuperAdmin'];
 
   const location = useLocation();
   const queryParmas = new URLSearchParams(location.search);
@@ -53,6 +58,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     fiscalNumber,
     photoURL,
     contact,
+    role,
   }) => ({
     displayName,
     firstSurname,
@@ -60,6 +66,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     email,
     fiscalNumber,
     photoURL,
+    role,
     address: contact && contact.address,
     mobile: contact && contact.mobile,
     phone: contact && contact.homePhone,
@@ -82,6 +89,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
     mobile,
     phone,
     photoURL,
+    role: rol,
   } = formValues;
 
   useEffect(() => {
@@ -239,7 +247,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                     value={email}
                     disabled
                   />
-
                   <h6 className="font-weight-bold mt-3">
                     {t('RegisterPage.Name')}:
                   </h6>
@@ -250,7 +257,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                     onFocus={handlerOnFocus}
                     onChange={handleInputChange}
                   />
-
                   <div className="row">
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
@@ -335,6 +341,33 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                       />
                     </div>
                   </div>
+
+                  {currentUser.id !== userId && (
+                    <>
+                      <hr />
+
+                      <h6 className="m-0 font-weight-bold text-primary">
+                        {t('DashboardProfilePage.Role')}
+                      </h6>
+
+                      <Input
+                        className="mt-3"
+                        type="select"
+                        name="role"
+                        id="role"
+                        value={rol}
+                        onChange={handleInputChange}
+                        onFocus={handlerOnFocus}
+                      >
+                        {roles.map(rol => (
+                          <option key={rol} value={rol}>
+                            {rol}
+                          </option>
+                        ))}
+                      </Input>
+                    </>
+                  )}
+
                   {userId && (
                     <>
                       <hr />
@@ -361,7 +394,6 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                       </div>
                     </>
                   )}
-
                   <hr />
                   <MessageError msgError={msgError} />
                   <div className="row">

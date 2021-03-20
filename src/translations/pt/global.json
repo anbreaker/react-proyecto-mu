@@ -119,6 +119,7 @@
     "Change-Photo": "A imagem do perfil mudou com sucesso. Por favor prima \"Actualizar o seu perfil\" para guardar as alterações.",
     "Types-File": "Os ficheiros Jpeg, jpg ou png são necessários para alterar a imagem do seu perfil.",
     "Organizations": "Organizações atribuídas ao utilizador:",
+    "Role": "Funções atribuídas ao utilizador:",
     "PlaceHolder-Select": "Seleccionar..."
   },
   "TopBar": {

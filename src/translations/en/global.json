@@ -120,6 +120,7 @@
     "Change-Photo": "Profile picture successfully uploaded!. Please press \"Update your profile\" to save changes",
     "Types-File": "You need jpeg, jpg or png files to change your profile picture.",
     "Organizations": "Organizations assigned to the user:",
+    "Role": "Roles assigned to the user:",
     "PlaceHolder-Select": "Select..."
   },
   "TopBar": {
