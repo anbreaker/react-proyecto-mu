@@ -316,7 +316,7 @@ export const DashboardOrgProfilePage = ({ handlerOnFocus }) => {
                         <DateTimePicker
                           className="form-control react-datetime-picker"
                           locale={languaje}
-                          format="dd,MM,y"
+                          format="dd/MM/yyyy"
                           value={foundationDate}
                           onChange={handleDateChange}
                         />

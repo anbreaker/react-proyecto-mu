@@ -65,3 +65,10 @@ export const deleteFee = async feeData => {
     .then(res => res.data)
     .catch(err => err);
 };
+
+export const setPayment = async paymentData => {
+  return client
+    .post('/org/payment', paymentData)
+    .then(res => res.data)
+    .catch(err => err);
+};

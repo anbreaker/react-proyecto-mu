@@ -11,9 +11,14 @@ import { useForm } from '../../hooks/useForm';
 import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLanguaje, getUiState, getUserAuth } from '../../store/selectors';
+import {
+  getLanguaje,
+  getUiState,
+  getUserAuth,
+  getUserOrgSel,
+} from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
-import { getUsersMyOrg } from '../../api';
+import { getUsersMyOrg, setPayment } from '../../api';
 
 export const TreasurerIncomeRegisterPage = () => {
   const { t } = useTranslation('global');
@@ -27,14 +32,14 @@ export const TreasurerIncomeRegisterPage = () => {
   const [userSelect, setUserSelect] = useState([]);
 
   const { formValues, handleInputChange, setFormValues } = useForm({
-    id: '',
-    orgMember: '',
-    date: '',
-    quantity: '',
-    description: '',
+    userId: '',
+    year: year,
+    date: new Date(),
+    amount: '',
+    desc: '',
   });
 
-  const { id, orgMember, date, quantity, description } = formValues;
+  const { userId, date, amount, desc } = formValues;
 
   useEffect(() => {
     if (loggedUser.uid) {
@@ -47,13 +52,13 @@ export const TreasurerIncomeRegisterPage = () => {
     }
   }, [loggedUser.uid]);
 
-  const handleChangeProfile = event => {
+  const handleSubmit = event => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
-      // Enviar al Back en un Objeto..
-      // TODO enviar este objeto al back
-      // user: { uid, displayName, email, phonNumber, photURL, role }
+      setPayment(formValues)
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
     }
   };
 
@@ -65,20 +70,15 @@ export const TreasurerIncomeRegisterPage = () => {
   };
 
   const isFormChangeProfileValid = () => {
-    if (orgMember.length <= 2) {
+    if (userId.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
-    } else if (id.length <= 2) {
-      dispatch(setErrorAction('DashboardProfilePage.FirstSurname-Required'));
-      return false;
-    } else if (!validator.isNumeric(quantity)) {
+    } else if (!validator.isNumeric(amount)) {
       dispatch(setErrorAction('DashboardProfilePage.FirstSurname-Required'));
       return false;
     }
 
     dispatch(removeErrorAction());
-    // TODO eliminar cuando este verificado
-    console.log(formValues, '<-- Viedon formValues');
 
     return true;
   };
@@ -104,7 +104,7 @@ export const TreasurerIncomeRegisterPage = () => {
                 </h6>
               </div>
               <div className="card-body">
-                <form onSubmit={handleChangeProfile}>
+                <form onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-12">
                       <h6 className="font-weight-bold mt-0">
@@ -112,9 +112,9 @@ export const TreasurerIncomeRegisterPage = () => {
                       </h6>
                       <Input
                         type="select"
-                        name="orgMember"
-                        id="orgMember"
-                        value={orgMember}
+                        name="userId"
+                        id="userId"
+                        value={userId}
                         onChange={handleInputChange}
                         required
                       >
@@ -137,7 +137,7 @@ export const TreasurerIncomeRegisterPage = () => {
                       <DateTimePicker
                         className="form-control react-datetime-picker"
                         locale={languaje}
-                        format="dd,MM,y"
+                        format="dd/MM/yyyy"
                         value={date}
                         onChange={handleDateChange}
                       />
@@ -147,8 +147,8 @@ export const TreasurerIncomeRegisterPage = () => {
                       <InputText
                         text={`$ 0,0`}
                         addClasses="text-right"
-                        name="quantity"
-                        value={quantity}
+                        name="amount"
+                        value={amount}
                         onChange={handleInputChange}
                         required
                       />
@@ -163,8 +163,8 @@ export const TreasurerIncomeRegisterPage = () => {
                         className="form-control"
                         rows="3"
                         placeholder={`Ingrese un mensaje asociado (opcional). Este texto irá en el correo generado automáticamente al usuario.`}
-                        name="description"
-                        value={description}
+                        name="desc"
+                        value={desc}
                         onChange={handleInputChange}
                       ></textarea>
                     </div>
