@@ -148,7 +148,8 @@ export const ContactWith = ({ handlerOnFocus }) => {
                 <div className="row">
                   {userIdParam && (
                     <div className="col-3">
-                      <Link to="/users-admin" className="text-decoration-none">
+                      {/* TODO mejorar esta Redireccion?? como?? */}
+                      <Link to="/" className="text-decoration-none">
                         <Button
                           type="submit"
                           variant="warning"
