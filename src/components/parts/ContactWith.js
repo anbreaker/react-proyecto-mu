@@ -7,7 +7,7 @@ import { getUserAuth } from '../../store/selectors';
 import { Button } from '../basicComponents/Button';
 import { InputText } from '../basicComponents/InputText';
 
-export const ContactAdmin = ({ handlerOnFocus }) => {
+export const ContactWith = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
   const currentUser = useSelector(getUserAuth);

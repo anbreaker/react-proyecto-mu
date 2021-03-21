@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Button } from '../basicComponents/Button';
+import { Link } from 'react-router-dom';
+import { Spinner } from 'reactstrap';
 
+import { Button } from '../basicComponents/Button';
 import { getFiscalYear, getUiState } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
-import { Link } from 'react-router-dom';
 import { SelectYears } from '../basicComponents/SelectYears';
 import { useForm } from '../../hooks/useForm';
 import { formatToLocaleDate } from '../utils/dateFormat';
 import { changeNum2Cur } from '../utils/formatNumber';
-import { Spinner } from 'reactstrap';
 
 export const TreasurerIncomePage = () => {
   const { t } = useTranslation('global');
@@ -62,7 +62,6 @@ export const TreasurerIncomePage = () => {
           </div>
         </div>
 
-        {/* <!-- DataTales Example --> */}
         <div className="card shadow mb-4 mt-4">
           <div className="card-header py-3">
             <h5 className="m-0 font-weight-bold text-primary">
@@ -118,10 +117,15 @@ export const TreasurerIncomePage = () => {
                             role="button"
                           ></i>
 
-                          <i
-                            className="pl-3 pr-3 fas fa-envelope text-primary"
-                            role="button"
-                          ></i>
+                          <Link
+                            to={`/contact/user?userId=${pay._id}`}
+                            className="text-decoration-none"
+                          >
+                            <i
+                              className="pl-3 pr-3 fas fa-envelope text-primary"
+                              role="button"
+                            ></i>
+                          </Link>
 
                           <i
                             className="fas fa-trash text-primary"
@@ -137,7 +141,6 @@ export const TreasurerIncomePage = () => {
           </div>
         </div>
       </div>
-      {/* <!-- /.container-fluid -->  */}
     </MainLayout>
   );
 };

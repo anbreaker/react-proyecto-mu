@@ -34,6 +34,7 @@ import { SecretaryResumePage } from '../pages/SecretaryResumePage';
 import { SecretaryMeetingsPage } from '../pages/SecretaryMeetingsPage';
 import { DisabledUserPage } from '../pages/DisabledUserPage';
 import { UsersAdminPage } from '../pages/UsersAdminPage';
+import { DashboardContact } from '../pages/DashboardContact';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -154,6 +155,11 @@ export const App = () => {
         <PrivateRoute path="/profile" exact>
           <DashboardProfilePage handlerOnFocus={handlerOnFocus} />
         </PrivateRoute>
+
+        {/* --------------------Contact-------------------- */}
+        <Route path="/contact">
+          <DashboardContact handlerOnFocus={handlerOnFocus} />
+        </Route>
 
         <Redirect to="/404" />
       </Switch>

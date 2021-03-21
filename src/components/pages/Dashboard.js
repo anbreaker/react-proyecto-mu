@@ -7,7 +7,7 @@ import { getUserFiscalYear, getUserName } from '../../store/selectors';
 import { SelectYears } from '../basicComponents/SelectYears';
 import { MainLayout } from '../layout/MainLayout';
 import { CardsProfile } from '../parts/CardsProfile';
-import { ContactAdmin } from '../parts/ContactAdmin';
+import { ContactWith } from '../parts/ContactWith';
 import { InfoCards } from '../parts/InfoCards';
 import { changeNum2Cur } from '../utils/formatNumber';
 import { formatToLocaleDate } from '../utils/dateFormat';
@@ -115,7 +115,7 @@ export const Dashboard = ({ handlerOnFocus }) => {
           </table>
 
           <hr />
-          <ContactAdmin handlerOnFocus={handlerOnFocus} />
+          <ContactWith handlerOnFocus={handlerOnFocus} />
         </div>
       </div>
     </MainLayout>
