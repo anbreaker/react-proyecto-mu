@@ -15,6 +15,11 @@ export const getUserRole = state => state.auth.role;
 export const getUserOrgs = state => state.auth.organizations;
 export const getUserOrgSel = state => state.auth.orgSelected;
 
+export const getUserFiscalYear = year => state =>
+  state.auth.organizations
+    .find(org => org._id === state.auth.orgSelected._id)
+    ?.fiscalYear.find(fy => fy.year == year);
+
 export const getFeePerYear = year => state =>
   state.auth.orgSelected.fiscalYear.find(fy => fy.year == year)?.feePerYear;
 

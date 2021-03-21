@@ -94,9 +94,7 @@ export const TreasurerIncomePage = () => {
                         Monto
                       </th>
                       <th className="text-center">Método de pago</th>
-                      <th className="text-center">Ver Detalles</th>
-                      <th className="text-center">Reenviar Mail</th>
-                      <th className="text-center">Eliminar Pago</th>
+                      <th className="text-center">Acciones</th>
                     </tr>
                   </thead>
 
@@ -118,14 +116,12 @@ export const TreasurerIncomePage = () => {
                             className="fas fa-eye text-primary"
                             role="button"
                           ></i>
-                        </td>
-                        <td className="text-center">
+
                           <i
-                            className="fas fa-envelope text-primary"
+                            className="pl-3 pr-3 fas fa-envelope text-primary"
                             role="button"
                           ></i>
-                        </td>
-                        <td className="text-center">
+
                           <i
                             className="fas fa-trash text-primary"
                             role="button"
