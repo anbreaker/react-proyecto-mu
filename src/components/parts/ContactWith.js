@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 import validator from 'validator';
 
+import { getSingleUser } from '../../api';
 import { useForm } from '../../hooks/useForm';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { getUiState, getUserAuth } from '../../store/selectors';
@@ -17,9 +19,28 @@ export const ContactWith = ({ handlerOnFocus }) => {
 
   const { msgError, loading } = useSelector(getUiState);
 
+  const [userforParams, setUserForParams] = useState(null);
+
   const currentUser = useSelector(getUserAuth);
 
   // TODO Pensar como enviar email a usuarios desde /treasurer-income
+
+  const location = useLocation();
+  const queryParmas = new URLSearchParams(location.search);
+  const userId = queryParmas.get('userId');
+
+  useEffect(() => {
+    if (userId !== null) {
+      const userToContact = async function () {
+        return getSingleUser(userId);
+      };
+      userToContact().then(value => {
+        setUserForParams(value);
+      });
+    }
+  }, [userId]);
+
+  if (userId !== null) console.log(userforParams);
 
   const { formValues, handleInputChange } = useForm({
     email: currentUser.email,
