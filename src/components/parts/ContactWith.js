@@ -27,29 +27,25 @@ export const ContactWith = ({ handlerOnFocus }) => {
   const queryParams = new URLSearchParams(location.search);
   const userIdParam = queryParams.get('userId');
 
-  useEffect(() => {
-    console.log(queryParams);
-    //console.log(userIdParam);
-    if (userIdParam) {
-      getSingleUser(userIdParam)
-        .then(value => {
-          //console.log(value);
-          /*setFormValues;
-          ({
-            email: value.email,
-            name: value.contact.fullName,
-            mobile: value.contact.mobile,
-          });*/
-        })
-        .catch(err => console.log(err));
-    }
-  }, [userIdParam]);
-
   const { formValues, handleInputChange, setFormValues } = useForm({
     email: userIdParam ? '' : currentUser.email,
     name: userIdParam ? '' : currentUser.displayName,
     mobile: userIdParam ? '' : currentUser.contact.mobile,
   });
+
+  useEffect(() => {
+    if (userIdParam) {
+      getSingleUser(userIdParam)
+        .then(data => {
+          setFormValues({
+            name: data.fullName,
+            email: data.email,
+            mobile: data.contact.mobile,
+          });
+        })
+        .catch(err => console.log(err));
+    }
+  }, [userIdParam]);
 
   const { email, name, mobile } = formValues;
 
