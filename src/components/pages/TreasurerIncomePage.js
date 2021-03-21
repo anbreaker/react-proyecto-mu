@@ -10,6 +10,7 @@ import { SelectYears } from '../basicComponents/SelectYears';
 import { useForm } from '../../hooks/useForm';
 import { formatToLocaleDate } from '../utils/dateFormat';
 import { changeNum2Cur } from '../utils/formatNumber';
+import { Spinner } from 'reactstrap';
 
 export const TreasurerIncomePage = () => {
   const { t } = useTranslation('global');
@@ -25,8 +26,9 @@ export const TreasurerIncomePage = () => {
   const { year } = formValues;
 
   useEffect(() => {
-    console.log(fiscalYear.find(fy => fy.year == year)?.payment ?? []);
-    setPayments(fiscalYear.find(fy => fy.year == year)?.payment ?? []);
+    setPayments(
+      fiscalYear && (fiscalYear.find(fy => fy.year == year)?.payment ?? [])
+    );
   }, [year]);
 
   return (
@@ -68,60 +70,73 @@ export const TreasurerIncomePage = () => {
             </h5>
           </div>
           <div className="card-body">
-            <div className="table-responsive">
-              <table
-                className="table table-bordered"
-                id="dataTable"
-                width="100%"
-                cellSpacing="0"
-              >
-                <thead className="font-weight-bold text-info">
-                  {/* // TODO Traducir */}
-                  <tr>
-                    <th>{t('TreasurerIncomePage.Username')}</th>
-                    <th className="text-center">
-                      {t('TreasurerIncomePage.Date')}
-                    </th>
-                    <th className="text-center">
-                      {/* // TODO Quantity no corresponde, debe ser Monto */}
-                      Monto
-                    </th>
-                    <th className="text-center">Método de pago</th>
-                    <th className="text-center">Ver Detalles</th>
-                    <th className="text-center">Reenviar Mail</th>
-                  </tr>
-                </thead>
-
-                {/* // TODO crear tabla dinamica... */}
-
-                <tbody>
-                  {payments.map(pay => (
-                    <tr key={pay._id}>
-                      <td>{pay.userName}</td>
-                      <td className="text-center">
-                        {formatToLocaleDate(pay.date)}
-                      </td>
-                      <td className="text-right">
-                        {changeNum2Cur(pay.amount)}
-                      </td>
-                      <td className="text-center">{pay.paymentMethod}</td>
-                      <td className="text-center">
-                        <i
-                          className="fas fa-eye text-primary"
-                          role="button"
-                        ></i>
-                      </td>
-                      <td className="text-center">
-                        <i
-                          className="fas fa-envelope text-primary"
-                          role="button"
-                        ></i>
-                      </td>
+            {loading ? (
+              <div className="d-flex justify-content-center">
+                <Spinner color="primary" />
+              </div>
+            ) : (
+              <div className="table-responsive">
+                <table
+                  className="table table-bordered"
+                  id="dataTable"
+                  width="100%"
+                  cellSpacing="0"
+                >
+                  <thead className="font-weight-bold text-info">
+                    {/* // TODO Traducir */}
+                    <tr>
+                      <th>{t('TreasurerIncomePage.Username')}</th>
+                      <th className="text-center">
+                        {t('TreasurerIncomePage.Date')}
+                      </th>
+                      <th className="text-center">
+                        {/* // TODO Quantity no corresponde, debe ser Monto */}
+                        Monto
+                      </th>
+                      <th className="text-center">Método de pago</th>
+                      <th className="text-center">Ver Detalles</th>
+                      <th className="text-center">Reenviar Mail</th>
+                      <th className="text-center">Eliminar Pago</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+
+                  {/* // TODO crear tabla dinamica... */}
+
+                  <tbody>
+                    {payments?.map(pay => (
+                      <tr key={pay._id}>
+                        <td>{pay.userName}</td>
+                        <td className="text-center">
+                          {formatToLocaleDate(pay.date)}
+                        </td>
+                        <td className="text-right">
+                          {changeNum2Cur(pay.amount)}
+                        </td>
+                        <td className="text-center">{pay.paymentMethod}</td>
+                        <td className="text-center">
+                          <i
+                            className="fas fa-eye text-primary"
+                            role="button"
+                          ></i>
+                        </td>
+                        <td className="text-center">
+                          <i
+                            className="fas fa-envelope text-primary"
+                            role="button"
+                          ></i>
+                        </td>
+                        <td className="text-center">
+                          <i
+                            className="fas fa-trash text-primary"
+                            role="button"
+                          ></i>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </div>
       </div>
