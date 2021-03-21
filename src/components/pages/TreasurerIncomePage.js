@@ -1,24 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Button } from '../basicComponents/Button';
 
-import { getUiState } from '../../store/selectors';
+import { getFiscalYear, getUiState } from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
 import { Link } from 'react-router-dom';
 import { SelectYears } from '../basicComponents/SelectYears';
 import { useForm } from '../../hooks/useForm';
+import { formatToLocaleDate } from '../utils/dateFormat';
+import { changeNum2Cur } from '../utils/formatNumber';
 
 export const TreasurerIncomePage = () => {
   const { t } = useTranslation('global');
 
   const { loading } = useSelector(getUiState);
+  const fiscalYear = useSelector(getFiscalYear);
+  const [payments, setPayments] = useState([]);
 
   const { formValues, handleInputChange } = useForm({
     year: new Date().getFullYear(),
   });
 
   const { year } = formValues;
+
+  useEffect(() => {
+    console.log(fiscalYear.find(fy => fy.year == year)?.payment ?? []);
+    setPayments(fiscalYear.find(fy => fy.year == year)?.payment ?? []);
+  }, [year]);
 
   return (
     <MainLayout>
@@ -67,56 +76,49 @@ export const TreasurerIncomePage = () => {
                 cellSpacing="0"
               >
                 <thead className="font-weight-bold text-info">
+                  {/* // TODO Traducir */}
                   <tr>
                     <th>{t('TreasurerIncomePage.Username')}</th>
-                    <th>{t('TreasurerIncomePage.Organization-Name')}</th>
                     <th className="text-center">
                       {t('TreasurerIncomePage.Date')}
                     </th>
                     <th className="text-center">
-                      {t('TreasurerIncomePage.Quantity')}
+                      {/* // TODO Quantity no corresponde, debe ser Monto */}
+                      Monto
                     </th>
-                    <th>{t('TreasurerIncomePage.Description')}</th>
+                    <th className="text-center">Método de pago</th>
+                    <th className="text-center">Ver Detalles</th>
+                    <th className="text-center">Reenviar Mail</th>
                   </tr>
                 </thead>
-                <tfoot className="font-weight-bold text-info">
-                  <tr>
-                    <th>{t('TreasurerIncomePage.Username')}</th>
-                    <th>{t('TreasurerIncomePage.Organization-Name')}</th>
-                    <th className="text-center">
-                      {t('TreasurerIncomePage.Date')}
-                    </th>
-                    <th className="text-center">
-                      {t('TreasurerIncomePage.Quantity')}
-                    </th>
-                    <th>{t('TreasurerIncomePage.Description')}</th>
-                  </tr>
-                </tfoot>
 
                 {/* // TODO crear tabla dinamica... */}
 
                 <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td className="text-center">20-03-2021</td>
-                    <td className="text-center">61</td>
-                    <td>Description</td>
-                  </tr>
-                  <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td className="text-center">20-03-2021</td>
-                    <td className="text-center">63</td>
-                    <td>Description</td>
-                  </tr>
-                  <tr>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td className="text-center">20-03-2021</td>
-                    <td className="text-center">66</td>
-                    <td>Description</td>
-                  </tr>
+                  {payments.map(pay => (
+                    <tr key={pay._id}>
+                      <td>{pay.userName}</td>
+                      <td className="text-center">
+                        {formatToLocaleDate(pay.date)}
+                      </td>
+                      <td className="text-right">
+                        {changeNum2Cur(pay.amount)}
+                      </td>
+                      <td className="text-center">{pay.paymentMethod}</td>
+                      <td className="text-center">
+                        <i
+                          className="fas fa-eye text-primary"
+                          role="button"
+                        ></i>
+                      </td>
+                      <td className="text-center">
+                        <i
+                          className="fas fa-envelope text-primary"
+                          role="button"
+                        ></i>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

@@ -199,7 +199,11 @@
     "Description": "Descripción",
     "Description-Sms": "Añade un comentario, recordatorio o  mensaje asociado (si lo desea ;-) ). Esta aclaración irá en el correo generado automáticamente para informar al usuario.",
     "Add-Pay": "Añadir Pago",
-    "Cancel": "Cancenlar"
+    "Cancel": "Cancelar",
+    "ErrorAmount": "El monto a registrar debe ser un número y no puede ser vacío o menor a cero",
+    "ErrorAmountExceeded": "El monto a registrar no puede ser mayor al saldo adeudado",
+    "SaveSuccess": "Pago registrado exitosamente",
+    "SaveFail": "Algo falló al guardar el pago. Por favor inténtelo nuevamente."
   },
   "TreasurerExpenseRegisterPage": {
     "Treasurer-Expense": "Registro de Gastos",
@@ -209,7 +213,7 @@
     "Quantity": "Cantidad",
     "Description": "Descripción",
     "Add-Pay": "Añadir Pago",
-    "Cancel": "Cancenlar"
+    "Cancel": "Cancelar"
   },
   "TreasurerExpensePage": {
     "Treasurer-Expense": "Resumen de Gastos",

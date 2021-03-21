@@ -14,6 +14,12 @@ export const getInternalUserId = state => state.auth.id;
 export const getUserRole = state => state.auth.role;
 export const getUserOrgs = state => state.auth.organizations;
 export const getUserOrgSel = state => state.auth.orgSelected;
+
+export const getFeePerYear = year => state =>
+  state.auth.orgSelected.fiscalYear.find(fy => fy.year == year)?.feePerYear;
+
+export const getFiscalYear = state => state.auth.orgSelected.fiscalYear;
+
 export const getUserName = state => state.auth.displayName;
 export const getPermisos = state => state.auth.permisos;
 export const getPhotoURL = state => state.auth.photoURL;

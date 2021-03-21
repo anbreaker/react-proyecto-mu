@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import validator from 'validator';
 import { Input } from 'reactstrap';
 import DateTimePicker from 'react-datetime-picker';
@@ -12,6 +12,7 @@ import { MessageError } from '../parts/MessageError';
 import { Button } from '../basicComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  getFeePerYear,
   getLanguaje,
   getUiState,
   getUserAuth,
@@ -21,17 +22,20 @@ import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { getUsersMyOrg, setPayment } from '../../api';
 import { changeNum2Cur, formatNumber } from '../utils/formatNumber';
 import { InfoCards } from '../parts/InfoCards';
+import { setAlertAction } from '../../store/actions/swal';
 
 export const TreasurerIncomeRegisterPage = () => {
   const { t } = useTranslation('global');
   const dispatch = useDispatch();
   const location = useLocation();
   const year = location.state.year;
+  const history = useHistory();
 
   const { msgError } = useSelector(getUiState);
   const loggedUser = useSelector(getUserAuth);
   const orgSel = useSelector(getUserOrgSel);
   const { languaje } = useSelector(getLanguaje);
+  const feeOrgSel = useSelector(getFeePerYear(year));
 
   const [defaultQuotaError, setDefaultQuotaError] = useState(false);
   const [userSelect, setUserSelect] = useState([]);
@@ -74,10 +78,9 @@ export const TreasurerIncomeRegisterPage = () => {
       getUsersMyOrg()
         .then(data => {
           setUserSelect(data);
-          const feePerYear = orgSel.fiscalYear.find(fy => fy.year === year)
-            ?.feePerYear;
-          if (!feePerYear || feePerYear.length <= 0) setDefaultQuotaError(true);
-          setquotaSelect(feePerYear);
+
+          if (!feeOrgSel || feeOrgSel.length <= 0) setDefaultQuotaError(true);
+          setquotaSelect(feeOrgSel);
         })
         .catch(err => console.log(err));
     }
@@ -87,22 +90,24 @@ export const TreasurerIncomeRegisterPage = () => {
     if (userId) {
       const user = userSelect.find(u => u.id === userId);
 
-      const orgDataUser = user.organizations.find(
-        org => org._id === orgSel._id
-      );
+      const fiscalYear = user.organizations
+        .find(org => org._id === orgSel._id)
+        ?.fiscalYear.find(fy => fy.year == year);
 
-      if (orgDataUser.length > 0) {
-        return console.log('hay una cuota ya establecida');
-        // poner en el select
+      if (fiscalYear) {
+        const montoPagado =
+          fiscalYear?.payment.reduce((acc, val) => acc + val.amount, 0) ?? 0;
+        setPayToDate(montoPagado);
+        setBalance(fiscalYear?.feePerYear?.amount - montoPagado ?? 0);
+        setFieldValue('quotaYear', fiscalYear?.feePerYear?.id);
+        return;
       }
 
       // Si no hay una cuota establecida para el usuario se asume que entonces
       // debe pagar la cuota por defecto para el año y hay que buscarla
       // Además significa que el usuario no ha realizado pagos este año
       // (de lo contrario tendría ya una cuota establecida)
-      const feePerYear = orgSel.fiscalYear
-        .find(fy => fy.year === year)
-        ?.feePerYear.find(fee => fee.defaultFee);
+      const feePerYear = feeOrgSel.find(fee => fee.defaultFee);
       if (!feePerYear) return setDefaultQuotaError(true);
 
       setFieldValue('quotaYear', feePerYear._id);
@@ -111,14 +116,33 @@ export const TreasurerIncomeRegisterPage = () => {
     }
   }, [userId]);
 
+  useEffect(() => {
+    const feePerYear = feeOrgSel.find(fee => fee._id === quotaYear);
+
+    setBalance(feePerYear?.amount - payToDate ?? 0);
+  }, [quotaYear]);
+
   const handleSubmit = event => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
-      console.log('formValues: ', formValues);
       setPayment(formValues)
-        .then(data => console.log('ok'))
-        .catch(err => console.log(err));
+        .then(data => {
+          // TODO Actualizar el store con esta info o actualizar el obj org desde la API
+          console.log(data);
+          dispatch(
+            setAlertAction(
+              'ErrorSwal.Success',
+              'TreasurerIncomeRegisterPage.SaveSuccess',
+              'success'
+            )
+          );
+          history.push('/treasurer-income');
+        })
+        .catch(err => {
+          console.log(err);
+          setErrorAction('TreasurerIncomeRegisterPage.SaveFail');
+        });
     }
   };
 
@@ -137,6 +161,17 @@ export const TreasurerIncomeRegisterPage = () => {
   };
 
   const isFormChangeProfileValid = () => {
+    // TODO Falta traducción de algunos mensajes
+    if (!parseInt(amount) || parseInt(amount) <= 0) {
+      dispatch(setErrorAction('TreasurerIncomeRegisterPage.ErrorAmount'));
+      return false;
+    } //ErrorAmountExceeded
+    if (parseInt(amount) > balance) {
+      dispatch(
+        setErrorAction('TreasurerIncomeRegisterPage.ErrorAmountExceeded')
+      );
+      return false;
+    }
     if (userId.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
@@ -310,7 +345,6 @@ export const TreasurerIncomeRegisterPage = () => {
                             name="bank"
                             value={bank}
                             onChange={handleInputChange}
-                            required
                           />
                         </div>
                       </div>
@@ -326,7 +360,6 @@ export const TreasurerIncomeRegisterPage = () => {
                             name="checkNumber"
                             value={checkNumber}
                             onChange={handleInputChange}
-                            required
                           />
                         </div>
                         <div className="col-12 col-lg-6">

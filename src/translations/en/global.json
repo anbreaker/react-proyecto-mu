@@ -199,7 +199,10 @@
     "Description": "Description",
     "Description-Sms": "Add a comment, reminder or associated message (if desired ;-) ). This clarification will go in the automatically generated mail to inform the user.",
     "Add-Pay": "Add Payment",
-    "Cancel": "Cancenl"
+    "Cancel": "Cancel",
+    "ErrorAmount": "The amount to pay must be a number and not empty",
+    "SaveSuccess": "Payment successfully registered",
+    "SaveFail": "There was a fail during the saving process. Please try again."
   },
   "TreasurerExpenseRegisterPage": {
     "Treasurer-Expense": "Register of Expenditure",
