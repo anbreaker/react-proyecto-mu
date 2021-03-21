@@ -83,7 +83,6 @@ export const TreasurerIncomePage = () => {
                   cellSpacing="0"
                 >
                   <thead className="font-weight-bold text-info">
-                    {/* // TODO Traducir */}
                     <tr>
                       <th>{t('TreasurerIncomePage.Username')}</th>
                       <th className="text-center">
@@ -91,14 +90,16 @@ export const TreasurerIncomePage = () => {
                       </th>
                       <th className="text-center">
                         {/* // TODO Quantity no corresponde, debe ser Monto */}
-                        Monto
+                        {t('TreasurerIncomePage.Amount-Paid')}
                       </th>
-                      <th className="text-center">Método de pago</th>
-                      <th className="text-center">Acciones</th>
+                      <th className="text-center">
+                        {t('TreasurerIncomePage.Payment-Method')}
+                      </th>
+                      <th className="text-center">
+                        {t('TreasurerIncomePage.Actions')}
+                      </th>
                     </tr>
                   </thead>
-
-                  {/* // TODO crear tabla dinamica... */}
 
                   <tbody>
                     {payments?.map(pay => (

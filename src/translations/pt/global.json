@@ -8,7 +8,10 @@
     "Annual-Fee": "Taxa Anual:",
     "Payments": "Pagamentos efectuados:",
     "Balance": "Saldo a pagar:",
-    "Date-Pay": "Data de pagamento"
+    "Date-Pay": "Data de Pagamento",
+    "Amount-Paid": "Quantia paga",
+    "Payment-Method": "Meios de Pagamento",
+    "Bank": "Banco"
   },
   "LoginPage": {
     "Welcome": "Bem-vindo!",
@@ -186,7 +189,10 @@
     "Organization-Name": "Nome Organização",
     "Date": "Data",
     "Quantity": "Quantidade",
-    "Description": "Descrição"
+    "Description": "Descrição",
+    "Amount-Paid": "Quantia paga",
+    "Payment-Method": "Meios de Pagamento",
+    "Actions": "Acções"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Rendimento",
@@ -199,7 +205,17 @@
     "Description": "Descrição",
     "Description-Sms": "Acrescentar um comentário, lembrete ou mensagem associada (se desejar ;-) ). Este esclarecimento irá para o e-mail gerado automaticamente para informar o utilizador.",
     "Add-Pay": "Adicionar pagamento",
-    "Cancel": "Cancenlar"
+    "Cancel": "Cancenlar",
+    "ErrorAmount": "O montante a pagar deve ser um número e não vazio.",
+    "ErrorAmountExceeded": "O montante a ser registado não pode ser superior ao saldo devido.",
+    "SaveSuccess": "Pagamento registado com sucesso.",
+    "SaveFail": "Houve uma falha durante o processo de poupança. Por favor, tente novamente.",
+    "Not-Quota": "Não existe uma quota por defeito para o ano, deve ser criada uma, a fim de ser atribuída aos membros da organização.",
+    "User-Fee": "Taxa associada com o utilizador:",
+    "Payment-Method": "Meios de Pagamento",
+    "Bank": "Banco",
+    "Check-Number": "Número de cheque",
+    "Expiration-Date": "Data de expiração:"
   },
   "TreasurerExpenseRegisterPage": {
     "Treasurer-Expense": "Registo de Despesas",

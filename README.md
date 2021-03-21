@@ -1,5 +1,7 @@
 <h1 align="center">Práctica Final Nº10 Proyecto: Mu – Sistema eGestión 👋</h1>
 
+<br>
+
 > Frontend of Backend on Node Express egestion
 
 <br>
@@ -104,7 +106,7 @@ Once everything is set up, you can boot into dev mode as follows:
 Path: npm run dev
 ```
 
-## 2️⃣ Frontend on REACT(first terminal) 🔨
+## 2️⃣ Frontend on REACT (first terminal) 🔨
 
 <br>
 

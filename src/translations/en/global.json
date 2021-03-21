@@ -8,7 +8,10 @@
     "Annual-Fee": "Annual fee",
     "Payments": "Payments made",
     "Balance": "Balance to be paid",
-    "Date-Pay": "Date of Payment"
+    "Date-Pay": "Date of Payment",
+    "Amount-Paid": "Amount Paid",
+    "Payment-Method": "Payment Method",
+    "Bank": "Bank"
   },
   "LoginPage": {
     "Welcome": "Welcome!",
@@ -186,7 +189,10 @@
     "Organization-Name": "Organization Name",
     "Date": "Date",
     "Quantity": "Quantity",
-    "Description": "Description"
+    "Description": "Description",
+    "Amount-Paid": "Amount Paid",
+    "Payment-Method": "Payment Method",
+    "Actions": "Actions"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Income",
@@ -200,9 +206,16 @@
     "Description-Sms": "Add a comment, reminder or associated message (if desired ;-) ). This clarification will go in the automatically generated mail to inform the user.",
     "Add-Pay": "Add Payment",
     "Cancel": "Cancel",
-    "ErrorAmount": "The amount to pay must be a number and not empty",
-    "SaveSuccess": "Payment successfully registered",
-    "SaveFail": "There was a fail during the saving process. Please try again."
+    "ErrorAmount": "The amount to pay must be a number and not empty.",
+    "ErrorAmountExceeded": "The amount to be recorded cannot be greater than the balance due.",
+    "SaveSuccess": "Payment successfully registered.",
+    "SaveFail": "There was a fail during the saving process. Please try again.",
+    "Not-Quota": "There is no default quota for the year, one must be created in order to be allocated to the members of the organisation.",
+    "User-Fee": "User fee:",
+    "Payment-Method": "Payment Method",
+    "Bank": "Bank",
+    "Check-Number": "Check number",
+    "Expiration-Date": "Expiration Date:"
   },
   "TreasurerExpenseRegisterPage": {
     "Treasurer-Expense": "Register of Expenditure",

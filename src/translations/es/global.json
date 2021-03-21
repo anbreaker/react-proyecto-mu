@@ -8,7 +8,10 @@
     "Annual-Fee": "Cuota Anual:",
     "Payments": "Pagos Realizados:",
     "Balance": "Saldo por pagar:",
-    "Date-Pay": "Fecha del Pago"
+    "Date-Pay": "Fecha del Pago",
+    "Amount-Paid": "Cantidad Pago",
+    "Payment-Method": "Medio de Pago",
+    "Bank": "Banco"
   },
   "LoginPage": {
     "Welcome": "¡Bienvenido!",
@@ -186,7 +189,10 @@
     "Organization-Name": "Nombre de la Organización",
     "Date": "Fecha",
     "Quantity": "Cantidad",
-    "Description": "Descripción"
+    "Description": "Descripción",
+    "Amount-Paid": "Cantidad Pago",
+    "Payment-Method": "Método de Pago",
+    "Actions": "Acciones"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Ingreso",
@@ -200,10 +206,16 @@
     "Description-Sms": "Añade un comentario, recordatorio o  mensaje asociado (si lo desea ;-) ). Esta aclaración irá en el correo generado automáticamente para informar al usuario.",
     "Add-Pay": "Añadir Pago",
     "Cancel": "Cancelar",
-    "ErrorAmount": "El monto a registrar debe ser un número y no puede ser vacío o menor a cero",
-    "ErrorAmountExceeded": "El monto a registrar no puede ser mayor al saldo adeudado",
-    "SaveSuccess": "Pago registrado exitosamente",
-    "SaveFail": "Algo falló al guardar el pago. Por favor inténtelo nuevamente."
+    "ErrorAmount": "La cantidad a registrar debe ser un número y no puede estar vacío o ser menor a cero",
+    "ErrorAmountExceeded": "La cantidad a registrar no puede ser mayor al saldo adeudado",
+    "SaveSuccess": "Pago registrado correctamente",
+    "SaveFail": "Algo falló al guardar el pago. Por favor inténtelo nuevamente.",
+    "Not-Quota": "No existe ninguna cuota por defecto para el año, debe                        crearse una, para poder ser asignada a los miembros de la organización.",
+    "User-Fee": "Cuota asociada al usuario:",
+    "Payment-Method": "Método de Pago",
+    "Bank": "Banco",
+    "Check-Number": "Número de cheque",
+    "Expiration-Date": "Fecha de Vencimiento:"
   },
   "TreasurerExpenseRegisterPage": {
     "Treasurer-Expense": "Registro de Gastos",

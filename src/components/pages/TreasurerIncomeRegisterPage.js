@@ -161,7 +161,6 @@ export const TreasurerIncomeRegisterPage = () => {
   };
 
   const isFormChangeProfileValid = () => {
-    // TODO Falta traducción de algunos mensajes
     if (!parseInt(amount) || parseInt(amount) <= 0) {
       dispatch(setErrorAction('TreasurerIncomeRegisterPage.ErrorAmount'));
       return false;
@@ -209,11 +208,8 @@ export const TreasurerIncomeRegisterPage = () => {
                   {defaultQuotaError ? (
                     <div className="col-lg-12 mb-4 p-0">
                       <div className="card text-dark border-warning">
-                        {/* //TODO Traducir */}
                         <div className="card-body">
-                          No existe ninguna cuota por defecto para el año, debe
-                          crear una para que sea asignada a los miembros de la
-                          organización.
+                          {t('TreasurerIncomeRegisterPage.Not-Quota')}
                         </div>
                       </div>
                     </div>
@@ -244,8 +240,7 @@ export const TreasurerIncomeRegisterPage = () => {
                         </div>
                         <div className="col-12 col-lg-6">
                           <h6 className="font-weight-bold mt-3 mt-lg-0">
-                            {/* //TODO Traducir */}
-                            Cuota asociada al usuario:
+                            {t('TreasurerIncomeRegisterPage.User-Fee')}
                           </h6>
 
                           <Input
@@ -316,8 +311,7 @@ export const TreasurerIncomeRegisterPage = () => {
                       <div className="row">
                         <div className="col-12 col-lg-6">
                           <h6 className="font-weight-bold mt-3">
-                            {/* //TODO Traducir */}
-                            Método de pago:
+                            {t('TreasurerIncomeRegisterPage.Payment-Method')}
                           </h6>
 
                           <Input
@@ -336,12 +330,11 @@ export const TreasurerIncomeRegisterPage = () => {
                         </div>
                         <div className="col-12 col-lg-6">
                           <h6 className="font-weight-bold mt-3">
-                            {/* //TODO Traducir */}
-                            Banco:
+                            {t('TreasurerIncomeRegisterPage.Bank')}:
                           </h6>
 
                           <InputText
-                            text={`Banco...`}
+                            text={`${t('TreasurerIncomeRegisterPage.Bank')}...`}
                             name="bank"
                             value={bank}
                             onChange={handleInputChange}
@@ -351,12 +344,13 @@ export const TreasurerIncomeRegisterPage = () => {
                       <div className="row">
                         <div className="col-12 col-lg-6">
                           <h6 className="font-weight-bold mt-3">
-                            {/* //TODO Traducir */}
-                            Nro Cheque:
+                            {t('TreasurerIncomeRegisterPage.Check-Number')}
                           </h6>
 
                           <InputText
-                            text={`Número de cheque...`}
+                            text={`${t(
+                              'TreasurerIncomeRegisterPage.Check-Number'
+                            )}...`}
                             name="checkNumber"
                             value={checkNumber}
                             onChange={handleInputChange}
@@ -364,8 +358,7 @@ export const TreasurerIncomeRegisterPage = () => {
                         </div>
                         <div className="col-12 col-lg-6">
                           <h6 className="font-weight-bold mt-3">
-                            {/* //TODO Traducir */}
-                            Fecha de Vencimiento:
+                            {t('TreasurerIncomeRegisterPage.Expiration-Date')}
                           </h6>
 
                           <DateTimePicker

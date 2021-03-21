@@ -94,14 +94,11 @@ export const Dashboard = ({ handlerOnFocus }) => {
             <thead className="font-weight-bold text-primary">
               <tr>
                 <th className="text-center">{t('Dashboard.Date-Pay')}</th>
-                {/* // TODO Traducir */}
-                <th className="text-right">Monto</th>
-                <th className="text-center">Medio de Pago</th>
-                <th className="text-center">Banco</th>
+                <th className="text-right">{t('Dashboard.Amount-Paid')}</th>
+                <th className="text-center">{t('Dashboard.Payment-Method')}</th>
+                <th className="text-center">{t('Dashboard.Bank')}</th>
               </tr>
             </thead>
-
-            {/* // TODO crear tabla dinamica... */}
 
             <tbody>
               {fiscalYear?.payment.map(pay => (
