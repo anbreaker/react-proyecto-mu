@@ -118,7 +118,7 @@ export const TreasurerIncomePage = () => {
                           ></i>
 
                           <Link
-                            to={`/contact/user?userId=${pay._id}`}
+                            to={`/contact/user?userId=${pay.userId}`}
                             className="text-decoration-none"
                           >
                             <i
