@@ -1,16 +1,25 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import validator from 'validator';
 
-import { useSelector } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
-import { getUserAuth } from '../../store/selectors';
+import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
+import { getUiState, getUserAuth } from '../../store/selectors';
 import { Button } from '../basicComponents/Button';
 import { InputText } from '../basicComponents/InputText';
+import { MessageError } from './MessageError';
 
 export const ContactWith = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
 
+  const dispatch = useDispatch();
+
+  const { msgError, loading } = useSelector(getUiState);
+
   const currentUser = useSelector(getUserAuth);
+
+  // TODO Pensar como enviar email a usuarios desde /treasurer-income
 
   const { formValues, handleInputChange } = useForm({
     email: currentUser.email,
@@ -20,9 +29,28 @@ export const ContactWith = ({ handlerOnFocus }) => {
 
   const { email, name, mobile } = formValues;
 
-  const handleChangeContact = event => {
+  const handleSendMail = event => {
     event.preventDefault();
-    console.log('Enviar mail');
+
+    if (isFormContacValid()) {
+      console.log('Enviar mail Validado');
+    } else console.log('Enviar mail Sin Validar enviado');
+  };
+
+  const isFormContacValid = () => {
+    // TODO ver isLoginValid de LoginPage para incluir el mail del user como buscar ese mail... ;
+    if (name.length <= 2) {
+      dispatch(setErrorAction('ContactWith.Name-Required'));
+      return false;
+    } else if (!validator.isEmail(email)) {
+      dispatch(setErrorAction('ContactWith.Email-NotValid'));
+      return false;
+    } else if (!validator.isMobilePhone(mobile)) {
+      dispatch(setErrorAction('ContactWith.Error-Phone'));
+      return false;
+    }
+    dispatch(removeErrorAction());
+    return true;
   };
 
   return (
@@ -30,21 +58,21 @@ export const ContactWith = ({ handlerOnFocus }) => {
       <div className="card shadow mb-4">
         <div className="card-header py-3">
           <h4 className="m-0 mt-2 font-weight-bold text-primary text-center">
-            {t('ContactAdmin.Contact')}
+            {t('ContactWith.Contact')}
           </h4>
         </div>
         <div className="card-body">
           <div className="row">
             <div className="col">
-              <form onSubmit={handleChangeContact}>
+              <form onSubmit={handleSendMail}>
                 <div className="row">
                   <div className="col-4 text-center">
                     <h6 className="font-weight-bold mt-3 text-primary">
-                      {t('ContactAdmin.Name')}:
+                      {t('ContactWith.Name')}:
                     </h6>
                     <InputText
                       addClasses="text-center"
-                      text={`${t('ContactAdmin.Name')}...`}
+                      text={`${t('ContactWith.Name')}...`}
                       name="name"
                       value={name}
                       onFocus={handlerOnFocus}
@@ -54,11 +82,11 @@ export const ContactWith = ({ handlerOnFocus }) => {
                   </div>
                   <div className="col-4 text-center">
                     <h6 className="font-weight-bold mt-3 text-primary">
-                      {t('ContactAdmin.Email')}:
+                      {t('ContactWith.Email')}:
                     </h6>
                     <InputText
                       addClasses="text-center"
-                      text={`${t('ContactAdmin.Email')}...`}
+                      text={`${t('ContactWith.Email')}...`}
                       name="email"
                       value={email}
                       onFocus={handlerOnFocus}
@@ -68,11 +96,11 @@ export const ContactWith = ({ handlerOnFocus }) => {
                   </div>
                   <div className="col-4 text-center">
                     <h6 className="font-weight-bold mt-3 text-primary">
-                      {t('ContactAdmin.Mobile')}:
+                      {t('ContactWith.Mobile')}:
                     </h6>
                     <InputText
                       addClasses="text-center"
-                      text={`${t('ContactAdmin.Mobile')}...`}
+                      text={`${t('ContactWith.Mobile')}...`}
                       name="mobile"
                       value={mobile}
                       onFocus={handlerOnFocus}
@@ -83,12 +111,12 @@ export const ContactWith = ({ handlerOnFocus }) => {
                 </div>
                 <br />
                 <h6 className="font-weight-bold mt-3 text-center text-primary">
-                  {t('ContactAdmin.Description')}:
+                  {t('ContactWith.Description')}:
                 </h6>
                 <textarea
                   className="form-control text-center"
                   rows="3"
-                  placeholder={`${t('ContactAdmin.Description')}...`}
+                  placeholder={`${t('ContactWith.Description')}...`}
                   name="text"
                   // value={text}
                   onFocus={handlerOnFocus}
@@ -97,16 +125,17 @@ export const ContactWith = ({ handlerOnFocus }) => {
 
                 <hr />
 
-                <div className="col-12">
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    startIcon="fas fa-share-square"
-                  >
-                    {' '}
-                    {t('ContactAdmin.Send')}
-                  </Button>
-                </div>
+                <MessageError msgError={msgError} />
+
+                <Button
+                  type="submit"
+                  variant="primary"
+                  startIcon="fas fa-share-square"
+                  disabled={loading}
+                >
+                  {' '}
+                  {t('ContactWith.Send')}
+                </Button>
               </form>
             </div>
           </div>

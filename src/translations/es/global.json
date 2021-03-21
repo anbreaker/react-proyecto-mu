@@ -277,13 +277,16 @@
     "Default-Fee": "Importe por defecto",
     "SubTitle": "Trabajando en la organización"
   },
-  "ContactAdmin": {
+  "ContactWith": {
     "Contact": "Contacta con Nosotros:",
     "Name": "Nombre",
     "Email": "Email",
     "Mobile": "Movil",
     "Send": "Enviar Email",
-    "Description": "Escribenos y contactaremos lo antes posible, ¡Gracias!"
+    "Description": "Escribenos y contactaremos lo antes posible, ¡Gracias!",
+    "Error-Phone": "El número telefónico no es correcto, ¡Revisalo!",
+    "Name-Required": "El nombre es requerido, debe contener al menos 3 caracteres",
+    "Email-NotValid": "El email no es válido"
   },
   "CardsProfile": {
     "Name": "Organización",

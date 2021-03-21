@@ -55,6 +55,8 @@ export const App = () => {
   const handlerOnFocus = event => {
     event.preventDefault();
 
+    console.log('onfocus');
+
     dispatch(removeErrorAction());
   };
 
@@ -69,7 +71,9 @@ export const App = () => {
           )}
         </Route>
 
-        <PrivateRoute path="/dashboard" exact component={Dashboard} />
+        <PrivateRoute path="/dashboard" exact>
+          <Dashboard handlerOnFocus={handlerOnFocus} />
+        </PrivateRoute>
 
         <Route path="/login" exact>
           {isLogged ? (

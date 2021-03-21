@@ -277,13 +277,16 @@
     "Default-Fee": "Taxa por Defeito",
     "SubTitle": "Trabalhar na organização"
   },
-  "ContactAdmin": {
+  "ContactWith": {
     "Contact": "Contacte-nos:",
     "Name": "Nome",
     "Email": "Email",
     "Mobile": "Móvel",
     "Send": "Enviar E-mail",
-    "Description": "Escreva-nos e entraremos em contacto consigo o mais rapidamente possível, obrigado!"
+    "Description": "Escreva-nos e entraremos em contacto consigo o mais rapidamente possível, obrigado!",
+    "Error-Phone": "O número de telefone não está correcto, verifique!",
+    "Name-Required": "O nome é obrigatório, deve conter pelo menos 3 caracteres.",
+    "Email-NotValid": "O email é inválido"
   },
   "CardsProfile": {
     "Name": "Nome Organização",

@@ -277,13 +277,16 @@
     "Default-Fee": "Default Fee",
     "SubTitle": "Working in the Organisation"
   },
-  "ContactAdmin": {
+  "ContactWith": {
     "Contact": "Contact us:",
     "Name": "Name",
     "Email": "Email",
     "Mobile": "Mobile",
     "Send": "Send Email",
-    "Description": "Write to us and we will contact you as soon as possible, thank you!"
+    "Description": "Write to us and we will contact you as soon as possible, thank you!",
+    "Error-Phone": "The phone number is not correct, check it!",
+    "Name-Required": "Name is required, to contain at least 3 characters.",
+    "Email-NotValid": "Email is not valid"
   },
   "CardsProfile": {
     "Name": "Organization Name",
