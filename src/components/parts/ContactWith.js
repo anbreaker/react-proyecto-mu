@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
@@ -19,33 +19,36 @@ export const ContactWith = ({ handlerOnFocus }) => {
 
   const { msgError, loading } = useSelector(getUiState);
 
-  const [userforParams, setUserForParams] = useState(null);
-
   const currentUser = useSelector(getUserAuth);
 
   // TODO Pensar como enviar email a usuarios desde /treasurer-income
 
   const location = useLocation();
-  const queryParmas = new URLSearchParams(location.search);
-  const userId = queryParmas.get('userId');
+  const queryParams = new URLSearchParams(location.search);
+  const userIdParam = queryParams.get('userId');
 
   useEffect(() => {
-    if (userId !== null) {
-      const userToContact = async function () {
-        return getSingleUser(userId);
-      };
-      userToContact().then(value => {
-        setUserForParams(value);
-      });
+    console.log(queryParams);
+    //console.log(userIdParam);
+    if (userIdParam) {
+      getSingleUser(userIdParam)
+        .then(value => {
+          //console.log(value);
+          /*setFormValues;
+          ({
+            email: value.email,
+            name: value.contact.fullName,
+            mobile: value.contact.mobile,
+          });*/
+        })
+        .catch(err => console.log(err));
     }
-  }, [userId]);
+  }, [userIdParam]);
 
-  if (userId !== null) console.log(userforParams);
-
-  const { formValues, handleInputChange } = useForm({
-    email: currentUser.email,
-    name: currentUser.displayName,
-    mobile: currentUser.contact.mobile,
+  const { formValues, handleInputChange, setFormValues } = useForm({
+    email: userIdParam ? '' : currentUser.email,
+    name: userIdParam ? '' : currentUser.displayName,
+    mobile: userIdParam ? '' : currentUser.contact.mobile,
   });
 
   const { email, name, mobile } = formValues;
