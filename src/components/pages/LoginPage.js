@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -12,12 +12,19 @@ import { InputPassword } from '../basicComponents/InputPassword';
 import { LinkForms } from '../basicComponents/LinkForms';
 import { Button } from '../basicComponents/Button';
 import { MessageError } from '../parts/MessageError';
-import { getUiState } from '../../store/selectors';
+import {
+  getUiState,
+  getLoginStatus,
+  getEmailVerified,
+} from '../../store/selectors';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import {
+  login,
+  loginStatusChange,
   startGoogleLogin,
   startLoginEmailPassword,
 } from '../../store/actions/auth';
+import { setAlertAction } from '../../store/actions/swal';
 
 export const LoginPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -29,6 +36,10 @@ export const LoginPage = ({ handlerOnFocus }) => {
   const emailRecovery = queryParmas.get('user');
 
   const { msgError, loading } = useSelector(getUiState);
+  const loginStatus = useSelector(getLoginStatus);
+  const emailVerified = useSelector(getEmailVerified);
+
+  const [manualLogin, setManualLogin] = useState(false);
 
   const { formValues, handleInputChange, setFormValues } = useForm({
     email: '',
@@ -41,11 +52,28 @@ export const LoginPage = ({ handlerOnFocus }) => {
     setFormValues({ ...formValues });
   }, []);
 
+  useEffect(() => {
+    // El error de email se debe manejar desde acá para no tener problemas en el proceso de registro
+    if (loginStatus === 'failed' && manualLogin) {
+      if (!emailVerified) {
+        dispatch(
+          setAlertAction(
+            'ErrorSwal.Error',
+            `ErrorSwal.auth/email-not-verified`,
+            'error'
+          )
+        );
+      }
+    }
+  }, [manualLogin, loginStatus]);
+
   const handleLogin = event => {
     event.preventDefault();
 
     if (isLoginValid()) {
+      dispatch(loginStatusChange('authenticating'));
       dispatch(startLoginEmailPassword(email, password));
+      setManualLogin(true);
     }
   };
 

@@ -14,6 +14,8 @@ export const getInternalUserId = state => state.auth.id;
 export const getUserRole = state => state.auth.role;
 export const getUserOrgs = state => state.auth.organizations;
 export const getUserOrgSel = state => state.auth.orgSelected;
+export const getLoginStatus = state => state.auth.loginStatus;
+export const getEmailVerified = state => state.auth.emailVerified;
 
 export const getUserFiscalYear = year => state =>
   state.auth.organizations

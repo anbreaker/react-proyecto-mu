@@ -14,9 +14,10 @@ import { setAlertAction } from './swal';
 import { types } from '../types/types';
 
 export const startLoginEmailPassword = (email, password) => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
     dispatch(startLoadingAction());
-
+    /*const { auth } = getState();
+    if (auth.justRegistered)*/
     try {
       const { user } = await firebaseInit
         .auth()
@@ -64,7 +65,7 @@ export const startGoogleLogin = () => {
 };
 
 export const login = userData => {
-  return async (dispatch, _getState, { api }) => {
+  return async (dispatch, getState, { api }) => {
     if (userData.emailVerified) {
       try {
         configureClient(userData.token);
@@ -81,13 +82,7 @@ export const login = userData => {
         );
       }
     }
-    dispatch(
-      setAlertAction(
-        'ErrorSwal.Error',
-        `ErrorSwal.auth/email-not-verified`,
-        'error'
-      )
-    );
+    dispatch(loginStatusChange('failed'));
   };
 };
 
@@ -124,6 +119,8 @@ export const updateAuth = ({
       active,
       permisos,
       organizations: orgs,
+      emailVerified: true,
+      loginStatus: 'success',
     },
   };
 };
@@ -163,6 +160,11 @@ export const logout = () => ({
   type: types.logout,
 });
 
+export const loginStatusChange = status => ({
+  type: types.loginStatusChange,
+  payload: status,
+});
+
 export const startRegisterWithEmailPasswordName = (email, password, name) => {
   return async (dispatch, _getState, { history }) => {
     dispatch(startLoadingAction());
@@ -177,7 +179,6 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
             url: `https://www.egestion.xyz/login?user=${user.email}`,
           })
           .then(data => {
-            console.log({ data });
             dispatch(
               setAlertAction(
                 'ErrorSwal.Success',

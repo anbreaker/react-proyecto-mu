@@ -35,7 +35,7 @@ export const Dashboard = ({ handlerOnFocus }) => {
     const pay = fiscalYear?.payment.reduce((acc, val) => acc + val.amount, 0);
     setPayToDate(changeNum2Cur(pay) ?? 0);
     setBalance(changeNum2Cur(q - pay) ?? 0);
-  }, [year]);
+  });
 
   return (
     <MainLayout>
