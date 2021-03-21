@@ -5,6 +5,8 @@
   "Dashboard": {
     "Welcome": "Bem-vindo!",
     "Resume": "Este é um resumo dos eventos produzidos na sua organização.",
+    "Title": "Contactar o utilizador:",
+    "Info": "Área para o contacto dos utilizadores.",
     "Annual-Fee": "Taxa Anual:",
     "Payments": "Pagamentos efectuados:",
     "Balance": "Saldo a pagar:",

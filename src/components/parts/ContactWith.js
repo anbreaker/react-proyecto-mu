@@ -21,8 +21,6 @@ export const ContactWith = ({ handlerOnFocus }) => {
 
   const currentUser = useSelector(getUserAuth);
 
-  // TODO Pensar como enviar email a usuarios desde /treasurer-income
-
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const userIdParam = queryParams.get('userId');

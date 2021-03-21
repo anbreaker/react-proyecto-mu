@@ -4,6 +4,8 @@
   },
   "Dashboard": {
     "Welcome": "Welcome!",
+    "Title": "Contact with the user:",
+    "Info": "Area for contacting users.",
     "Resume": "Este es un resumen de los eventos producidos en su organización.",
     "Annual-Fee": "Annual fee",
     "Payments": "Payments made",

@@ -4,6 +4,8 @@
   },
   "Dashboard": {
     "Welcome": "¡Bienvenido!",
+    "Info": "Zona para contactar con los usuarios.",
+    "Title": "Contacta con el usuario:",
     "Resume": "Este es un resumen de tus movimientos en esta organización.",
     "Annual-Fee": "Cuota Anual:",
     "Payments": "Pagos Realizados:",
