@@ -70,7 +70,9 @@ export const UsersAdminPage = () => {
                         <th>{t('UsersAdminPage.firstSurname')}</th>
                         <th>{t('UsersAdminPage.secondSurname')}</th>
                         <th>{t('UsersAdminPage.email')}</th>
-                        <th>{t('UsersAdminPage.View-Details')}</th>
+                        <th className="text-center">
+                          {t('UsersAdminPage.Actions')}
+                        </th>
                       </tr>
                     </thead>
 
@@ -85,7 +87,20 @@ export const UsersAdminPage = () => {
                               <td>{user.email}</td>
                               <td className="text-center">
                                 <Link to={`/profile?user=${user._id}`}>
-                                  <i className="fas fa-eye"></i>
+                                  <i
+                                    className="pl-3 pr-3 fas fa-eye"
+                                    role="button"
+                                  ></i>
+                                </Link>
+
+                                <Link
+                                  to={`/contact/user?userId=${user._id}`}
+                                  className="text-decoration-none"
+                                >
+                                  <i
+                                    className="pl-3 pr-3 fas fa-envelope"
+                                    role="button"
+                                  ></i>
                                 </Link>
                               </td>
                             </tr>

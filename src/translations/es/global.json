@@ -121,7 +121,7 @@
     "Telephone": "Teléfono",
     "Mobile": "Movil",
     "Mobile-Need": "Necesitamos tu numero de móvil para poder tener mantener el contacto. ¡Gracias!",
-    "Update-Profile": "Actualiza tu perfil",
+    "Update-Profile": "Actualiza Perfil",
     "Change-Photo": "¡Imagen de perfil cambiada con éxito!. Por favor presione \"Actualiza tu perfil\" para guardar los cambios.",
     "Types-File": "Se necesitan archivos jpeg, jpg o png para cambiar su foto de perfil",
     "Organizations": "Organizaciones asignadas al usuario:",
@@ -263,7 +263,7 @@
     "firstSurname": "Primer Apellido",
     "secondSurname": "Segundo Apellido",
     "email": "Email",
-    "View-Details": "Detalles"
+    "Actions": "Acciones"
   },
   "TreasurerSetQuotaPage": {
     "Info": "Establecer cuota",
@@ -285,7 +285,8 @@
     "Email": "Email",
     "Mobile": "Movil",
     "Send": "Enviar Email",
-    "Description": "Escribenos y contactaremos lo antes posible, ¡Gracias!",
+    "Description": "Escríbenos y contactaremos lo antes posible, ¡Gracias!",
+    "Suggestion": "Escribe aqui tu mensaje y en cuanto lo pulses para enviar la magia sucederá detrás!",
     "Error-Phone": "El número telefónico no es correcto, ¡Revisalo!",
     "Name-Required": "El nombre es requerido, debe contener al menos 3 caracteres",
     "Email-NotValid": "El email no es válido"

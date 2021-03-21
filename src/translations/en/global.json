@@ -121,7 +121,7 @@
     "Telephone": "Telephone",
     "Mobile": "Mobile",
     "Mobile-Need": "We need your mobile number so we can keep in touch, thank you!",
-    "Update-Profile": "Update your profile",
+    "Update-Profile": "Update Profile",
     "Change-Photo": "Profile picture successfully uploaded!. Please press \"Update your profile\" to save changes",
     "Types-File": "You need jpeg, jpg or png files to change your profile picture.",
     "Organizations": "Organizations assigned to the user:",
@@ -263,7 +263,7 @@
     "firstSurname": "First Surname",
     "secondSurname": "Second Surname",
     "email": "Email",
-    "View-Details": "Details"
+    "Actions": "Actions"
   },
   "TreasurerSetQuotaPage": {
     "Info": "Set Quota",
@@ -286,6 +286,7 @@
     "Mobile": "Mobile",
     "Send": "Send Email",
     "Description": "Write to us and we will contact you as soon as possible, thank you!",
+    "Suggestion": "Write your message here and as soon as you click to send the magic will happen behind!",
     "Error-Phone": "The phone number is not correct, check it!",
     "Name-Required": "Name is required, to contain at least 3 characters.",
     "Email-NotValid": "Email is not valid"

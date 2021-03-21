@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 import validator from 'validator';
 
 import { getSingleUser } from '../../api';
@@ -134,9 +135,8 @@ export const ContactWith = ({ handlerOnFocus }) => {
                 <textarea
                   className="form-control text-center"
                   rows="3"
-                  placeholder={`${t('ContactWith.Description')}...`}
+                  placeholder={`${t('ContactWith.Suggestion')}...`}
                   name="text"
-                  // value={text}
                   onFocus={handlerOnFocus}
                   onChange={handleInputChange}
                 ></textarea>
@@ -145,15 +145,34 @@ export const ContactWith = ({ handlerOnFocus }) => {
 
                 <MessageError msgError={msgError} />
 
-                <Button
-                  type="submit"
-                  variant="primary"
-                  startIcon="fas fa-share-square"
-                  disabled={loading}
-                >
-                  {' '}
-                  {t('ContactWith.Send')}
-                </Button>
+                <div className="row">
+                  {userIdParam && (
+                    <div className="col-3">
+                      {/* TODO mejorar esta Redireccion?? como?? */}
+                      <Link to="/" className="text-decoration-none">
+                        <Button
+                          type="submit"
+                          variant="warning"
+                          startIcon="fas fa-arrow-left"
+                        >
+                          {t('DashboardOrgProfilePage.Back')}
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
+
+                  <div className={userIdParam ? 'col-9' : 'col-12'}>
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      startIcon="fas fa-share-square"
+                      disabled={loading}
+                    >
+                      {' '}
+                      {t('ContactWith.Send')}
+                    </Button>
+                  </div>
+                </div>
               </form>
             </div>
           </div>
