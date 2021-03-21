@@ -19,6 +19,8 @@ import {
 } from '../../store/selectors';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
 import { getUsersMyOrg, setPayment } from '../../api';
+import { changeNum2Cur, formatNumber } from '../utils/formatNumber';
+import { InfoCards } from '../parts/InfoCards';
 
 export const TreasurerIncomeRegisterPage = () => {
   const { t } = useTranslation('global');
@@ -30,23 +32,52 @@ export const TreasurerIncomeRegisterPage = () => {
   const loggedUser = useSelector(getUserAuth);
   const orgSel = useSelector(getUserOrgSel);
   const { languaje } = useSelector(getLanguaje);
-  const [userSelect, setUserSelect] = useState([]);
 
-  const { formValues, handleInputChange, setFormValues } = useForm({
+  const [defaultQuotaError, setDefaultQuotaError] = useState(false);
+  const [userSelect, setUserSelect] = useState([]);
+  const [quotaSelect, setquotaSelect] = useState([]);
+  const [payToDate, setPayToDate] = useState(0);
+  const [balance, setBalance] = useState(0);
+
+  const {
+    formValues,
+    handleInputChange,
+    setFormValues,
+    setFieldValue,
+  } = useForm({
     userId: '',
     year: year,
     date: new Date(),
     amount: '',
     desc: '',
+    quotaYear: '',
+    paymentMethod: '',
+    bank: '',
+    checkNumber: '',
+    dueDate: '',
   });
 
-  const { userId, date, amount, desc } = formValues;
+  const {
+    userId,
+    date,
+    amount,
+    desc,
+    quotaYear,
+    paymentMethod,
+    bank,
+    checkNumber,
+    dueDate,
+  } = formValues;
 
   useEffect(() => {
     if (loggedUser.uid) {
       getUsersMyOrg()
         .then(data => {
           setUserSelect(data);
+          const feePerYear = orgSel.fiscalYear.find(fy => fy.year === year)
+            ?.feePerYear;
+          if (!feePerYear || feePerYear.length <= 0) setDefaultQuotaError(true);
+          setquotaSelect(feePerYear);
         })
         .catch(err => console.log(err));
     }
@@ -55,11 +86,11 @@ export const TreasurerIncomeRegisterPage = () => {
   useEffect(() => {
     if (userId) {
       const user = userSelect.find(u => u.id === userId);
-      console.log(user);
+
       const orgDataUser = user.organizations.find(
         org => org._id === orgSel._id
       );
-      console.log(orgDataUser);
+
       if (orgDataUser.length > 0) {
         return console.log('hay una cuota ya establecida');
         // poner en el select
@@ -67,11 +98,16 @@ export const TreasurerIncomeRegisterPage = () => {
 
       // Si no hay una cuota establecida para el usuario se asume que entonces
       // debe pagar la cuota por defecto para el año y hay que buscarla
+      // Además significa que el usuario no ha realizado pagos este año
+      // (de lo contrario tendría ya una cuota establecida)
       const feePerYear = orgSel.fiscalYear
         .find(fy => fy.year === year)
         ?.feePerYear.find(fee => fee.defaultFee);
+      if (!feePerYear) return setDefaultQuotaError(true);
 
-      console.log(feePerYear);
+      setFieldValue('quotaYear', feePerYear._id);
+      setPayToDate(0);
+      setBalance(feePerYear.amount);
     }
   }, [userId]);
 
@@ -79,8 +115,9 @@ export const TreasurerIncomeRegisterPage = () => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
+      console.log('formValues: ', formValues);
       setPayment(formValues)
-        .then(data => console.log(data))
+        .then(data => console.log('ok'))
         .catch(err => console.log(err));
     }
   };
@@ -89,6 +126,13 @@ export const TreasurerIncomeRegisterPage = () => {
     setFormValues({
       ...formValues,
       date: event,
+    });
+  };
+
+  const handleDueDateChange = event => {
+    setFormValues({
+      ...formValues,
+      dueDate: event,
     });
   };
 
@@ -127,109 +171,198 @@ export const TreasurerIncomeRegisterPage = () => {
               </div>
               <div className="card-body text-info">
                 <form onSubmit={handleSubmit}>
-                  <div className="row">
-                    <div className="col-12">
-                      <h6 className="font-weight-bold mt-0">
-                        {t('TreasurerIncomeRegisterPage.Member')}:
-                      </h6>
-                      <Input
-                        type="select"
-                        name="userId"
-                        id="userId"
-                        value={userId}
-                        onChange={handleInputChange}
-                        required
-                      >
-                        <option value=""></option>
-
-                        {userSelect &&
-                          userSelect.map(user => (
-                            <option key={user.id} value={user.id}>
-                              {user.fullName}
-                            </option>
-                          ))}
-                      </Input>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-12">
-                      <h6 className="font-weight-bold mt-3">
+                  {defaultQuotaError ? (
+                    <div className="col-lg-12 mb-4 p-0">
+                      <div className="card text-dark border-warning">
                         {/* //TODO Traducir */}
-                        Cuota asociada al usuario:
-                      </h6>
-                      <div className="col-lg-12 mb-4 p-0">
-                        <div className="card text-dark border-warning">
-                          {/* //TODO Traducir */}
-                          <div className="card-body">
-                            No existe ninguna cuota por defecto para el año,
-                            debe crear una para que sea asignada a los miembros
-                            de la organización.
-                          </div>
+                        <div className="card-body">
+                          No existe ninguna cuota por defecto para el año, debe
+                          crear una para que sea asignada a los miembros de la
+                          organización.
                         </div>
                       </div>
-                      <Input
-                        type="select"
-                        name="quotaYear"
-                        id="quotaYear"
-                        value={userId}
-                        onChange={handleInputChange}
-                        required
-                      >
-                        <option value=""></option>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="row">
+                        <div className="col-12 col-lg-6">
+                          <h6 className="font-weight-bold mt-0">
+                            {t('TreasurerIncomeRegisterPage.Member')}:
+                          </h6>
+                          <Input
+                            type="select"
+                            name="userId"
+                            id="userId"
+                            value={userId}
+                            onChange={handleInputChange}
+                            required
+                          >
+                            <option value=""></option>
 
-                        {userSelect &&
-                          userSelect.map(user => (
-                            <option key={user.id} value={user.id}>
-                              {user.fullName}
-                            </option>
-                          ))}
-                      </Input>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-6">
-                      <h6 className="font-weight-bold mt-3">
-                        {t('TreasurerIncomeRegisterPage.Date')}:
-                      </h6>
-                      <DateTimePicker
-                        className="form-control react-datetime-picker"
-                        locale={languaje}
-                        format="dd/MM/yyyy"
-                        value={date}
-                        onChange={handleDateChange}
-                      />
-                    </div>
-                    <div className="col-6">
-                      <h6 className="font-weight-bold mt-3">
-                        {t('TreasurerIncomeRegisterPage.Quantity')}:
-                      </h6>
-                      <InputText
-                        text={`$ 0,0`}
-                        addClasses="text-right"
-                        name="amount"
-                        value={amount}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-12">
-                      <h6 className="font-weight-bold mt-3">
-                        {t('TreasurerIncomeRegisterPage.Description')}:
-                      </h6>
-                      <textarea
-                        className="form-control text-justify"
-                        rows="3"
-                        placeholder={t(
-                          'TreasurerIncomeRegisterPage.Description-Sms'
-                        )}
-                        name="desc"
-                        value={desc}
-                        onChange={handleInputChange}
-                      ></textarea>
-                    </div>
-                  </div>
+                            {userSelect &&
+                              userSelect.map(user => (
+                                <option key={user.id} value={user.id}>
+                                  {user.fullName}
+                                </option>
+                              ))}
+                          </Input>
+                        </div>
+                        <div className="col-12 col-lg-6">
+                          <h6 className="font-weight-bold mt-3 mt-lg-0">
+                            {/* //TODO Traducir */}
+                            Cuota asociada al usuario:
+                          </h6>
+
+                          <Input
+                            type="select"
+                            name="quotaYear"
+                            id="quotaYear"
+                            value={quotaYear}
+                            onChange={handleInputChange}
+                            required
+                          >
+                            <option value=""></option>
+
+                            {quotaSelect &&
+                              quotaSelect.map(quota => (
+                                <option key={quota._id} value={quota._id}>
+                                  {`${quota.description} - ${changeNum2Cur(
+                                    quota.amount
+                                  )}`}
+                                </option>
+                              ))}
+                          </Input>
+                        </div>
+                      </div>
+
+                      <div className="row mt-4">
+                        <InfoCards
+                          text={t('Dashboard.Payments')}
+                          variantBorder={'border-bottom-success'}
+                          variantText={'text-success'}
+                          quantity={formatNumber(payToDate)}
+                          addClases={'col-12 col-lg-6'}
+                        />
+                        <InfoCards
+                          text={t('Dashboard.Balance')}
+                          variantBorder={'border-bottom-info'}
+                          variantText={'text-info'}
+                          quantity={formatNumber(balance)}
+                          addClases={'col-12 col-lg-6'}
+                        />
+                      </div>
+                      <div className="row">
+                        <div className="col-6">
+                          <h6 className="font-weight-bold mt-0">
+                            {t('TreasurerIncomeRegisterPage.Date')}:
+                          </h6>
+                          <DateTimePicker
+                            className="form-control react-datetime-picker"
+                            locale={languaje}
+                            format="dd/MM/yyyy"
+                            value={date}
+                            onChange={handleDateChange}
+                          />
+                        </div>
+                        <div className="col-6">
+                          <h6 className="font-weight-bold mt-0">
+                            {t('TreasurerIncomeRegisterPage.Quantity')}:
+                          </h6>
+                          <InputText
+                            text={`$ 0,0`}
+                            addClasses="text-right"
+                            name="amount"
+                            value={amount}
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-12 col-lg-6">
+                          <h6 className="font-weight-bold mt-3">
+                            {/* //TODO Traducir */}
+                            Método de pago:
+                          </h6>
+
+                          <Input
+                            type="select"
+                            name="paymentMethod"
+                            id="paymentMethod"
+                            value={paymentMethod}
+                            onChange={handleInputChange}
+                            required
+                          >
+                            <option value=""></option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Transferencia">Transferencia</option>
+                            <option value="Cheque">Cheque</option>
+                          </Input>
+                        </div>
+                        <div className="col-12 col-lg-6">
+                          <h6 className="font-weight-bold mt-3">
+                            {/* //TODO Traducir */}
+                            Banco:
+                          </h6>
+
+                          <InputText
+                            text={`Banco...`}
+                            name="bank"
+                            value={bank}
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-12 col-lg-6">
+                          <h6 className="font-weight-bold mt-3">
+                            {/* //TODO Traducir */}
+                            Nro Cheque:
+                          </h6>
+
+                          <InputText
+                            text={`Número de cheque...`}
+                            name="checkNumber"
+                            value={checkNumber}
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </div>
+                        <div className="col-12 col-lg-6">
+                          <h6 className="font-weight-bold mt-3">
+                            {/* //TODO Traducir */}
+                            Fecha de Vencimiento:
+                          </h6>
+
+                          <DateTimePicker
+                            className="form-control react-datetime-picker"
+                            locale={languaje}
+                            format="dd/MM/yyyy"
+                            value={dueDate}
+                            onChange={handleDueDateChange}
+                          />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-12">
+                          <h6 className="font-weight-bold mt-3">
+                            {t('TreasurerIncomeRegisterPage.Description')}:
+                          </h6>
+                          <textarea
+                            className="form-control text-justify"
+                            rows="3"
+                            placeholder={t(
+                              'TreasurerIncomeRegisterPage.Description-Sms'
+                            )}
+                            name="desc"
+                            value={desc}
+                            onChange={handleInputChange}
+                          ></textarea>
+                        </div>
+                      </div>
+                    </>
+                  )}
 
                   <hr />
                   <MessageError msgError={msgError} />
@@ -254,6 +387,7 @@ export const TreasurerIncomeRegisterPage = () => {
                         type="submit"
                         variant="primary"
                         startIcon="fas fa-id-card"
+                        disabled={defaultQuotaError}
                       >
                         {' '}
                         {t('TreasurerIncomeRegisterPage.Add-Pay')}

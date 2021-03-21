@@ -194,7 +194,7 @@
     "Enter-Pay": "Enter payment for the year",
     "Select-User": "Select the user:",
     "Member": "Member",
-    "Date": "Date",
+    "Date": "Payment Date",
     "Quantity": "Quantity",
     "Description": "Description",
     "Description-Sms": "Add a comment, reminder or associated message (if desired ;-) ). This clarification will go in the automatically generated mail to inform the user.",

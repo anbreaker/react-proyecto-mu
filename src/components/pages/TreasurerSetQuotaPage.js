@@ -21,6 +21,7 @@ import { SelectYears } from '../basicComponents/SelectYears';
 import { changeNum2Cur } from '../utils/formatNumber';
 import { getOrgFeesPerYear, setFeeToOrg, deleteFee } from '../../api';
 import { setAlertAction } from '../../store/actions/swal';
+import { getOrgData } from '../../store/actions/auth';
 
 export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -62,6 +63,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
               setFees(newFees[0].feePerYear);
             }
             reset();
+            dispatch(getOrgData(orgSel._id));
           }
         })
         .catch(err => console.log(err));
@@ -97,6 +99,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                 'success'
               )
             );
+            dispatch(getOrgData(orgSel._id));
           })
           .catch(err => console.log(err));
       }

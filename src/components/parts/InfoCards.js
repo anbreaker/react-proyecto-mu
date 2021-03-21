@@ -1,15 +1,16 @@
 import React from 'react';
+import clsx from 'clsx';
 
 export const InfoCards = ({
   text,
   variantBorder,
   variantText,
   quantity,
-  ...props
+  addClases,
 }) => {
   return (
     <>
-      <div className="col-md-4">
+      <div className={clsx(addClases ? addClases : 'col-md-4')}>
         <div className={`card mb-4 py-3 ${variantBorder} `}>
           <div className="card-body">
             <div className="row align-items-center">

@@ -6,6 +6,11 @@ export const changeNum2Cur = number => {
   return numeral(number).format('$ 0,0');
 };
 
+export const formatNumber = number => {
+  numeral.locale('es');
+  return numeral(number).format('0,0');
+};
+
 export const unformat = value => {
   numeral.locale('es');
   return numeral(value).value();

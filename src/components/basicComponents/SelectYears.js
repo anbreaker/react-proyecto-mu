@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Input } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 
-export const SelectYears = ({ value, onFocus, onChange, ...props }) => {
+export const SelectYears = ({ value, onChange, ...props }) => {
   const { t } = useTranslation('global');
   const [years, setYears] = useState([]);
 
@@ -24,7 +24,6 @@ export const SelectYears = ({ value, onFocus, onChange, ...props }) => {
         name="year"
         id="year"
         value={value}
-        //onFocus={onFocus}
         onChange={onChange}
         {...props}
       >

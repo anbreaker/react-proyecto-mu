@@ -14,8 +14,7 @@ import { setAlertAction } from './swal';
 import { types } from '../types/types';
 
 export const startLoginEmailPassword = (email, password) => {
-  return async (dispatch, getState, { history, api }) => {
-    // console.log('user: ', firebaseInit.auth().currentUser);
+  return async dispatch => {
     dispatch(startLoadingAction());
 
     try {
@@ -65,7 +64,7 @@ export const startGoogleLogin = () => {
 };
 
 export const login = userData => {
-  return async (dispatch, getState, { history, api }) => {
+  return async (dispatch, _getState, { api }) => {
     if (userData.emailVerified) {
       try {
         configureClient(userData.token);
@@ -137,7 +136,7 @@ export const changeOrgAction = org => {
 };
 
 export const getOrgData = orgId => {
-  return async (dispatch, getState, { history, api }) => {
+  return async (dispatch, _getState, { api }) => {
     dispatch(startLoadingAction());
     setHeaderOrgId(orgId);
     api
@@ -152,7 +151,7 @@ export const getOrgData = orgId => {
 };
 
 export const startLogout = () => {
-  return async (dispatch, getState, { history }) => {
+  return async (dispatch, _getState, { history }) => {
     await firebaseInit.auth().signOut();
     dispatch(logout());
     removeHeaderOrgId();
@@ -165,7 +164,7 @@ export const logout = () => ({
 });
 
 export const startRegisterWithEmailPasswordName = (email, password, name) => {
-  return async (dispatch, getState, { history }) => {
+  return async (dispatch, _getState, { history }) => {
     dispatch(startLoadingAction());
     firebaseInit
       .auth()
