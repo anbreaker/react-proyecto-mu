@@ -19,7 +19,6 @@ import {
 } from '../../store/selectors';
 import { setErrorAction, removeErrorAction } from '../../store/actions/ui';
 import {
-  login,
   loginStatusChange,
   startGoogleLogin,
   startLoginEmailPassword,

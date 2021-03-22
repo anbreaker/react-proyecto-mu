@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router';
 import validator from 'validator';
 
 import { getSingleUser } from '../../api';
@@ -15,6 +14,7 @@ import { MessageError } from './MessageError';
 
 export const ContactWith = ({ handlerOnFocus }) => {
   const { t } = useTranslation('global');
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
@@ -148,16 +148,14 @@ export const ContactWith = ({ handlerOnFocus }) => {
                 <div className="row">
                   {userIdParam && (
                     <div className="col-3">
-                      {/* TODO mejorar esta Redireccion?? como?? */}
-                      <Link to="/" className="text-decoration-none">
-                        <Button
-                          type="submit"
-                          variant="warning"
-                          startIcon="fas fa-arrow-left"
-                        >
-                          {t('DashboardOrgProfilePage.Back')}
-                        </Button>
-                      </Link>
+                      <Button
+                        type="button"
+                        variant="warning"
+                        startIcon="fas fa-arrow-left"
+                        onClick={() => history.goBack()}
+                      >
+                        {t('DashboardOrgProfilePage.Back')}
+                      </Button>
                     </div>
                   )}
 

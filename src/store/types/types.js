@@ -4,6 +4,7 @@ export const types = {
   setProfileImg: '[Auth] Set Profile Img',
   changeOrg: '[Auth] Change Org',
   loginStatusChange: '[Auth] Login Status',
+  updateOrgSel: '[Auth] Update Org Sel.',
 
   uiSetError: '[UI] Set Error',
   uiRemoveError: '[UI] Remove Error',

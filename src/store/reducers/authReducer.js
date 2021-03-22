@@ -40,6 +40,12 @@ export const authReducer = (state = initialState, action) => {
     case types.changeOrg:
       return { ...state, orgSelected: action.payload };
 
+    case types.updateOrgSel:
+      return {
+        ...state,
+        orgSelected: { ...state.orgSelected, fiscalYear: action.payload },
+      };
+
     default:
       return state;
   }

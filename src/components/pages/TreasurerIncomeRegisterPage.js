@@ -23,6 +23,7 @@ import { getUsersMyOrg, setPayment } from '../../api';
 import { changeNum2Cur, formatNumber } from '../utils/formatNumber';
 import { InfoCards } from '../parts/InfoCards';
 import { setAlertAction } from '../../store/actions/swal';
+import { updatePaymentOrgSel } from '../../store/actions/auth';
 
 export const TreasurerIncomeRegisterPage = () => {
   const { t } = useTranslation('global');
@@ -128,8 +129,7 @@ export const TreasurerIncomeRegisterPage = () => {
     if (isFormChangeProfileValid()) {
       setPayment(formValues)
         .then(data => {
-          // TODO Actualizar el store con esta info o actualizar el obj org desde la API
-          console.log(data);
+          dispatch(updatePaymentOrgSel(data));
           dispatch(
             setAlertAction(
               'ErrorSwal.Success',

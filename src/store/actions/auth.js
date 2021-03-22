@@ -14,7 +14,7 @@ import { setAlertAction } from './swal';
 import { types } from '../types/types';
 
 export const startLoginEmailPassword = (email, password) => {
-  return async (dispatch, getState) => {
+  return async dispatch => {
     dispatch(startLoadingAction());
     /*const { auth } = getState();
     if (auth.justRegistered)*/
@@ -65,7 +65,7 @@ export const startGoogleLogin = () => {
 };
 
 export const login = userData => {
-  return async (dispatch, getState, { api }) => {
+  return async (dispatch, _getState, { api }) => {
     if (userData.emailVerified) {
       try {
         configureClient(userData.token);
@@ -178,7 +178,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
           .currentUser.sendEmailVerification({
             url: `https://www.egestion.xyz/login?user=${user.email}`,
           })
-          .then(data => {
+          .then(() => {
             dispatch(
               setAlertAction(
                 'ErrorSwal.Success',
@@ -231,6 +231,13 @@ export const recoveryPassAction = email => {
         );
         console.log({ error });
       });
+  };
+};
+
+export const updatePaymentOrgSel = payments => {
+  return {
+    type: types.updateOrgSel,
+    payload: payments,
   };
 };
 

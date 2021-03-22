@@ -1,35 +1,97 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Spinner } from 'reactstrap';
+import { Spinner, Input } from 'reactstrap';
 
 import { Button } from '../basicComponents/Button';
-import { getFiscalYear, getUiState } from '../../store/selectors';
+import {
+  getFiscalYear,
+  getUiState,
+  getUserOrgSel,
+} from '../../store/selectors';
 import { MainLayout } from '../layout/MainLayout';
 import { SelectYears } from '../basicComponents/SelectYears';
 import { useForm } from '../../hooks/useForm';
 import { formatToLocaleDate } from '../utils/dateFormat';
 import { changeNum2Cur } from '../utils/formatNumber';
+import { getAllUsers } from '../../api/user';
+import { deletePayment } from '../../api';
+import { updatePaymentOrgSel } from '../../store/actions/auth';
+import Swal from 'sweetalert2';
+import { setAlertAction } from '../../store/actions/swal';
 
 export const TreasurerIncomePage = () => {
   const { t } = useTranslation('global');
+  const dispatch = useDispatch();
 
   const { loading } = useSelector(getUiState);
   const fiscalYear = useSelector(getFiscalYear);
   const [payments, setPayments] = useState([]);
+  const orgSel = useSelector(getUserOrgSel);
+  const [users, setUsers] = useState([]);
 
   const { formValues, handleInputChange } = useForm({
     year: new Date().getFullYear(),
   });
 
-  const { year } = formValues;
+  const { year, userFilter } = formValues;
 
   useEffect(() => {
+    getAllUsers(orgSel._id)
+      .then(data => setUsers(data))
+      .catch(err => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    // TODO Agregar que cada vez que se cambie de usuario se muestre la suma total de los pagos hechos por el usuario
+    // TODO Puede ser en el footer de la tabla
     setPayments(
-      fiscalYear && (fiscalYear.find(fy => fy.year == year)?.payment ?? [])
+      fiscalYear &&
+        (fiscalYear
+          .find(fy => fy.year == year)
+          ?.payment.filter(pay => {
+            if (!userFilter) return true;
+            return pay.userId === userFilter;
+          }) ??
+          [])
     );
-  }, [year]);
+  }, [year, userFilter, fiscalYear]);
+
+  const handlePaymentDelete = paymentId => {
+    Swal.fire({
+      title: t('ErrorSwal.Confirmation-Sure'),
+      text: t('ErrorSwal.Warning-undone'),
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: t('ErrorSwal.Confirm-Delete'),
+      cancelButtonText: t('ErrorSwal.Confirm-Cancel'),
+    }).then(result => {
+      if (result.value) {
+        deletePayment(year, paymentId)
+          .then(data => {
+            dispatch(updatePaymentOrgSel(data));
+            dispatch(
+              setAlertAction(
+                'ErrorSwal.Success',
+                'DashboardOrgProfilePage.Remove-Org',
+                'success'
+              )
+            );
+          })
+          .catch(err => {
+            console.log(err);
+            dispatch(
+              setAlertAction(
+                'ErrorSwal.Error',
+                'DashboardOrgProfilePage.Save-Error',
+                'success'
+              )
+            );
+          });
+      }
+    });
+  };
 
   return (
     <MainLayout>
@@ -38,7 +100,7 @@ export const TreasurerIncomePage = () => {
           {t('TreasurerIncomePage.Treasurer-Income')}
         </h1>
 
-        <p className="h5 mb-4">{t('TreasurerIncomePage.Info')}</p>
+        <h5 className="mb-4">{t('TreasurerIncomePage.Info')}</h5>
 
         <div className="row">
           <div className="col-12 col-lg-4">
@@ -61,7 +123,30 @@ export const TreasurerIncomePage = () => {
             </Link>
           </div>
         </div>
+        <div className="row">
+          <div className="col-12 col-lg-6">
+            <h6 className="font-weight-bold mt-3 text-info">
+              {t('TreasurerIncomeRegisterPage.Member')}:
+            </h6>
+            <Input
+              type="select"
+              name="userFilter"
+              id="userFilter"
+              value={userFilter}
+              onChange={handleInputChange}
+              required
+            >
+              <option value="">Todos</option>
 
+              {users &&
+                users.map(user => (
+                  <option key={user.id} value={user.id}>
+                    {user.fullName}
+                  </option>
+                ))}
+            </Input>
+          </div>
+        </div>
         <div className="card shadow mb-4 mt-4">
           <div className="card-header py-3">
             <h5 className="m-0 font-weight-bold text-primary">
@@ -83,6 +168,7 @@ export const TreasurerIncomePage = () => {
                 >
                   <thead className="font-weight-bold text-info">
                     <tr>
+                      <th>#</th>
                       <th>{t('TreasurerIncomePage.Username')}</th>
                       <th className="text-center">
                         {t('TreasurerIncomePage.Date')}
@@ -101,8 +187,9 @@ export const TreasurerIncomePage = () => {
                   </thead>
 
                   <tbody>
-                    {payments?.map(pay => (
+                    {payments?.map((pay, index) => (
                       <tr key={pay._id}>
+                        <td>{index + 1}</td>
                         <td>{pay.userName}</td>
                         <td className="text-center">
                           {formatToLocaleDate(pay.date)}
@@ -130,6 +217,7 @@ export const TreasurerIncomePage = () => {
                           <i
                             className="fas fa-trash text-primary"
                             role="button"
+                            onClick={() => handlePaymentDelete(pay._id)}
                           ></i>
                         </td>
                       </tr>

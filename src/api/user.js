@@ -15,9 +15,10 @@ export const saveUserDB = async userData => {
     .catch(err => err);
 };
 
-export const getAllUsers = async () => {
+export const getAllUsers = async orgId => {
+  const ruta = `/user/all${orgId ? `/${orgId}` : ''}`;
   return client
-    .get('/user/all')
+    .get(ruta)
     .then(res => res.data)
     .catch(err => err);
 };

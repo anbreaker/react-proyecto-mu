@@ -72,3 +72,10 @@ export const setPayment = async paymentData => {
     .then(res => res.data)
     .catch(err => err);
 };
+
+export const deletePayment = async (year, paymentId) => {
+  return client
+    .delete(`/org/payment/${year}/${paymentId}`)
+    .then(res => res.data)
+    .catch(err => err);
+};

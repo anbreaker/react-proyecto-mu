@@ -342,7 +342,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                     </div>
                   </div>
 
-                  {currentUser.id !== userId && (
+                  {currentUser.id !== userId && userId && (
                     <>
                       <hr />
 
