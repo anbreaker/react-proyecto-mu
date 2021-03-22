@@ -204,15 +204,16 @@ export const TreasurerIncomePage = () => {
                             role="button"
                           ></i>
 
-                          <Link
+                          {/* TODO Ventana Modal para previsualizar y enviar mail */}
+                          {/* <Link
                             to={`/contact/user?userId=${pay.userId}`}
                             className="text-decoration-none"
-                          >
-                            <i
-                              className="pl-3 pr-3 fas fa-envelope text-primary"
-                              role="button"
-                            ></i>
-                          </Link>
+                          > */}
+                          <i
+                            className="pl-3 pr-3 fas fa-envelope text-primary"
+                            role="button"
+                          ></i>
+                          {/* </Link> */}
 
                           <i
                             className="fas fa-trash text-primary"

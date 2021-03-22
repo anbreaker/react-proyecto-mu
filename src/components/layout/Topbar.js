@@ -113,10 +113,10 @@ const Topbar = ({ handleInsideClick, handleOutsideClick, showMenu }) => {
               <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               {t('NavBars.Profile')}
             </Link>
-            <Link className="dropdown-item" to="/settings">
+            {/* <Link className="dropdown-item" to="/settings">
               <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
               {t('NavBars.Settings')}
-            </Link>
+            </Link> */}
             <div className="dropdown-divider"></div>
             <div
               className="dropdown-item"
