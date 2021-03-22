@@ -74,7 +74,7 @@ export const TreasurerIncomePage = () => {
             dispatch(
               setAlertAction(
                 'ErrorSwal.Success',
-                'DashboardOrgProfilePage.Remove-Org',
+                'TreasurerIncomePage.Remove-Pay',
                 'success'
               )
             );
@@ -136,7 +136,7 @@ export const TreasurerIncomePage = () => {
               onChange={handleInputChange}
               required
             >
-              <option value="">Todos</option>
+              <option value="">{t('TreasurerIncomePage.All-Users')}</option>
 
               {users &&
                 users.map(user => (

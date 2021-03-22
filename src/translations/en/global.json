@@ -194,7 +194,9 @@
     "Description": "Description",
     "Amount-Paid": "Amount Paid",
     "Payment-Method": "Payment Method",
-    "Actions": "Actions"
+    "Actions": "Actions",
+    "Remove-Pay": "Elimination of payment done Correctly.",
+    "All-Users": "All Users"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Income",
@@ -277,7 +279,10 @@
     "Amount": "Amount (Check, to set as default quota)",
     "Amount-Error": "The amount must be numerical",
     "Default-Fee": "Default Fee",
-    "SubTitle": "Working in the Organisation"
+    "SubTitle": "Working in the Organisation",
+    "Delete-Quote": "Quota removed Correctly",
+    "Description-Table": "Description",
+    "Delete": "Delete"
   },
   "ContactWith": {
     "Contact": "Contact us:",
@@ -286,7 +291,7 @@
     "Mobile": "Mobile",
     "Send": "Send Email",
     "Description": "Write to us and we will contact you as soon as possible, thank you!",
-    "Suggestion": "Write your message here and as soon as you click to send the magic will happen behind!",
+    "Suggestion": "Type your message here, as soon as you are ready and click 'Send Email' the email will be sent to the email address you have chosen.",
     "Error-Phone": "The phone number is not correct, check it!",
     "Name-Required": "Name is required, to contain at least 3 characters.",
     "Email-NotValid": "Email is not valid"

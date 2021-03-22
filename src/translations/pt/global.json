@@ -91,8 +91,8 @@
     "Error": "Erro, Por favor contacte o Administrador talentmuteam@gmail.com",
     "auth/wrong-password": "A senha é inválida ou o utilizador não tem uma senha.",
     "auth/user-not-found": "Não há nenhum usuário com este endereço de e-mail. O usuário pode ter sido excluído.",
-    "auth/email-already-in-use": "El email ingresado ya se encuentra utilizado por otra cuenta.",
-    "auth/email-not-verified": "La dirección email no se ha verificado, por favor revise su correo",
+    "auth/email-already-in-use": "O endereço de correio electrónico que introduziu já é utilizado por outra conta.",
+    "auth/email-not-verified": "O endereço de e-mail não foi verificado, por favor verifique o seu e-mail",
     "NOUSERDATABASE": "Não Utilizador em Base de Dados!",
     "SuccessUpdateProfile": "Dados de perfil actualizados com sucesso! Se for um novo utilizador por favor aguarde até que um administrador o atribua a uma organização",
     "Confirmation-Sure": "Tem a certeza?",
@@ -194,7 +194,9 @@
     "Description": "Descrição",
     "Amount-Paid": "Quantia paga",
     "Payment-Method": "Meios de Pagamento",
-    "Actions": "Acções"
+    "Actions": "Acções",
+    "Remove-Pay": "Eliminação de pagamentos feita Correctamente.",
+    "All-Users": "Todos os Utilizadores"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Rendimento",
@@ -277,7 +279,10 @@
     "Amount": "Quantia (Verificar, para definir como quota padrão)",
     "Amount-Error": "A quantia deve ser numérica",
     "Default-Fee": "Taxa por Defeito",
-    "SubTitle": "Trabalhar na organização"
+    "SubTitle": "Trabalhar na organização",
+    "Delete-Quote": "Quota removida Correctamente",
+    "Description-Table": "Descrição",
+    "Delete": "Apagar"
   },
   "ContactWith": {
     "Contact": "Contacte-nos:",
@@ -286,7 +291,7 @@
     "Mobile": "Móvel",
     "Send": "Enviar E-mail",
     "Description": "Escreva-nos e entraremos em contacto consigo o mais rapidamente possível, obrigado!",
-    "Suggestion": "Escreva aqui a sua mensagem e assim que clicar para enviar a magia acontecerá para trás!",
+    "Suggestion": "Escreva aqui a sua mensagem, assim que estiver pronto e clique em 'Enviar e-mail' o e-mail será enviado para o endereço de e-mail que escolheu.",
     "Error-Phone": "O número de telefone não está correcto, verifique!",
     "Name-Required": "O nome é obrigatório, deve conter pelo menos 3 caracteres.",
     "Email-NotValid": "O email é inválido"

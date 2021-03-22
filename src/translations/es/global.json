@@ -91,7 +91,7 @@
     "Error": "Error, por favor contacte con el Administrador talentmuteam@gmail.com",
     "auth/wrong-password": "La constraseña es inválida o el usuario no tiene ninguna.",
     "auth/user-not-found": "No existe ningún usuario con este email. El usuario puede haber sido eliminado.",
-    "auth/email-already-in-use": "El email ingresado ya se encuentra utilizado por otra cuenta.",
+    "auth/email-already-in-use": "El email ingresado ya está siendo utilizado por otra cuenta.",
     "auth/email-not-verified": "La dirección email no se ha verificado, por favor revise su correo",
     "NOUSERDATABASE": "No es un usuario de la base de datos.",
     "SuccessUpdateProfile": "Datos actualizados correctamente. Si es un usuario nuevo, por favor espere a que un administrador lo asigne a alguna organización",
@@ -194,7 +194,9 @@
     "Description": "Descripción",
     "Amount-Paid": "Cantidad Pago",
     "Payment-Method": "Método de Pago",
-    "Actions": "Acciones"
+    "Actions": "Acciones",
+    "Remove-Pay": "Eliminación de Pago realizada Correctamente.",
+    "All-Users": "Todos los Usuarios"
   },
   "TreasurerIncomeRegisterPage": {
     "Treasurer-Income": "Ingreso",
@@ -277,7 +279,10 @@
     "Amount": "Importe (Check, para establecer como cuota por defecto)",
     "Amount-Error": "El importe debe ser un dato numérico",
     "Default-Fee": "Importe por defecto",
-    "SubTitle": "Trabajando en la organización"
+    "SubTitle": "Trabajando en la organización",
+    "Delete-Quote": "Cuota eliminada Correctamente",
+    "Description-Table": "Descripción",
+    "Delete": "Eliminar"
   },
   "ContactWith": {
     "Contact": "Contacta con Nosotros:",
@@ -286,7 +291,7 @@
     "Mobile": "Movil",
     "Send": "Enviar Email",
     "Description": "Escríbenos y contactaremos lo antes posible, ¡Gracias!",
-    "Suggestion": "Escribe aqui tu mensaje y en cuanto lo pulses para enviar la magia sucederá detrás!",
+    "Suggestion": "Escribe aqui tu mensaje, en cuanto estes listo y pulses 'Enviar Email' volará el email hasta el correo elegido",
     "Error-Phone": "El número telefónico no es correcto, ¡Revisalo!",
     "Name-Required": "El nombre es requerido, debe contener al menos 3 caracteres",
     "Email-NotValid": "El email no es válido"

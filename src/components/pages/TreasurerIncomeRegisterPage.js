@@ -194,9 +194,7 @@ export const TreasurerIncomeRegisterPage = () => {
         <p className="h5 mb-4">{t('TreasurerIncomeRegisterPage.Info')}</p>
 
         <div className="row mt-3 align-items-start minh-100 justify-content-center">
-          {/* <!-- Content Column --> */}
           <div className="col-9 mb-4 ml-3">
-            {/* <!-- Project Card Example --> */}
             <div className="card shadow mb-4">
               <div className="card-header py-3">
                 <h6 className="m-0 font-weight-bold text-primary">
@@ -275,8 +273,8 @@ export const TreasurerIncomeRegisterPage = () => {
                         />
                         <InfoCards
                           text={t('Dashboard.Balance')}
-                          variantBorder={'border-bottom-info'}
-                          variantText={'text-info'}
+                          variantBorder={'border-bottom-danger'}
+                          variantText={'text-danger'}
                           quantity={formatNumber(balance)}
                           addClases={'col-12 col-lg-6'}
                         />

@@ -95,7 +95,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
             dispatch(
               setAlertAction(
                 'ErrorSwal.Success',
-                'DashboardOrgProfilePage.Remove-Org',
+                'TreasurerSetQuotaPage.Delete-Quote',
                 'success'
               )
             );
@@ -214,10 +214,18 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                 >
                   <thead className="font-weight-bold text-info">
                     <tr>
-                      <th>Descripción</th>
-                      <th className="text-center">Cuota por defecto</th>
-                      <th className="text-center">Cuota Definida</th>
-                      <th className="text-center">Eliminar</th>
+                      <th>{t('TreasurerSetQuotaPage.Description-Table')}</th>
+                      <th className="text-center">
+                        {t('TreasurerSetQuotaPage.Default-Fee')}
+                      </th>
+                      <th className="text-center">
+                        {' '}
+                        {t('TreasurerSetQuotaPage.Established-Quota')}
+                      </th>
+                      <th className="text-center">
+                        {' '}
+                        {t('TreasurerSetQuotaPage.Delete')}
+                      </th>
                     </tr>
                   </thead>
                   <tbody>

@@ -56,8 +56,8 @@ export const Dashboard = ({ handlerOnFocus }) => {
         <div className="row">
           <InfoCards
             text={t('Dashboard.Annual-Fee')}
-            variantBorder={'border-bottom-danger'}
-            variantText={'text-danger'}
+            variantBorder={'border-bottom-info'}
+            variantText={'text-info'}
             quantity={quota}
           />
 
@@ -70,8 +70,8 @@ export const Dashboard = ({ handlerOnFocus }) => {
 
           <InfoCards
             text={t('Dashboard.Balance')}
-            variantBorder={'border-bottom-info'}
-            variantText={'text-info'}
+            variantBorder={'border-bottom-danger'}
+            variantText={'text-danger'}
             quantity={balance}
           />
         </div>
