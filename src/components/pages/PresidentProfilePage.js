@@ -139,7 +139,9 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
                   name="file"
                   style={{ display: 'none' }}
                   type="file"
+                  accept="image/*"
                   onChange={handleFileChange}
+                  hidden
                 />
                 <Button disabled={loading} onClick={handleUploadFile}>
                   {t('DashboardProfilePage.Profile-Picture')}
@@ -148,9 +150,7 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
             </div>
           </div>
 
-          {/* <!-- Content Column --> */}
           <div className="col-lg-9 mb-4 ml-3">
-            {/* <!-- Project Card Example --> */}
             <div className="card shadow mb-4">
               <div className="card-header py-3">
                 <h6 className="m-0 font-weight-bold text-primary">
@@ -186,7 +186,7 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
                         required
                       />
                     </div>
-                    {/*  */}
+
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardSuperAdminPage.Mobile')}:
@@ -213,7 +213,7 @@ export const PresidentProfilePage = ({ handlerOnFocus }) => {
                         required
                       />
                     </div>
-                    {/*  */}
+
                     <div className="col-lg-6">
                       <h6 className="font-weight-bold mt-3">
                         {t('DashboardSuperAdminPage.Country')}:
