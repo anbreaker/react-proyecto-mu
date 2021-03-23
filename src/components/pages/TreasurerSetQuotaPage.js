@@ -229,7 +229,6 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* // TODO preguntar a Sebastian... */}
                     {Array.isArray(fees) &&
                       fees.map(fee => (
                         <tr key={fee._id}>

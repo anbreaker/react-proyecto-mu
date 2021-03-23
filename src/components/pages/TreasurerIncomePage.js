@@ -44,8 +44,6 @@ export const TreasurerIncomePage = () => {
   }, []);
 
   useEffect(() => {
-    // TODO Agregar que cada vez que se cambie de usuario se muestre la suma total de los pagos hechos por el usuario
-    // TODO Puede ser en el footer de la tabla
     setPayments(
       fiscalYear &&
         (fiscalYear
@@ -174,7 +172,6 @@ export const TreasurerIncomePage = () => {
                         {t('TreasurerIncomePage.Date')}
                       </th>
                       <th className="text-center">
-                        {/* // TODO Quantity no corresponde, debe ser Monto */}
                         {t('TreasurerIncomePage.Amount-Paid')}
                       </th>
                       <th className="text-center">

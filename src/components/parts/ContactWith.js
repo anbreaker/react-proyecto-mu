@@ -57,7 +57,6 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
   };
 
   const isFormContacValid = () => {
-    // TODO ver isLoginValid de LoginPage para incluir el mail del user como buscar ese mail... ;
     if (name.length <= 2) {
       dispatch(setErrorAction('ContactWith.Name-Required'));
       return false;

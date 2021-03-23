@@ -76,7 +76,7 @@ export const LoginPage = ({ handlerOnFocus }) => {
     }
   };
 
-  // /login?user=antunez19@gmail.com
+  // /login?user=email@gmail.com
   const isLoginValid = () => {
     let mail;
     if (emailRecovery) mail = !validator.isEmail(emailRecovery);
@@ -85,7 +85,6 @@ export const LoginPage = ({ handlerOnFocus }) => {
     if (mail) {
       dispatch(setErrorAction('RegisterPage.Email-NotValid'));
       return false;
-      // TODO Refrescar input password... Preguntar
     } else if (password <= 5) {
       dispatch(setErrorAction('LoginPage.Password-Error'));
       return false;
@@ -106,12 +105,11 @@ export const LoginPage = ({ handlerOnFocus }) => {
             class: 'bg-gradient-primary',
           }}
         />
-        {/* <!-- Outer Row --> */}
+
         <div className="row justify-content-center pt-5">
           <div className="col-xl-10 col-lg-12 col-md-9">
             <div className="card o-hidden border-0 shadow-lg my-5">
               <div className="card-body p-0">
-                {/* <!-- Nested Row within Card Body --> */}
                 <div className="row">
                   <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
                   <div className="col-lg-6">

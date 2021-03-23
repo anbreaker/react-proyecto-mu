@@ -114,7 +114,6 @@ export const TreasurerExpensePage = () => {
           </div>
         </div>
       </div>
-      {/* <!-- /.container-fluid -->  */}
     </MainLayout>
   );
 };
