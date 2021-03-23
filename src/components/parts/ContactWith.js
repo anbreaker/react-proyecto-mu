@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router';
 import validator from 'validator';
 
+import client from '../../api/client';
 import { getSingleUser } from '../../api';
 import { useForm } from '../../hooks/useForm';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
@@ -30,7 +31,7 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
     email: userIdParam ? '' : currentUser.email,
     name: userIdParam ? '' : currentUser.displayName,
     mobile: userIdParam ? '' : currentUser.contact.mobile,
-    messageContact: '',
+    message: '',
   });
 
   useEffect(() => {
@@ -47,14 +48,23 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
     }
   }, [userIdParam]);
 
-  const { email, name, mobile, messageContact } = formValues;
+  const { email, name, mobile, message } = formValues;
 
-  const handleSendMail = event => {
+  const handleSendMail = async event => {
     event.preventDefault();
 
     if (isFormContacValid()) {
-      console.log('Enviar mail Validado');
-      console.log(formValues);
+      try {
+        if (location.pathname === '/dashboard') {
+          // await client.senderMail({ ...formValues, type: 'CONTACT' });
+          console.log({ ...formValues, type: 'CONTACT' });
+        } else {
+          // await client.senderMail({ ...formValues, type: 'INVOICE' });
+          console.log({ ...formValues, type: 'INVOICE' });
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -68,7 +78,7 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
     } else if (!validator.isMobilePhone(mobile)) {
       dispatch(setErrorAction('ContactWith.Error-Phone'));
       return false;
-    } else if (messageContact.length <= 2) {
+    } else if (message.length <= 2) {
       dispatch(setErrorAction('ContactWith.Empty-Message'));
       return false;
     }
@@ -140,8 +150,8 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
                   className="form-control text-center"
                   rows="3"
                   placeholder={`${t('ContactWith.Suggestion')}...`}
-                  name="messageContact"
-                  value={messageContact}
+                  name="message"
+                  value={message}
                   onFocus={handlerOnFocus}
                   onChange={handleInputChange}
                 ></textarea>

@@ -24,6 +24,8 @@ import { changeNum2Cur, formatNumber } from '../utils/formatNumber';
 import { InfoCards } from '../parts/InfoCards';
 import { setAlertAction } from '../../store/actions/swal';
 import { updatePaymentOrgSel } from '../../store/actions/auth';
+import client from '../../api/client';
+import { formatToLocaleDate } from '../utils/dateFormat';
 
 export const TreasurerIncomeRegisterPage = () => {
   const { t } = useTranslation('global');
@@ -123,7 +125,7 @@ export const TreasurerIncomeRegisterPage = () => {
     setBalance(feePerYear?.amount - payToDate ?? 0);
   }, [quotaYear]);
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
     if (isFormChangeProfileValid()) {
@@ -144,6 +146,20 @@ export const TreasurerIncomeRegisterPage = () => {
           setErrorAction('TreasurerIncomeRegisterPage.SaveFail');
         });
     }
+
+    try {
+      // await client.senderMail({ ...formValues, type: 'INVOICE' });
+      delete formValues.dueDate;
+      console.log({
+        ...formValues,
+        date: formatToLocaleDate(date),
+        type: 'CONTACT',
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    //formatToLocaleDate
   };
 
   const handleDateChange = event => {

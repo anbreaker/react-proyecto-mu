@@ -17,14 +17,12 @@ import { removeErrorAction } from '../../store/actions/ui';
 import { DashboardProfilePage } from '../pages/DashboardProfilePage';
 import { DashboardSuperAdminPage } from '../pages/DashboardSuperAdminPage';
 import { DashboardOrgProfilePage } from '../pages/DashboardOrgProfilePage';
-import { PresidentProfilePage } from '../pages/PresidentProfilePage';
 import { firebaseInit } from '../../firebase/firebaseConfig';
 import { login } from '../../store/actions/auth';
 import { configureClient } from '../../api/client';
 import { SweetAlert } from '../parts/SweetAlert';
 import { VerifyMailPage } from '../pages/VerifyMailPage';
 import { UnauthorizedPage } from '../pages/UnauthorizedPage';
-import { TreasurerResumePage } from '../pages/TreasurerResumePage';
 import { TreasurerIncomePage } from '../pages/TreasurerIncomePage';
 import { TreasurerIncomeRegisterPage } from '../pages/TreasurerIncomeRegisterPage';
 import { TreasurerExpenseRegisterPage } from '../pages/TreasurerExpenseRegisterPage';
@@ -35,6 +33,8 @@ import { SecretaryMeetingsPage } from '../pages/SecretaryMeetingsPage';
 import { DisabledUserPage } from '../pages/DisabledUserPage';
 import { UsersAdminPage } from '../pages/UsersAdminPage';
 import { DashboardContact } from '../pages/DashboardContact';
+// import { PresidentProfilePage } from '../pages/PresidentProfilePage';
+// import { TreasurerResumePage } from '../pages/TreasurerResumePage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -102,37 +102,42 @@ export const App = () => {
         <PrivateRoute path="/users-admin" exact>
           <UsersAdminPage />
         </PrivateRoute>
-        {/* //TODO proteger ruta President... */}
-        <Route path="/president" exact>
-          <PresidentProfilePage />
-        </Route>
 
-        {/* //TODO Una vez hecho el registro, deberia enviarnos a esta ventana para indicar Que tenemos que verificar el email*/}
+        {/* //TODO proteger ruta President... */}
+        {/* <Route path="/president" exact>
+          <PresidentProfilePage />
+        </Route> */}
+
         <Route path="/verify" exact>
           <VerifyMailPage />
         </Route>
 
         {/* --------------------Treasurer-------------------- */}
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
-        <Route path="/treasurer-resume" exact>
+        {/* <Route path="/treasurer-resume" exact>
           <TreasurerResumePage />
-        </Route>
+        </Route> */}
+
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
-        <Route path="/treasurer-income" exact>
+        <PrivateRoute path="/treasurer-income" exact>
           <TreasurerIncomePage />
-        </Route>
+        </PrivateRoute>
+
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
-        <Route path="/income-register" exact>
+        <PrivateRoute path="/income-register" exact>
           <TreasurerIncomeRegisterPage />
-        </Route>
+        </PrivateRoute>
+
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <Route path="/expense-register" exact>
           <TreasurerExpenseRegisterPage />
         </Route>
+
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <Route path="/treasurer-expense" exact>
           <TreasurerExpensePage />
         </Route>
+
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <Route path="/treasurer-quota" exact>
           <TreasurerSetQuotaPage handlerOnFocus={handlerOnFocus} />
@@ -159,9 +164,9 @@ export const App = () => {
         </PrivateRoute>
 
         {/* --------------------Contact-------------------- */}
-        <Route path="/contact">
+        <PrivateRoute path="/contact">
           <DashboardContact handlerOnFocus={handlerOnFocus} />
-        </Route>
+        </PrivateRoute>
 
         <Redirect to="/404" />
       </Switch>

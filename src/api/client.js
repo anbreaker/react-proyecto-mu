@@ -38,6 +38,11 @@ client.login = credentials =>
     return auth;
   });
 
+// Configure client
+export const configureClient = token => {
+  if (token) setAuthorizationHeader(token);
+};
+
 // Logout method
 client.logout = () =>
   new Promise(resolve => {
@@ -63,9 +68,9 @@ client.interceptors.response.use(
   }
 );
 
-// Configure client
-export const configureClient = token => {
-  if (token) setAuthorizationHeader(token);
+//Send email
+client.senderMail = formValues => {
+  return client.post('/apiV1/sender', formValues);
 };
 
 export default client;

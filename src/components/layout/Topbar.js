@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 import { Input } from 'reactstrap';
 
-import img from '../../assets/img/undraw_profile_1.svg';
+import img from '../../assets/img/undraw_profile.svg';
 import { startLogout, getOrgData } from '../../store/actions/auth';
 import { setShowSidebar } from '../../store/actions/ui';
 import { getSidebarStatus } from '../../store/selectors';
