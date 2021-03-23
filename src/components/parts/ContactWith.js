@@ -30,6 +30,7 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
     email: userIdParam ? '' : currentUser.email,
     name: userIdParam ? '' : currentUser.displayName,
     mobile: userIdParam ? '' : currentUser.contact.mobile,
+    messageContact: '',
   });
 
   useEffect(() => {
@@ -46,14 +47,15 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
     }
   }, [userIdParam]);
 
-  const { email, name, mobile } = formValues;
+  const { email, name, mobile, messageContact } = formValues;
 
   const handleSendMail = event => {
     event.preventDefault();
 
     if (isFormContacValid()) {
       console.log('Enviar mail Validado');
-    } else console.log('Enviar mail Sin Validar enviado');
+      console.log(formValues);
+    }
   };
 
   const isFormContacValid = () => {
@@ -65,6 +67,9 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
       return false;
     } else if (!validator.isMobilePhone(mobile)) {
       dispatch(setErrorAction('ContactWith.Error-Phone'));
+      return false;
+    } else if (messageContact.length <= 2) {
+      dispatch(setErrorAction('ContactWith.Empty-Message'));
       return false;
     }
     dispatch(removeErrorAction());
@@ -135,7 +140,8 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
                   className="form-control text-center"
                   rows="3"
                   placeholder={`${t('ContactWith.Suggestion')}...`}
-                  name="text"
+                  name="messageContact"
+                  value={messageContact}
                   onFocus={handlerOnFocus}
                   onChange={handleInputChange}
                 ></textarea>

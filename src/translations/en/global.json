@@ -293,6 +293,7 @@
     "Description": "Write to us and we will contact you as soon as possible, thank you!",
     "Suggestion": "Type your message here, as soon as you are ready and press 'Send Email' it will fly to the chosen email address.",
     "Error-Phone": "The phone number is not correct, check it!",
+    "Empty-Message": "Oops! I seem to have forgotten to write a message!",
     "Name-Required": "Name is required, to contain at least 3 characters.",
     "Email-NotValid": "Email is not valid"
   },

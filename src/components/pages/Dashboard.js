@@ -29,7 +29,6 @@ export const Dashboard = ({ handlerOnFocus }) => {
   const [balance, setBalance] = useState(0);
 
   useEffect(() => {
-    console.log(fiscalYear);
     const q = fiscalYear?.feePerYear?.amount;
     setquota(changeNum2Cur(q) ?? 0);
     const pay = fiscalYear?.payment.reduce((acc, val) => acc + val.amount, 0);
