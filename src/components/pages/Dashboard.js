@@ -115,7 +115,10 @@ export const Dashboard = ({ handlerOnFocus }) => {
           </table>
 
           <hr />
-          <ContactWith handlerOnFocus={handlerOnFocus} />
+          <ContactWith
+            title={t('ContactWith.Contact')}
+            handlerOnFocus={handlerOnFocus}
+          />
         </div>
       </div>
     </MainLayout>

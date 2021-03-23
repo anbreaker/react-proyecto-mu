@@ -291,7 +291,7 @@
     "Mobile": "Móvel",
     "Send": "Enviar E-mail",
     "Description": "Escreva-nos e entraremos em contacto consigo o mais rapidamente possível, obrigado!",
-    "Suggestion": "Escreva aqui a sua mensagem, assim que estiver pronto e clique em 'Enviar e-mail' o e-mail será enviado para o endereço de e-mail que escolheu.",
+    "Suggestion": "Escreva aqui a sua mensagem, assim que estiver pronto e prima 'Enviar e-mail', ela voará para o endereço de e-mail escolhido.",
     "Error-Phone": "O número de telefone não está correcto, verifique!",
     "Name-Required": "O nome é obrigatório, deve conter pelo menos 3 caracteres.",
     "Email-NotValid": "O email é inválido"

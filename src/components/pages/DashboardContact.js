@@ -14,7 +14,10 @@ export const DashboardContact = ({ handlerOnFocus }) => {
 
         <p className="h5 mb-4">{t('Dashboard.Info')}</p>
 
-        <ContactWith handlerOnFocus={handlerOnFocus} />
+        <ContactWith
+          title={t('Dashboard.Title')}
+          handlerOnFocus={handlerOnFocus}
+        />
       </div>
     </MainLayout>
   );

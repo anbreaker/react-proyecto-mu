@@ -12,7 +12,7 @@ import { Button } from '../basicComponents/Button';
 import { InputText } from '../basicComponents/InputText';
 import { MessageError } from './MessageError';
 
-export const ContactWith = ({ handlerOnFocus }) => {
+export const ContactWith = ({ title, handlerOnFocus }) => {
   const { t } = useTranslation('global');
   const history = useHistory();
 
@@ -77,7 +77,7 @@ export const ContactWith = ({ handlerOnFocus }) => {
       <div className="card shadow mb-4">
         <div className="card-header py-3">
           <h4 className="m-0 mt-2 font-weight-bold text-primary text-center">
-            {t('ContactWith.Contact')}
+            {title}
           </h4>
         </div>
         <div className="card-body">
