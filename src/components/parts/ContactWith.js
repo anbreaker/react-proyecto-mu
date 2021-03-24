@@ -56,7 +56,11 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
     if (isFormContacValid()) {
       const sendMail = useSendGrid();
 
-      sendMail(formValues, dispatch);
+      let type;
+      if (location.pathname === '/dashboard') type = 'CONTACT';
+      if (location.pathname === '/contact/user') type = 'ADMIN';
+
+      sendMail(formValues, dispatch, type);
     }
   };
 
