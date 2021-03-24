@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router';
 import validator from 'validator';
 
-import client from '../../api/client';
 import { getSingleUser } from '../../api';
 import { useForm } from '../../hooks/useForm';
 import { removeErrorAction, setErrorAction } from '../../store/actions/ui';
@@ -12,7 +11,7 @@ import { getUiState, getUserAuth } from '../../store/selectors';
 import { Button } from '../basicComponents/Button';
 import { InputText } from '../basicComponents/InputText';
 import { MessageError } from './MessageError';
-import { setAlertAction } from '../../store/actions/swal';
+import { useSendGrid } from '../../hooks/useSendMail';
 
 export const ContactWith = ({ title, handlerOnFocus }) => {
   const { t } = useTranslation('global');
@@ -55,39 +54,9 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
     event.preventDefault();
 
     if (isFormContacValid()) {
-      try {
-        if (location.pathname === '/dashboard') {
-          console.log({ ...formValues, type: 'CONTACT' }, '<--- Ver!!');
+      const sendMail = useSendGrid();
 
-          await client.senderMail(
-            {
-              email: process.env.REACT_APP_CONTACT_ADMIN,
-              type: 'CONTACT',
-              data: {
-                userEmail: formValues.email,
-                name: formValues.name,
-                mobile: formValues.mobile,
-                message: formValues.message,
-              },
-            },
-            dispatch(
-              setAlertAction(
-                'ErrorSwal.Success',
-                'ContactWith.Send-Email',
-                'success'
-              )
-            )
-          );
-        } else {
-          console.log({ ...formValues, type: 'INVOICE' });
-          dispatch(
-            setAlertAction('ErrorSwal.Error', 'ContactWith.Send-Error', 'error')
-          );
-          await client.senderMail({ ...formValues, type: 'INVOICE' });
-        }
-      } catch (error) {
-        console.log(error);
-      }
+      sendMail(formValues, dispatch);
     }
   };
 
