@@ -24,8 +24,8 @@ import { changeNum2Cur, formatNumber } from '../utils/formatNumber';
 import { InfoCards } from '../parts/InfoCards';
 import { setAlertAction } from '../../store/actions/swal';
 import { updatePaymentOrgSel } from '../../store/actions/auth';
-import client from '../../api/client';
 import { formatToLocaleDate } from '../utils/dateFormat';
+import client from '../../api/client';
 
 export const TreasurerIncomeRegisterPage = () => {
   const { t } = useTranslation('global');
@@ -148,18 +148,17 @@ export const TreasurerIncomeRegisterPage = () => {
     }
 
     try {
-      // await client.senderMail({ ...formValues, type: 'INVOICE' });
       delete formValues.dueDate;
       console.log({
         ...formValues,
         date: formatToLocaleDate(date),
         type: 'CONTACT',
       });
+
+      await client.senderMail({ ...formValues, type: 'INVOICE' });
     } catch (error) {
       console.log(error);
     }
-
-    //formatToLocaleDate
   };
 
   const handleDateChange = event => {
