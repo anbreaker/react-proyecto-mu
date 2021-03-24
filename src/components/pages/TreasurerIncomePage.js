@@ -45,7 +45,6 @@ export const TreasurerIncomePage = () => {
 
   useEffect(() => {
     if (orgSel._id) {
-      console.log('aca');
       getAllUsers(orgSel._id)
         .then(data => setUsers(data))
         .catch(err => console.log(err));
