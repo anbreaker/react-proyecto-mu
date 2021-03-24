@@ -25,14 +25,14 @@ import { VerifyMailPage } from '../pages/VerifyMailPage';
 import { UnauthorizedPage } from '../pages/UnauthorizedPage';
 import { TreasurerIncomePage } from '../pages/TreasurerIncomePage';
 import { TreasurerIncomeRegisterPage } from '../pages/TreasurerIncomeRegisterPage';
-import { TreasurerExpenseRegisterPage } from '../pages/TreasurerExpenseRegisterPage';
 import { TreasurerExpensePage } from '../pages/TreasurerExpensePage';
 import { TreasurerSetQuotaPage } from '../pages/TreasurerSetQuotaPage';
-import { SecretaryResumePage } from '../pages/SecretaryResumePage';
-import { SecretaryMeetingsPage } from '../pages/SecretaryMeetingsPage';
 import { DisabledUserPage } from '../pages/DisabledUserPage';
 import { UsersAdminPage } from '../pages/UsersAdminPage';
 import { DashboardContact } from '../pages/DashboardContact';
+// import { SecretaryResumePage } from '../pages/SecretaryResumePage';
+// import { TreasurerExpenseRegisterPage } from '../pages/TreasurerExpenseRegisterPage';
+// import { SecretaryMeetingsPage } from '../pages/SecretaryMeetingsPage';
 // import { PresidentProfilePage } from '../pages/PresidentProfilePage';
 // import { TreasurerResumePage } from '../pages/TreasurerResumePage';
 
@@ -118,39 +118,35 @@ export const App = () => {
           <TreasurerResumePage />
         </Route> */}
 
-        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <PrivateRoute path="/treasurer-income" exact>
           <TreasurerIncomePage />
         </PrivateRoute>
 
-        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
         <PrivateRoute path="/income-register" exact>
           <TreasurerIncomeRegisterPage />
         </PrivateRoute>
 
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
-        <Route path="/expense-register" exact>
+        {/* <Route path="/expense-register" exact>
           <TreasurerExpenseRegisterPage />
-        </Route>
+        </Route> */}
 
-        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
-        <Route path="/treasurer-expense" exact>
+        <PrivateRoute path="/treasurer-expense" exact>
           <TreasurerExpensePage />
-        </Route>
+        </PrivateRoute>
 
-        {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
-        <Route path="/treasurer-quota" exact>
+        <PrivateRoute path="/treasurer-quota" exact>
           <TreasurerSetQuotaPage handlerOnFocus={handlerOnFocus} />
-        </Route>
+        </PrivateRoute>
 
         {/* --------------------Secretary-------------------- */}
         {/* //TODO proteger ruta Treasurer Funcionalidades etc...*/}
-        <Route path="/secretary-resume" exact>
+        {/* <Route path="/secretary-resume" exact>
           <SecretaryResumePage />
         </Route>
         <Route path="/secretary-meetings" exact>
           <SecretaryMeetingsPage />
-        </Route>
+        </Route> */}
 
         <Route path="/recovery-pass" exact>
           <ForgotPasswordPage handlerOnFocus={handlerOnFocus} />
