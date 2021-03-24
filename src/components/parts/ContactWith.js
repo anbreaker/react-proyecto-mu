@@ -56,11 +56,21 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
     if (isFormContacValid()) {
       try {
         if (location.pathname === '/dashboard') {
-          // await client.senderMail({ ...formValues, type: 'CONTACT' });
-          console.log({ ...formValues, type: 'CONTACT' });
+          console.log({ ...formValues, type: 'CONTACT' }, '<--- Ver!!');
+
+          await client.senderMail({
+            email: process.env.REACT_APP_CONTACT_ADMIN,
+            type: 'CONTACT',
+            data: {
+              userEmail: formValues.email,
+              name: formValues.name,
+              mobile: formValues.mobile,
+              message: formValues.message,
+            },
+          });
         } else {
-          // await client.senderMail({ ...formValues, type: 'INVOICE' });
           console.log({ ...formValues, type: 'INVOICE' });
+          await client.senderMail({ ...formValues, type: 'INVOICE' });
         }
       } catch (error) {
         console.log(error);

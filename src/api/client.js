@@ -70,7 +70,7 @@ client.interceptors.response.use(
 
 //Send email
 client.senderMail = formValues => {
-  return client.post('/apiV1/sender', formValues);
+  return client.post('/sender', formValues);
 };
 
 export default client;
