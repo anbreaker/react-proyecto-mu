@@ -95,7 +95,7 @@
     "auth/email-not-verified": "La dirección email no se ha verificado, por favor revise su correo",
     "NOUSERDATABASE": "No es un usuario de la base de datos.",
     "SuccessUpdateProfile": "Datos actualizados correctamente. Si es un usuario nuevo, por favor espere a que un administrador lo asigne a alguna organización",
-    "Confirmation-Sure": "¿Está seguro?",
+    "Confirmation-Sure": "¿Estás seguro?",
     "Warning-undone": "¡Esta acción no se puede deshacer!",
     "Confirm-Delete": "Eliminar",
     "Confirm-Cancel": "Cancelar"
@@ -291,11 +291,13 @@
     "Mobile": "Movil",
     "Send": "Enviar Email",
     "Description": "Escríbenos y contactaremos lo antes posible, ¡Gracias!",
-    "Suggestion": "Escribe aqui tu mensaje, en cuanto estes listo y pulses 'Enviar Email' volará hasta el correo elegido",
+    "Suggestion": "Escribe aqui tu mensaje, en cuanto estes listo y pulses 'Enviar Email' volará hasta el su ¡destino!",
     "Error-Phone": "El número telefónico no es correcto, ¡Revisalo!",
     "Empty-Message": "Ups! parece que olvido escribir un mensaje!",
     "Name-Required": "El nombre es requerido, debe contener al menos 3 caracteres",
-    "Email-NotValid": "El email no es válido"
+    "Email-NotValid": "El email no es válido",
+    "Send-Email": "Email enviado con éxito a su destinatario.",
+    "Send-Error": "Algo no fue bien, vuelva a enviar el email mas tarde."
   },
   "CardsProfile": {
     "Name": "Organización",
@@ -306,5 +308,11 @@
     "City": "Ciudad",
     "Foundation": "Fundación",
     "Country": "País"
+  },
+  "ModalPayment": {
+    "Title": "Detalles del justificante de pago:",
+    "No-Description": "No existe ningún tipo de descripción asociada a este movimiento.",
+    "Send-Proof": "Enviar justificante de pago",
+    "Cancel": "Cancelar"
   }
 }

@@ -291,11 +291,13 @@
     "Mobile": "Mobile",
     "Send": "Send Email",
     "Description": "Write to us and we will contact you as soon as possible, thank you!",
-    "Suggestion": "Type your message here, as soon as you are ready and press 'Send Email' it will fly to the chosen email address.",
+    "Suggestion": "Write your message here, as soon as you are ready and press 'Send Email' it will fly to its destination!",
     "Error-Phone": "The phone number is not correct, check it!",
     "Empty-Message": "Oops! I seem to have forgotten to write a message!",
     "Name-Required": "Name is required, to contain at least 3 characters.",
-    "Email-NotValid": "Email is not valid"
+    "Email-NotValid": "Email is not valid",
+    "Send-Email": "Email successfully sent to its recipient.",
+    "Send-Error": "Something went wrong, please resend the email later."
   },
   "CardsProfile": {
     "Name": "Organization Name",
@@ -306,5 +308,11 @@
     "City": "City",
     "Foundation": "Foundation",
     "Country": "Country"
+  },
+  "ModalPayment": {
+    "Title": "Details proof of payment:",
+    "No-Description": "There is no description of any kind associated with this movement.",
+    "Send-Proof": "Send proof of payment",
+    "Cancel": "Cancel"
   }
 }
