@@ -148,7 +148,9 @@ export const TreasurerIncomeRegisterPage = () => {
     }
 
     try {
-      delete formValues.dueDate;
+      // Fecha vencimineto dueDate ha de ir al mail
+      // Peticion de mail desde back ahorra peticion a DB
+
       console.log({
         ...formValues,
         date: formatToLocaleDate(date),

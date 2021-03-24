@@ -306,5 +306,11 @@
     "City": "Cidade",
     "Foundation": "Fundação",
     "Country": "País"
+  },
+  "ModalPayment": {
+    "Title": "Detalhes do comprovativo de pagamento:",
+    "No-Description": "Não há qualquer descrição de qualquer tipo associada a este movimento.",
+    "Send-Proof": "Enviar comprovativo de pagamento",
+    "Cancel": "Cancenlar"
   }
 }

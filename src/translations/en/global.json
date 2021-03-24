@@ -306,5 +306,11 @@
     "City": "City",
     "Foundation": "Foundation",
     "Country": "Country"
+  },
+  "ModalPayment": {
+    "Title": "Details proof of payment:",
+    "No-Description": "There is no description of any kind associated with this movement.",
+    "Send-Proof": "Send proof of payment",
+    "Cancel": "Cancel"
   }
 }
