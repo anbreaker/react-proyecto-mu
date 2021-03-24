@@ -187,7 +187,7 @@ export const TreasurerSetQuotaPage = ({ handlerOnFocus }) => {
                         disabled={loading}
                       >
                         {' '}
-                        {t('TreasurerIncomeRegisterPage.Add-Pay')}
+                        {t('TreasurerSetQuotaPage.Set-Quota')}
                       </Button>
                     </div>
                   </div>
