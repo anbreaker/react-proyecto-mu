@@ -81,11 +81,7 @@ export const ContactWith = ({ title, handlerOnFocus }) => {
         } else {
           console.log({ ...formValues, type: 'INVOICE' });
           dispatch(
-            setAlertAction(
-              'ErrorSwal.Error',
-              'ContactWith.Send-Error',
-              'success'
-            )
+            setAlertAction('ErrorSwal.Error', 'ContactWith.Send-Error', 'error')
           );
           await client.senderMail({ ...formValues, type: 'INVOICE' });
         }
