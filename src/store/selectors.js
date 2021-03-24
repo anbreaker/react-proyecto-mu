@@ -16,6 +16,10 @@ export const getUserOrgs = state => state.auth.organizations;
 export const getUserOrgSel = state => state.auth.orgSelected;
 export const getLoginStatus = state => state.auth.loginStatus;
 export const getEmailVerified = state => state.auth.emailVerified;
+export const getPaymentById = (year, paymentId) => state =>
+  state.auth.orgSelected.fiscalYear
+    .find(fy => fy.year == year)
+    ?.payment.find(p => p._id === paymentId);
 
 export const getUserFiscalYear = year => state =>
   state.auth.organizations

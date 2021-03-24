@@ -24,7 +24,6 @@ import { changeNum2Cur, formatNumber } from '../utils/formatNumber';
 import { InfoCards } from '../parts/InfoCards';
 import { setAlertAction } from '../../store/actions/swal';
 import { updatePaymentOrgSel } from '../../store/actions/auth';
-import client from '../../api/client';
 import { formatToLocaleDate } from '../utils/dateFormat';
 
 export const TreasurerIncomeRegisterPage = () => {

@@ -20,6 +20,7 @@ import { deletePayment } from '../../api';
 import { updatePaymentOrgSel } from '../../store/actions/auth';
 import Swal from 'sweetalert2';
 import { setAlertAction } from '../../store/actions/swal';
+import ModalPayment from '../parts/ModalPayment';
 
 export const TreasurerIncomePage = () => {
   const { t } = useTranslation('global');
@@ -30,6 +31,10 @@ export const TreasurerIncomePage = () => {
   const [payments, setPayments] = useState([]);
   const orgSel = useSelector(getUserOrgSel);
   const [users, setUsers] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [paymentId, setPaymentId] = useState('');
+
+  const toggle = () => setModal(!modal);
 
   const { formValues, handleInputChange } = useForm({
     year: new Date().getFullYear(),
@@ -94,6 +99,12 @@ export const TreasurerIncomePage = () => {
   return (
     <MainLayout>
       <div className="container-fluid">
+        <ModalPayment
+          open={modal}
+          toggle={toggle}
+          year={year}
+          paymentId={paymentId}
+        />
         <h1 className="h3 mb-3 text-gray-800">
           {t('TreasurerIncomePage.Treasurer-Income')}
         </h1>
@@ -197,23 +208,15 @@ export const TreasurerIncomePage = () => {
                         <td className="text-center">{pay.paymentMethod}</td>
                         <td className="text-center">
                           <i
-                            className="fas fa-eye text-primary"
+                            className="fas fa-eye text-primary pr-2"
                             role="button"
+                            onClick={() => {
+                              setPaymentId(pay._id);
+                              setModal(true);
+                            }}
                           ></i>
-
-                          {/* TODO Ventana Modal para previsualizar y enviar mail */}
-                          {/* <Link
-                            to={`/contact/user?userId=${pay.userId}`}
-                            className="text-decoration-none"
-                          > */}
                           <i
-                            className="pl-3 pr-3 fas fa-envelope text-primary"
-                            role="button"
-                          ></i>
-                          {/* </Link> */}
-
-                          <i
-                            className="fas fa-trash text-primary"
+                            className="fas fa-trash text-primary pl-2"
                             role="button"
                             onClick={() => handlePaymentDelete(pay._id)}
                           ></i>
