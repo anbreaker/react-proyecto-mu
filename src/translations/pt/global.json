@@ -291,11 +291,13 @@
     "Mobile": "Móvel",
     "Send": "Enviar E-mail",
     "Description": "Escreva-nos e entraremos em contacto consigo o mais rapidamente possível, obrigado!",
-    "Suggestion": "Escreva aqui a sua mensagem, assim que estiver pronto e prima 'Enviar e-mail', ela voará para o endereço de e-mail escolhido.",
+    "Suggestion": "Escreva aqui a sua mensagem, assim que estiver pronto e pressione 'Enviar e-mail', ela voará para o seu destino!",
     "Error-Phone": "O número de telefone não está correcto, verifique!",
     "Empty-Message": "Oops! parece que me esqueci de escrever uma mensagem!",
     "Name-Required": "O nome é obrigatório, deve conter pelo menos 3 caracteres.",
-    "Email-NotValid": "O email é inválido"
+    "Email-NotValid": "O email é inválido",
+    "Send-Email": "Email enviado com sucesso para o seu destinatário.",
+    "Send-Error": "Algo correu mal, por favor reenviar o e-mail mais tarde."
   },
   "CardsProfile": {
     "Name": "Nome Organização",
