@@ -45,6 +45,7 @@ export const TreasurerIncomePage = () => {
 
   useEffect(() => {
     if (orgSel._id) {
+      console.log('aca');
       getAllUsers(orgSel._id)
         .then(data => setUsers(data))
         .catch(err => console.log(err));
@@ -155,7 +156,7 @@ export const TreasurerIncomePage = () => {
                 >
                   <option value="">{t('TreasurerIncomePage.All-Users')}</option>
 
-                  {users &&
+                  {users.length &&
                     users.map(user => (
                       <option key={user.id} value={user.id}>
                         {user.fullName}
