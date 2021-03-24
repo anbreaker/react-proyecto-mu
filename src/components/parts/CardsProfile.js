@@ -5,6 +5,7 @@ import { Spinner } from 'reactstrap';
 
 import { getUiState, getUserOrgSel } from '../../store/selectors';
 import { formatToLocaleDate } from '../utils/dateFormat';
+import { NoOrg } from './NoOrg';
 
 export const CardsProfile = () => {
   const { t } = useTranslation('global');
@@ -80,12 +81,7 @@ export const CardsProfile = () => {
                   </div>
                 </div>
               ) : (
-                <div className="col-12">
-                  <p>
-                    No tiene organizaciones asignadas a su perfil, por favor
-                    contacte a un administrador
-                  </p>
-                </div>
+                <NoOrg inCard={false} />
               )
             ) : (
               <div className="col d-flex justify-content-center">
