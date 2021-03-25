@@ -1,28 +1,27 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import { getPaymentById } from '../../store/selectors';
 import { InputText } from '../basicComponents/InputText';
 import { formatToLocaleDate } from '../utils/dateFormat';
 import { changeNum2Cur } from '../utils/formatNumber';
-import client from '../../api/client';
-import Swal from 'sweetalert2';
+import { useSendGrid } from '../../hooks/useSendMail';
 
 // import { useSendGrid } from '../../hooks/useSendMail';
 
 const ModalPayment = ({ open, toggle, year, paymentId }) => {
   const { t } = useTranslation('global');
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const payment = useSelector(getPaymentById(year, paymentId));
 
-  const sendMail = event => {
+  const handleSendMail = async event => {
     event.preventDefault();
-
-    client.senderMailInvoiceMail({ ...payment, type: 'INVOICE' });
+    const sendMail = useSendGrid();
+    sendMail(payment, dispatch, 'INVOICE').then(() => toggle());
   };
 
   return (
@@ -143,7 +142,7 @@ const ModalPayment = ({ open, toggle, year, paymentId }) => {
             </>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={sendMail}>
+            <Button color="primary" onClick={handleSendMail}>
               <i className="pr-2 fas fa-envelope text-white"></i>
               {t('ModalPayment.Send-Proof')}
             </Button>
