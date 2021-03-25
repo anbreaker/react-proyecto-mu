@@ -19,7 +19,7 @@ nameApp
 
 checkEnv
 echo "Build React APP"
-npm run build
+npm run build --nomaps
 checkCode
 echo "Copy build in server"
 scp -r build MU-NGINX:react-app/

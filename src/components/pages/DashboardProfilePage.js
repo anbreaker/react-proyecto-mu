@@ -150,16 +150,16 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
   };
 
   const isFormChangeProfileValid = () => {
-    if (displayName.length <= 2) {
+    if (displayName?.length <= 2) {
       dispatch(setErrorAction('RegisterPage.Name-Required'));
       return false;
-    } else if (firstSurname.length <= 2) {
+    } else if (firstSurname?.length <= 2) {
       dispatch(setErrorAction('DashboardProfilePage.FirstSurname-Required'));
       return false;
     } else if (!validator.isMobilePhone(mobile)) {
       dispatch(setErrorAction('DashboardProfilePage.Mobile-Need'));
       return false;
-    } else if (address.length <= 2) {
+    } else if (address?.length <= 2) {
       dispatch(setErrorAction('DashboardProfilePage.Mobile-Need'));
       return false;
     }
@@ -311,6 +311,7 @@ export const DashboardProfilePage = ({ handlerOnFocus }) => {
                         value={address}
                         onFocus={handlerOnFocus}
                         onChange={handleInputChange}
+                        required
                       />
                     </div>
                   </div>
