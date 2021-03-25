@@ -146,7 +146,7 @@ Path: git clone https://github.com/LSP-92/email-microservice
 
 # This is a very quick and concise 1:20 presentation on the WebApp (click on the image) 📼
 
-[![](https://raw.githubusercontent.com/anbreaker/react-proyecto-mu/main/public/img/stack.jpg)](https://www.youtube.com/watch?v=c3Hte02-Res)
+[![](https://raw.githubusercontent.com/anbreaker/react-proyecto-mu/main/public/img/stack.jpg)](https://www.youtube.com/watch?v=NNaEmqyjiJE)
 <br><br><br>
 
 # To see a practical example of the use of egestion click on the image 📼
