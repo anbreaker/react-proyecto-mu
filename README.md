@@ -144,11 +144,14 @@ Path: git clone https://github.com/LSP-92/email-microservice
 
 <br>
 
+# This is a very quick and concise 1:20 presentation on the WebApp (click on the image) 📼
+
+[![](https://raw.githubusercontent.com/anbreaker/react-proyecto-mu/main/public/img/stack.jpg)](https://www.youtube.com/watch?v=c3Hte02-Res)
+<br><br><br>
+
 # To see an example on youtube (click on the image) 📼
 
-<br>
-
-[![](https://raw.githubusercontent.com/anbreaker/react-proyecto-mu/main/public/img/presentation.jpg)](https://www.youtube.com/watch?v=")
+[![](https://raw.githubusercontent.com/anbreaker/react-proyecto-mu/main/public/img/presentation.jpg)](https://www.youtube.com/watch?v=c3Hte02-Res)
 
 <br><br>
 
