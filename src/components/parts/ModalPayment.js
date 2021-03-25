@@ -1,26 +1,28 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import { getPaymentById } from '../../store/selectors';
 import { InputText } from '../basicComponents/InputText';
 import { formatToLocaleDate } from '../utils/dateFormat';
 import { changeNum2Cur } from '../utils/formatNumber';
-import { useSendGrid } from '../../hooks/useSendMail';
+import client from '../../api/client';
+import Swal from 'sweetalert2';
+
+// import { useSendGrid } from '../../hooks/useSendMail';
 
 const ModalPayment = ({ open, toggle, year, paymentId }) => {
   const { t } = useTranslation('global');
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const payment = useSelector(getPaymentById(year, paymentId));
 
   const sendMail = event => {
     event.preventDefault();
 
-    const sendMail = useSendGrid();
-    sendMail(payment, dispatch, 'INVOICE');
+    client.senderMailInvoiceMail({ ...payment, type: 'INVOICE' });
   };
 
   return (

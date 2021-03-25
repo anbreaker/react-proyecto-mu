@@ -313,7 +313,7 @@
     "Title": "Detalles del justificante de pago:",
     "No-Description": "No existe ningún tipo de descripción asociada a este movimiento.",
     "Send-Proof": "Enviar justificante de pago",
-    "Cancel": "Cancelar"
+    "Cancel": "Salir"
   },
   "NoOrg": {
     "Title": "No tiene organizaciones asignadas a su perfil, Espere a que el Admin le de permisos o pongase en con nosotros",

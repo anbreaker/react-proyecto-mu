@@ -73,4 +73,9 @@ client.senderMail = formValues => {
   return client.post('/sender', formValues);
 };
 
+//Send email
+client.senderMailInvoiceMail = params => {
+  return client.post('/sender/treasurer-income', params);
+};
+
 export default client;

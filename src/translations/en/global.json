@@ -313,7 +313,7 @@
     "Title": "Details proof of payment:",
     "No-Description": "There is no description of any kind associated with this movement.",
     "Send-Proof": "Send proof of payment",
-    "Cancel": "Cancel"
+    "Cancel": "Exit"
   },
   "NoOrg": {
     "Title": "You have no organisations assigned to your profile, please wait for the Admin to give you permissions or contact us.",

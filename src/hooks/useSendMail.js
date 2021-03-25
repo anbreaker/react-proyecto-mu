@@ -4,8 +4,6 @@ import { setAlertAction } from '../store/actions/swal';
 export const useSendGrid = () => {
   const sendMail = async (formValues, dispatch, type) => {
     try {
-      console.log({ ...formValues, type: type }, '<--- Ver!!');
-
       await client.senderMail(
         {
           email: process.env.REACT_APP_CONTACT_ADMIN,
