@@ -33,7 +33,6 @@ export const removeHeaderOrgId = () => {
 // Login method
 client.login = credentials =>
   client.post('/auth/login', credentials).then(auth => {
-    console.log(auth, '<-- auth');
     setAuthorizationHeader(auth.token);
     return auth;
   });
@@ -57,7 +56,6 @@ client.interceptors.response.use(
     if (!data) {
       return Promise.reject('Empty response - Interceptor');
     }
-    //    console.log(data);
     return Promise.resolve(data);
   },
   error => {

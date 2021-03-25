@@ -59,7 +59,6 @@ export const setFeeToOrg = async feeData => {
 };
 
 export const deleteFee = async feeData => {
-  console.log(feeData);
   return client
     .delete('/org/fee', { data: feeData })
     .then(res => res.data)
